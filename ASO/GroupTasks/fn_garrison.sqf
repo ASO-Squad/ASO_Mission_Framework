@@ -2,6 +2,7 @@
 Description:
     A function for a group to defend a trigger. 
 	A garrison might engage enemies far away and even be called to defend another trigger
+    BE ADVISED: If a unit previously belonged to an AOI, it is still considered to be part of that AOI.
 
 Parameters:
     _group      - the group guarding the area
@@ -28,8 +29,8 @@ _radius = (_xRad + _yRad) / 2;
 [_group, _trigger, _radius, 2, 0.5, 0] call CBA_fnc_taskDefend;
 
 // Putting this group to the global garrison
-ASO_GARRISON pushBack _group;
-["New unit in ASO_GARRISON", groupId _group] call aso_fnc_debug;
+[_group] spawn aso_fnc_addGroupToGarrison;
+
 // Show Debug Output
 ["New task GARRISON for", groupId _group] call aso_fnc_debug;
 [_group] spawn aso_fnc_trackGroup;

@@ -28,7 +28,7 @@ _radius = (_xRad + _yRad) / 2;
 [_group, _trigger, _radius, 2, 0, _hold] call CBA_fnc_taskDefend;
 
 // Adding this group the the AOI
-[_trigger, _group] spawn aso_fnc_addGroupToAOI;
+[_group, _trigger] spawn aso_fnc_addGroupToAOI;
 
 // Show Debug Output
 ["New task GUARD for", groupId _group] call aso_fnc_debug;

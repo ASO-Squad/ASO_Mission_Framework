@@ -26,6 +26,9 @@ _radius = (_xRad + _yRad) / 2;
 // Calling CBA_fnc_taskPatrol
 [_group, _trigger, _radius, 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
 
+// Adding this group the the AOI
+[_group, _trigger] spawn aso_fnc_addGroupToAOI;
+
 // Show Debug Output
 ["New task PATROL for", groupId _group] call aso_fnc_debug;
 [_group] spawn aso_fnc_trackGroup;
