@@ -26,6 +26,7 @@ class cfgFunctions
             file = "ASO\AOI";
             class initAOI {};
             class addGroupToAOI {};
+            class addGroupToGarrison {};
         }
     };
 };
