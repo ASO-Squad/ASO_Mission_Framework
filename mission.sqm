@@ -1,0 +1,488 @@
+version=53;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=1;
+	class ItemIDProvider
+	{
+		nextID=25;
+	};
+	class Camera
+	{
+		pos[]={1954.7433,6.8194427,3541.6619};
+		dir[]={0.65289402,-0.11189796,-0.74930608};
+		up[]={0.073536351,0.99369073,-0.084395625};
+		aside[]={-0.75404739,-9.0973481e-007,-0.65701991};
+	};
+};
+binarizationWanted=0;
+addons[]=
+{
+	"A3_Characters_F",
+	"A3_Structures_F_Civ_Camping",
+	"A3_Structures_F_EPC_Items_Electronics",
+	"ace_explosives",
+	"A3_Modules_F"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=5;
+		class Item0
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_Structures_F";
+			name="Arma 3 - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item2
+		{
+			className="A3_Structures_F_EPC";
+			name="Arma 3 Win Episode - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item3
+		{
+			className="ace_explosives";
+			name="ACE3 - Explosives";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item4
+		{
+			className="A3_Modules_F";
+			name="Arma 3 Alpha - Scripted Modules";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+	};
+};
+randomSeed=8495150;
+class ScenarioData
+{
+	author="Papa Mike";
+	overviewText="ASO Mission Framework 1.0 ";
+};
+class Mission
+{
+	class Intel
+	{
+		briefingName="ASO Mission Framework 1.0";
+		timeOfChanges=1800.0002;
+		startFog=0.025602587;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		wavesForced=1;
+		windForced=1;
+		year=2017;
+		month=11;
+		day=26;
+		hour=14;
+		minute=-30;
+		startFogBase=0.00012207031;
+		startFogDecay=0.064118981;
+		forecastFogDecay=0.014;
+	};
+	class Entities
+	{
+		items=8;
+		class Item0
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=8;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1972.2104,2.7883835,3529.333};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						rank="SERGEANT";
+					};
+					id=1;
+					type="O_SoldierU_SL_F";
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1977.8987,2.6013145,3527.3367};
+					};
+					side="East";
+					flags=5;
+					class Attributes
+					{
+						skill=0.40000001;
+					};
+					id=2;
+					type="O_soldierU_F";
+					atlOffset=2.3841858e-007;
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1967.8987,2.8096552,3527.3367};
+					};
+					side="East";
+					flags=5;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+					};
+					id=3;
+					type="O_soldierU_LAT_F";
+					atlOffset=-2.3841858e-007;
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1977.0411,2.4716768,3522.2466};
+					};
+					side="East";
+					flags=5;
+					class Attributes
+					{
+						skill=0.40000001;
+					};
+					id=4;
+					type="O_soldierU_M_F";
+				};
+				class Item4
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1970.8024,2.7826371,3524.9365};
+					};
+					side="East";
+					flags=5;
+					class Attributes
+					{
+						rank="SERGEANT";
+					};
+					id=5;
+					type="O_soldierU_TL_F";
+				};
+				class Item5
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1977.9093,2.547677,3524.7539};
+					};
+					side="East";
+					flags=5;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+					};
+					id=6;
+					type="O_soldierU_AR_F";
+				};
+				class Item6
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1967.7617,2.7816365,3523.3701};
+					};
+					side="East";
+					flags=5;
+					class Attributes
+					{
+						skill=0.40000001;
+					};
+					id=7;
+					type="O_soldierU_A_F";
+					atlOffset=-2.3841858e-007;
+				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1973.3893,2.4819133,3521.019};
+					};
+					side="East";
+					flags=5;
+					class Attributes
+					{
+						skill=0.40000001;
+					};
+					id=8;
+					type="O_soldierU_medic_F";
+				};
+			};
+			class Attributes
+			{
+				name="tempest_unit";
+			};
+			id=0;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="tempest_unit";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item1
+		{
+			dataType="Trigger";
+			position[]={1983.6328,2.4348791,3518.6597};
+			class Attributes
+			{
+				name="tempest";
+				sizeA=25;
+				sizeB=25;
+				sizeC=25;
+			};
+			id=11;
+			type="EmptyDetector";
+		};
+		class Item2
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1958.6268,4.8732262,3538.2981};
+				angles[]={6.268187,2.5386789,6.2382159};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=12;
+			type="Land_CampingTable_small_F";
+			atlOffset=0.001306057;
+		};
+		class Item3
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1958.6689,5.436439,3538.4197};
+				angles[]={6.2681928,5.791369,6.2382083};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{this addAction [""Guard"",{[tempest_unit, tempest, 1] call aso_fnc_guard; }];this addAction [""Garrison"",{[tempest_unit, tempest] call aso_fnc_garrison; }];this addAction [""Patrol"",{[tempest_unit, tempest] call aso_fnc_patrol;}];this addAction [""Reveal Enemy"",{[tempest_enemy, tempest_unit, 2.5] call aso_fnc_revealToGroup;}];this addAction [""Assess Enemies"",{[tempest_area] call aso_fnc_assessTargets;}];this addAction [""Init Tempest"",{[tempest, 2, true, true, ""Tempest"", ""A small base on a small island"", ""attack"", ""west""] call aso_fnc_initAOI;}];}";
+			};
+			id=13;
+			type="Land_Laptop_device_F";
+			atlOffset=0.81399965;
+		};
+		class Item4
+		{
+			dataType="Trigger";
+			position[]={1990.3199,2.7669356,3523.4009};
+			class Attributes
+			{
+				name="tempest_area";
+				sizeA=500;
+				sizeB=500;
+				interuptable=1;
+				repeatable=1;
+				activationType="EAST D";
+				activationBy="WEST";
+				isServerOnly=1;
+			};
+			id=14;
+			type="EmptyDetector";
+			atlOffset=0.036999941;
+		};
+		class Item5
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=4;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1945.8717,51.296146,3843.123};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						rank="SERGEANT";
+					};
+					id=16;
+					type="B_recon_TL_F";
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1950.8717,52.577698,3838.123};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+					};
+					id=17;
+					type="B_recon_M_F";
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1940.8717,49.929565,3838.123};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						skill=0.40000001;
+					};
+					id=18;
+					type="B_recon_medic_F";
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1955.8717,54.139126,3833.123};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						skill=0.40000001;
+					};
+					id=19;
+					type="B_recon_F";
+				};
+			};
+			class Attributes
+			{
+				name="tempest_enemy";
+			};
+			id=15;
+		};
+		class Item6
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1956.3967,4.5907769,3539.8628};
+						angles[]={0,2.1992044,0};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						init="call{this setCaptive true}";
+						isPlayer=1;
+					};
+					id=23;
+					type="B_CTRG_soldier_engineer_exp_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=22;
+		};
+		class Item7
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={1982.5356,2.3208055,3515.3364};
+				angles[]={6.2531939,4.6824212,0.019999012};
+			};
+			name="tempest_logic";
+			init="call{[tempest, 2, true, true, ""Tempest"", ""A small base on a small island"", ""attack"", ""west""] spawn aso_fnc_initAOI;}";
+			id=21;
+			type="Logic";
+		};
+	};
+};
