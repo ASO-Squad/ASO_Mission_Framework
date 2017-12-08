@@ -28,10 +28,11 @@ waitUntil {_thisAOI = [ASO_AOIs, _trigger] call CBA_fnc_hashGet; (count _thisAOI
 
 // Get AOI from global hash
 _thisAOI = [ASO_AOIs, _trigger] call CBA_fnc_hashGet;
-// index #6 is the groups for this AOI
-_groups = _thisAOI select 6; 
+// Get groups already in this AOI
+_groups = [_trigger] call aso_fnc_getAOIGroups;
+// Add new group to array 
 _groups pushBackUnique _group;
-_thisAOI set [6, _groups];
+[_groups, _trigger] call aso_fnc_setAOIGroups;
 // push to global AOI list
 [ASO_AOIs, _trigger, _thisAOI] call CBA_fnc_hashSet;
 ["Group added", _group] call aso_fnc_debug;
