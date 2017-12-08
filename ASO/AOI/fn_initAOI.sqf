@@ -29,8 +29,7 @@ params ["_trigger", "_level", "_canCallReenforcments", "_canReoccupy", "_objecti
 // 0 - 5 = Parameters as definded above
 // 6 = Groups occuping this AOI
 // 7 = Groups on their way to this AOI
-// 8 = Number of enemies known to be near this AOI
-// 9 = is defeated or not
+// 8 = is defeated or not
 _thisAOI = [_trigger, _level, _canCallReenforcments, _canReoccupy, _objectiveHeader, _objectiveDescription, [], [], 0,  false];
 
 //Creating task
