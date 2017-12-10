@@ -1,10 +1,10 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Returns all groups currently assigned to an AOI 
+    Sets all groups currently assigned to an AOI 
 
 Parameters:
     _thisGroupList  - The new groups
-    _AOIObject        - The AOI I want the groups to be set for
+    _AOIObject      - The AOI I want the groups to be set for
 
 Returns:
     None

@@ -6,7 +6,7 @@ Parameters:
     _AOI    - The AOI I want the groups from
 
 Returns:
-    None
+    [Groups]
 
 Examples:
     [Groups] = [_thisAOI] call aso_fnc_getAOIGroups
