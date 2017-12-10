@@ -37,6 +37,6 @@ _groups pushBackUnique _group;
 [ASO_AOIs, _trigger, _thisAOI] call CBA_fnc_hashSet;
 ["Group added", _group] call aso_fnc_debug;
 // Delete from Garrison
-_toDelete = [_group];
-ASO_GARRISON = ASO_GARRISON - _toDelete; // I dont know if this is fast. It could be worth to implement getters and setters on those global hashes 
-["Group is no longer in garrison", _group] call aso_fnc_debug;
+//_toDelete = [_group];
+//ASO_GARRISON = ASO_GARRISON - _toDelete; // I dont know if this is fast. It could be worth to implement getters and setters on those global hashes 
+//["Group is no longer in garrison", _group] call aso_fnc_debug;

@@ -30,6 +30,8 @@ _radius = (_xRad + _yRad) / 2;
 
 // Putting this group to the global garrison
 [_group] spawn aso_fnc_addGroupToGarrison;
+// Putting this group to AOI
+[_group, _trigger] spawn aso_fnc_addGroupToAOI;
 
 // Show Debug Output
 ["New task GARRISON for", groupId _group] call aso_fnc_debug;

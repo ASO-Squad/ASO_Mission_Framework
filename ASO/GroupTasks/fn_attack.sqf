@@ -26,8 +26,8 @@ _radius = (_xRad + _yRad) / 2;
 // Calling CBA_fnc_taskDefend
 [_group, _trigger, _radius, true] call CBA_fnc_taskAttack;
 
-// Putting this group to the global garrison
-[_group] spawn aso_fnc_addGroupToGarrison;
+// Tracking orders
+_group setVariable ["ASO_ORDERS", ["ATTACK", _trigger], true];
 
 // Show Debug Output
 ["New task ATTACK for", groupId _group] call aso_fnc_debug;
