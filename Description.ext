@@ -8,6 +8,8 @@ class cfgFunctions
             class garrison {};
             class guard {};
             class patrol {};
+            class attack {};
+            class search {};
         }
         class Debug
         {
@@ -26,7 +28,6 @@ class cfgFunctions
             file = "ASO\AOI";
             class initAOI {};
             class addGroupToAOI {};
-            class addGroupToGarrison {};
             class getAOIGroups {};
             class setAOIGroups {};
             class addGroupToAOIReinforcements {};
