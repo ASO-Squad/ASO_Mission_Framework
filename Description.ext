@@ -29,6 +29,11 @@ class cfgFunctions
             class addGroupToGarrison {};
             class getAOIGroups {};
             class setAOIGroups {};
+            class addGroupToAOIReinforcements {};
+            class getAOIReinforcementGroups {};
+            class setAOIReinforcementGroups {};
+            class setAOIStatus {};
+            class getAOIStatus {};
         }
     };
 };
