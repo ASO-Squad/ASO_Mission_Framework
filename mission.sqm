@@ -8,14 +8,14 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=47;
+		nextID=49;
 	};
 	class Camera
 	{
-		pos[]={1929.5068,27.83662,3479.052};
-		dir[]={0.48699459,-0.21261734,0.84714067};
-		up[]={0.10596788,0.97713399,0.18433453};
-		aside[]={0.86696494,-3.369496e-008,-0.49839169};
+		pos[]={4372.3179,336.42395,3703.3271};
+		dir[]={-0.18651499,-0.59136742,0.78458524};
+		up[]={-0.13677014,0.8064062,0.57533306};
+		aside[]={0.97292507,-5.3532131e-007,0.23128895};
 	};
 };
 binarizationWanted=0;
@@ -108,7 +108,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=11;
+		items=13;
 		class Item0
 		{
 			dataType="Group";
@@ -914,6 +914,34 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item11
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={4362.165,226.4583,3804.4031};
+				angles[]={6.2506871,4.6824217,6.2631841};
+			};
+			name="as_mike_logic";
+			init="call{[as_mike, 2, true, true, ""Air Station Mike"", ""A small airstation on a small island"", ""attack"", ""west""] spawn aso_fnc_initAOI;}";
+			id=47;
+			type="Logic";
+			atlOffset=0.014007568;
+		};
+		class Item12
+		{
+			dataType="Trigger";
+			position[]={4342.2139,226.22908,3812.4326};
+			class Attributes
+			{
+				name="as_mike";
+				sizeA=300;
+				sizeB=300;
+				sizeC=25;
+			};
+			id=48;
+			type="EmptyDetector";
 		};
 	};
 	class Connections
