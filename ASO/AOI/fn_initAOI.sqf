@@ -38,6 +38,12 @@ if (_objectiveHeader != "") then
 	_taskName = format ["task_%1", _trigger];
 	[_taskOwner, [_taskName], [_objectiveDescription, _objectiveHeader, ""], (getPos _trigger), true, 0, true, _taskType] call BIS_fnc_taskCreate;
 };
+// set initial AOI status status
+_trigger setVariable ["ASO_SAFE", true, true];
+_trigger setVariable ["ASO_DETECTED", false, true];
+_trigger setVariable ["ASO_DISTRESS", false, true];
+_trigger setVariable ["ASO_LOST", false, true];
+
 waitUntil {!isnil "bis_fnc_init"};
 // push to global AOI list
 [ASO_AOIs, _trigger, _thisAOI] call CBA_fnc_hashSet;
