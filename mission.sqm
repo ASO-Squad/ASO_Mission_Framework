@@ -219,12 +219,12 @@ class Mission
 		class Item1
 		{
 			dataType="Trigger";
-			position[]={1985.8683,2.6152503,3523.9468};
+			position[]={1984.3463,2.3953803,3516.4507};
 			class Attributes
 			{
 				name="tempest";
-				sizeA=200;
-				sizeB=200;
+				sizeA=300;
+				sizeB=300;
 				sizeC=25;
 			};
 			id=11;
@@ -258,7 +258,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="call{this addAction [""Guard"",{[tempest_unit, tempest, 1] call aso_fnc_guard; }];this addAction [""Garrison"",{[tempest_unit, tempest] call aso_fnc_garrison; }];this addAction [""Patrol"",{[tempest_unit, tempest] call aso_fnc_patrol;}];this addAction [""Assess Enemies"",{[tempest_area, tempest] call aso_fnc_assessTargets;}];this addAction [""Init Tempest"",{[tempest, 2, true, true, ""Tempest"", ""A small base on a small island"", ""attack"", ""west""] call aso_fnc_initAOI;}];}";
+				init="call{this addAction [""Guard"",{[tempest_unit, tempest, 1] call aso_fnc_guard; }];this addAction [""Garrison"",{[tempest_unit, tempest] call aso_fnc_garrison; }];this addAction [""Patrol"",{[tempest_unit, tempest] call aso_fnc_patrol;}];this addAction [""Assess Enemies"",{[tempest_area, tempest, false] call aso_fnc_assessTargets;}];this addAction [""Init Tempest"",{[tempest, 2, true, true, ""Tempest"", ""A small base on a small island"", ""attack"", ""west""] call aso_fnc_initAOI;}];}";
 			};
 			id=13;
 			type="Land_Laptop_device_F";
@@ -267,15 +267,15 @@ class Mission
 		class Item4
 		{
 			dataType="Trigger";
-			position[]={1992.5615,2.816272,3525.8159};
+			position[]={2020.3669,2.2488298,3531.3369};
 			class Attributes
 			{
 				name="tempest_area";
 				condition="call{this}";
-				onActivation="call{[thisTrigger, tempest] call aso_fnc_assessTargets;}";
+				onActivation="call{[thisTrigger, tempest, true] spawn aso_fnc_assessTargets;}";
+				onDeactivation="call{thisTrigger setVariable [""ASO_ASSESSING"", false, true];}";
 				sizeA=500;
 				sizeB=500;
-				timeout[]={5,5,5};
 				interuptable=1;
 				repeatable=1;
 				activationType="EAST D";
@@ -454,6 +454,7 @@ class Mission
 					};
 					id=23;
 					type="B_CTRG_soldier_engineer_exp_F";
+					atlOffset=-4.7683716e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -483,14 +484,15 @@ class Mission
 			{
 			};
 			id=22;
+			atlOffset=-4.7683716e-007;
 		};
 		class Item7
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1982.5356,2.3208055,3515.3364};
-				angles[]={6.2531939,4.6824212,0.019999012};
+				position[]={1981.8474,1.9253734,3503.4561};
+				angles[]={6.2506957,4.6824212,6.2631865};
 			};
 			name="tempest_logic";
 			init="call{[tempest, 2, true, true, ""Tempest"", ""A small base on a small island"", ""attack"", ""west""] spawn aso_fnc_initAOI;}";
@@ -509,7 +511,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1948.7444,2.8644044,3526.2124};
+						position[]={2008.1879,33.695129,3383.6909};
 					};
 					side="East";
 					flags=7;
@@ -568,7 +570,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1944.433,2.8067575,3524.2158};
+						position[]={2003.8765,33.366306,3381.6943};
 					};
 					side="East";
 					flags=5;
@@ -585,7 +587,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1944.296,2.8473723,3520.2493};
+						position[]={2003.7395,35.368778,3377.7278};
 					};
 					side="East";
 					flags=5;
@@ -602,8 +604,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1953.3752,2.8110723,3519.6353};
-						angles[]={0.02999169,0,0.012501417};
+						position[]={2012.8187,39.021717,3377.1138};
+						angles[]={0.45762908,0,0.49706727};
 					};
 					side="East";
 					flags=4;
@@ -715,7 +717,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2056.0618,76.737785,3805.9714};
+						position[]={2064.8916,78.632309,3879.6946};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -732,7 +734,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2051.0923,77.276749,3811.0017};
+						position[]={2059.9221,76.312981,3884.7249};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -743,14 +745,13 @@ class Mission
 					};
 					id=36;
 					type="B_soldier_AR_F";
-					atlOffset=7.6293945e-006;
 				};
 				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2061.092,79.708099,3810.9409};
+						position[]={2069.9219,76.382584,3884.6641};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -768,7 +769,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2046.1226,78.085106,3816.032};
+						position[]={2054.9524,73.744934,3889.7551};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -779,14 +780,13 @@ class Mission
 					};
 					id=38;
 					type="B_soldier_M_F";
-					atlOffset=7.6293945e-006;
 				};
 				class Item4
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2066.1223,82.773834,3815.9106};
+						position[]={2074.9521,74.680336,3889.6338};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -798,14 +798,13 @@ class Mission
 					};
 					id=39;
 					type="B_soldier_AT_F";
-					atlOffset=-7.6293945e-006;
 				};
 				class Item5
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2041.153,78.839272,3821.062};
+						position[]={2049.9829,70.800888,3894.7852};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -816,13 +815,14 @@ class Mission
 					};
 					id=40;
 					type="B_soldier_AAT_F";
+					atlOffset=-7.6293945e-006;
 				};
 				class Item6
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2071.1523,85.507599,3820.8801};
+						position[]={2079.9822,73.741898,3894.6033};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -839,7 +839,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2036.1833,78.940025,3826.0923};
+						position[]={2045.0132,67.852737,3899.8154};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -850,6 +850,7 @@ class Mission
 					};
 					id=42;
 					type="B_medic_F";
+					atlOffset=-7.6293945e-006;
 				};
 				class Item8
 				{
