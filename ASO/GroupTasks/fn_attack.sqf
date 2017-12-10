@@ -18,12 +18,14 @@ Author:
 if (!isServer) exitWith {};
 
 params ["_group", "_trigger"];
+// do not give orders to empty groups
+if (isNull _group || (count units _group) == 0) exitWith {};
 // extracting info from trigger
 _xRad = triggerArea _trigger select 0;
 _yRad = triggerArea _trigger select 1;
 _radius = (_xRad + _yRad) / 2;
 
-// Calling CBA_fnc_taskDefend
+// Calling CBA_fnc_Attack
 [_group, _trigger, _radius, true] call CBA_fnc_taskAttack;
 
 // Tracking orders

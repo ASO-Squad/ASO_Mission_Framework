@@ -5,6 +5,8 @@ Description:
 Parameters:
     _group      - the group patroling the area
     _trigger   	- trigger that is to be patroled, should be a circle
+    _type       - What kind of unit is this. Possible values are:
+                "INFANTRY", "MOBILE", "MECHANIZED", "ARMORED", "ARTILLERY", "AIR"
 
 Returns:
     None
@@ -17,7 +19,9 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_group", "_trigger"];
+params ["_group", "_trigger", "_type"];
+// do not give orders to empty groups
+if (isNull _group || (count units _group) == 0) exitWith {};
 // extracting info from trigger
 _xRad = triggerArea _trigger select 0;
 _yRad = triggerArea _trigger select 1;
@@ -28,6 +32,11 @@ _radius = (_xRad + _yRad) / 2;
 
 // Adding this group the the AOI
 [_group, _trigger] spawn aso_fnc_addGroupToAOI;
+
+// Tracking Orders
+_group setVariable ["ASO_ORDERS", ["PATROL", _trigger], true];
+_group setVariable ["ASO_HOME", _trigger, true]; // Set new homebase
+_group setVariable ["ASO_TYPE", _type, true];
 
 // Show Debug Output
 ["New task PATROL for", groupId _group] call aso_fnc_debug;
