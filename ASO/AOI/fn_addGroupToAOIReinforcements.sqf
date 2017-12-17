@@ -39,9 +39,11 @@ _groups pushBackUnique _group;
 ["Group added as reeinforcment", _group] call aso_fnc_debug;
 
 // give orders to group
-switch (_orders) do {
-    case "ATTACK": { [_group, _trigger] call aso_fnc_attack };
-    case "GUARD": { [_group, _trigger, true] call aso_fnc_guard };
-    case "SEARCH": { [_group, _trigger] call aso_fnc_search };
-    default { [_group, _trigger] call aso_fnc_attack };
-};
+//switch (_orders) do {
+//    case "ATTACK": { [_group, _trigger] call aso_fnc_attack };
+//    case "GUARD": { [_group, _trigger, true] call aso_fnc_guard };
+//    case "SEARCH": { [_group, _trigger] call aso_fnc_search };
+//    default { [_group, _trigger] call aso_fnc_attack };
+//};
+[_group, _trigger, _orders] call aso_fnc_reinforce;
+

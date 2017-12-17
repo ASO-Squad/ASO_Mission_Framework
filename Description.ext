@@ -10,6 +10,7 @@ class cfgFunctions
             class patrol {};
             class attack {};
             class search {};
+            class reinforce {};
         }
         class Debug
         {
@@ -22,6 +23,8 @@ class cfgFunctions
             file = "ASO\Misc";
             class revealToGroup {};
             class assessTargets {};
+            class getGroupType {};
+            class getGroupOrders {};
         }
         class AOI
         {

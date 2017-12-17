@@ -5,14 +5,14 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=103;
+		nextID=104;
 	};
 	class Camera
 	{
-		pos[]={1996.6469,81.872345,3426.3865};
+		pos[]={1989.3744,113.55643,3396.9722};
 		dir[]={0.19392537,-0.55739546,0.80734545};
 		up[]={0.13018714,0.83023238,0.54199207};
 		aside[]={0.9723829,4.5914203e-007,-0.23356649};
@@ -30,13 +30,14 @@ addons[]=
 	"A3_Armor_F_Beta_APC_Wheeled_02",
 	"ace_realisticnames",
 	"A3_Soft_F_EPC_Truck_03",
-	"ace_cargo"
+	"ace_cargo",
+	"A3_Soft_F_Quadbike_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=9;
+		items=10;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -100,6 +101,13 @@ class AddonsMetaData
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
+		class Item9
+		{
+			className="A3_Soft_F";
+			name="Arma 3 Alpha - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 randomSeed=8495150;
@@ -133,7 +141,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=22;
+		items=23;
 		class Item0
 		{
 			dataType="Group";
@@ -214,7 +222,7 @@ class Mission
 			class Attributes
 			{
 				name="tempest_unit";
-				init="call{[this, tempest] call aso_fnc_garrison;}";
+				init="call{[this, tempest, ""INFANTRY""] call aso_fnc_garrison;}";
 			};
 			id=0;
 			class CustomAttributes
@@ -322,7 +330,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2032.3438,66.883438,3780.9927};
+						position[]={2025.8855,74.838562,3881.6377};
 						angles[]={0,3.1119742,0};
 					};
 					side="West";
@@ -333,14 +341,13 @@ class Mission
 					};
 					id=16;
 					type="B_recon_TL_F";
-					atlOffset=7.6293945e-006;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2027.1979,66.145844,3785.8423};
+						position[]={2020.7397,73.673851,3886.4873};
 						angles[]={0,3.1119742,0};
 					};
 					side="West";
@@ -352,14 +359,13 @@ class Mission
 					};
 					id=17;
 					type="B_recon_M_F";
-					atlOffset=7.6293945e-006;
 				};
 				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2037.1935,68.656281,3786.1387};
+						position[]={2030.7354,73.867744,3886.7832};
 						angles[]={0,3.1119742,0};
 					};
 					side="West";
@@ -370,14 +376,14 @@ class Mission
 					};
 					id=18;
 					type="B_recon_medic_F";
-					atlOffset=7.6293945e-006;
+					atlOffset=-7.6293945e-006;
 				};
 				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2022.0519,65.666992,3790.6921};
+						position[]={2015.5938,72.640289,3891.3369};
 						angles[]={0,3.1119742,0};
 					};
 					side="West";
@@ -393,7 +399,7 @@ class Mission
 				class Item4
 				{
 					dataType="Waypoint";
-					position[]={2010.985,57.989132,3736.8254};
+					position[]={2030.1719,78.185684,3865.6016};
 					class Effects
 					{
 					};
@@ -404,7 +410,7 @@ class Mission
 				class Item5
 				{
 					dataType="Waypoint";
-					position[]={1987.7424,49.910213,3692.2239};
+					position[]={2032.4258,66.710815,3779.1011};
 					class Effects
 					{
 					};
@@ -429,7 +435,6 @@ class Mission
 				name="enemy2";
 			};
 			id=15;
-			atlOffset=7.6293945e-006;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -466,8 +471,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1956.8513,4.5229726,3540.3635};
-						angles[]={0,2.4186172,0};
+						position[]={1904.8198,4.6731377,3581.5989};
+						angles[]={0,5.4638362,0};
 					};
 					side="West";
 					flags=7;
@@ -475,11 +480,10 @@ class Mission
 					{
 						init="call{this setCaptive true}";
 						presence=0;
-						isPlayer=1;
 					};
 					id=23;
 					type="B_CTRG_soldier_engineer_exp_F";
-					atlOffset=-4.7683716e-007;
+					atlOffset=-4.7683716e-006;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -509,18 +513,18 @@ class Mission
 			{
 			};
 			id=22;
-			atlOffset=-4.7683716e-007;
+			atlOffset=-4.7683716e-006;
 		};
 		class Item7
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1981.8474,1.9253734,3503.4561};
-				angles[]={6.2506957,4.6824212,6.2631865};
+				position[]={1981.847,1.9253808,3503.4561};
+				angles[]={6.2506871,4.6824217,6.2631841};
 			};
 			name="tempest_logic";
-			init="call{[tempest, 2, true, true, ""Tempest"", ""A small base on a small island"", ""attack"", ""west""] spawn aso_fnc_initAOI;}";
+			init="call{[tempest, ""Tempest"", ""A small base on a small island"", ""attack"", ""west""] spawn aso_fnc_initAOI;}";
 			id=21;
 			type="Logic";
 		};
@@ -688,7 +692,7 @@ class Mission
 			class Attributes
 			{
 				name="tempest_unit2";
-				init="call{[this, tempest] call aso_fnc_patrol;}";
+				init="call{[this, tempest, ""INFANTRY""] call aso_fnc_patrol;}";
 			};
 			id=25;
 			class CustomAttributes
@@ -718,7 +722,7 @@ class Mission
 		class Item9
 		{
 			dataType="Trigger";
-			position[]={2007.2998,56.430923,3749.9702};
+			position[]={2013.5527,62.764141,3783.0029};
 			class Attributes
 			{
 				text="Let BLUFOR move in.";
@@ -742,7 +746,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2064.8916,78.632309,3879.6946};
+						position[]={2071.1445,67.056534,3912.7275};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -759,7 +763,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2059.9221,76.312981,3884.7249};
+						position[]={2066.175,63.91433,3917.7578};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -776,7 +780,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2069.9219,76.382584,3884.6641};
+						position[]={2076.1748,66.253235,3917.6963};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -788,13 +792,14 @@ class Mission
 					};
 					id=37;
 					type="B_Soldier_GL_F";
+					atlOffset=7.6293945e-006;
 				};
 				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2054.9524,73.744934,3889.7551};
+						position[]={2061.2053,60.699886,3922.7881};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -811,7 +816,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2074.9521,74.680336,3889.6338};
+						position[]={2081.2051,63.778374,3922.666};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -823,13 +828,14 @@ class Mission
 					};
 					id=39;
 					type="B_soldier_AT_F";
+					atlOffset=3.8146973e-006;
 				};
 				class Item5
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2049.9829,70.800888,3894.7852};
+						position[]={2056.2358,58.095058,3927.8174};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -840,14 +846,14 @@ class Mission
 					};
 					id=40;
 					type="B_soldier_AAT_F";
-					atlOffset=-7.6293945e-006;
+					atlOffset=7.6293945e-006;
 				};
 				class Item6
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2079.9822,73.741898,3894.6033};
+						position[]={2086.2351,60.367191,3927.6357};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -864,7 +870,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2045.0132,67.852737,3899.8154};
+						position[]={2051.2661,56.424366,3932.8477};
 						angles[]={0,3.1476488,0};
 					};
 					side="West";
@@ -875,23 +881,24 @@ class Mission
 					};
 					id=42;
 					type="B_medic_F";
-					atlOffset=-7.6293945e-006;
+					atlOffset=3.8146973e-006;
 				};
 				class Item8
 				{
 					dataType="Waypoint";
-					position[]={2091.6274,75.836906,3744.7813};
+					position[]={2082.5791,87.488533,3859.9663};
 					class Effects
 					{
 					};
 					showWP="NEVER";
 					id=43;
 					type="Move";
+					atlOffset=7.6293945e-006;
 				};
 				class Item9
 				{
 					dataType="Waypoint";
-					position[]={2087.1799,52.547672,3699.6704};
+					position[]={2084.2695,82.624763,3794.8794};
 					class Effects
 					{
 					};
@@ -949,7 +956,7 @@ class Mission
 				angles[]={6.2506871,4.6824217,6.2631841};
 			};
 			name="as_mike_logic";
-			init="call{[as_mike, 2, true, true, ""Air Station Mike"", ""A small airstation on a small island"", ""attack"", ""west""] spawn aso_fnc_initAOI;}";
+			init="call{[as_mike, ""Air Station Mike"", ""A small airstation on a small island"", ""attack"", ""west""] spawn aso_fnc_initAOI;}";
 			id=47;
 			type="Logic";
 			atlOffset=0.014007568;
@@ -1136,9 +1143,52 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
+						isPlayer=1;
 					};
 					id=65;
 					type="O_Soldier_A_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.97000003;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 				class Item10
 				{
@@ -1159,8 +1209,8 @@ class Mission
 			};
 			class Attributes
 			{
-				name="aso_mike_unit";
-				init="call{[this, as_mike] call aso_fnc_garrison;}";
+				name="as_mike_unit";
+				init="call{[this, as_mike, ""MECHANIZED"", true] call aso_fnc_garrison;}";
 				formation="STAG COLUMN";
 			};
 			class CrewLinks
@@ -1260,7 +1310,7 @@ class Mission
 				angles[]={0,3.7202914,0};
 			};
 			name="m_range_logic";
-			init="call{[m_range, 2, true, true, ""Military Range"", ""A small military range on a small island"", ""attack"", ""west""] spawn aso_fnc_initAOI;}";
+			init="call{[m_range, ""Military Range"", ""A small military range on a small island"", ""attack"", ""west""] spawn aso_fnc_initAOI;}";
 			id=67;
 			type="Logic";
 			atlOffset=0.0050001144;
@@ -1505,7 +1555,7 @@ class Mission
 			class Attributes
 			{
 				name="m_range_unit";
-				init="call{[this, m_range] call aso_fnc_garrison;}";
+				init="call{[this, m_range, ""MOBILE""] call aso_fnc_garrison;}";
 			};
 			class CrewLinks
 			{
@@ -1619,7 +1669,7 @@ class Mission
 			{
 				name="tempest_control_r";
 				condition="call{[tempest, ""ASO_DISTRESS""] call aso_fnc_getAOIStatus}";
-				onActivation="call{[tempest, ""MECHANIZED"", 1, ""ATTACK"", 1500] call aso_fnc_getReinforcements}";
+				onActivation="call{[tempest, ""MECHANIZED"", 1, ""ATTACK"", 2500] call aso_fnc_getReinforcements}";
 				sizeA=500;
 				sizeB=500;
 				interuptable=1;
@@ -1629,6 +1679,22 @@ class Mission
 			id=102;
 			type="EmptyDetector";
 			atlOffset=0.039999962;
+		};
+		class Item22
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4389.2046,228.46062,3787.5237};
+				angles[]={0.012501417,0,0.014998405};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=103;
+			type="O_Quadbike_01_F";
 		};
 	};
 	class Connections
