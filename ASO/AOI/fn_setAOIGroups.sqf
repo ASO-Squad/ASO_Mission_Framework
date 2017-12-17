@@ -24,8 +24,8 @@ _thisAOI = [ASO_AOIs, _AOIObject] call CBA_fnc_hashGet;
 // Check if there is an AOI, quit quietly if there is not
 if ((count _thisAOI) == 0) exitWith {[]};
 
-// index #6 is the groups for an AOI
-_thisAOI set [6, _thisGroupList];
+// index #3 is the groups for an AOI
+_thisAOI set [3, _thisGroupList];
 
 // push this AOI back to the global array
 [ASO_AOIs, _AOIObject, _thisAOI] call CBA_fnc_hashSet;

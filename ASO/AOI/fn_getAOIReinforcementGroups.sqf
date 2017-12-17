@@ -23,5 +23,5 @@ _thisAOI = [ASO_AOIs, _AOI] call CBA_fnc_hashGet;
 // Check if there is an AOI, quit quietly if there is not
 if ((count _thisAOI) == 0) exitWith {[]};
 
-// index #7 is the reinforcement groups for an AOI
-(_thisAOI select 7);
+// index #4 is the reinforcement groups for an AOI
+(_thisAOI select 4);
