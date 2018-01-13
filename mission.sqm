@@ -341,6 +341,7 @@ class Mission
 					};
 					id=16;
 					type="B_recon_TL_F";
+					atlOffset=-3.8146973e-005;
 				};
 				class Item1
 				{
@@ -359,6 +360,7 @@ class Mission
 					};
 					id=17;
 					type="B_recon_M_F";
+					atlOffset=-3.8146973e-005;
 				};
 				class Item2
 				{
@@ -376,7 +378,7 @@ class Mission
 					};
 					id=18;
 					type="B_recon_medic_F";
-					atlOffset=-7.6293945e-006;
+					atlOffset=-7.6293945e-005;
 				};
 				class Item3
 				{
@@ -394,7 +396,7 @@ class Mission
 					};
 					id=19;
 					type="B_recon_F";
-					atlOffset=7.6293945e-006;
+					atlOffset=-3.8146973e-005;
 				};
 				class Item4
 				{
@@ -435,6 +437,7 @@ class Mission
 				name="enemy2";
 			};
 			id=15;
+			atlOffset=-3.8146973e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -757,6 +760,7 @@ class Mission
 					};
 					id=35;
 					type="B_Soldier_SL_F";
+					atlOffset=-9.1552734e-005;
 				};
 				class Item1
 				{
@@ -774,6 +778,7 @@ class Mission
 					};
 					id=36;
 					type="B_soldier_AR_F";
+					atlOffset=-9.5367432e-005;
 				};
 				class Item2
 				{
@@ -792,7 +797,7 @@ class Mission
 					};
 					id=37;
 					type="B_Soldier_GL_F";
-					atlOffset=7.6293945e-006;
+					atlOffset=-0.00011444092;
 				};
 				class Item3
 				{
@@ -810,6 +815,7 @@ class Mission
 					};
 					id=38;
 					type="B_soldier_M_F";
+					atlOffset=-9.1552734e-005;
 				};
 				class Item4
 				{
@@ -828,7 +834,7 @@ class Mission
 					};
 					id=39;
 					type="B_soldier_AT_F";
-					atlOffset=3.8146973e-006;
+					atlOffset=-0.00016403198;
 				};
 				class Item5
 				{
@@ -846,7 +852,7 @@ class Mission
 					};
 					id=40;
 					type="B_soldier_AAT_F";
-					atlOffset=7.6293945e-006;
+					atlOffset=-8.7738037e-005;
 				};
 				class Item6
 				{
@@ -864,6 +870,7 @@ class Mission
 					};
 					id=41;
 					type="B_Soldier_A_F";
+					atlOffset=-0.00016021729;
 				};
 				class Item7
 				{
@@ -881,7 +888,7 @@ class Mission
 					};
 					id=42;
 					type="B_medic_F";
-					atlOffset=3.8146973e-006;
+					atlOffset=-8.0108643e-005;
 				};
 				class Item8
 				{
@@ -923,6 +930,7 @@ class Mission
 				name="enemy1";
 			};
 			id=34;
+			atlOffset=-9.1552734e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -1628,7 +1636,7 @@ class Mission
 			{
 				name="tempest_detector_r";
 				condition="call{[tempest, ""ASO_DETECTED""] call aso_fnc_getAOIStatus}";
-				onActivation="call{[tempest_detector, tempest, true] spawn aso_fnc_assessTargets;}";
+				onActivation="call{[tempest_detector, tempest, 600, true] spawn aso_fnc_assessTargets;}";
 				onDeactivation="call{tempest_detector setVariable [""ASO_ASSESSING"", false, true];}";
 				sizeA=500;
 				sizeB=500;
