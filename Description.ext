@@ -39,6 +39,8 @@ class cfgFunctions
             class setAOIStatus {};
             class getAOIStatus {};
             class callReinforcements {};
+            class recallReinforcements {};
+            class removeGroupFromAOIReinforcements {};
         }
     };
 };
