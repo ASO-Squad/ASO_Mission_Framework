@@ -15,7 +15,7 @@ Returns:
     None
 
 Example:
-    [myGroup, myTrigger] call aso_fnc_garrison
+    [myGroup, myTrigger, _type, _true] call aso_fnc_garrison
 
 Author:
     Papa Mike
@@ -30,14 +30,30 @@ _xRad = triggerArea _trigger select 0;
 _yRad = triggerArea _trigger select 1;
 _radius = (_xRad + _yRad) / 2;
 
+// Clear waypoints to make the group move immediately
+[_group] call CBA_fnc_clearWaypoints;
+
+
 // Calling CBA_fnc_taskDefend
 if (_dismissed) then 
 {
-    [_group, (getPos leader _group), 50, "DISMISS", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN"] call CBA_fnc_addWaypoint;
-
-} else 
+    [_group, (getPos leader _group), 25, "DISMISS", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+} 
+else 
 {
-    [_group, _trigger, _radius, 2, 0.5, 0] call CBA_fnc_taskDefend;
+    // Do not use defend with anything else than infantry
+    // defending vehicles get stuck easily and wont move anywhere even with new waypoints
+    if (_type == "INFANTRY") then 
+    {
+        [_group, _trigger, _radius, 2, 0.5, 0] call CBA_fnc_taskDefend;
+    }
+    else
+    {
+        // Create a waypoint to move into a vehicle if possible
+        [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+        // Move the vehicle to a random location
+        [_group, _trigger, (_radius/2), "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+    }
 };
 
 

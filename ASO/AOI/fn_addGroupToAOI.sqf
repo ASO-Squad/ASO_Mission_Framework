@@ -35,6 +35,7 @@ _groups pushBackUnique _group;
 [_groups, _trigger] call aso_fnc_setAOIGroups;
 // push to global AOI list
 [ASO_AOIs, _trigger, _thisAOI] call CBA_fnc_hashSet;
+
 ["Group added", _group] call aso_fnc_debug;
 // Delete from Garrison
 //_toDelete = [_group];
