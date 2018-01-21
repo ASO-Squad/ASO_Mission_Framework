@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=104;
+		nextID=106;
 	};
 	class Camera
 	{
@@ -28,8 +28,8 @@ addons[]=
 	"A3_Modules_F",
 	"A3_Characters_F_Mark",
 	"A3_Armor_F_Beta_APC_Wheeled_02",
-	"ace_realisticnames",
 	"A3_Soft_F_EPC_Truck_03",
+	"ace_realisticnames",
 	"ace_cargo",
 	"A3_Soft_F_Quadbike_01"
 };
@@ -141,7 +141,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=23;
+		items=25;
 		class Item0
 		{
 			dataType="Group";
@@ -1218,7 +1218,7 @@ class Mission
 			class Attributes
 			{
 				name="as_mike_unit";
-				init="call{[this, as_mike, ""MECHANIZED"", true] call aso_fnc_garrison;}";
+				init="call{[this, as_mike, ""MECHANIZED"", false] call aso_fnc_garrison;}";
 				formation="STAG COLUMN";
 			};
 			class CrewLinks
@@ -1677,7 +1677,7 @@ class Mission
 			{
 				name="tempest_control_r";
 				condition="call{[tempest, ""ASO_DISTRESS""] call aso_fnc_getAOIStatus}";
-				onActivation="call{[tempest, ""MECHANIZED"", 1, ""ATTACK"", 2500] call aso_fnc_getReinforcements}";
+				onActivation="call{[tempest, ""MECHANIZED"", 1, ""ATTACK"", 2500] call aso_fnc_callReinforcements}";
 				sizeA=500;
 				sizeB=500;
 				interuptable=1;
@@ -1703,6 +1703,43 @@ class Mission
 			};
 			id=103;
 			type="O_Quadbike_01_F";
+		};
+		class Item23
+		{
+			dataType="Trigger";
+			position[]={4358.2202,227.44234,3834.8779};
+			class Attributes
+			{
+				name="reinforce";
+				text="Call Reinforcements";
+				condition="call{this}";
+				onActivation="call{[tempest, ""MECHANIZED"", 1, ""ATTACK"", 2500] call aso_fnc_callReinforcements}";
+				sizeA=0;
+				sizeB=0;
+				repeatable=1;
+				activationBy="BRAVO";
+			};
+			id=104;
+			type="EmptyDetector";
+			atlOffset=-1.5258789e-005;
+		};
+		class Item24
+		{
+			dataType="Trigger";
+			position[]={4367.1748,227.80025,3834.9861};
+			class Attributes
+			{
+				name="recall";
+				text="Recall Reinforcements";
+				condition="call{this}";
+				onActivation="call{[as_mike_unit, tempest] spawn aso_fnc_recallReinforcements;}";
+				sizeA=0;
+				sizeB=0;
+				repeatable=1;
+				activationBy="CHARLIE";
+			};
+			id=105;
+			type="EmptyDetector";
 		};
 	};
 	class Connections
