@@ -8,14 +8,14 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=106;
+		nextID=111;
 	};
 	class Camera
 	{
-		pos[]={1989.3744,113.55643,3396.9722};
-		dir[]={0.19392537,-0.55739546,0.80734545};
-		up[]={0.13018714,0.83023238,0.54199207};
-		aside[]={0.9723829,4.5914203e-007,-0.23356649};
+		pos[]={2412.5051,116.26437,3404.5046};
+		dir[]={-0.88424748,-0.34321651,0.31675509};
+		up[]={-0.32311898,0.93925297,0.11574753};
+		aside[]={0.3372401,-1.4675607e-007,0.94143146};
 	};
 };
 binarizationWanted=0;
@@ -31,13 +31,24 @@ addons[]=
 	"A3_Soft_F_EPC_Truck_03",
 	"ace_realisticnames",
 	"ace_cargo",
-	"A3_Soft_F_Quadbike_01"
+	"A3_Soft_F_Quadbike_01",
+	"A3_Weapons_F_Mark_LongRangeRifles_DMR_06",
+	"A3_Weapons_F_Mark_Acc",
+	"ace_scopes",
+	"A3_Weapons_F",
+	"ace_smallarms",
+	"ace_ballistics",
+	"ace_vector",
+	"ace_attach",
+	"ace_chemlights",
+	"A3_Weapons_F_Items",
+	"ace_medical"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=10;
+		items=19;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -108,6 +119,76 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item10
+		{
+			className="A3_Weapons_F_Mark";
+			name="Arma 3 Marksmen - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item11
+		{
+			className="ace_scopes";
+			name="ACE3 - Scopes";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item12
+		{
+			className="A3_Weapons_F";
+			name="Arma 3 Alpha - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item13
+		{
+			className="ace_smallarms";
+			name="ACE3 - Small Arms";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item14
+		{
+			className="ace_ballistics";
+			name="ACE3 - Ballistics";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item15
+		{
+			className="ace_vector";
+			name="ACE3 - Vector";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item16
+		{
+			className="ace_attach";
+			name="ACE3 - Attach";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item17
+		{
+			className="ace_chemlights";
+			name="ace_chemlights";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item18
+		{
+			className="ace_medical";
+			name="ACE3 - Medical";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+	};
+};
+class DynamicSimulation
+{
+	class EnableRadiuseCoefs
+	{
+		IsMoving=1;
 	};
 };
 randomSeed=8495150;
@@ -115,6 +196,7 @@ class ScenarioData
 {
 	author="Papa Mike";
 	overviewText="ASO Mission Framework 1.0 ";
+	wreckRemovalMaxTime=3600;
 };
 class Mission
 {
@@ -141,7 +223,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=25;
+		items=26;
 		class Item0
 		{
 			dataType="Group";
@@ -222,7 +304,7 @@ class Mission
 			class Attributes
 			{
 				name="tempest_unit";
-				init="call{[this, tempest, ""INFANTRY""] call aso_fnc_garrison;}";
+				init="call{[this, tempest, ""INFANTRY"", false] call aso_fnc_garrison;}";
 			};
 			id=0;
 			class CustomAttributes
@@ -1151,7 +1233,6 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						isPlayer=1;
 					};
 					id=65;
 					type="O_Soldier_A_F";
@@ -1740,6 +1821,171 @@ class Mission
 			};
 			id=105;
 			type="EmptyDetector";
+		};
+		class Item25
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2407.1943,110.03119,3405.4558};
+						angles[]={0,5.0255966,0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						isPlayer=1;
+						class Inventory
+						{
+							class primaryWeapon
+							{
+								name="srifle_DMR_06_camo_khs_F";
+								optics="optic_KHS_old";
+								class primaryMuzzleMag
+								{
+									name="20Rnd_762x51_Mag";
+									ammoLeft=20;
+								};
+							};
+							class binocular
+							{
+								name="ACE_VectorDay";
+							};
+							class uniform
+							{
+								typeName="U_OG_leader";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=2;
+									class Item0
+									{
+										name="20Rnd_762x51_Mag";
+										count=2;
+										ammoLeft=20;
+									};
+									class Item1
+									{
+										name="Chemlight_blue";
+										count=1;
+										ammoLeft=1;
+									};
+								};
+								class ItemCargo
+								{
+									items=1;
+									class Item0
+									{
+										name="FirstAidKit";
+										count=1;
+									};
+								};
+							};
+							class vest
+							{
+								typeName="V_BandollierB_oli";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=5;
+									class Item0
+									{
+										name="20Rnd_762x51_Mag";
+										count=5;
+										ammoLeft=20;
+									};
+									class Item1
+									{
+										name="HandGrenade";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item2
+									{
+										name="SmokeShell";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item3
+									{
+										name="SmokeShellGreen";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item4
+									{
+										name="Chemlight_blue";
+										count=1;
+										ammoLeft=1;
+									};
+								};
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							radio="ItemRadio";
+							headgear="H_Shemag_olive";
+						};
+					};
+					id=109;
+					type="O_G_Sharpshooter_F";
+					atlOffset=-7.6293945e-006;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.97000003;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=110;
+			atlOffset=-7.6293945e-006;
 		};
 	};
 	class Connections
