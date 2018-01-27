@@ -63,8 +63,8 @@ _reinforcements = []; // Found reinforcements are stored here
 	};
 	if (count _reinforcements >= _count) exitWith {}; // enough is enough
 } forEach _aoiArray;
-// Add groups to reeinforcements and order support their new objective
+// Add groups to reeinforcements and order them to support their new objective
 {
 	[_x, _AOI, _task] spawn aso_fnc_addGroupToAOIReinforcements;
-	["reninforcment send", _x] call aso_fnc_debug;	
+	["reinforcments send", _x] call aso_fnc_debug;	
 } forEach _reinforcements;
