@@ -25,6 +25,7 @@ class cfgFunctions
             class assessTargets {};
             class getGroupType {};
             class getGroupOrders {};
+            class enableDynamicSim {};
         }
         class AOI
         {
