@@ -42,4 +42,5 @@ _group setVariable ["ASO_TYPE", _type, true];
 // Show Debug Output
 ["New task GUARD for", groupId _group] call aso_fnc_debug;
 [_group] spawn aso_fnc_trackGroup;
+[_group, 60] spawn aso_fnc_enableDynamicSim;
 

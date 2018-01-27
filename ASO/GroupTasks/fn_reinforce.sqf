@@ -29,6 +29,10 @@ _radius = (_xRad + _yRad) / 2;
 // add some safety distance
 _radius = _radius * 1.5;
 
+// Reinforcments may arrive from far away so we have to make sure the can move
+_group enableDynamicSimulation false; 
+
+// Cleanup for immediate reaction
 [_group] call CBA_fnc_clearWaypoints;
 
 // Create a waypoint to move into a vehicle if possible

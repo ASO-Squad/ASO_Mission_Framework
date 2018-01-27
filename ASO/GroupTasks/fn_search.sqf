@@ -3,8 +3,8 @@ Description:
     A function for a group to search an AOI. 
 
 Parameters:
-    _group      - the group guarding the area
-    _trigger   	- trigger that is to be defended, should be a circle
+    _group      - the group searching the area
+    _trigger   	- trigger that is to be searched, should be a circle
 
 Returns:
     None
@@ -29,3 +29,5 @@ _group setVariable ["ASO_ORDERS", ["SEARCH", _trigger], true];
 // Show Debug Output
 ["New task SEARCH for", groupId _group] call aso_fnc_debug;
 [_group] spawn aso_fnc_trackGroup;
+// Give that group a little time to move
+[_group, 300] spawn aso_fnc_enableDynamicSim;

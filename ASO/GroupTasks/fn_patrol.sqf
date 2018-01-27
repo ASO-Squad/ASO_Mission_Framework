@@ -41,3 +41,5 @@ _group setVariable ["ASO_TYPE", _type, true];
 // Show Debug Output
 ["New task PATROL for", groupId _group] call aso_fnc_debug;
 [_group] spawn aso_fnc_trackGroup;
+// Give this Group a little time to move around
+[_group, 300] spawn aso_fnc_enableDynamicSim;

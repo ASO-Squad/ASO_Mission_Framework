@@ -22,6 +22,8 @@ params ["_revealed", "_revealer", "_strength"];
 // Reveal all units of the group
 {
 	_revealer reveal [_x, _strength];
+    // enable the revealer so that even inside huge AOIs all units can react to a threat
+    _revealer enableDynamicSimulation false; 
 } forEach units _revealed;
 
 // Show Debug Output

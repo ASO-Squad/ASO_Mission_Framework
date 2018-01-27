@@ -3,8 +3,8 @@ Description:
     A function for a group to attack a AOI. 
 
 Parameters:
-    _group      - the group guarding the area
-    _trigger   	- trigger that is to be defended, should be a circle
+    _group      - the group attacking the area
+    _trigger   	- trigger that is to be attacked, should be a circle
 
 Returns:
     None
@@ -34,3 +34,6 @@ _group setVariable ["ASO_ORDERS", ["ATTACK", _trigger], true];
 // Show Debug Output
 ["New task ATTACK for", groupId _group] call aso_fnc_debug;
 [_group] spawn aso_fnc_trackGroup;
+// A attacking group need to move!
+_group enableDynamicSimulation false; 
+//[_group, 60] spawn aso_fnc_enableDynamicSim;

@@ -45,17 +45,18 @@ else
     // defending vehicles get stuck easily and wont move anywhere even with new waypoints
     if (_type == "INFANTRY") then 
     {
-        [_group, _trigger, _radius, 2, 0.5, 0] call CBA_fnc_taskDefend;
+        [_group, (getpos _trigger), _radius] call CBA_fnc_taskDefend;
+        // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
+        [_group, 60] spawn aso_fnc_enableDynamicSim;
     }
     else
     {
         // Create a waypoint to move into a vehicle if possible
         [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
         // Move the vehicle to a random location
-        [_group, _trigger, (_radius/2), "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+        [_group, _trigger, (_radius/3), "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "group this enableDynamicSimulation true;"] call CBA_fnc_addWaypoint;
     }
 };
-
 
 // Putting this group to AOI
 [_group, _trigger] spawn aso_fnc_addGroupToAOI;
