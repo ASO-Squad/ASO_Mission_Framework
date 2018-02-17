@@ -1,6 +1,6 @@
 class cfgFunctions
 {
-    class aso
+    class ASO
     {
         class GroupTasks
         {
@@ -26,6 +26,7 @@ class cfgFunctions
             class getGroupType {};
             class getGroupOrders {};
             class enableDynamicSim {};
+            class assessArtilleryTargets {};
         }
         class AOI
         {
