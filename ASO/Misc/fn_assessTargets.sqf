@@ -3,7 +3,7 @@ Description:
     Returns all units from a trigger, and shares that information with the given AOI.
 
 Parameters:
-    _trigger		- the trigger that assesses the targets
+	_trigger		- the trigger that assesses the targets
 	_AOI			- The AOI that this information is shared with
 	_shareDistance	- Share information with reinforcments this far away. Mounted troops will disembark at this distance.  
 	_keepTracking 	- Keep tracking until deactivated
@@ -25,7 +25,8 @@ params ["_trigger", "_AOI", "_shareDistance", "_keepTracking"];
 _trigger setVariable ["ASO_ASSESSING", true, true];
 while {(_trigger getVariable ["ASO_ASSESSING", false])} do 
 {
-	_targets = list _trigger; 
+	_targets = list _trigger;
+	_targets = _targets - [objNull];
 	if (ASO_DEBUG) then
 	{
 		//delete previous markers
