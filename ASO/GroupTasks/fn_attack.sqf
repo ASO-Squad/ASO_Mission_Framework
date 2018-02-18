@@ -25,8 +25,15 @@ _xRad = triggerArea _trigger select 0;
 _yRad = triggerArea _trigger select 1;
 _radius = (_xRad + _yRad) / 2;
 
+// Attacks may arrive from far away so we have to make sure they can move
+_group enableDynamicSimulation false; 
+
+[_group] call CBA_fnc_clearWaypoints;
+[_group, (getPos leader _group), 0, "MOVE", "AWARE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+
 // Calling CBA_fnc_Attack
-[_group, _trigger, _radius, true] call CBA_fnc_taskAttack;
+[_group, _trigger, _radius, false] call CBA_fnc_taskAttack;
+[_group, "AWARE", "NORMAL", 60] spawn aso_fnc_delayedBehaviourChange;
 
 // Tracking orders
 _group setVariable ["ASO_ORDERS", ["ATTACK", _trigger], true];
