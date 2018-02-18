@@ -27,6 +27,7 @@ class cfgFunctions
             class getGroupOrders {};
             class enableDynamicSim {};
             class assessArtilleryTargets {};
+            class delayedBehaviourChange {};
         }
         class AOI
         {
@@ -43,6 +44,9 @@ class cfgFunctions
             class callReinforcements {};
             class recallReinforcements {};
             class removeGroupFromAOIReinforcements {};
+            class retreatReinforcements {};
         }
     };
 };
+
+allowFunctionsRecompile = 1;
