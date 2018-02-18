@@ -23,11 +23,12 @@ waitUntil {!isnil "bis_fnc_init"};
 
 // Retrieve home of this group 
 _home = _group getVariable "ASO_HOME";
+_type = _group getVariable "ASO_TYPE";
 
 if (isNil "_home") exitWith {};
 
 // give orders to group
-[_group, _home, "MECHANIZED", false] call aso_fnc_garrison;
+[_group, _home, _type, false] call aso_fnc_garrison;
 
 // remove from reinforcments list of the current AOI
 [_group, _trigger] spawn aso_fnc_removeGroupFromAOIReinforcements;
