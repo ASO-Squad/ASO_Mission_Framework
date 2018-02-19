@@ -28,8 +28,17 @@ _xRad = triggerArea _trigger select 0;
 _yRad = triggerArea _trigger select 1;
 _radius = (_xRad + _yRad) / 2;
 
-// Calling CBA_fnc_taskDefend
-[_group, _trigger, _radius, 2, 0, _hold] call CBA_fnc_taskDefend;
+// Only infantry switch to defense mode, other types mount their vehicles and stay where they are
+ if (_type == "INFANTRY") then 
+{
+    // Calling CBA_fnc_taskDefend
+    [_group, _trigger, _radius, 2, 0, _hold] call CBA_fnc_taskDefend;
+}
+else
+{
+    // Create a waypoint to move into a vehicle if possible
+    [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+};
 
 // Adding this group the the AOI
 [_group, _trigger] spawn aso_fnc_addGroupToAOI;
