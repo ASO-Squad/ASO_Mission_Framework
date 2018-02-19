@@ -34,17 +34,20 @@ class cfgFunctions
             file = "ASO\AOI";
             class initAOI {};
             class addGroupToAOI {};
-            class getAOIGroups {};
-            class setAOIGroups {};
-            class addGroupToAOIReinforcements {};
-            class getAOIReinforcementGroups {};
-            class setAOIReinforcementGroups {};
-            class setAOIStatus {};
-            class getAOIStatus {};
+            class addGroupToAOIReinforcements {};           
             class callReinforcements {};
             class recallReinforcements {};
             class removeGroupFromAOIReinforcements {};
             class retreatReinforcements {};
+            class setAOIGroups {};
+            class setAOIReinforcementGroups {};
+            class setAOIStatus {};
+            class setAOITask {};
+            class setAOITaskStatus {};
+            class getAOIStatus {};
+            class getAOIReinforcementGroups {};
+            class getAOIGroups {};
+            class getAOITask {};
         }
     };
 };
