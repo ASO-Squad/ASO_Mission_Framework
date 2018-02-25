@@ -13,7 +13,7 @@ Returns:
     None
 
 Example:
-    [myGroup, myTrigger, true] call aso_fnc_guard
+    [myGroup, myTrigger, true, "INFANTRY"] call aso_fnc_guard
 
 Author:
     Papa Mike
@@ -37,7 +37,7 @@ _radius = (_xRad + _yRad) / 2;
 else
 {
     // Create a waypoint to move into a vehicle if possible
-    [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+    [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "FILE"] call CBA_fnc_addWaypoint;
 };
 
 // Adding this group the the AOI

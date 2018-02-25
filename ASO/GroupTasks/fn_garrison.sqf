@@ -9,7 +9,7 @@ Parameters:
     _trigger   	- trigger that is to be defended, should be a circle
     _type       - What kind of unit is this. Possible values are:
                 "INFANTRY", "MOBILE", "MECHANIZED", "ARMORED", "ARTILLERY", "AIR"
-    _dismissed  - the AI behaves casually and wanders around
+    _dismissed  - the AI behaves casually and wanders around 
 
 Returns:
     None
@@ -34,33 +34,44 @@ _radius = (_xRad + _yRad) / 2;
 [_group] call CBA_fnc_clearWaypoints;
 
 
-// Dismiss units
-if (_dismissed) then 
+
+// Do not use defend with anything else than infantry
+// defending vehicles get stuck easily and wont move anywhere even with new waypoints
+if (_type == "INFANTRY") then 
 {
-    //[_group, (getPos leader _group), 25, "DISMISS", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN"] call CBA_fnc_addWaypoint;
-    // Dismissed units do not follow any orders unit they make enemy contact
-    [_group, _trigger, (_radius/2), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
-} 
-else 
-{
-    // Do not use defend with anything else than infantry
-    // defending vehicles get stuck easily and wont move anywhere even with new waypoints
-    if (_type == "INFANTRY") then 
+    if (_dismissed) then 
+    {
+        //[_group, (getPos leader _group), 25, "DISMISS", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+        // Dismissed units do not follow any orders unit they make enemy contact
+        [_group, (getPos leader _group), (_radius/2), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
+    }
+    else
     {
         //[_group, (getpos _trigger), _radius] call CBA_fnc_taskDefend;
         // Units inside of buildings stay there even with an attack command
         // Calling CBA_fnc_taskPatrol
         [_group, _trigger, (_radius/2), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
+    };
+    // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
+    [_group, 60] spawn aso_fnc_enableDynamicSim;
+}
+else
+{
+    if (_dismissed) then 
+    {
+        //[_group, (getPos leader _group), 25, "DISMISS", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+        // Dismissed units do not follow any orders unit they make enemy contact
+        [_group, _trigger, (_radius), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "", [0,3,10]] call CBA_fnc_taskPatrol;
         // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
         [_group, 60] spawn aso_fnc_enableDynamicSim;
     }
     else
     {
         // Create a waypoint to move into a vehicle if possible
-        [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+        [_group, _trigger, 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
         // Move the vehicle to a random location
-        [_group, _trigger, (_radius/3), "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "group this enableDynamicSimulation true;"] call CBA_fnc_addWaypoint;
-    }
+        [_group, _trigger, (_radius/4), "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "group this enableDynamicSimulation true;"] call CBA_fnc_addWaypoint;
+    };
 };
 
 // Putting this group to AOI
