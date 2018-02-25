@@ -1268,8 +1268,8 @@ class Mission
 			class Attributes
 			{
 				name="as_mike_mech1";
-				init="call{[this, as_mike, ""MECHANIZED"", false] call aso_fnc_garrison;}";
-				formation="STAG COLUMN";
+				init="call{[this, as_mike, ""MECHANIZED"", false] call aso_fnc_garrisonSimple;}";
+				formation="FILE";
 			};
 			class CrewLinks
 			{
@@ -2019,6 +2019,7 @@ class Mission
 			};
 			id=125;
 			type="EmptyDetector";
+			atlOffset=-7.6293945e-006;
 		};
 		class Item30
 		{
@@ -2846,13 +2847,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2458.3911,131.06519,3382.7437};
-						angles[]={0,5.0155878,0};
+						position[]={4355.6279,224.96042,3779.1799};
+						angles[]={0,0.17389052,0};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
+						init="call{this setCaptive true}";
 						isPlayer=1;
 						class Inventory
 						{
@@ -3054,7 +3056,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={1970.3856,5.2793789,3501.8811};
-				angles[]={0,1.3974032,-0};
+				angles[]={0,1.3974032,0};
 			};
 			side="Empty";
 			flags=4;
