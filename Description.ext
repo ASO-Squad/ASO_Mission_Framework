@@ -6,6 +6,7 @@ class cfgFunctions
         {
             file = "ASO\GroupTasks";
             class garrison {};
+            class garrisonSimple {};
             class guard {};
             class patrol {};
             class attack {};
