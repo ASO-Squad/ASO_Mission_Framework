@@ -37,7 +37,7 @@ _group enableDynamicSimulation false;
 
 // Do only try to get in when there is supposed to be a vehicle
 _type = [_group] call aso_fnc_getGroupType;
-if (_type != "INFANTRY") then 
+if (_type == "MOBILE") then 
 {
     // Create a waypoint to move into a vehicle if possible
     [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;

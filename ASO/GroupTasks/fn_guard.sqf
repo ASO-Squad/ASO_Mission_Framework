@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------
 Description:
-    A function for a group to defend a trigger.
+    A function for a group to guard an AOI. They allways protect their AOI and should never leave it.
 
 Parameters:
     _group      - the group guarding the area

@@ -1,6 +1,7 @@
 /* ----------------------------------------------------------------------------
 Description:
-    A function for a group to defend a trigger. 
+    Puts a group to the garrison of an AOI. They keep close to their starting position, and in contrast
+    to aso_fnc_garrison non-loiterinmg groups do not move at all (but may enter their vehicles)  
 	A garrison might engage enemies far away and even be called to defend another trigger
     BE ADVISED: If a unit previously belonged to an AOI, it is still considered to be part of that AOI.
 
@@ -15,7 +16,7 @@ Returns:
     None
 
 Example:
-    [myGroup, myTrigger, _type, _true] call aso_fnc_garrisonSimple
+    [myGroup, myTrigger, "INFANTRY", true] call aso_fnc_garrisonSimple
 
 Author:
     Papa Mike
@@ -32,8 +33,6 @@ _radius = (_xRad + _yRad) / 2;
 
 // Clear waypoints to make the group move immediately
 [_group] call CBA_fnc_clearWaypoints;
-
-
 
 // Do not use defend with anything else than infantry
 // defending vehicles get stuck easily and wont move anywhere even with new waypoints

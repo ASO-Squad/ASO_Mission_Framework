@@ -16,6 +16,6 @@ Author:
 ---------------------------------------------------------------------------- */
 
 if (!isServer) exitWith {};
-params ["_trigger", "_taskName"];
+params ["_trigger"];
 
 _trigger getVariable ["ASO_TASK", false];

@@ -33,21 +33,17 @@ _radius = (_xRad + _yRad) / 2;
 // Clear waypoints to make the group move immediately
 [_group] call CBA_fnc_clearWaypoints;
 
-
-
 // Do not use defend with anything else than infantry
 // defending vehicles get stuck easily and wont move anywhere even with new waypoints
 if (_type == "INFANTRY") then 
 {
     if (_dismissed) then 
     {
-        //[_group, (getPos leader _group), 25, "DISMISS", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN"] call CBA_fnc_addWaypoint;
         // Dismissed units do not follow any orders unit they make enemy contact
         [_group, (getPos leader _group), (_radius/2), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
     }
     else
     {
-        //[_group, (getpos _trigger), _radius] call CBA_fnc_taskDefend;
         // Units inside of buildings stay there even with an attack command
         // Calling CBA_fnc_taskPatrol
         [_group, _trigger, (_radius/2), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
@@ -59,7 +55,6 @@ else
 {
     if (_dismissed) then 
     {
-        //[_group, (getPos leader _group), 25, "DISMISS", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN"] call CBA_fnc_addWaypoint;
         // Dismissed units do not follow any orders unit they make enemy contact
         [_group, _trigger, (_radius), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "", [0,3,10]] call CBA_fnc_taskPatrol;
         // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough

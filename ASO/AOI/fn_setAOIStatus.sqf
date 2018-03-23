@@ -5,6 +5,12 @@ Description:
 Parameters:
     _AOI		- The trigger that defines the location and size of this AOI
 	_status		- can be one of the following values "ENEMY_DETECTED", "DISTRESS", "CONTROL", "SAFE", "OBJECTIVE_LOST"
+	Explanation: 
+	ENEMY_DETECTED 	- It's obvious
+	DISTRESS		- The AOI owner has lost control
+	CONTROL			- The AOI owner is in control (again)
+	SAFE			- The AOI is safe
+	OBJECTIVE_LOST	- The AOI is lost to the original owner for good.
 
 Returns:
     None
