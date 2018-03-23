@@ -1,6 +1,7 @@
 /* ----------------------------------------------------------------------------
 Description:
-    A function for a group to defend a trigger. 
+    Puts a group to the garrison of an AOI. They keep close to their starting position, and in contrast
+    to aso_fnc_garrison non-loiterinmg groups do not move at all (but may enter their vehicles)  
 	A garrison might engage enemies far away and even be called to defend another trigger
     BE ADVISED: If a unit previously belonged to an AOI, it is still considered to be part of that AOI.
 
@@ -9,20 +10,20 @@ Parameters:
     _trigger   	- trigger that is to be defended, should be a circle
     _type       - What kind of unit is this. Possible values are:
                 "INFANTRY", "MOBILE", "MECHANIZED", "ARMORED", "ARTILLERY", "AIR"
-    _dismissed  - the AI behaves casually and wanders around 
+    _loiter     - Move around the current position
 
 Returns:
     None
 
 Example:
-    [myGroup, myTrigger, _type, _true] call aso_fnc_garrison
+    [myGroup, myTrigger, "INFANTRY", true] call aso_fnc_garrisonSimple
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_group", "_trigger", "_type", "_dismissed"];
+params ["_group", "_trigger", "_type", "_loiter"];
 // do not give orders to empty groups
 if (isNull _group || (count units _group) == 0) exitWith {};
 // extracting info from trigger
@@ -37,35 +38,32 @@ _radius = (_xRad + _yRad) / 2;
 // defending vehicles get stuck easily and wont move anywhere even with new waypoints
 if (_type == "INFANTRY") then 
 {
-    if (_dismissed) then 
+    if (_loiter) then 
     {
-        // Dismissed units do not follow any orders unit they make enemy contact
-        [_group, (getPos leader _group), (_radius/2), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
+        // Move around
+        [_group, (getPos leader _group), (_radius/4), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
+        // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
+        [_group, 60] spawn aso_fnc_enableDynamicSim;
     }
     else
     {
-        // Units inside of buildings stay there even with an attack command
-        // Calling CBA_fnc_taskPatrol
-        [_group, _trigger, (_radius/2), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
+        [_group, (getPos leader _group), 0, "HOLD", "AWARE", "YELLOW", "LIMITED", "FILE", "group this enableDynamicSimulation true;"] call CBA_fnc_addWaypoint;
     };
-    // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
-    [_group, 60] spawn aso_fnc_enableDynamicSim;
 }
 else
 {
-    if (_dismissed) then 
+    if (_loiter) then 
     {
-        // Dismissed units do not follow any orders unit they make enemy contact
-        [_group, _trigger, (_radius), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "", [0,3,10]] call CBA_fnc_taskPatrol;
+        [_group,(getPos leader _group), (_radius), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "", [0,3,10]] call CBA_fnc_taskPatrol;
         // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
         [_group, 60] spawn aso_fnc_enableDynamicSim;
     }
     else
     {
         // Create a waypoint to move into a vehicle if possible
-        [_group, _trigger, 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
-        // Move the vehicle to a random location
-        [_group, _trigger, (_radius/4), "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "group this enableDynamicSimulation true;"] call CBA_fnc_addWaypoint;
+        [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+        // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
+        [_group, 60] spawn aso_fnc_enableDynamicSim;
     };
 };
 

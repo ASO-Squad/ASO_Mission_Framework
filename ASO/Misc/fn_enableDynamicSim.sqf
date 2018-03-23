@@ -1,6 +1,7 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Enables dynamic simulation after a specified amount of time. This usually makes the mission run more smoothly
+    Enables dynamic simulation after a specified amount of time. This usually makes the mission run more smoothly.
+    But sometimes its a good ide to let the group wander around for a while to make things more random.
 	Works only if ASO_DYNAMICSIM is true.
 
 Parameters:

@@ -1,18 +1,18 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Returns the defined type of a group
+    A little helper that puts a delay on the intended behaviour change.
 
 Parameters:
-    _group      - The group that we want to know stuff about
-    _behaviour  - The bahviour the group changes to
+    _group      - The group that we want change the behaviour of
+    _behaviour  - The behaviour the group changes to
     _speed      - speedMode change
     _time       - Wat this amount of time befor executing 
 
 Returns:
-    nothing
+    None
 
 Example:
-    [_group, "AWARE", "NORMAL", 60] spawn aso_fnc_delayedBahviourChange;
+    [_group, "AWARE", "NORMAL", 60] spawn aso_fnc_delayedBehaviourChange;
 
 Author:
     Papa Mike

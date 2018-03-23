@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Removes all reinforcments from its assignment and lets it return to its home 
+    Removes all reinforcments from a AOI and lets them return to their home. 
 
 Parameters:
     _trigger 	- The AOI that is to be abandoned

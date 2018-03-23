@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Adds a Group to an AOI.
+    Adds a Group to an AOI as reinforcments.
 
 Parameters:
     _group		- The group that moves into that AOI as reinforcments

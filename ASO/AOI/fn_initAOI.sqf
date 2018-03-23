@@ -30,6 +30,11 @@ params ["_trigger", "_objectiveHeader", "_objectiveDescription", "_taskType", "_
 // 5 = is defeated or not
 _thisAOI = [_trigger, _objectiveHeader, _objectiveDescription, [], [], false];
 
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
 //Creating task
 if (_objectiveHeader != "") then
 {

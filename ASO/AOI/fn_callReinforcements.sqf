@@ -3,7 +3,7 @@ Description:
     Gets reinforcements from the nearest possible AOI
 
 Parameters:
-	_AOI			- The AOI that need reinforcements	
+	_AOI			- The AOI that needs reinforcements	
     _types			- This is supposed to be an array of the format: [[Type, Count]]
 					  The desired unit type can be one of the following values:
 					  "INFANTRY", "MOBILE", "MECHANIZED", "ARMORED", "ARTILLERY", "AIR"

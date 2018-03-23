@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------
 Description:
-    A function for a group to attack a AOI. 
+    A function for a group to attack an AOI. 
 
 Parameters:
     _group      - the group attacking the area
@@ -41,6 +41,6 @@ _group setVariable ["ASO_ORDERS", ["ATTACK", _trigger], true];
 // Show Debug Output
 ["New task ATTACK for", groupId _group] call aso_fnc_debug;
 [_group] spawn aso_fnc_trackGroup;
-// A attacking group need to move!
+// A attacking group needs to move!
 _group enableDynamicSimulation false; 
 //[_group, 60] spawn aso_fnc_enableDynamicSim;

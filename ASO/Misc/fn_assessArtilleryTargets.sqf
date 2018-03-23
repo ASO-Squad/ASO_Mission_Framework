@@ -16,10 +16,10 @@ Parameters:
 					  the longer the artillery attack lasts. Should be somethin below 1.0
 
 Returns:
-    nothing
+    None
 
 Example:
-    target = [_trigger, 25, _artillery, "HE", 5, 120, 50, 0.6] spawn aso_fnc_assessArtilleryTargets
+    [_trigger, 25, _artillery, "HE", 5, 120, 50, 0.6] spawn aso_fnc_assessArtilleryTargets
 
 Author:
     Papa Mike

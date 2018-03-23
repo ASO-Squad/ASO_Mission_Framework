@@ -10,7 +10,7 @@ Returns:
     None
 
 Examples:
-    [_trigger, _taskStatus] call aso_fnc_getAOITask
+    [_trigger, _taskStatus] call aso_fnc_setAOITaskStatus
 
 Author:
     Papa Mike
