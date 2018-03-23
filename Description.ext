@@ -1,0 +1,55 @@
+class cfgFunctions
+{
+    class ASO
+    {
+        class GroupTasks
+        {
+            file = "ASO\GroupTasks";
+            class garrison {};
+            class garrisonSimple {};
+            class guard {};
+            class patrol {};
+            class attack {};
+            class search {};
+            class reinforce {};
+        }
+        class Debug
+        {
+            file = "ASO\Debug";
+            class debug {};
+            class trackGroup {};
+        }
+        class Misc
+        {
+            file = "ASO\Misc";
+            class revealToGroup {};
+            class assessTargets {};
+            class getGroupType {};
+            class getGroupOrders {};
+            class enableDynamicSim {};
+            class assessArtilleryTargets {};
+            class delayedBehaviourChange {};
+            class init_aso {};
+        }
+        class AOI
+        {
+            file = "ASO\AOI";
+            class initAOI {};
+            class addGroupToAOI {};
+            class addGroupToAOIReinforcements {};           
+            class callReinforcements {};
+            class recallReinforcements {};
+            class removeGroupFromAOIReinforcements {};
+            class retreatReinforcements {};
+            class setAOIGroups {};
+            class setAOIReinforcementGroups {};
+            class setAOIStatus {};
+            class setAOITask {};
+            class setAOITaskStatus {};
+            class getAOIStatus {};
+            class getAOIReinforcementGroups {};
+            class getAOIGroups {};
+            class getAOITask {};
+        }
+    };
+};
