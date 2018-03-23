@@ -29,6 +29,7 @@ class cfgFunctions
             class enableDynamicSim {};
             class assessArtilleryTargets {};
             class delayedBehaviourChange {};
+            class init_aso {};
         }
         class AOI
         {
@@ -52,5 +53,3 @@ class cfgFunctions
         }
     };
 };
-
-allowFunctionsRecompile = 1;
