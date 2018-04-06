@@ -1757,7 +1757,7 @@ class Mission
 				name="tempest_control_r";
 				text="if ASO_DISTRESS == true this trigger calls for reinforcements but only if the data terminal is operational";
 				condition="call{[tempest, ""ASO_DISTRESS""] call aso_fnc_getAOIStatus && !([tempest, ""ASO_LOST""] call aso_fnc_getAOIStatus)}";
-				onActivation="call{[tempest, ""MECHANIZED"", 2, ""ATTACK"", 2500] call aso_fnc_callReinforcements; [tempest, ""INFANTRY"", 1, ""ATTACK"", 2500] call aso_fnc_callReinforcements}";
+				onActivation="call{[tempest, [[""INFANTRY"", 1], [""MECHANIZED"", 2]], ""ATTACK"", 2500] call aso_fnc_callReinforcements}";
 				sizeA=500;
 				sizeB=500;
 				interuptable=1;
