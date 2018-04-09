@@ -56,7 +56,11 @@ class cfgFunctions
             file = "ASO\Persistence"
             class saveInventory {};
             class loadInventory {};
-            class applyInventory {};
+            class saveCargo {};
+            class loadCargo {};
+            class putMagazinesInCargo {};
+            class putWeaponsInCargo {};
+            class putItemsInCargo {};
         }
     };
 };
@@ -64,7 +68,7 @@ class CfgRemoteExec
 {
         class Commands
         {
-                mode = 2; // No remote execution of commands
+                mode = 2; // Remote execution is allowed for all commands
         };
         class Functions
         {
