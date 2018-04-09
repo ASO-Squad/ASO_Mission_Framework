@@ -63,17 +63,6 @@ _facewear = ["read", ["Inventory", "Facewear"]] call _inidbi;
 _binocular = ["read", ["Inventory", "Binocular"]] call _inidbi;
 _items = ["read", ["Inventory", "Items"]] call _inidbi;
 
-["write", ["Inventory", "Primary", _primary]] call _inidbi;
-["write", ["Inventory", "Secondary", _secondary]] call _inidbi;
-["write", ["Inventory", "Handgun", _handgun]] call _inidbi;
-["write", ["Inventory", "Uniform", _uniform]] call _inidbi;
-["write", ["Inventory", "Vest", _vest]] call _inidbi;
-["write", ["Inventory", "Backpack", _backpack]] call _inidbi;
-["write", ["Inventory", "Helmet", _helmet]] call _inidbi;
-["write", ["Inventory", "Facewear", _facewear]] call _inidbi;
-["write", ["Inventory", "Binocular", _binocular]] call _inidbi;
-["write", ["Inventory", "Items", _items]] call _inidbi;
-
 // Putting back together loadout array 
 _fullInventory = [];
 _fullInventory pushBack _primary;
