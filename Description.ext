@@ -51,5 +51,27 @@ class cfgFunctions
             class getAOIGroups {};
             class getAOITask {};
         }
+        class Persistence
+        {
+            file = "ASO\Persistence"
+            class saveInventory {};
+            class loadInventory {};
+            class saveCargo {};
+            class loadCargo {};
+            class putMagazinesInCargo {};
+            class putWeaponsInCargo {};
+            class putItemsInCargo {};
+        }
     };
+};
+class CfgRemoteExec
+{
+        class Commands
+        {
+                mode = 2; // Remote execution is allowed for all commands
+        };
+        class Functions
+        {
+                mode = 2; // Remote execution is allowed for all functions
+        };
 };
