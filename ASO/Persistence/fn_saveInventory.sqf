@@ -48,7 +48,7 @@ else
 };
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
-"delete" call _inidbi; // cleanup
+["deleteSection", "Inventory"] call _inidbi; // cleanup
 
 // Using getUnitLoadout for inventory of infantry units
 _fullInventory = getUnitLoadout _unit;
