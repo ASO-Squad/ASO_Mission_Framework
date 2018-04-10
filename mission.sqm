@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=168;
+		nextID=169;
 	};
 	class Camera
 	{
@@ -223,14 +223,14 @@ randomSeed=8495150;
 class ScenarioData
 {
 	author="Papa Mike";
-	overviewText="ASO Mission Framework 1.0 ";
+	overviewText="ASO Mission Framework 1.1";
 	wreckRemovalMaxTime=3600;
 };
 class Mission
 {
 	class Intel
 	{
-		briefingName="ASO Mission Framework 1.0";
+		briefingName="ASO Mission Framework 1.1";
 		timeOfChanges=1800.0002;
 		startFog=0.025602587;
 		startWind=0.1;
@@ -251,7 +251,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=41;
+		items=42;
 		class Item0
 		{
 			dataType="Group";
@@ -2847,14 +2847,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4355.6279,224.96042,3779.1799};
-						angles[]={0,0.17389052,0};
+						position[]={4355.6279,224.9604,3779.1799};
+						angles[]={0,0.17388716,0};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
-						init="call{this setCaptive true}";
+						init="call{[[this], false, ""framework""] call aso_fnc_executeLoadInventory; this setCaptive true;}";
 						isPlayer=1;
 						class Inventory
 						{
@@ -3001,6 +3001,7 @@ class Mission
 					};
 					id=165;
 					type="B_Recon_Sharpshooter_F";
+					atlOffset=-1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -3049,6 +3050,7 @@ class Mission
 			{
 			};
 			id=164;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item39
 		{
@@ -3081,6 +3083,24 @@ class Mission
 				sizeB=0;
 			};
 			id=167;
+			type="EmptyDetector";
+		};
+		class Item41
+		{
+			dataType="Trigger";
+			position[]={4360.6489,225.02028,3777.3911};
+			class Attributes
+			{
+				text="Save Loadout";
+				condition="call{this}";
+				onActivation="call{[[player], false, ""framework""] call aso_fnc_executeSaveInventory;}";
+				sizeA=0;
+				sizeB=0;
+				repeatable=1;
+				activationBy="GOLF";
+				isServerOnly=1;
+			};
+			id=168;
 			type="EmptyDetector";
 		};
 	};
