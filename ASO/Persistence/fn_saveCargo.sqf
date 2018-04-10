@@ -52,15 +52,5 @@ _items = _items-_containerList;
 ["write", ["Cargo", "Magazines", _magazines]] call _inidbi;
 ["write", ["Cargo", "Weapons", _weapons]] call _inidbi;
 ["write", ["Cargo", "Items", _items]] call _inidbi;
-["write", ["Cargo", "Containers", _containers]] call _inidbi;/*
-["write", ["Inventory", "Vest", _vest]] call _inidbi;
-["write", ["Inventory", "Backpack", _backpack]] call _inidbi;
-["write", ["Inventory", "Helmet", _helmet]] call _inidbi;
-["write", ["Inventory", "Facewear", _facewear]] call _inidbi;
-["write", ["Inventory", "Binocular", _binocular]] call _inidbi;
-["write", ["Inventory", "Items", _items]] call _inidbi;
-_fullInventory;
-*/
+["write", ["Cargo", "Containers", _containers]] call _inidbi;
 true;
-// I'm ignoring TFAR Radio settings, because there is no way to get/set more than the currently active radio.
-// We are better off to define standard frequencies on every mission.
