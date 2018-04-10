@@ -61,6 +61,10 @@ class cfgFunctions
             class putMagazinesInCargo {};
             class putWeaponsInCargo {};
             class putItemsInCargo {};
+            class executeSaveInventory {};
+            class executeLoadInventory {};
+            class executeSaveCargo {};
+            class executeLoadCargo {};
         }
     };
 };
