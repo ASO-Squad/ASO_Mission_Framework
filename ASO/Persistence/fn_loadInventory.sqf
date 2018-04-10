@@ -25,8 +25,8 @@ params ["_unit", "_saveByName", "_prefix"];
 // Check if the unit is of the right type
 if (!(_unit isKindOf "Man")) exitWith {};
 
-// check if iniDBI2 is loaded
-//if ((activatedAddons find "inidbi2") == -1) exitWith {}; 
+// Check if the inventory got already loaded
+if (_unit getVariable ["ASO_P_Inventory", false]) exitWith {};
 
 // Use the appropriate name for the database 
 _db = "";
@@ -78,4 +78,4 @@ _fullInventory pushBack _items;
 
 // Apply loadout 
 _unit setUnitLoadout [_fullInventory, false];
-_fullInventory;
+_unit setVariable ["ASO_P_Inventory", true, true];
