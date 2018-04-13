@@ -67,6 +67,8 @@ class cfgFunctions
             class putItemsInCargo {};
             class savePosition {};
             class loadPosition {};
+            class saveHealth {};
+            class loadHealth {};
         }
         class PersistencePublic
         {

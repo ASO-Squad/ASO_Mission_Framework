@@ -44,10 +44,12 @@ if (count _units == 0) then
 	{
 		[_x, _loadByName, _prefix] call aso_fnc_loadInventory;
 		[_x, _loadByName, _prefix] call aso_fnc_loadPosition;
+		[_x, _loadByName, _prefix] call aso_fnc_loadHealth;
 	}
 	else
 	{
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadInventory", 2, false]; // Call this on the server
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadPosition", 2, false]; // Call this on the server
+		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadHealth", 2, false]; // Call this on the server
 	};		
 } forEach _units;
