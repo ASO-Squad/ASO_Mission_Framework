@@ -20,7 +20,7 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_unit", "_saveByName", "_prefix"];
+params ["_unit", "_loadByName", "_prefix"];
 
 // Check if the unit is of the right type
 if (!(_unit isKindOf "Man")) exitWith {};
@@ -30,7 +30,7 @@ if (_unit getVariable ["ASO_P_Inventory", false]) exitWith {};
 
 // Use the appropriate name for the database 
 _db = "";
-if (_saveByName) then 
+if (_loadByName) then 
 {
 	_db = vehicleVarName _unit;
 }

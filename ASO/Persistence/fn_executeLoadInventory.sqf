@@ -32,7 +32,6 @@ if (count _units == 0) then
 {
 	_units = allPlayers;
 };
-diag_log format ["InventoryUnits: %1", _units];
 // If the unit array is empty, load all players
 {
 	if (isServer) then
