@@ -21,9 +21,6 @@ if (!isServer) exitWith {};
 
 params ["_unit", "_saveByName", "_prefix"];
 
-// Check if the unit is of the right type
-if (!(_unit isKindOf "Man")) exitWith {};
-
 // Use the appropriate name for the database 
 _db = "";
 if (_saveByName) then 
@@ -46,7 +43,7 @@ else
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 ["deleteSection", "Position"] call _inidbi; // cleanup
 
-// Using getUnitLoadout for inventory of infantry units
+// Variables
 _position = getPosATL _unit;
 _direction = getDir _unit;
 _stance = stance _unit;

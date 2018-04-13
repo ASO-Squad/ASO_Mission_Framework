@@ -22,9 +22,6 @@ if (!isServer) exitWith {};
 
 params ["_unit", "_loadByName", "_prefix"];
 
-// Check if the unit is of the right type
-if (!(_unit isKindOf "Man")) exitWith {};
-
 // Check if the position got already loaded
 if (_unit getVariable ["ASO_P_Position", false]) exitWith {};
 
