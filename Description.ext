@@ -65,6 +65,8 @@ class cfgFunctions
             class putMagazinesInCargo {};
             class putWeaponsInCargo {};
             class putItemsInCargo {};
+            class savePosition {};
+            class loadPosition {};
         }
         class PersistencePublic
         {
@@ -73,6 +75,8 @@ class cfgFunctions
             class executeLoadInventory {};
             class executeSaveCargo {};
             class executeLoadCargo {};
+            class executeSaveMan {};
+            class executeLoadMan {};
         }
     };
 };

@@ -12,10 +12,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1979.8689,12.294003,3489.1975};
-		dir[]={-0.014136838,-0.21112166,0.97737336};
-		up[]={-0.0030544128,0.97745621,0.21111704};
-		aside[]={0.9999119,-2.1927463e-008,0.014463034};
+		pos[]={4325.8247,245.29092,3767.1931};
+		dir[]={0.70927024,-0.48037434,0.51597905};
+		up[]={0.38846788,0.87705529,0.28260368};
+		aside[]={0.588301,-2.7597707e-007,-0.80868214};
 	};
 };
 binarizationWanted=0;
@@ -2854,7 +2854,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="call{[[this], false, ""framework""] call aso_fnc_executeLoadInventory; this setCaptive true;}";
+						init="call{[[this], false, ""framework""] call aso_fnc_executeSaveMan; this setCaptive true;}";
 						isPlayer=1;
 						class Inventory
 						{
