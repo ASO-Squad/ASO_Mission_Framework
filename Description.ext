@@ -69,6 +69,8 @@ class cfgFunctions
             class loadPosition {};
             class saveHealth {};
             class loadHealth {};
+            class saveMount {};
+            class loadMount {};
         }
         class PersistencePublic
         {
