@@ -66,6 +66,9 @@ _facewear = _fullInventory select 7;
 _binocular = _fullInventory select 8;
 _items = _fullInventory select 9;
 
+// Check for Earplugs
+_earplugs = [_unit] call ace_hearing_fnc_hasEarPlugsIn;
+
 ["write", ["Inventory", "Primary", _primary]] call _inidbi;
 ["write", ["Inventory", "Secondary", _secondary]] call _inidbi;
 ["write", ["Inventory", "Handgun", _handgun]] call _inidbi;
@@ -76,6 +79,7 @@ _items = _fullInventory select 9;
 ["write", ["Inventory", "Facewear", _facewear]] call _inidbi;
 ["write", ["Inventory", "Binocular", _binocular]] call _inidbi;
 ["write", ["Inventory", "Items", _items]] call _inidbi;
+["write", ["Inventory", "Earplugs", _earplugs]] call _inidbi;
 _fullInventory;
 
 // I'm ignoring TFAR Radio settings, because there is no way to get/set more than the currently active radio.
