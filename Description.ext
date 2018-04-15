@@ -31,29 +31,33 @@ class cfgFunctions
             class delayedBehaviourChange {};
             class init_aso {};
         }
-        class AOI
+        class AOIPrivate
+        {
+            file = "ASO\AOI\Private";
+            class addGroupToAOI {};
+            class getAOIGroups {};
+            class getAOIReinforcementGroups {};
+            class recallReinforcements {};
+            class removeGroupFromAOIReinforcements {};
+            class setAOIGroups {};
+            class setAOIReinforcementGroups {};
+            class setAOITask {};
+        }
+        class AOIPublic
         {
             file = "ASO\AOI";
             class initAOI {};
-            class addGroupToAOI {};
-            class addGroupToAOIReinforcements {};           
+            class addGroupToAOIReinforcements {}; 
             class callReinforcements {};
-            class recallReinforcements {};
-            class removeGroupFromAOIReinforcements {};
             class retreatReinforcements {};
-            class setAOIGroups {};
-            class setAOIReinforcementGroups {};
             class setAOIStatus {};
-            class setAOITask {};
             class setAOITaskStatus {};
             class getAOIStatus {};
-            class getAOIReinforcementGroups {};
-            class getAOIGroups {};
             class getAOITask {};
         }
-        class Persistence
+        class PersistencePrivate
         {
-            file = "ASO\Persistence"
+            file = "ASO\Persistence\Private"
             class saveInventory {};
             class loadInventory {};
             class saveCargo {};
@@ -61,10 +65,24 @@ class cfgFunctions
             class putMagazinesInCargo {};
             class putWeaponsInCargo {};
             class putItemsInCargo {};
+            class savePosition {};
+            class loadPosition {};
+            class saveHealth {};
+            class loadHealth {};
+            class saveMount {};
+            class loadMount {};
+            class saveExplosives {};
+            class loadExplosives {};
+        }
+        class PersistencePublic
+        {
+            file = "ASO\Persistence"
             class executeSaveInventory {};
             class executeLoadInventory {};
             class executeSaveCargo {};
             class executeLoadCargo {};
+            class executeSaveMan {};
+            class executeLoadMan {};
         }
     };
 };

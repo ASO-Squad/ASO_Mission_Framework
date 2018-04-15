@@ -1,9 +1,15 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Remotly executes loadInventory for a bunch of units  
+    Remotly executes all function that are needed to load a players state.
+	That includes:
+	- Position
+	- Inventory	
+	- Health
+	- Vehicle/w. Seat
+	- Linked Mines
 
 Parameters:
-    _units			- The units that we want to load the inventory of.
+    _units			- The units that we want to load.
 					If you leave this array empty, all players get load.
 	_loadByName		- If true, we are saving this by the units name, otherwise it is saved by the players name
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
@@ -12,7 +18,7 @@ Returns:
     nothing
 
 Example:
-    [_units, false, _prefix] call aso_fnc_executeLoadInventory;
+    [_units, false, _prefix] call aso_fnc_executeLoadMan;
 
 Author:
     Papa Mike
@@ -37,9 +43,17 @@ if (count _units == 0) then
 	if (isServer) then
 	{
 		[_x, _loadByName, _prefix] call aso_fnc_loadInventory;
+		[_x, _loadByName, _prefix] call aso_fnc_loadPosition;
+		[_x, _loadByName, _prefix] call aso_fnc_loadHealth;
+		[_x, _loadByName, _prefix] call aso_fnc_loadMount;
+		[_x, _loadByName, _prefix] call aso_fnc_loadExplosives;
 	}
 	else
 	{
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadInventory", 2, false]; // Call this on the server
+		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadPosition", 2, false]; // Call this on the server
+		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadHealth", 2, false]; // Call this on the server
+		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadMount", 2, false]; // Call this on the server
+		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadExplosives", 2, false]; // Call this on the server
 	};		
 } forEach _units;
