@@ -20,7 +20,7 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_unit", "_saveByName", "_prefix"];
+params ["_unit", "_loadByName", "_prefix"];
 
 // Check if the unit is of the right type
 if (!(_unit isKindOf "Man")) exitWith {};
@@ -30,7 +30,7 @@ if (_unit getVariable ["ASO_P_Inventory", false]) exitWith {};
 
 // Use the appropriate name for the database 
 _db = "";
-if (_saveByName) then 
+if (_loadByName) then 
 {
 	_db = vehicleVarName _unit;
 }
@@ -62,6 +62,7 @@ _helmet = ["read", ["Inventory", "Helmet"]] call _inidbi;
 _facewear = ["read", ["Inventory", "Facewear"]] call _inidbi;
 _binocular = ["read", ["Inventory", "Binocular"]] call _inidbi;
 _items = ["read", ["Inventory", "Items"]] call _inidbi;
+_earplugs = ["read", ["Inventory", "Earplugs"]] call _inidbi;
 
 // Putting back together loadout array 
 _fullInventory = [];
@@ -75,6 +76,12 @@ _fullInventory pushBack _helmet;
 _fullInventory pushBack _facewear;
 _fullInventory pushBack _binocular;
 _fullInventory pushBack _items;
+
+// Use earplugs if needed
+if (_earplugs) then
+{
+	[_unit] call ace_hearing_fnc_putInEarplugs;
+};
 
 // Apply loadout 
 _unit setUnitLoadout [_fullInventory, false];
