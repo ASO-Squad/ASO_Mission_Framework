@@ -8,14 +8,14 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=186;
+		nextID=187;
 	};
 	class Camera
 	{
-		pos[]={4363.251,227.90939,3763.0291};
-		dir[]={-0.21301726,-0.18503815,0.95946527};
-		up[]={-0.040122863,0.98271215,0.18071628};
-		aside[]={0.976327,3.0808587e-007,0.21676309};
+		pos[]={4359.3555,227.90939,3770.8792};
+		dir[]={0.26767576,0.0034978157,0.96360409};
+		up[]={-0.00091028621,0.99998891,-0.0032737663};
+		aside[]={0.96361643,6.7482324e-007,-0.26767769};
 	};
 };
 binarizationWanted=0;
@@ -690,7 +690,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=46;
+		items=47;
 		class Item0
 		{
 			dataType="Group";
@@ -4051,6 +4051,25 @@ class Mission
 			};
 			id=185;
 			type="rhssaf_virtual_crate";
+		};
+		class Item46
+		{
+			dataType="Trigger";
+			position[]={4363.8481,225.01692,3775.4829};
+			class Attributes
+			{
+				text="Save testvehicle2";
+				condition="call{this}";
+				onActivation="call{[[testvehicle2], ""framework""] call aso_fnc_executeSaveVehicle;}";
+				sizeA=0;
+				sizeB=0;
+				repeatable=1;
+				activationBy="HOTEL";
+				isServerOnly=1;
+			};
+			id=186;
+			type="EmptyDetector";
+			atlOffset=0.01399231;
 		};
 	};
 	class Connections
