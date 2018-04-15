@@ -71,6 +71,8 @@ class cfgFunctions
             class loadHealth {};
             class saveMount {};
             class loadMount {};
+            class saveExplosives {};
+            class loadExplosives {};
         }
         class PersistencePublic
         {

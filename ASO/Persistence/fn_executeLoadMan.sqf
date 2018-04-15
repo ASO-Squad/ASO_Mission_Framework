@@ -46,6 +46,7 @@ if (count _units == 0) then
 		[_x, _loadByName, _prefix] call aso_fnc_loadPosition;
 		[_x, _loadByName, _prefix] call aso_fnc_loadHealth;
 		[_x, _loadByName, _prefix] call aso_fnc_loadMount;
+		[_x, _loadByName, _prefix] call aso_fnc_loadExplosives;
 	}
 	else
 	{
@@ -53,5 +54,6 @@ if (count _units == 0) then
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadPosition", 2, false]; // Call this on the server
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadHealth", 2, false]; // Call this on the server
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadMount", 2, false]; // Call this on the server
+		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadExplosives", 2, false]; // Call this on the server
 	};		
 } forEach _units;
