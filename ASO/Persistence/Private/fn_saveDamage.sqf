@@ -36,4 +36,4 @@ _damage = damage _vehicle;
 // Write information down
 ["write", ["Damage", "Hitpoints", _hitpoints]] call _inidbi;
 ["write", ["Damage", "Damages", _damages]] call _inidbi;
-["write", ["Damage", "Damage", _damages]] call _inidbi;
+["write", ["Damage", "Damage", _damage]] call _inidbi;
