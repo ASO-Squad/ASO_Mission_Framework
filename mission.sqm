@@ -8,14 +8,18 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=187;
+		nextID=191;
+	};
+	class MarkerIDProvider
+	{
+		nextID=1;
 	};
 	class Camera
 	{
-		pos[]={4359.3555,227.90939,3770.8792};
-		dir[]={0.26767576,0.0034978157,0.96360409};
-		up[]={-0.00091028621,0.99998891,-0.0032737663};
-		aside[]={0.96361643,6.7482324e-007,-0.26767769};
+		pos[]={4350.2632,232.73676,3761.7729};
+		dir[]={0.94481897,-0.31862426,0.077492341};
+		up[]={0.31761995,0.94785166,0.026050674};
+		aside[]={0.081752665,1.6434933e-007,-0.99676287};
 	};
 };
 binarizationWanted=0;
@@ -34,13 +38,14 @@ addons[]=
 	"A3_Static_F_Mortar_01",
 	"A3_Props_F_Exp_A_Military_Equipment",
 	"A3_Soft_F_MRAP_02",
-	"rhssaf_c_weapons"
+	"rhssaf_c_weapons",
+	"A3_Air_F_Heli_Light_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=12;
+		items=13;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -124,6 +129,13 @@ class AddonsMetaData
 			name="RHS: SAF Weapons configuration";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
+		};
+		class Item12
+		{
+			className="A3_Air_F";
+			name="Arma 3 Alpha - Aircraft";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -690,7 +702,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=47;
+		items=49;
 		class Item0
 		{
 			dataType="Group";
@@ -3999,8 +4011,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4363.478,228.03671,3780.0515};
-				angles[]={6.188468,4.6122952,0.034984674};
+				position[]={4362.5547,227.96657,3779.491};
+				angles[]={6.2232561,4.6122952,0.034984674};
 			};
 			side="Empty";
 			flags=4;
@@ -4010,7 +4022,7 @@ class Mission
 			};
 			id=184;
 			type="O_MRAP_02_hmg_F";
-			atlOffset=-0.0069122314;
+			atlOffset=-0.0017700195;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4058,9 +4070,9 @@ class Mission
 			position[]={4363.8481,225.01692,3775.4829};
 			class Attributes
 			{
-				text="Save testvehicle2";
+				text="Save TestVehicles";
 				condition="call{this}";
-				onActivation="call{[[testvehicle2], ""framework""] call aso_fnc_executeSaveVehicle;}";
+				onActivation="call{[[testvehicle1, testvehicle2, testvehicle3], ""framework""] call aso_fnc_executeSaveVehicle;}";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;
@@ -4070,6 +4082,57 @@ class Mission
 			id=186;
 			type="EmptyDetector";
 			atlOffset=0.01399231;
+		};
+		class Item47
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={4340.9888,224.47911,3792.4451};
+			};
+			name="deadPeople";
+			id=188;
+			type="Logic";
+		};
+		class Item48
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4368.9956,226.68747,3760.7708};
+				angles[]={6.2756805,4.9769111,0.0024958209};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="testvehicle3";
+			};
+			id=190;
+			type="B_Heli_Light_01_dynamicLoadout_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""arifle_MXC_F"",""FirstAidKit""],[2,2]],[[""SmokeShell"",""SmokeShellBlue"",""30Rnd_65x39_caseless_mag""],[2,2,4]],[[""ToolKit"",""ItemGPS""],[1,1]],[[""B_Parachute""],[4]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections

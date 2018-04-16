@@ -75,6 +75,8 @@ class cfgFunctions
             class loadExplosives {};
             class saveDamage {};
             class loadDamage {};
+            class saveWeapons {};
+            class loadWeapons {};
         }
         class PersistencePublic
         {

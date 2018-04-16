@@ -46,11 +46,13 @@ if (count _vehicles == 0) then
 		[_x, _loadByName, _prefix] call aso_fnc_loadPosition;
 		[_x, _prefix] call aso_fnc_loadCargo;
 		[_x, _prefix] call aso_fnc_loadDamage;
+		[_x, _prefix] call aso_fnc_loadWeapons;
 	}
 	else
 	{
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadPosition", 2, false]; // Call this on the server
 		[_x, _prefix] remoteExecCall ["aso_fnc_LoadCargo", 2, false]; // Call this on the server
 		[_x, _prefix] remoteExecCall ["aso_fnc_LoadDamage", 2, false]; // Call this on the server
+		[_x, _prefix] remoteExecCall ["aso_fnc_LoadWeapons", 2, false]; // Call this on the server
 	};		
 } forEach _vehicles;
