@@ -38,6 +38,7 @@ if (typeName _hitpoints != "ARRAY") exitWith {};
 // This vehicle is most probably already burnt down
 _vehicle setVariable ["ace_cookoff_enable", false, true];
 _vehicle setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
+_vehicle setDamage [_damage, false];
 if (local _vehicle) then
 {
 	{
@@ -47,10 +48,9 @@ if (local _vehicle) then
 else
 {
     {
-        [_x, (_damages select _forEachIndex)] remoteExec ["setHitPointDamage", _x, false]; // setHitPointDamage needs local parameters  
+        [_x, (_damages select _forEachIndex), false] remoteExec ["setHitPointDamage", _x, false]; // setHitPointDamage needs local parameters  
     } forEach _hitpoints;
 };
-_vehicle setDamage [_damage, false];
 if (alive _vehicle) then 
 {
     _vehicle setVariable ["ace_cookoff_enable", true, true];
