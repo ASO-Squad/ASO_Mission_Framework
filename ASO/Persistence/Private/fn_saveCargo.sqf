@@ -30,7 +30,12 @@ _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 // Collecting cargo
 _magazines = magazinesAmmoCargo _obj;
 _weapons = weaponsItemsCargo _obj;
-_items = itemCargo _obj; 
+_items = itemCargo _obj;
+// itemCargo needs some extra care 
+if (isNil "_items") then 
+{
+	_items = [];
+};
 // Look for stuff in containers (we do not need for stuff in contianers that are in containers because arma does not allow that)
 _containerList = [];
 _containers = [];
