@@ -77,6 +77,8 @@ class cfgFunctions
             class loadDamage {};
             class saveWeapons {};
             class loadWeapons {};
+            class saveACESupplies {};
+            class loadACESupplies {};
         }
         class PersistencePublic
         {

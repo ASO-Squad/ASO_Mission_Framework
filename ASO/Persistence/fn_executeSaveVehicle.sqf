@@ -46,6 +46,7 @@ if (count _vehicles == 0) then
 		[_x, _prefix] call aso_fnc_saveCargo;
 		[_x, _prefix] call aso_fnc_saveDamage;
 		[_x, _prefix] call aso_fnc_saveWeapons;
+		[_x, _prefix] call aso_fnc_saveACESupplies;
 	}
 	else
 	{	// Call those on the server 
@@ -53,5 +54,6 @@ if (count _vehicles == 0) then
 		[_x, _prefix] remoteExecCall ["aso_fnc_saveCargo", 2, false];
 		[_x, _prefix] remoteExecCall ["aso_fnc_saveDamage", 2, false];
 		[_x, _prefix] remoteExecCall ["aso_fnc_saveWeapons", 2, false];
+		[_x, _prefix] remoteExecCall ["aso_fnc_saveACESupplies", 2, false];
 	};		
 } forEach _vehicles;

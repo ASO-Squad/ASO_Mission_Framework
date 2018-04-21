@@ -39,7 +39,6 @@ if (count _vehicles == 0) then
 {
 	_vehicles = vehicles;
 };
-// If the unit array is empty, load all players
 {
 	if (isServer) then
 	{
@@ -47,6 +46,7 @@ if (count _vehicles == 0) then
 		[_x, _prefix] call aso_fnc_loadCargo;
 		[_x, _prefix] call aso_fnc_loadDamage;
 		[_x, _prefix] call aso_fnc_loadWeapons;
+		[_x, _prefix] call aso_fnc_loadACESupplies;
 	}
 	else
 	{
@@ -54,5 +54,6 @@ if (count _vehicles == 0) then
 		[_x, _prefix] remoteExecCall ["aso_fnc_LoadCargo", 2, false]; // Call this on the server
 		[_x, _prefix] remoteExecCall ["aso_fnc_LoadDamage", 2, false]; // Call this on the server
 		[_x, _prefix] remoteExecCall ["aso_fnc_LoadWeapons", 2, false]; // Call this on the server
+		[_x, _prefix] remoteExecCall ["aso_fnc_LoadACESupplies", 2, false]; // Call this on the server
 	};		
 } forEach _vehicles;
