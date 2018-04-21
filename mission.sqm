@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={4350.2632,232.73676,3761.7729};
-		dir[]={0.9287681,-0.26700374,-0.2575084};
-		up[]={0.25736475,0.96366614,-0.071356818};
-		aside[]={-0.26720923,2.1932647e-007,-0.9637537};
+		dir[]={0.54622483,-0.1514525,0.82396334};
+		up[]={0.083731301,0.98844117,0.12630554};
+		aside[]={0.83358032,1.0093208e-007,-0.55260044};
 	};
 };
 binarizationWanted=0;
@@ -3898,8 +3898,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4362.5547,227.96657,3779.491};
-				angles[]={6.2232561,4.6122952,0.034984674};
+				position[]={4362.5542,227.96631,3779.4907};
+				angles[]={6.2232509,4.6122947,0.034976397};
 			};
 			side="Empty";
 			flags=4;
@@ -3909,10 +3909,29 @@ class Mission
 			};
 			id=184;
 			type="O_MRAP_02_hmg_F";
-			atlOffset=-0.0017700195;
+			atlOffset=-0.0019989014;
 			class CustomAttributes
 			{
 				class Attribute0
+				{
+					property="ace_repair_editorLoadedWheels";
+					expression="_this setVariable ['ace_repair_editorLoadedWheels',_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute1
 				{
 					property="ammoBox";
 					expression="[_this,_value] call bis_fnc_initAmmoBox;";
@@ -3931,7 +3950,26 @@ class Mission
 						};
 					};
 				};
-				nAttributes=1;
+				class Attribute2
+				{
+					property="ace_isRepairVehicle";
+					expression="_this setVariable ['ace_isRepairVehicle',_value, true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				nAttributes=3;
 			};
 		};
 		class Item43
@@ -4033,6 +4071,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
+				fuel=0;
 				name="testvehicle1";
 			};
 			id=193;
