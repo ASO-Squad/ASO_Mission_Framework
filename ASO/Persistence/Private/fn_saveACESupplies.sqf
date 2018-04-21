@@ -31,8 +31,10 @@ _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 _ammo = [_obj] call ace_rearm_fnc_getSupplyCount;
 _fuel = [_obj] call ace_refuel_fnc_getFuel;
 _cargo = _obj getVariable ["ace_cargo_loaded", []];
+_fuelLevel = fuel _obj;
 
 // Write supplies to iniDB
 ["write", ["Supplies", "Ammo", _ammo]] call _inidbi;
 ["write", ["Supplies", "Fuel", _fuel]] call _inidbi;
 ["write", ["Supplies", "Cargo", _cargo]] call _inidbi;
+["write", ["Supplies", "FuelLevel", _fuelLevel]] call _inidbi;

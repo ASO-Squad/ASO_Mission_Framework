@@ -31,8 +31,22 @@ if (!("exists" call _inidbi)) exitWith {};
 _ammo = ["read", ["Supplies", "Ammo"]] call _inidbi;
 _fuel = ["read", ["Supplies", "Fuel"]] call _inidbi;
 _cargo = ["read", ["Supplies", "Cargo"]] call _inidbi;
+_fuelLevel = ["read", ["Supplies", "FuelLevel"]] call _inidbi;
+
+// Remove cargo already present
+_obj setVariable ["ace_cargo_loaded", [], true];
 
 // Apply supplies
 [_obj, _ammo] call ace_rearm_fnc_setSupplyCount;
 [_obj, _fuel] call ace_refuel_fnc_setFuel;
 _obj setVariable ["ace_cargo_loaded", _cargo, true];
+
+// Apply data
+if (local _obj) then
+{
+	_obj setFuel _fuelLevel;
+}
+else
+{
+	[_obj, _fuelLevel] remoteExec ["setFuel", _obj, false]; // needs local parameters
+};
