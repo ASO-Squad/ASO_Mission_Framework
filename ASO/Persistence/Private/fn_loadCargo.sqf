@@ -43,11 +43,17 @@ _containers = ["read", ["Cargo", "Containers"]] call _inidbi;
 [_obj, _magazines] call aso_fnc_putMagazinesInCargo;
 [_obj, _weapons] call aso_fnc_putWeaponsInCargo;
 [_obj, _items] call aso_fnc_putItemsInCargo;
-
-// Adding Containers
+if (typeName _containers == "ARRAY") then
 {
-	_obj addItemCargoGlobal [(_x select 0), 1];	
-} forEach _containers;
+	// Adding Containers
+	{
+		_obj addItemCargoGlobal [(_x select 0), 1];	
+	} forEach _containers;
+}
+else
+{
+ 	_containers = [];
+};
 _newContainers = everyContainer _obj;
 
 if ((count _newContainers) == (count _containers)) then

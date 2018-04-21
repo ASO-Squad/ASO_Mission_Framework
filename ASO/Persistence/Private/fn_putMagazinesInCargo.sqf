@@ -16,9 +16,12 @@ Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 params ["_obj", "_magazines"];
+if (typeName _magazines == "ARRAY") then
 {
-	_class = (_x select 0);
-	_ammo = (_x select 1);
-	_obj addMagazineAmmoCargo [_class, 1, _ammo];
+    {
+        _class = (_x select 0);
+        _ammo = (_x select 1);
+        _obj addMagazineAmmoCargo [_class, 1, _ammo];
 
-} forEach _magazines;
+    } forEach _magazines;
+};

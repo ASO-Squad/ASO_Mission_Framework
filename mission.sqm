@@ -8,14 +8,18 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=186;
+		nextID=194;
+	};
+	class MarkerIDProvider
+	{
+		nextID=1;
 	};
 	class Camera
 	{
-		pos[]={4363.251,227.90939,3763.0291};
-		dir[]={-0.21301726,-0.18503815,0.95946527};
-		up[]={-0.040122863,0.98271215,0.18071628};
-		aside[]={0.976327,3.0808587e-007,0.21676309};
+		pos[]={4350.2632,232.73676,3761.7729};
+		dir[]={0.9287681,-0.26700374,-0.2575084};
+		up[]={0.25736475,0.96366614,-0.071356818};
+		aside[]={-0.26720923,2.1932647e-007,-0.9637537};
 	};
 };
 binarizationWanted=0;
@@ -34,13 +38,15 @@ addons[]=
 	"A3_Static_F_Mortar_01",
 	"A3_Props_F_Exp_A_Military_Equipment",
 	"A3_Soft_F_MRAP_02",
-	"rhssaf_c_weapons"
+	"rhssaf_c_weapons",
+	"A3_Air_F_Heli_Light_01",
+	"A3_Soft_F_Gamma_Truck_02"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=12;
+		items=14;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -124,6 +130,20 @@ class AddonsMetaData
 			name="RHS: SAF Weapons configuration";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
+		};
+		class Item12
+		{
+			className="A3_Air_F";
+			name="Arma 3 Alpha - Aircraft";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item13
+		{
+			className="A3_Soft_F_Gamma";
+			name="Arma 3 - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -690,7 +710,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=46;
+		items=48;
 		class Item0
 		{
 			dataType="Group";
@@ -3758,7 +3778,7 @@ class Mission
 						class Attribute0
 						{
 							property="ace_isMedic";
-							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"",_value,true];};";
+							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"", _value, true];};";
 							class Value
 							{
 								class data
@@ -3875,132 +3895,11 @@ class Mission
 		};
 		class Item42
 		{
-			dataType="Group";
-			side="East";
-			class Entities
-			{
-				items=2;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={4374.355,224.89993,3751.0649};
-						angles[]={6.2756844,5.2114305,0.0024897563};
-					};
-					side="East";
-					flags=4;
-					class Attributes
-					{
-						name="testvehicle1D";
-					};
-					id=182;
-					type="O_Soldier_F";
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={4374.355,224.89993,3751.0649};
-						angles[]={6.2756844,5.2114305,0.0024897563};
-					};
-					side="East";
-					flags=6;
-					class Attributes
-					{
-						name="testvehicle1G";
-					};
-					id=183;
-					type="O_Soldier_F";
-				};
-			};
-			class Attributes
-			{
-			};
-			class CrewLinks
-			{
-				class LinkIDProvider
-				{
-					nextID=2;
-				};
-				class Links
-				{
-					items=2;
-					class Item0
-					{
-						linkID=0;
-						item0=182;
-						item1=181;
-						class CustomData
-						{
-							role=1;
-						};
-					};
-					class Item1
-					{
-						linkID=1;
-						item0=183;
-						item1=181;
-						class CustomData
-						{
-							role=2;
-							turretPath[]={0};
-						};
-					};
-				};
-			};
-			id=180;
-			atlOffset=-0.0042572021;
-		};
-		class Item43
-		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4374.1948,227.68637,3750.978};
-				angles[]={6.2756844,5.2114305,0.0024897563};
-			};
-			side="East";
-			flags=6;
-			class Attributes
-			{
-				name="testvehicle1";
-			};
-			id=181;
-			type="O_MRAP_02_hmg_F";
-			atlOffset=-0.0042572021;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[""arifle_Katiba_F"",""FirstAidKit""],[2,10]],[[""30Rnd_65x39_caseless_green"",""150Rnd_762x54_Box"",""HandGrenade"",""SmokeShell"",""SmokeShellRed"",""SmokeShellYellow"",""SmokeShellOrange"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""16Rnd_9x21_Mag"",""RPG32_F""],[16,4,10,4,4,4,4,10,4,4,4,4,12,2]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item44
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={4363.478,228.03671,3780.0515};
-				angles[]={6.188468,4.6122952,0.034984674};
+				position[]={4362.5547,227.96657,3779.491};
+				angles[]={6.2232561,4.6122952,0.034984674};
 			};
 			side="Empty";
 			flags=4;
@@ -4010,7 +3909,7 @@ class Mission
 			};
 			id=184;
 			type="O_MRAP_02_hmg_F";
-			atlOffset=-0.0069122314;
+			atlOffset=-0.0017700195;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4035,7 +3934,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item45
+		class Item43
 		{
 			dataType="Object";
 			class PositionInfo
@@ -4051,6 +3950,173 @@ class Mission
 			};
 			id=185;
 			type="rhssaf_virtual_crate";
+		};
+		class Item44
+		{
+			dataType="Trigger";
+			position[]={4363.8481,225.01692,3775.4829};
+			class Attributes
+			{
+				text="Save TestVehicles";
+				condition="call{this}";
+				onActivation="call{[[testvehicle1, testvehicle2, testvehicle3], ""framework""] call aso_fnc_executeSaveVehicle;}";
+				sizeA=0;
+				sizeB=0;
+				repeatable=1;
+				activationBy="HOTEL";
+				isServerOnly=1;
+			};
+			id=186;
+			type="EmptyDetector";
+			atlOffset=0.01399231;
+		};
+		class Item45
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={4340.9888,224.47911,3792.4451};
+			};
+			name="deadPeople";
+			id=188;
+			type="Logic";
+		};
+		class Item46
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4368.9956,226.68747,3760.7708};
+				angles[]={6.2756805,4.9769111,0.0024958209};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="testvehicle3";
+			};
+			id=190;
+			type="B_Heli_Light_01_dynamicLoadout_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""arifle_MXC_F"",""FirstAidKit""],[2,2]],[[""SmokeShell"",""SmokeShellBlue"",""30Rnd_65x39_caseless_mag""],[2,2,4]],[[""ToolKit"",""ItemGPS""],[1,1]],[[""B_Parachute""],[4]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item47
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4369.2031,227.26274,3752.877};
+				angles[]={6.2731848,5.3552985,0.010000736};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="testvehicle1";
+			};
+			id=193;
+			type="O_Truck_02_box_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ace_repair_editorLoadedTracks";
+					expression="_this setVariable ['ace_repair_editorLoadedTracks',_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ace_repair_editorLoadedWheels";
+					expression="_this setVariable ['ace_repair_editorLoadedWheels',_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ace_isRepairVehicle";
+					expression="_this setVariable ['ace_isRepairVehicle',_value, true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				nAttributes=4;
+			};
 		};
 	};
 	class Connections

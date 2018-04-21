@@ -73,6 +73,12 @@ class cfgFunctions
             class loadMount {};
             class saveExplosives {};
             class loadExplosives {};
+            class saveDamage {};
+            class loadDamage {};
+            class saveWeapons {};
+            class loadWeapons {};
+            class saveACESupplies {};
+            class loadACESupplies {};
         }
         class PersistencePublic
         {
@@ -83,6 +89,8 @@ class cfgFunctions
             class executeLoadCargo {};
             class executeSaveMan {};
             class executeLoadMan {};
+            class executeSaveVehicle {};
+            class executeLoadVehicle {};
         }
     };
 };
