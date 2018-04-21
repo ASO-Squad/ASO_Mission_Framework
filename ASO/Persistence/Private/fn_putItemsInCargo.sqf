@@ -16,7 +16,10 @@ Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 params ["_obj", "_items"];
-// Adding items
+if (typeName _items == "ARRAY") then
 {
-	_obj addItemCargoGlobal [_x, 1];
-} forEach _items;
+    // Adding items
+    {
+        _obj addItemCargoGlobal [_x, 1];
+    } forEach _items;
+};

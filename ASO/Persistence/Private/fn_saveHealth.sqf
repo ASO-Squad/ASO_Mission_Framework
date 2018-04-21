@@ -51,8 +51,10 @@ _morphine = _unit getVariable ["ace_medical_morphine", 0];
 _tourniquets = _unit getVariable ["ace_medical_tourniquets", [0,0,0,0,0,0]];
 _hitpointDamage = ((getAllHitPointsDamage _unit) select 2); 
 _isUnconscious = _unit getVariable ["ACE_isUnconscious", false];
+_isAlive = alive _unit;
 
 // Write information down
+["write", ["Health", "IsAlive", _isAlive]] call _inidbi;
 ["write", ["Health", "IsUnconscious", _isUnconscious]] call _inidbi;
 ["write", ["Health", "Damage", _hitpointDamage]] call _inidbi;
 ["write", ["Health", "Morphine", _morphine]] call _inidbi;
