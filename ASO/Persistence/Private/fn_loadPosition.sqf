@@ -8,6 +8,7 @@ Parameters:
     _unit			- The unit that we want to load the inventory of
 	_loadByName		- If true, we are loading this by the units name, otherwise it is loaded by the players name
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
+	_db				- DB Name differs from object Name (needed to support groundWeaponHolders)
 
 Returns:
     nothing
@@ -20,27 +21,29 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_unit", "_loadByName", "_prefix"];
+params ["_unit", "_loadByName", "_prefix", ["_db", ""]];
 
 // Check if the position got already loaded
 if (_unit getVariable ["ASO_P_Position", false]) exitWith {};
 
 // Use the appropriate name for the database 
-_db = "";
-if (_loadByName) then 
+if (_db == "") then
 {
-	_db = vehicleVarName _unit;
-}
-else
-{
-	_uid = getPlayerUID _unit;
-	if (_uid == "") then
+	if (_loadByName) then 
 	{
-		_db = vehicleVarName _unit; // Fallback if the unit is not a player
+		_db = vehicleVarName _unit;
 	}
 	else
 	{
-		_db = _uid;
+		_uid = getPlayerUID _unit;
+		if (_uid == "") then
+		{
+			_db = vehicleVarName _unit; // Fallback if the unit is not a player
+		}
+		else
+		{
+			_db = _uid;
+		};
 	};
 };
 
@@ -66,3 +69,5 @@ else
 };
 _unit setPosATL _position;
 _unit setVariable ["ASO_P_Position", true, true];
+// Return the position to use it with other functions
+_position;

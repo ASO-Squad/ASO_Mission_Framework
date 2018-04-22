@@ -91,6 +91,8 @@ class cfgFunctions
             class executeLoadMan {};
             class executeSaveVehicle {};
             class executeLoadVehicle {};
+            class executeSaveDropped {};
+            class executeLoadDropped {};
         }
     };
 };
