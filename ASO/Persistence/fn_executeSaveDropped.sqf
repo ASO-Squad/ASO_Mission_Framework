@@ -20,7 +20,7 @@ params ["_prefix"];
 _container = ((allMissionObjects "GroundWeaponHolder") + (entities "WeaponHolderSimulated"));
 _weaponHolders = 0;
 {
-	_name = format["weaponHolder_%1", _weaponHolders];
+	_name = format["weaponHolder_%1", _forEachIndex];
 	_x setVehicleVarName _name;
 	if (isServer) then
 	{
