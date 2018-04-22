@@ -55,7 +55,15 @@ if (typeName _containers == "ARRAY") then
 {
 	// Adding Containers
 	{
-		_obj addItemCargoGlobal [(_x select 0), 1];	
+		_class = (_x select 0);
+		if (_class isKindOf "Bag_Base") then
+		{
+			_obj addBackpackCargo [(_x select 0), 1];
+		}
+		else
+		{
+			_obj addItemCargoGlobal [(_x select 0), 1];	
+		}
 	} forEach _containers;
 }
 else
