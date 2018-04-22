@@ -6,6 +6,8 @@ Description:
 Parameters:
     _obj			- The object  that we want to load the cargo of
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
+	_delete			- Delete previous contents or not
+	_db				- DB Name differs from object Name (needed to support groundWeaponHolders)
 
 Returns:
     nothing
@@ -18,20 +20,26 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_obj", "_prefix"];
+params ["_obj", "_prefix", ["_delete", true], ["_db", ""]];
 
 // Use the appropriate name for the database 
-_db = vehicleVarName _obj;
+if (_db == "") then
+{
+	_db = vehicleVarName _obj;
+};
 
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 if (!("exists" call _inidbi)) exitWith {};
 
-// Empty cargo space 
-clearItemCargoGlobal _obj;
-clearMagazineCargoGlobal _obj;
-clearWeaponCargoGlobal _obj;
-clearBackpackCargoGlobal _obj;
+if (_delete) then
+{
+	// Empty cargo space 
+	clearItemCargoGlobal _obj;
+	clearMagazineCargoGlobal _obj;
+	clearWeaponCargoGlobal _obj;
+	clearBackpackCargoGlobal _obj;
+};
 
 // reading categories
 _magazines = ["read", ["Cargo", "Magazines"]] call _inidbi;
