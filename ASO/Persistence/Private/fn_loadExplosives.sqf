@@ -44,6 +44,8 @@ else
 };
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
+// Check if there is something to load
+if (!("exists" call _inidbi)) exitWith {};
 
 // Load information
 _explosives = ["read", ["Explosives", "Array"]] call _inidbi;
