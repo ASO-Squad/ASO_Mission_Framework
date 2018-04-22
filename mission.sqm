@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=194;
+		nextID=197;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4350.2632,232.73676,3761.7729};
-		dir[]={0.54622483,-0.1514525,0.82396334};
-		up[]={0.083731301,0.98844117,0.12630554};
-		aside[]={0.83358032,1.0093208e-007,-0.55260044};
+		pos[]={4354.1309,229.40459,3767.8264};
+		dir[]={0.90920168,-0.34465173,0.23407598};
+		up[]={0.33383,0.93869579,0.085944384};
+		aside[]={0.24935102,8.8475645e-008,-0.96853608};
 	};
 };
 binarizationWanted=0;
@@ -710,7 +710,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=48;
+		items=50;
 		class Item0
 		{
 			dataType="Group";
@@ -4024,8 +4024,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4368.9956,226.68747,3760.7708};
-				angles[]={6.2756805,4.9769111,0.0024958209};
+				position[]={4371.4087,226.70343,3762.8552};
+				angles[]={6.2782059,4.9769111,0};
 			};
 			side="Empty";
 			flags=4;
@@ -4035,6 +4035,7 @@ class Mission
 			};
 			id=190;
 			type="B_Heli_Light_01_dynamicLoadout_F";
+			atlOffset=-1.5258789e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4156,6 +4157,97 @@ class Mission
 				};
 				nAttributes=4;
 			};
+		};
+		class Item48
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4365.6748,224.95792,3769.3472};
+						angles[]={0,4.6086817,0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						name="TestAI";
+					};
+					id=195;
+					type="O_Soldier_AR_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=194;
+		};
+		class Item49
+		{
+			dataType="Trigger";
+			position[]={4361.3311,224.97546,3775.884};
+			class Attributes
+			{
+				text="Save AI & Dropped";
+				condition="call{this}";
+				onActivation="call{[[TestAI], true, ""framework""] call aso_fnc_executeSaveMan; ""framework"" call aso_fnc_executeSaveDropped;}";
+				sizeA=0;
+				sizeB=0;
+				repeatable=1;
+				activationBy="INDIA";
+				isServerOnly=1;
+			};
+			id=196;
+			type="EmptyDetector";
+			atlOffset=-1.5258789e-005;
 		};
 	};
 	class Connections
