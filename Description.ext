@@ -79,6 +79,8 @@ class cfgFunctions
             class loadWeapons {};
             class saveACESupplies {};
             class loadACESupplies {};
+            class saveMarkers {};
+            class loadMarkers {};
         }
         class PersistencePublic
         {
@@ -93,6 +95,8 @@ class cfgFunctions
             class executeLoadVehicle {};
             class executeSaveDropped {};
             class executeLoadDropped {};
+            class executeSaveMarkers {};
+            class executeLoadMarkers {};
         }
     };
 };
@@ -107,3 +111,4 @@ class CfgRemoteExec
                 mode = 2; // Remote execution is allowed for all functions
         };
 };
+allowFunctionsRecompile = 1;

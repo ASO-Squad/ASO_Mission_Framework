@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4354.1309,229.40459,3767.8264};
-		dir[]={0.90920168,-0.34465173,0.23407598};
-		up[]={0.33383,0.93869579,0.085944384};
-		aside[]={0.24935102,8.8475645e-008,-0.96853608};
+		pos[]={4351.7832,229.40459,3763.4807};
+		dir[]={0.71178895,-0.24267244,0.65931267};
+		up[]={0.17809251,0.97007519,0.16496138};
+		aside[]={0.67962563,-1.2727105e-007,-0.73371917};
 	};
 };
 binarizationWanted=0;
@@ -4236,9 +4236,9 @@ class Mission
 			position[]={4361.3311,224.97546,3775.884};
 			class Attributes
 			{
-				text="Save AI & Dropped";
+				text="Save AI & Dropped & Markers";
 				condition="call{this}";
-				onActivation="call{[[TestAI], true, ""framework""] call aso_fnc_executeSaveMan; ""framework"" call aso_fnc_executeSaveDropped;}";
+				onActivation="call{[[TestAI], true, ""framework""] call aso_fnc_executeSaveMan; ""framework"" call aso_fnc_executeSaveDropped;[false, ""framework""] call aso_fnc_executeSaveMarkers;}";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;
