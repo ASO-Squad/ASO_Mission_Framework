@@ -58,6 +58,7 @@ if (_varname == "") then
 }
 else
 {
+	["write", ["Variables", "AllVariables", [_varname]]] call _inidbi;
 	_value = _namespace getVariable [_varname, _default];
 	["write", ["Variables", _varname, _value]] call _inidbi;
 };
