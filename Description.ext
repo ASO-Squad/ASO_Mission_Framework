@@ -82,6 +82,7 @@ class cfgFunctions
             class saveMarkers {};
             class loadMarkers {};
             class saveVar {};
+            class loadVar {};
         }
         class PersistencePublic
         {
@@ -99,6 +100,7 @@ class cfgFunctions
             class executeSaveMarkers {};
             class executeLoadMarkers {};
             class executeSaveVar {};
+            class executeLoadVar {};
         }
     };
 };
