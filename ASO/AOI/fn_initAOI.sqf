@@ -27,8 +27,7 @@ params ["_trigger", "_objectiveHeader", "_objectiveDescription", "_taskType", "_
 // 0 - 2 = Parameters as definded above
 // 3 = Groups occuping this AOI
 // 4 = Groups on their way to this AOI
-// 5 = is defeated or not
-_thisAOI = [_trigger, _objectiveHeader, _objectiveDescription, [], [], false];
+_thisAOI = [_trigger, _objectiveHeader, _objectiveDescription, [], []];
 
 if (isNil "ASO_INIT") then
 {
