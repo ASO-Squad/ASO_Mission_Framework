@@ -14,12 +14,13 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-params ["_trigger", "_prefix"];
 
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
 };
+
+params ["_trigger", ["_prefix", ASO_PREFIX]];
 
 if (isServer) then
 {

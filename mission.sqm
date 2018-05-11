@@ -16,7 +16,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4355.0117,232.31757,3762.0981};
+		pos[]={4332.915,262.88797,3731.5527};
 		dir[]={0.40038338,-0.34683216,0.84830952};
 		up[]={0.14806457,0.93788469,0.31370917};
 		aside[]={0.90443879,-1.6899139e-007,-0.42687505};
@@ -3883,7 +3883,7 @@ class Mission
 			{
 				text="Save Player";
 				condition="call{this}";
-				onActivation="call{[[player], false, ""framework""] call aso_fnc_executeSaveMan;}";
+				onActivation="call{[[player], false] call aso_fnc_executeSaveMan;}";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;
@@ -3997,7 +3997,7 @@ class Mission
 			{
 				text="Save TestVehicles";
 				condition="call{this}";
-				onActivation="call{[[testvehicle1, testvehicle2, testvehicle3], ""framework""] call aso_fnc_executeSaveVehicle;}";
+				onActivation="call{[[testvehicle1, testvehicle2, testvehicle3]] call aso_fnc_executeSaveVehicle;}";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;
@@ -4238,7 +4238,7 @@ class Mission
 			{
 				text="Save AI & Dropped & Markers";
 				condition="call{this}";
-				onActivation="call{[[TestAI], true, ""framework""] call aso_fnc_executeSaveMan; ""framework"" call aso_fnc_executeSaveDropped;[false, ""framework""] call aso_fnc_executeSaveMarkers;}";
+				onActivation="call{[[TestAI], true] call aso_fnc_executeSaveMan; call aso_fnc_executeSaveDropped;[false] call aso_fnc_executeSaveMarkers;}";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;

@@ -6,7 +6,7 @@ Description:
 Parameters:
     _objects		- The objects that we want to keep the cargos of
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
-
+					If you don not provide a prefix, ASO_PREFIX will be used. 
 Returns:
     nothing
 
@@ -16,22 +16,14 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-_params = [];
 
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
 };
 
-if ((count _this) > 2) then 
-{
-	_params = (_this select 3); // Parameters are here when this code is called from an action
-} else
-{
-	_params = _this;
-};
-_objects = (_params select 0);
-_prefix = (_params select 1);
+params ["_objects", ["_prefix", ASO_PREFIX]];
+
 {
 	if (isServer) then
 	{

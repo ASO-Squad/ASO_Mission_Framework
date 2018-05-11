@@ -4,7 +4,8 @@ Description:
 	Files are written on the server machine.
 
 Parameters:
-	_prefix	- Prefix to be used for the database. This is usually used to identify different missions
+	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
+					If you don not provide a prefix, ASO_PREFIX will be used. 
 
 Returns:
     nothing
@@ -15,12 +16,13 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-params ["_prefix"];
 
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
 };
+
+params [["_prefix", ASO_PREFIX]];
 
 // Gather all containers on the ground ... this may take a while.
 _container = ((allMissionObjects "GroundWeaponHolder") + (entities "WeaponHolderSimulated"));

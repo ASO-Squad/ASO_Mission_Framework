@@ -6,8 +6,9 @@ Description:
 Parameters:
     _varspace		- Can be any object true namespaces are currently not supported
 	_saveByName		- If true, and the target is a player we are saving this by the units name, otherwise it is saved by the players name
-	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
 	_varname		- the variable we want to save. If you leave this empty, all variables of the target are saved (this can be a LOT!)
+	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
+					If you don not provide a prefix, ASO_PREFIX will be used. 
 
 Returns:
     nothing
@@ -18,12 +19,13 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-params ["_varspace", "_saveByName", "_prefix", ["_varname", ""], ["_default", ""]];
 
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
 };
+
+params ["_varspace", "_saveByName", ["_varname", ""], ["_default", ""], ["_prefix", ASO_PREFIX]];
 
 if (isServer) then
 {

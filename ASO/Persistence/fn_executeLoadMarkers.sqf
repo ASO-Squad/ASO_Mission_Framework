@@ -5,7 +5,8 @@ Description:
 	Right now all markers are saved and loaded from global.
 
 Parameters:
-    _prefix			- Prefix to be used for the database. This is usually used to identify different missions
+   _prefix	- Prefix to be used for the database. This is usually used to identify different missions
+			If you don not provide a prefix, ASO_PREFIX will be used. 
 
 Returns:
     nothing
@@ -16,21 +17,14 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-_params = [];
 
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
 };
 
-if ((count _this) > 1) then 
-{
-	_params = (_this select 3); // Parameters are here when this code is called from an action
-} else
-{
-	_params = _this;
-};
-_prefix = (_params select 0);
+params [["_prefix", ASO_PREFIX]];
+
 if (isServer) then
 {
 	[_prefix] call aso_fnc_loadMarkers;
