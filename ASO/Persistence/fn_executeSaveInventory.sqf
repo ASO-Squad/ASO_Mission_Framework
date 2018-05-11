@@ -25,7 +25,7 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_units",, "_saveByName" ["_prefix", ASO_PREFIX]];
+params ["_units", "_saveByName", ["_prefix", ASO_PREFIX]];
 
 if (count _units == 0) then
 {
