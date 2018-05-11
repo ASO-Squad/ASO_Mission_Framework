@@ -94,6 +94,12 @@ class cfgFunctions
             class saveVar {};
             class loadVar {};
         }
+        class PersistenceHelper
+        {
+            file = "ASO\Persistence\Helper"
+            class actionSaveInventory {};
+            class actionSaveCargo {};
+        }
         class PersistencePublic
         {
             file = "ASO\Persistence"
