@@ -48,6 +48,14 @@ _trigger setVariable ["ASO_DETECTED", false, true];
 _trigger setVariable ["ASO_DISTRESS", false, true];
 _trigger setVariable ["ASO_LOST", false, true];
 
+// Load previous state, if desired
+waitUntil {!(isNil "paramsArray")};
+_load = ["LoadMission", 1] call BIS_fnc_getParamValue;
+if (_load == 1) then
+{
+	[_trigger, ASO_PREFIX] call aso_fnc_executeLoadAOI;
+};
+
 waitUntil {!isnil "bis_fnc_init"};
 // push to global AOI list
 [ASO_AOIs, _trigger, _thisAOI] call CBA_fnc_hashSet;
