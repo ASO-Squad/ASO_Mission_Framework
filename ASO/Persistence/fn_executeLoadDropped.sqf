@@ -17,6 +17,12 @@ Author:
 ---------------------------------------------------------------------------- */
 params ["_prefix"];
 if (!isServer) exitWith {};
+
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
 // How many weaponHolders do we need to create?
 _inidbi = ["new", format["%1_%2", _prefix, "WeaponHolders"]] call OO_INIDBI;
 // Check if there is something to load

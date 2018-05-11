@@ -17,6 +17,12 @@ Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 _params = [];
+
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
 if ((count _this) > 2) then 
 {
 	_params = (_this select 3); // Parameters are here when this code is called from an action

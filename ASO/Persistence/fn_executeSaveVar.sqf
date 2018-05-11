@@ -20,6 +20,11 @@ Author:
 ---------------------------------------------------------------------------- */
 params ["_varspace", "_saveByName", "_prefix", ["_varname", ""], ["_default", ""]];
 
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
 if (isServer) then
 {
 	[_varspace, _saveByName, _prefix, _varname, _default] call aso_fnc_saveVar;

@@ -28,6 +28,12 @@ Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 _params = [];
+
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
 if (typeName (_this select 3) == "ARRAY") then 
 {
 	// We come from a action

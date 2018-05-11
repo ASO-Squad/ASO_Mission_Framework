@@ -17,6 +17,11 @@ Author:
 ---------------------------------------------------------------------------- */
 params ["_trigger", "_prefix"];
 
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
 if (isServer) then
 {
 	[_trigger, false, _prefix, "", ""] call aso_fnc_saveVar;

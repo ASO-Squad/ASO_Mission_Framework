@@ -16,6 +16,12 @@ Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 params ["_prefix"];
+
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
 // Gather all containers on the ground ... this may take a while.
 _container = ((allMissionObjects "GroundWeaponHolder") + (entities "WeaponHolderSimulated"));
 _weaponHolders = 0;
