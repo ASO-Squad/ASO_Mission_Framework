@@ -23,23 +23,7 @@ if (!isServer) exitWith {};
 params ["_varspace", "_loadByName", "_prefix", "_varname", "_default"];
 
 // Use the appropriate name for the database 
-_db = "";
-if (_loadByName) then 
-{
-	_db = vehicleVarName _varspace;
-}
-else
-{
-	_uid = getPlayerUID _varspace;
-	if (_uid == "") then
-	{
-		_db = vehicleVarName _varspace; // Fallback if the unit is not a player
-	}
-	else
-	{
-		_db = _uid;
-	};
-};
+_db = [_varspace, _loadByName] call aso_fnc_getDbName;
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 // Check if there is something to load
