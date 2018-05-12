@@ -7,6 +7,7 @@ Parameters:
     _varspace		- Can be any object true namespaces are currently not supported
 	_saveByName		- If true, and the target is a player we are saving this by the units name, otherwise it is saved by the players name
 	_varname		- the variable we want to save. If you leave this empty, all variables of the target are saved (this can be a LOT!)
+					  you can also give an array of variables, you want to be saved.
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
 					If you don not provide a prefix, ASO_PREFIX will be used. 
 
@@ -14,7 +15,7 @@ Returns:
     nothing
 
 Example:
-    [_varspace, false, _prefix, _varname] call aso_fnc_executeSaveVar;
+    [_varspace, false, _varname, nil, _prefix] call aso_fnc_executeSaveVar;
 
 Author:
     Papa Mike

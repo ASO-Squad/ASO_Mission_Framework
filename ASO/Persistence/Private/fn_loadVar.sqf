@@ -37,11 +37,67 @@ if (_varname == "") then
 	// looping through all variables
 	{
 		_value = ["read", ["Variables", _x, _default]] call _inidbi;
+		if (typeName _value != "ARRAY") then
+		{
+			_isObject = _value find "OBJECT:";
+			if (_isObject == 0) then
+			{
+				_value = [_value, "OBJECT:"] call CBA_fnc_leftTrim;
+				_value = (missionNamespace getVariable [_value, objNull]);
+			};
+		};
+		if (typeName _value == "ARRAY") then
+		{
+			_newValue = [];
+			{
+				_var = "";
+				_isObject = _x find "OBJECT:";
+				if (_isObject == 0) then
+				{
+					_var = [_x, "OBJECT:"] call CBA_fnc_leftTrim;
+					_var = (missionNamespace getVariable [_var, objNull]);
+				}
+				else
+				{
+					_var = _x;
+				};
+				_newValue pushBack _var;			
+			} forEach _value;
+			_value = _newValue;
+		};
 		_varspace setVariable [_x, _value, true];
 	} forEach _all;
 }
 else
 {
 	_value = ["read", ["Variables", _varname, _default]] call _inidbi;
+	if (typeName _value != "ARRAY") then
+	{
+		_isObject = _value find "OBJECT:";
+		if (_isObject == 0) then
+		{
+			_value = [_value, "OBJECT:"] call CBA_fnc_leftTrim;
+			_value = (missionNamespace getVariable [_value, objNull]);
+		};
+	};
+	if (typeName _value == "ARRAY") then
+	{
+		_newValue = [];
+		{
+			_var = "";
+			_isObject = _x find "OBJECT:";
+			if (_isObject == 0) then
+			{
+				_var = [_x, "OBJECT:"] call CBA_fnc_leftTrim;
+				_var = (missionNamespace getVariable [_var, objNull]);
+			}
+			else
+			{
+				_var = _x;
+			};
+			_newValue pushBack _var;			
+		} forEach _value;
+		_value = _newValue;
+	};
 	_varspace setVariable [_varname, _value, true];
 };
