@@ -21,7 +21,10 @@ params ["_object", "_preferName"];
 _db = "";
 if (_preferName) then 
 {
-	_db = vehicleVarName _object;
+	if (typeName _object == "OBJECT") then
+	{
+		_db = vehicleVarName _object;
+	};
 	if (_db == "") then
 	{
 		_fallback = format["%1", _object];
@@ -32,7 +35,11 @@ if (_preferName) then
 }
 else
 {
-	_uid = getPlayerUID _object;
+	_uid = "";
+	if (typeName _object == "OBJECT") then
+	{
+		_uid = getPlayerUID _object;
+	};
 	if (_uid == "" || _uid == "_SP_AI_") then
 	{
 		// Fallback if the unit is not a player
