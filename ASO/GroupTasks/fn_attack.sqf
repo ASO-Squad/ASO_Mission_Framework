@@ -17,7 +17,16 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
 params ["_group", "_trigger"];
+
+// Keep this group in mind for saving
+[_group] call aso_fnc_collectGroup;
+
 // do not give orders to empty groups
 if (isNull _group || (count units _group) == 0) exitWith {};
 // extracting info from trigger
