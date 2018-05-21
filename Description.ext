@@ -126,7 +126,7 @@ class cfgFunctions
             class executeSaveAOI {};
             class executeLoadAOI {};
             class executeSaveOrders {};
-            //class executeLoadOrders {};
+            class executeLoadOrders {};
         }
     };
 };

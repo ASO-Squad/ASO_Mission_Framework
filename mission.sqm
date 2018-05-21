@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=197;
+		nextID=202;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4332.915,262.88797,3731.5527};
-		dir[]={0.40038338,-0.34683216,0.84830952};
-		up[]={0.14806457,0.93788469,0.31370917};
-		aside[]={0.90443879,-1.6899139e-007,-0.42687505};
+		pos[]={4359.542,231.55681,3761.02};
+		dir[]={0.03857797,-0.13738954,0.98988116};
+		up[]={0.0053548217,0.99048454,0.13738263};
+		aside[]={0.99935693,-1.7315506e-007,-0.038947374};
 	};
 };
 binarizationWanted=0;
@@ -2526,7 +2526,7 @@ class Mission
 			class Attributes
 			{
 				name="m_range_unit";
-				init="call{[this, m_range, ""MOBILE""] call aso_fnc_garrison;}";
+				init="call{[this, m_range, ""MOBILE"", false] call aso_fnc_garrisonSimple;}";
 			};
 			class CrewLinks
 			{
@@ -2551,6 +2551,29 @@ class Mission
 			};
 			id=82;
 			atlOffset=-0.00043869019;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="m_range_unit";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item17
 		{
@@ -2859,6 +2882,29 @@ class Mission
 			};
 			id=118;
 			atlOffset=-0.00042486191;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="m_range_arti";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item26
 		{
@@ -3139,7 +3185,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="as_mike_inf";
+							value="Alpha 1-6";
 						};
 					};
 				};
@@ -3455,7 +3501,7 @@ class Mission
 			class Attributes
 			{
 				name="c_maxwell_mech";
-				init="call{[this, c_maxwell, ""MECHANIZED"", false] call aso_fnc_garrison;}";
+				init="call{[this, c_maxwell, ""MECHANIZED"", false] call aso_fnc_garrisonSimple;}";
 				formation="STAG COLUMN";
 			};
 			class CrewLinks
@@ -3760,7 +3806,7 @@ class Mission
 			class Attributes
 			{
 				name="as_mike_inf2";
-				init="call{[this, as_mike, ""INFANTRY"", false] call aso_fnc_garrison;}";
+				init="call{[this, as_mike, ""INFANTRY"", false] call aso_fnc_garrisonSimple;}";
 				speedMode="LIMITED";
 				formation="STAG COLUMN";
 			};
@@ -4272,6 +4318,29 @@ class Mission
 			{
 			};
 			id=194;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="testAI";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item49
 		{

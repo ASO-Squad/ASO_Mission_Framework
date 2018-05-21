@@ -43,47 +43,80 @@ _radius = (_xRad + _yRad) / 2;
 // Clear waypoints to make the group move immediately
 [_group] call CBA_fnc_clearWaypoints;
 
-// Do not use defend with anything else than infantry
-// defending vehicles get stuck easily and wont move anywhere even with new waypoints
-if (_type == "INFANTRY") then 
+// Load previous state, if desired
+// true is, in this case a safe default, because we check for the presence of aso_orders later
+_load = ["LoadMission", 1] call BIS_fnc_getParamValue; 
+if (_load == 1) then
 {
-    if (_loiter) then 
+    [[_group], ASO_PREFIX] call aso_fnc_executeLoadOrders;
+};
+// Make sure we loaded some orders
+_orders = _group getVariable ["aso_orders", false];
+_default = false;
+if (typeName _orders == "ARRAY") then
+{
+    _order = (_orders select 0);
+    _target = (_orders select 1);
+    // Putting this group to AOI
+    [_group, _trigger] spawn aso_fnc_addGroupToAOI;
+    switch (_order) do 
     {
-        // Move around
-        [_group, (getPos leader _group), (_radius/4), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
-        // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
-        [_group, 60] spawn aso_fnc_enableDynamicSim;
-    }
-    else
-    {
-        [_group, (getPos leader _group), 0, "HOLD", "AWARE", "YELLOW", "LIMITED", "FILE", "group this enableDynamicSimulation true;"] call CBA_fnc_addWaypoint;
+        case "ATTACK": { [_group, _target] call aso_fnc_attack; };
+        case "SEARCH": { [_group, _target] call aso_fnc_search; };
+        case "PATROL": { [_group, _target] call aso_fnc_patrol; };
+        case "GUARD":  { [_group, _target, false, _type] call aso_fnc_guard };
+        default { _default = true; };
     };
 }
 else
 {
-    if (_loiter) then 
+    _default = true;
+};
+if (_default) then
+{
+    // Do not use defend with anything else than infantry
+    // defending vehicles get stuck easily and wont move anywhere even with new waypoints
+    if (_type == "INFANTRY") then 
     {
-        [_group,(getPos leader _group), (_radius), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "", [0,3,10]] call CBA_fnc_taskPatrol;
-        // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
-        [_group, 60] spawn aso_fnc_enableDynamicSim;
+        if (_loiter) then 
+        {
+            // Move around
+            [_group, (getPos leader _group), (_radius/4), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
+            // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
+            [_group, 60] spawn aso_fnc_enableDynamicSim;
+        }
+        else
+        {
+            [_group, (getPos leader _group), 0, "HOLD", "AWARE", "YELLOW", "LIMITED", "FILE", "group this enableDynamicSimulation true;"] call CBA_fnc_addWaypoint;
+        };
     }
     else
     {
-        // Create a waypoint to move into a vehicle if possible
-        [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
-        // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
-        [_group, 60] spawn aso_fnc_enableDynamicSim;
+        if (_loiter) then 
+        {
+            [_group,(getPos leader _group), (_radius), 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "", [0,3,10]] call CBA_fnc_taskPatrol;
+            // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
+            [_group, 60] spawn aso_fnc_enableDynamicSim;
+        }
+        else
+        {
+            // Create a waypoint to move into a vehicle if possible
+            [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+            // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
+            [_group, 60] spawn aso_fnc_enableDynamicSim;
+        };
     };
+
+    // Putting this group to AOI
+    [_group, _trigger] spawn aso_fnc_addGroupToAOI;
+
+    // Tracking Orders
+    _group setVariable ["ASO_ORDERS", ["GARRISON", _trigger], true];
+    _group setVariable ["ASO_HOME", _trigger, true]; // Set new homebase
+    _group setVariable ["ASO_TYPE", _type, true];
+    
+    // Show Debug Output
+    ["New task GARRISON for", groupId _group] call aso_fnc_debug;
 };
-
-// Putting this group to AOI
-[_group, _trigger] spawn aso_fnc_addGroupToAOI;
-
-// Tracking Orders
-_group setVariable ["ASO_ORDERS", ["GARRISON", _trigger], true];
-_group setVariable ["ASO_HOME", _trigger, true]; // Set new homebase
-_group setVariable ["ASO_TYPE", _type, true];
-
 // Show Debug Output
-["New task GARRISON for", groupId _group] call aso_fnc_debug;
 [_group] spawn aso_fnc_trackGroup;
