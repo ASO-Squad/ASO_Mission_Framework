@@ -37,7 +37,7 @@ if (_varname == "") then
 	// looping through all variables
 	{
 		_value = ["read", ["Variables", _x, _default]] call _inidbi;
-		if (typeName _value != "ARRAY") then
+		if (typeName _value == "STRING") then
 		{
 			_isObject = _value find "OBJECT:";
 			if (_isObject == 0) then
@@ -71,7 +71,7 @@ if (_varname == "") then
 else
 {
 	_value = ["read", ["Variables", _varname, _default]] call _inidbi;
-	if (typeName _value != "ARRAY") then
+	if (typeName _value == "STRING") then
 	{
 		_isObject = _value find "OBJECT:";
 		if (_isObject == 0) then
