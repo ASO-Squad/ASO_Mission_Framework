@@ -68,4 +68,9 @@ if (_earplugs) then
 
 // Apply loadout 
 _unit setUnitLoadout [_fullInventory, false];
+
+//Negotiate radio instance 
+[] remoteExec ["aso_fnc_requestRadios", _unit, false]; // This needs to be called on the client
+
+// Done
 _unit setVariable ["ASO_P_Inventory", true, true];
