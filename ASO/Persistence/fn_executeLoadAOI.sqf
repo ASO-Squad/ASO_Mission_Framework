@@ -2,14 +2,14 @@
 Description:
     Remotly executes all functions that are needed to load the state of an AOI
 Parameters:
-    _trigger		- The trigger representing the AOI
+    _triggers		- The triggers representing the AOIs
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
 
 Returns:
     nothing
 
 Example:
-    [_trigger, _prefix] call aso_fnc_executeLoadAOI;
+    [_triggers, _prefix] call aso_fnc_executeLoadAOI;
 
 Author:
     Papa Mike
@@ -20,13 +20,21 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_trigger", ["_prefix", ASO_PREFIX]];
+params ["_triggers", ["_prefix", ASO_PREFIX]];
 
 if (isServer) then
 {
-	[_trigger, false, _prefix, "", ""] call aso_fnc_loadVar;
+    {
+        [_x, false, _prefix, "", ""] call aso_fnc_loadVar;
+        
+    } forEach _triggers;
+	
 }
 else
 {
-	[_trigger, false, _prefix, "", ""] remoteExecCall ["aso_fnc_loadVar", 2, false]; // Call this on the server
+    {
+        [_x, false, _prefix, "", ""] remoteExecCall ["aso_fnc_loadVar", 2, false]; // Call this on the server
+        
+    } forEach _triggers;
+	
 };		
