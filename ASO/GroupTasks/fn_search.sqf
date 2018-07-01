@@ -5,6 +5,7 @@ Description:
 Parameters:
     _group      - the group searching the area
     _trigger   	- trigger that is to be searched, should be a circle
+    _fromDB   - Avoid loading orders, useful if this function is already called by loading an order
 
 Returns:
     None
@@ -22,7 +23,8 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group", "_trigger"];
+params ["_group", "_trigger", ["_fromDB", true]];
+private ["_orders", "_default"];
 
 // Keep this group in mind for saving
 [_group] call aso_fnc_collectGroup;
@@ -33,8 +35,9 @@ if (isNull _group || (count units _group) == 0) exitWith {};
 // Load previous state, if desired
 // true is, in this case a safe default, because we check for the presence of aso_orders later
 _load = ["LoadMission", 1] call BIS_fnc_getParamValue; 
-if (_load == 1) then
+if (_load == 1 && _fromDB) then
 {
+    ["Loading Orders for:", groupId _group] call aso_fnc_debug;    
     [[_group], ASO_PREFIX] call aso_fnc_executeLoadOrders;
 };
 // Make sure we loaded some orders
@@ -48,10 +51,10 @@ if (typeName _orders == "ARRAY") then
     [_group, _trigger] spawn aso_fnc_addGroupToAOI;
     switch (_order) do 
     {
-        case "ATTACK": { [_group, _target] call aso_fnc_attack; };
+        case "ATTACK": { [_group, _target, false] call aso_fnc_attack; };
         case "SEARCH": { _trigger = _target; _default = true;};
-        case "PATROL": { [_group, _target] call aso_fnc_patrol; };
-        case "GUARD":  { [_group, _target, false, _type] call aso_fnc_guard };
+        case "PATROL": { [_group, _target, false] call aso_fnc_patrol; };
+        case "GUARD":  { [_group, _target, false, _type, false] call aso_fnc_guard };
         default { _default = true; };
     };
 }

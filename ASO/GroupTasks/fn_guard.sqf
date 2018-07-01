@@ -8,6 +8,7 @@ Parameters:
     _hold       - chance for each unit to hold their garrison in combat
     _type       - What kind of unit is this. Possible values are:
                 "INFANTRY", "MOBILE", "MECHANIZED", "ARMORED", "ARTILLERY", "AIR"
+    _fromDB   - Avoid loading orders, useful if this function is already called by loading an order
 
 Returns:
     None
@@ -25,7 +26,8 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group", "_trigger", "_hold", "_type"];
+params ["_group", "_trigger", "_hold", "_type", ["_fromDB", true]];
+private ["_orders", "_default"];
 
 // Keep this group in mind for saving
 [_group] call aso_fnc_collectGroup;
@@ -40,8 +42,9 @@ _radius = (_xRad + _yRad) / 2;
 // Load previous state, if desired
 // true is, in this case a safe default, because we check for the presence of aso_orders later
 _load = ["LoadMission", 1] call BIS_fnc_getParamValue; 
-if (_load == 1) then
+if (_load == 1 && _fromDB) then
 {
+    ["Loading Orders for:", groupId _group] call aso_fnc_debug;    
     [[_group], ASO_PREFIX] call aso_fnc_executeLoadOrders;
 };
 // Make sure we loaded some orders
@@ -55,9 +58,9 @@ if (typeName _orders == "ARRAY") then
     [_group, _trigger] spawn aso_fnc_addGroupToAOI;
     switch (_order) do 
     {
-        case "ATTACK": { [_group, _target] call aso_fnc_attack; };
-        case "SEARCH": { [_group, _target] call aso_fnc_search; };
-        case "PATROL": { [_group, _target] call aso_fnc_patrol; };
+        case "ATTACK": { [_group, _target, false] call aso_fnc_attack; };
+        case "SEARCH": { [_group, _target, false] call aso_fnc_search; };
+        case "PATROL": { [_group, _target, false] call aso_fnc_patrol; };
         case "GUARD":  { _trigger = _target; _default = true; };
         default { _default = true; };
     };
