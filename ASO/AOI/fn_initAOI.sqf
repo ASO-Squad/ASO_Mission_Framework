@@ -53,7 +53,7 @@ waitUntil {!(isNil "paramsArray")};
 _load = ["LoadMission", 1] call BIS_fnc_getParamValue;
 if (_load == 1) then
 {
-	[_trigger, ASO_PREFIX] call aso_fnc_executeLoadAOI;
+	[[_trigger], ASO_PREFIX] call aso_fnc_executeLoadAOI;
 };
 
 waitUntil {!isnil "bis_fnc_init"};

@@ -23,10 +23,7 @@ if (!isServer) exitWith {};
 params ["_obj", "_prefix", ["_delete", true], ["_db", ""]];
 
 // Use the appropriate name for the database 
-if (_db == "") then
-{
-	_db = vehicleVarName _obj;
-};
+_db = [_obj, true] call aso_fnc_getDbName;
 
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;

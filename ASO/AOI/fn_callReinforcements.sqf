@@ -22,6 +22,12 @@ Author:
 if (!isServer) exitWith {};
 params ["_AOI", "_types", "_task", "_maxDistance"];
 
+// Make sure we respect previous state
+waitUntil {!(isNil "paramsArray")};
+_load = ["LoadMission", 0] call BIS_fnc_getParamValue;
+// Do not call for reinforcements in the first few minutes after a mission has been loaded
+if (_load == 1 && time < 0) exitWith {hint "too early: wait for cooldown";}; // 180 = 3 Minutes
+
 ["Trying to find reinforcements for", _AOI] call aso_fnc_debug;
 // Get all AOIs
 _aoiArray = ASO_AOIs select 1; // all keys from the hash the old fashioned way. Getting non-string keys is currently broken, thanks CBA

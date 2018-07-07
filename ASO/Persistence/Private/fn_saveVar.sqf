@@ -23,42 +23,112 @@ if (!isServer) exitWith {};
 params ["_varspace", "_saveByName", "_prefix", "_varname", "_default"];
 
 // Use the appropriate name for the database 
-_db = "";
-if (_saveByName) then 
-{
-	_db = vehicleVarName _varspace;
-}
-else
-{
-	_uid = getPlayerUID _varspace;
-	if (_uid == "") then
-	{
-		_db = vehicleVarName _varspace; // Fallback if the unit is not a player
-	}
-	else
-	{
-		_db = _uid;
-	};
-};
+_db = [_varspace, _saveByName] call aso_fnc_getDbName;
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 ["deleteSection", "Variables"] call _inidbi; // cleanup
 
 _value = "";
 _all = [];
-if (_varname == "") then
+if (typeName _varname == "ARRAY") then
 {
-	_all = allVariables _varspace;
-	["write", ["Variables", "AllVariables", _all]] call _inidbi;
+	["write", ["Variables", "AllVariables", _varname]] call _inidbi;
 	// looping through all variables
 	{
 		_value = _varspace getVariable _x;
+		// Make sure there is no object somwhere
+		if (typeName _value == "OBJECT") then
+		{
+			_value = vehicleVarName _value;
+			_value = "OBJECT:" + _value
+		};
+		if (typeName _value == "ARRAY") then
+		{
+			_newValue = [];
+			{
+				_var = "";
+				if (typeName _x == "OBJECT") then
+				{
+					_var = vehicleVarName _x;
+					_var = "OBJECT:" + _var;
+				}
+				else
+				{
+					_var = _x;
+				};
+				_newValue pushBack _var;
+				
+			} forEach _value;
+			_value = _newValue;
+		};
 		["write", ["Variables", _x, _value]] call _inidbi;
-	} forEach _all;
+	} forEach _varname;
 }
 else
 {
-	["write", ["Variables", "AllVariables", [_varname]]] call _inidbi;
-	_value = _varspace getVariable [_varname, _default];
-	["write", ["Variables", _varname, _value]] call _inidbi;
+	if (_varname == "") then
+	{
+		_all = allVariables _varspace;
+		["write", ["Variables", "AllVariables", _all]] call _inidbi;
+		// looping through all variables
+		{
+			_value = _varspace getVariable _x;
+			// Make sure there is no object somwhere
+			if (typeName _value == "OBJECT") then
+			{
+				_value = vehicleVarName _value;
+				_value = "OBJECT:" + _value;
+			};
+			if (typeName _value == "ARRAY") then
+			{
+				_newValue = [];
+				{
+					_var = "";
+					if (typeName _x == "OBJECT") then
+					{
+						_var = vehicleVarName _x;
+						_var = "OBJECT:" + _var;
+					}
+					else
+					{
+						_var = _x;
+					};
+					_newValue pushBack _var;
+					
+				} forEach _value;
+				_value = _newValue;
+			};
+			["write", ["Variables", _x, _value]] call _inidbi;
+		} forEach _all;
+	}
+	else
+	{
+		["write", ["Variables", "AllVariables", [_varname]]] call _inidbi;
+		_value = _varspace getVariable [_varname, _default];
+		if (typeName _value == "OBJECT") then
+		{
+			_value = vehicleVarName _value;
+			_value = "OBJECT:" + _value;
+		};
+		if (typeName _value == "ARRAY") then
+		{
+			_newValue = [];
+			{
+				_var = "";
+				if (typeName _x == "OBJECT") then
+				{
+					_var = vehicleVarName _x;
+					_var = "OBJECT:" + _var;
+				}
+				else
+				{
+					_var = _x;
+				};
+				_newValue pushBack _var;
+				
+			} forEach _value;
+			_value = _newValue;
+		};
+		_foo = ["write", ["Variables", _varname, _value]] call _inidbi;
+	};
 };

@@ -26,6 +26,8 @@ _trigger setVariable ["ASO_ASSESSING", true, true];
 while {(_trigger getVariable ["ASO_ASSESSING", false])} do 
 {
 	_targets = list _trigger;
+	// Quit if there is nothing to do
+	if ((isNil "_targets")) exitWith {};
 	_targets = _targets - [objNull];
 	if (ASO_DEBUG) then
 	{
@@ -70,6 +72,11 @@ while {(_trigger getVariable ["ASO_ASSESSING", false])} do
 	["Targets ASSESSED", _targets] call aso_fnc_debug;
 	// Keep tracking after first loop if desired 
 	_trigger setVariable ["ASO_ASSESSING", _keepTracking, true];
+	// stop tracking if there are no more edit3DENMissionAttributes
+	if ((count _targets) == 0) then 
+	{
+		_trigger setVariable ["ASO_ASSESSING", false, true];
+	};
 	if (!_keepTracking) exitWith {}; // immediatly exit if we do not continue to track
 	sleep 30;
 };

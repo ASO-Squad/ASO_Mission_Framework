@@ -40,6 +40,7 @@ class cfgFunctions
             class assessArtilleryTargets {};
             class delayedBehaviourChange {};
             class init_aso {};
+            class requestRadio {};
         }
         class AOIPrivate
         {
@@ -93,12 +94,17 @@ class cfgFunctions
             class loadMarkers {};
             class saveVar {};
             class loadVar {};
+            class getDbName {};
         }
         class PersistenceHelper
         {
             file = "ASO\Persistence\Helper"
             class actionSaveInventory {};
             class actionSaveCargo {};
+            class collectGroup {};
+            class collectCrate {};
+            class collectObject {};
+            class collectVehicle {};
         }
         class PersistencePublic
         {
@@ -119,6 +125,8 @@ class cfgFunctions
             class executeLoadVar {};
             class executeSaveAOI {};
             class executeLoadAOI {};
+            class executeSaveOrders {};
+            class executeLoadOrders {};
         }
     };
 };
