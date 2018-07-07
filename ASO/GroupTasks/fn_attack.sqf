@@ -24,7 +24,7 @@ if (isNil "ASO_INIT") then
 };
 
 params ["_group", "_trigger", ["_fromDB", true]];
-private ["_orders", "_default"];
+private ["_orders", "_default", "_wpCount"];
 
 // Keep this group in mind for saving
 [_group] call aso_fnc_collectGroup;
@@ -71,11 +71,15 @@ if (_default) then
     // Attacks may arrive from far away so we have to make sure they can move
     _group enableDynamicSimulation false; 
 
-    [_group] call CBA_fnc_clearWaypoints;
-    [_group, (getPos leader _group), 0, "MOVE", "AWARE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
-
     // Calling CBA_fnc_Attack
-    [_group, _trigger, _radius, false] call CBA_fnc_taskAttack;
+    [_group, _trigger, _radius, true] call CBA_fnc_taskAttack;
+    // somehow there is a waypoint created on the original position. This is the workaround
+    _wpCount = count (waypoints _group);
+    if (_wpCount > 1) then
+    {
+        deleteWaypoint [_group, 0];
+    };
+
     [_group, "AWARE", "NORMAL", 60] spawn aso_fnc_delayedBehaviourChange;
 
     // Tracking orders

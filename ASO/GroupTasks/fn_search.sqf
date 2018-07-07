@@ -66,7 +66,12 @@ if (_default) then
 {
     // Calling CBA_fnc_taskDefend
     [_group, _trigger] call CBA_fnc_taskSearchArea;
-
+    // somehow there is a waypoint created on the original position. This is the workaround
+    _wpCount = count (waypoints _group);
+    if (_wpCount > 1) then
+    {
+        deleteWaypoint [_group, 0];
+    };
     // Tracking Orders
     _group setVariable ["ASO_ORDERS", ["SEARCH", _trigger], true];
 
