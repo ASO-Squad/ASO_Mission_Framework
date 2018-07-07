@@ -1,11 +1,11 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Loads the inventory for the given unit, and does this with INIDBI2.
-	InventoryFiles are loaded from the server machine.
+    Loads the position for the given unit, and does this with INIDBI2.
+	Files are loaded from the server machine.
 	The unit in question should be of the type MEN.
 
 Parameters:
-    _unit			- The unit that we want to load the inventory of
+    _unit			- The unit that we want to load the position of
 	_loadByName		- If true, we are loading this by the units name, otherwise it is loaded by the players name
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
 	_db				- DB Name differs from object Name (needed to support groundWeaponHolders)
