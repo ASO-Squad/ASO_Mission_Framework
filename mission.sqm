@@ -1131,7 +1131,6 @@ class Mission
 					{
 						init="call{ this setCaptive true;}";
 						name="badassmotherfucker";
-						isPlayer=1;
 					};
 					id=165;
 					type="B_Recon_Sharpshooter_F";
@@ -1622,9 +1621,9 @@ class Mission
 			position[]={4361.3311,224.97546,3775.884};
 			class Attributes
 			{
-				text="Save AI & Dropped & Markers";
+				text="Save AI & Dropped & Markers & Orders";
 				condition="call{this}";
-				onActivation="call{[[TestAI], true] call aso_fnc_executeSaveMan; call aso_fnc_executeSaveDropped;[false] call aso_fnc_executeSaveMarkers;}";
+				onActivation="call{[ASO_UNITS, true] call aso_fnc_executeSaveMan; call aso_fnc_executeSaveDropped;[false] call aso_fnc_executeSaveMarkers;[ASO_GROUPS] call aso_fnc_executeSaveOrders;[ASO_VEHICLES] call aso_fnc_executeSaveVehicle;}";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;
@@ -1707,18 +1706,19 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4367.7729,227.09125,3827.7595};
-						angles[]={6.2631893,0,0.014998405};
+						position[]={4367.7729,227.0912,3827.759};
+						angles[]={6.2631841,0,0.014992379};
 					};
 					side="East";
 					flags=4;
 					class Attributes
 					{
 						name="crew2";
+						isPlayer=1;
 					};
 					id=204;
 					type="O_crew_F";
-					atlOffset=0.0090332031;
+					atlOffset=0.0089874268;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2782,7 +2782,7 @@ class Mission
 			class Attributes
 			{
 				name="as_mike_inf2";
-				init="call{[this, as_mike, ""INFANTRY"", false] call aso_fnc_garrisonSimple;}";
+				init="call{[this, as_mike, ""INFANTRY"", false] call aso_fnc_garrison;}";
 				speedMode="LIMITED";
 				formation="STAG COLUMN";
 			};
@@ -2801,7 +2801,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={3353.9055,234.48143,2900.4006};
-						angles[]={-0,2.2137756,0};
+						angles[]={0,2.2137756,0};
 					};
 					side="East";
 					flags=4;
@@ -2817,7 +2817,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={3353.9055,234.48143,2900.4006};
-						angles[]={-0,2.2137756,0};
+						angles[]={0,2.2137756,0};
 					};
 					side="East";
 					flags=4;
@@ -2833,7 +2833,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={3353.9055,234.48143,2900.4006};
-						angles[]={-0,2.2137756,0};
+						angles[]={0,2.2137756,0};
 					};
 					side="East";
 					flags=6;
@@ -3035,7 +3035,7 @@ class Mission
 			class Attributes
 			{
 				name="c_maxwell_mech";
-				init="call{[this, c_maxwell, ""MECHANIZED"", false] call aso_fnc_garrisonSimple;}";
+				init="call{[this, c_maxwell, ""MECHANIZED"", false] call aso_fnc_garrison;}";
 				formation="STAG COLUMN";
 			};
 			class CrewLinks
@@ -3082,6 +3082,7 @@ class Mission
 				};
 			};
 			id=233;
+			atlOffset=-0.00057983398;
 		};
 		class Item39
 		{
@@ -3089,7 +3090,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={3353.9375,237.03625,2900.3059};
-				angles[]={-0,2.2137756,0};
+				angles[]={0,2.2137756,0};
 			};
 			side="East";
 			flags=6;
@@ -3100,6 +3101,7 @@ class Mission
 			};
 			id=245;
 			type="O_APC_Wheeled_02_rcws_F";
+			atlOffset=-0.00057983398;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -3736,7 +3738,7 @@ class Mission
 				};
 			};
 			id=270;
-			atlOffset=-0.003947258;
+			atlOffset=-0.0039470196;
 		};
 		class Item45
 		{
@@ -3753,7 +3755,7 @@ class Mission
 			};
 			id=274;
 			type="O_Mortar_01_F";
-			atlOffset=-0.003947258;
+			atlOffset=-0.0039470196;
 		};
 		class Item46
 		{
@@ -3770,7 +3772,7 @@ class Mission
 			};
 			id=275;
 			type="O_Mortar_01_F";
-			atlOffset=-0.027571917;
+			atlOffset=-0.027572155;
 		};
 		class Item47
 		{
@@ -3811,6 +3813,7 @@ class Mission
 					};
 					id=278;
 					type="O_Soldier_F";
+					atlOffset=4.7683716e-007;
 				};
 				class Item1
 				{
@@ -3846,7 +3849,7 @@ class Mission
 					};
 					id=280;
 					type="O_Soldier_F";
-					atlOffset=-4.7683716e-007;
+					atlOffset=-9.5367432e-007;
 				};
 				class Item3
 				{
@@ -3865,7 +3868,7 @@ class Mission
 					};
 					id=281;
 					type="O_Soldier_LAT_F";
-					atlOffset=0.00043821335;
+					atlOffset=0.00043773651;
 				};
 				class Item4
 				{
@@ -3883,7 +3886,7 @@ class Mission
 					};
 					id=282;
 					type="O_soldier_M_F";
-					atlOffset=0.00043964386;
+					atlOffset=0.00043916702;
 				};
 				class Item5
 				{
@@ -3901,7 +3904,7 @@ class Mission
 					};
 					id=283;
 					type="O_Soldier_TL_F";
-					atlOffset=0.0035638809;
+					atlOffset=0.0035634041;
 				};
 				class Item6
 				{
@@ -3920,7 +3923,7 @@ class Mission
 					};
 					id=284;
 					type="O_Soldier_AR_F";
-					atlOffset=0.0035634041;
+					atlOffset=0.0035638809;
 				};
 				class Item7
 				{
@@ -4035,7 +4038,7 @@ class Mission
 			class Attributes
 			{
 				name="m_range_unit";
-				init="call{[this, m_range, ""MOBILE"", false] call aso_fnc_garrisonSimple;}";
+				init="call{[this, m_range, ""MOBILE"", false] call aso_fnc_garrison;}";
 			};
 			class CrewLinks
 			{
@@ -4059,6 +4062,7 @@ class Mission
 				};
 			};
 			id=277;
+			atlOffset=-7.4386597e-005;
 		};
 		class Item49
 		{
@@ -4076,6 +4080,7 @@ class Mission
 			};
 			id=291;
 			type="O_Truck_03_transport_F";
+			atlOffset=-7.4386597e-005;
 			class CustomAttributes
 			{
 				class Attribute0
