@@ -28,25 +28,11 @@ if (_unit getVariable ["ASO_P_Mount", false]) exitWith {};
 if (!(_unit isKindOf "Man")) exitWith {};
 
 // Use the appropriate name for the database 
-_db = "";
-if (_loadByName) then 
-{
-	_db = vehicleVarName _unit;
-}
-else
-{
-	_uid = getPlayerUID _unit;
-	if (_uid == "") then
-	{
-		_db = vehicleVarName _unit; // Fallback if the unit is not a player
-	}
-	else
-	{
-		_db = _uid;
-	};
-};
+_db = [_unit, _loadByName] call aso_fnc_getDbName;
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
+// Check if there is something to load
+if (!("exists" call _inidbi)) exitWith {};
 
 // Read information 
 _vehicle = ["read", ["Mount", "Vehicle"]] call _inidbi;

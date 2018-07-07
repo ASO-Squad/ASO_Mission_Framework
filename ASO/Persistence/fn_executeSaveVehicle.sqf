@@ -14,6 +14,7 @@ Parameters:
 					If you leave this array empty, all vehicles get saved. 
 					Make sure that all vehicles have names to use this feature properly
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
+					If you don not provide a prefix, ASO_PREFIX will be used. 
 
 Returns:
     nothing
@@ -24,16 +25,13 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-_params = [];
-if ((count _this) > 2) then 
+
+if (isNil "ASO_INIT") then
 {
-	_params = (_this select 3); // Parameters are here when this code is called from an action
-} else
-{
-	_params = _this;
+	[] call aso_fnc_init_aso;
 };
-_vehicles = (_params select 0);
-_prefix = (_params select 1);
+params ["_vehicles", ["_prefix", ASO_PREFIX]];
+
 if (count _vehicles == 0) then
 {
 	_vehicles = vehicles;

@@ -24,8 +24,7 @@ params ["_vehicle", "_prefix"];
 if (_vehicle getVariable ["ASO_P_Weapons", false]) exitWith {};
 
 // Use the appropriate name for the database 
-_db = vehicleVarName _vehicle;
-
+_db = [_vehicle, true] call aso_fnc_getDbName;
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 if (!("exists" call _inidbi)) exitWith {};

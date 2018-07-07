@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Remotly executes saveInventory  
+    Can be used to safely call aso_fnc_executeSaveInventory from the action menu.  
 
 Parameters:
     _units			- The units that we want to keep the inventory of.
@@ -13,32 +13,9 @@ Returns:
     nothing
 
 Example:
-    [_units, false, _prefix] call aso_fnc_executeSaveInventory;
+    [_target, _caller, _id, [_params]] call aso_fnc_actionSaveInventory;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-_params = [];
-
-if (isNil "ASO_INIT") then
-{
-	[] call aso_fnc_init_aso;
-};
-
-params ["_units", "_saveByName", ["_prefix", ASO_PREFIX]];
-
-if (count _units == 0) then
-{
-	_units = allPlayers;
-};
-// If the unit array is empty, save all players
-{
-	if (isServer) then
-	{
-		[_x, _saveByName, _prefix] call aso_fnc_saveInventory;
-	}
-	else
-	{
-		[_x, _saveByName, _prefix] remoteExecCall ["aso_fnc_saveInventory", 2, false]; // Call this on the server
-	};		
-} forEach _units;
+(_this select 3) call aso_fnc_executeSaveInventory;

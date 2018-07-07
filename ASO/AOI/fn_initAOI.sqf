@@ -27,8 +27,7 @@ params ["_trigger", "_objectiveHeader", "_objectiveDescription", "_taskType", "_
 // 0 - 2 = Parameters as definded above
 // 3 = Groups occuping this AOI
 // 4 = Groups on their way to this AOI
-// 5 = is defeated or not
-_thisAOI = [_trigger, _objectiveHeader, _objectiveDescription, [], [], false];
+_thisAOI = [_trigger, _objectiveHeader, _objectiveDescription, [], []];
 
 if (isNil "ASO_INIT") then
 {
@@ -48,6 +47,14 @@ _trigger setVariable ["ASO_SAFE", true, true];
 _trigger setVariable ["ASO_DETECTED", false, true];
 _trigger setVariable ["ASO_DISTRESS", false, true];
 _trigger setVariable ["ASO_LOST", false, true];
+
+// Load previous state, if desired
+waitUntil {!(isNil "paramsArray")};
+_load = ["LoadMission", 1] call BIS_fnc_getParamValue;
+if (_load == 1) then
+{
+	[[_trigger], ASO_PREFIX] call aso_fnc_executeLoadAOI;
+};
 
 waitUntil {!isnil "bis_fnc_init"};
 // push to global AOI list

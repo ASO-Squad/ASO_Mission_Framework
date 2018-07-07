@@ -6,6 +6,8 @@ Description:
 Parameters:
     _obj			- The object  that we want to load the cargo of
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
+	_delete			- Delete previous contents or not
+	_db				- DB Name differs from object Name (needed to support groundWeaponHolders)
 
 Returns:
     nothing
@@ -18,20 +20,23 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_obj", "_prefix"];
+params ["_obj", "_prefix", ["_delete", true], ["_db", ""]];
 
 // Use the appropriate name for the database 
-_db = vehicleVarName _obj;
+_db = [_obj, true] call aso_fnc_getDbName;
 
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 if (!("exists" call _inidbi)) exitWith {};
 
-// Empty cargo space 
-clearItemCargoGlobal _obj;
-clearMagazineCargoGlobal _obj;
-clearWeaponCargoGlobal _obj;
-clearBackpackCargoGlobal _obj;
+if (_delete) then
+{
+	// Empty cargo space 
+	clearItemCargoGlobal _obj;
+	clearMagazineCargoGlobal _obj;
+	clearWeaponCargoGlobal _obj;
+	clearBackpackCargoGlobal _obj;
+};
 
 // reading categories
 _magazines = ["read", ["Cargo", "Magazines"]] call _inidbi;
@@ -47,7 +52,15 @@ if (typeName _containers == "ARRAY") then
 {
 	// Adding Containers
 	{
-		_obj addItemCargoGlobal [(_x select 0), 1];	
+		_class = (_x select 0);
+		if (_class isKindOf "Bag_Base") then
+		{
+			_obj addBackpackCargo [(_x select 0), 1];
+		}
+		else
+		{
+			_obj addItemCargoGlobal [(_x select 0), 1];	
+		}
 	} forEach _containers;
 }
 else

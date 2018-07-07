@@ -1,3 +1,13 @@
+class Params
+{
+	class LoadMission
+	{
+		title = "Load Previous Mission"; // Param name visible in the list
+		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"No","Yes"}; // Description of each selectable item
+		default = 1; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+};
 class cfgFunctions
 {
     class ASO
@@ -30,6 +40,7 @@ class cfgFunctions
             class assessArtilleryTargets {};
             class delayedBehaviourChange {};
             class init_aso {};
+            class requestRadio {};
         }
         class AOIPrivate
         {
@@ -79,6 +90,21 @@ class cfgFunctions
             class loadWeapons {};
             class saveACESupplies {};
             class loadACESupplies {};
+            class saveMarkers {};
+            class loadMarkers {};
+            class saveVar {};
+            class loadVar {};
+            class getDbName {};
+        }
+        class PersistenceHelper
+        {
+            file = "ASO\Persistence\Helper"
+            class actionSaveInventory {};
+            class actionSaveCargo {};
+            class collectGroup {};
+            class collectCrate {};
+            class collectObject {};
+            class collectVehicle {};
         }
         class PersistencePublic
         {
@@ -91,6 +117,16 @@ class cfgFunctions
             class executeLoadMan {};
             class executeSaveVehicle {};
             class executeLoadVehicle {};
+            class executeSaveDropped {};
+            class executeLoadDropped {};
+            class executeSaveMarkers {};
+            class executeLoadMarkers {};
+            class executeSaveVar {};
+            class executeLoadVar {};
+            class executeSaveAOI {};
+            class executeLoadAOI {};
+            class executeSaveOrders {};
+            class executeLoadOrders {};
         }
     };
 };
@@ -105,3 +141,4 @@ class CfgRemoteExec
                 mode = 2; // Remote execution is allowed for all functions
         };
 };
+allowFunctionsRecompile = 1;

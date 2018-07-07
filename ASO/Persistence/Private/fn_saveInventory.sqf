@@ -29,23 +29,7 @@ if (!(_unit isKindOf "Man")) exitWith {};
 //if ((activatedAddons find "inidbi2") == -1) exitWith {}; 
 
 // Use the appropriate name for the database 
-_db = "";
-if (_saveByName) then 
-{
-	_db = vehicleVarName _unit;
-}
-else
-{
-	_uid = getPlayerUID _unit;
-	if (_uid == "") then
-	{
-		_db = vehicleVarName _unit; // Fallback if the unit is not a player
-	}
-	else
-	{
-		_db = _uid;
-	};
-};
+_db = [_unit, _saveByName] call aso_fnc_getDbName;
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 ["deleteSection", "Inventory"] call _inidbi; // cleanup
