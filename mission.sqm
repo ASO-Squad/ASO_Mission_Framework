@@ -158,7 +158,7 @@ randomSeed=8495150;
 class ScenarioData
 {
 	author="Papa Mike";
-	overviewText="ASO Mission Framework 1.3";
+	overviewText="ASO Mission Framework 1.4";
 	wreckRemovalMaxTime=3600;
 };
 class CustomAttributes
@@ -689,7 +689,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="ASO Mission Framework 1.3";
+		briefingName="ASO Mission Framework 1.4";
 		timeOfChanges=1800.0002;
 		startFog=0.025602587;
 		startWind=0.1;
