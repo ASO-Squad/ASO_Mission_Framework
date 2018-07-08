@@ -95,6 +95,8 @@ class cfgFunctions
             class saveVar {};
             class loadVar {};
             class getDbName {};
+            class saveDateTime {};
+            class loadDateTime {};
         }
         class PersistenceHelper
         {
@@ -127,6 +129,8 @@ class cfgFunctions
             class executeLoadAOI {};
             class executeSaveOrders {};
             class executeLoadOrders {};
+            class executeSaveEnvironment {};
+            class executeLoadEnvironment {};
         }
     };
 };
