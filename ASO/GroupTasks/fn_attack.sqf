@@ -68,28 +68,36 @@ else
 };
 if (_default) then
 {
-    // Attacks may arrive from far away so we have to make sure they can move
-    _group enableDynamicSimulation false; 
-
-    // Calling CBA_fnc_Attack
-    [_group, _trigger, _radius, true] call CBA_fnc_taskAttack;
-    // somehow there is a waypoint created on the original position. This is the workaround
-    _wpCount = count (waypoints _group);
-    if (_wpCount > 1) then
+    // In case the new task is not at the units home, assume its reinforcements
+    _home = _group getVariable ["aso_home", objNull];
+    if (_home != _trigger && !isNull _home) then
     {
-        deleteWaypoint [_group, 0];
-    };
+        [_group, _trigger, "ATTACK"] spawn aso_fnc_addGroupToAOIReinforcements;
+    }
+    else
+    {
+        // Attacks may arrive from far away so we have to make sure they can move
+        _group enableDynamicSimulation false; 
 
-    [_group, "AWARE", "NORMAL", 60] spawn aso_fnc_delayedBehaviourChange;
+        // Calling CBA_fnc_Attack
+        [_group, _trigger, (_radius/2.5), true] call CBA_fnc_taskAttack;
+        // somehow there is a waypoint created on the original position. This is the workaround
+        _wpCount = count (waypoints _group);
+        if (_wpCount > 1) then
+        {
+            deleteWaypoint [_group, 0];
+        };
 
-    // Tracking orders
-    _group setVariable ["ASO_ORDERS", ["ATTACK", _trigger], true];
+        [_group, "AWARE", "NORMAL", 60] spawn aso_fnc_delayedBehaviourChange;
 
-    // Show Debug Output
-    ["New task ATTACK for", groupId _group] call aso_fnc_debug;
-    [_group] spawn aso_fnc_trackGroup;
-    // A attacking group needs to move!
-    _group enableDynamicSimulation false; 
-    //[_group, 60] spawn aso_fnc_enableDynamicSim;
+        // Tracking orders
+        _group setVariable ["ASO_ORDERS", ["ATTACK", _trigger], true];
+
+        // Show Debug Output
+        ["New task ATTACK for", groupId _group] call aso_fnc_debug;
+        [_group] spawn aso_fnc_trackGroup;
+        // A attacking group needs to move!
+        _group enableDynamicSimulation false; 
+    }
 };
 true;

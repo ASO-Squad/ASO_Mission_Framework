@@ -41,15 +41,16 @@ _radius = _radius * 1.5;
 
 // Load previous state, if desired
 // true is, in this case a safe default, because we check for the presence of aso_orders later
-_load = ["LoadMission", 1] call BIS_fnc_getParamValue; 
+_load = ["LoadMission", 1] call BIS_fnc_getParamValue;
+_orders = -1;
 if (_load == 1 && _fromDB) then
 {
     ["Loading Orders for:", groupId _group] call aso_fnc_debug;    
     [[_group], ASO_PREFIX] call aso_fnc_executeLoadOrders;
+    // Make sure we loaded some orders
+    _orders = _group getVariable ["aso_orders", false];
+    _default = false;
 };
-// Make sure we loaded some orders
-_orders = _group getVariable ["aso_orders", false];
-_default = false;
 if (typeName _orders == "ARRAY") then
 {
     _order = (_orders select 0);
@@ -86,10 +87,26 @@ if (_default) then
 
         // Create a waypoint to unload transport
         [_group, (getPos _trigger), 0, "UNLOAD", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN", "", [0,0,0], _radius] call CBA_fnc_addWaypoint;
+        // Calling CBA_fnc_Attack
+        [_group, _trigger, (_radius/3), false, false] call CBA_fnc_taskAttack;
+        // somehow there is a waypoint created on the original position. This is the workaround
+        _wpCount = count (waypoints _group);
+        if (_wpCount > 3) then
+        {
+            deleteWaypoint [_group, 0];
+        };
+    }
+    else
+    {
+        // Calling CBA_fnc_Attack
+        [_group, _trigger, (_radius/3), false, false] call CBA_fnc_taskAttack;
+        // somehow there is a waypoint created on the original position. This is the workaround
+        _wpCount = count (waypoints _group);
+        if (_wpCount > 1) then
+        {
+            deleteWaypoint [_group, 0];
+        };
     };
-
-    // Calling CBA_fnc_Attack
-    [_group, _trigger, _radius, false] call CBA_fnc_taskAttack;
     [_group, "AWARE", "NORMAL", 60] spawn aso_fnc_delayedBehaviourChange;
 
     // Tracking orders
