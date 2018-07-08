@@ -7,6 +7,27 @@ class Params
 		texts[] = {"No","Yes"}; // Description of each selectable item
 		default = 1; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
+    class CustomForecastEnabled
+	{
+		title = "Change The Weather Forecast"; // Param name visible in the list
+		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"No","Yes"}; // Description of each selectable item
+		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    class CustomOvercast
+	{
+		title = "Cloud Cover"; // Param name visible in the list
+		values[] = {0,2,4,7,9,10}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"Clear Sky","Sunny Sky", "Partly Cloudy", "Cloudy Sky", "Overcast Sky", "Bad Weather"}; // Description of each selectable item
+		default = 4; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    class CustomFog
+	{
+		title = "Fog Density"; // Param name visible in the list
+		values[] = {0,2,5,8,10}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"Clear","Foggy", "Dense Fog", "London", "THE FOG"}; // Description of each selectable item
+		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
 };
 class cfgFunctions
 {
@@ -97,6 +118,8 @@ class cfgFunctions
             class getDbName {};
             class saveDateTime {};
             class loadDateTime {};
+            class saveWeather {};
+            class loadWeather {};
         }
         class PersistenceHelper
         {

@@ -5,7 +5,7 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=641;
+	toggles=513;
 	class ItemIDProvider
 	{
 		nextID=305;
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2236.51,120.03678,3309.5701};
-		dir[]={-0.12132414,-0.26931483,0.95539045};
-		up[]={-0.033928737,0.96304911,0.26717681};
-		aside[]={0.99204594,-3.9217412e-008,0.12598053};
+		pos[]={4352.3965,249.36496,3736.0127};
+		dir[]={0.098652087,-0.42909226,0.89785862};
+		up[]={0.046864554,0.90325916,0.42652649};
+		aside[]={0.9940182,1.3860699e-009,-0.10921759};
 	};
 };
 binarizationWanted=0;
@@ -698,15 +698,13 @@ class Mission
 	class Intel
 	{
 		briefingName="ASO Mission Framework 1.4";
-		timeOfChanges=1800.0002;
-		startFog=0.025602587;
+		timeOfChanges=6599.9995;
+		startWeather=0;
 		startWind=0.1;
 		startWaves=0.1;
 		forecastWind=0.1;
 		forecastWaves=0.1;
 		forecastLightnings=0.1;
-		wavesForced=1;
-		windForced=1;
 		year=2017;
 		month=11;
 		day=26;
@@ -1128,7 +1126,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2230.4353,101.97324,3334.123};
+						position[]={4352.6704,224.60297,3771.8982};
 						angles[]={0,5.4606314,0};
 					};
 					side="West";
@@ -1141,7 +1139,7 @@ class Mission
 					};
 					id=165;
 					type="B_Recon_Sharpshooter_F";
-					atlOffset=7.6293945e-006;
+					atlOffset=1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1209,7 +1207,7 @@ class Mission
 			{
 			};
 			id=164;
-			atlOffset=7.6293945e-006;
+			atlOffset=1.5258789e-005;
 		};
 		class Item23
 		{
