@@ -127,7 +127,7 @@ while {count _targets > 0} do // quit if there are no targets left
 				{
 					_splashTime = _eta;	
 				};
-				sleep random 3;
+				sleep random 6; // make them not fire at the same time
 				
 			} forEach units _artillery;
 		};
@@ -141,7 +141,7 @@ while {count _targets > 0} do // quit if there are no targets left
 	["Splash", _splashTime] call aso_fnc_debug;
 	sleep _splashTime;
 	// wait for it ...
-	sleep random [(_intervall/2), (_intervall), (_intervall*1.5)];
+	sleep random [(_intervall/2), (_intervall), (_intervall*4)];
 	// Update target list
 	_targets = list _trigger;
 	_targets = _targets - [objNull];
