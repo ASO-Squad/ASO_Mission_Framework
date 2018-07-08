@@ -47,15 +47,17 @@ _radius = (_xRad + _yRad) / 2;
 
 // Load previous state, if desired
 // true is, in this case a safe default, because we check for the presence of aso_orders later
-_load = ["LoadMission", 1] call BIS_fnc_getParamValue; 
+_load = ["LoadMission", 1] call BIS_fnc_getParamValue;
+_orders = -1;
 if (_load == 1 && _fromDB) then
 {
     ["Loading Orders for", groupId _group, true] call aso_fnc_debug;    
     [[_group], ASO_PREFIX] call aso_fnc_executeLoadOrders;
+    // Make sure we loaded some orders
+    _orders = _group getVariable ["aso_orders", false];
+    _default = false;
 };
-// Make sure we loaded some orders
-_orders = _group getVariable ["aso_orders", false];
-_default = false;
+
 if (typeName _orders == "ARRAY") then
 {
     _order = (_orders select 0);

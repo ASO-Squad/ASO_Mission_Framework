@@ -27,10 +27,10 @@ _type = _group getVariable "ASO_TYPE";
 
 if (isNil "_home") exitWith {};
 
-// give orders to group
-[_group, _home, _type, false] call aso_fnc_garrison;
-
 // remove from reinforcments list of the current AOI
-[_group, _trigger] spawn aso_fnc_removeGroupFromAOIReinforcements;
+[_group, _trigger] call aso_fnc_removeGroupFromAOIReinforcements;
+
+// give orders to group
+[_group, _home, _type, false, false] call aso_fnc_garrison;
 
 ["Group has been recalled", _group] call aso_fnc_debug;
