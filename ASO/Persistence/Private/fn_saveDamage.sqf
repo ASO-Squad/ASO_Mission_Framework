@@ -29,8 +29,13 @@ _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 
 // Variables
 _allDamages = getAllHitPointsDamage _vehicle;
-_hitpoints = (_allDamages select 0);
-_damages = (_allDamages select 2); 
+_hitpoints = [];
+_damages = [];
+if ((count _allDamages) > 0) then
+{
+    _hitpoints = (_allDamages select 0);
+    _damages = (_allDamages select 2); 
+};
 _damage = damage _vehicle;
 
 // Write information down
