@@ -9,25 +9,35 @@ Parameters:
 	_loadByName		- If true, we are loading this by the units name, otherwise it is loaded by the players name
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
 	_db				- DB Name differs from object Name (needed to support groundWeaponHolders)
+	_vehicle		- target the vehicle, true or false
 
 Returns:
     nothing
 
 Example:
-    [_unit, false, _prefix] call aso_fnc_loadInventory;
+    [_unit, false, _prefix, _db, false] call aso_fnc_loadPosition;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_unit", "_loadByName", "_prefix", ["_db", ""]];
+params ["_unit", "_loadByName", "_prefix", ["_db", ""], ["_vehicle", false]];
 
 // Check if the position got already loaded
 if (_unit getVariable ["ASO_P_Position", false]) exitWith {};
 
-// Use the appropriate name for the database 
-_db = [_unit, _loadByName] call aso_fnc_getDbName;
+// Use the appropriate name for the database
+if (_vehicle) then
+{
+	_db = [vehicle _unit, true] call aso_fnc_getDbName;
+}
+else
+{
+	_db = [_unit, _loadByName] call aso_fnc_getDbName;
+};
+
+
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 if (!("exists" call _inidbi)) exitWith {};
