@@ -75,7 +75,7 @@ while {count _targets > 0} do // quit if there are no targets left
 	// check distance
 	_distance = _mvtNearestEnemy distance2D _mvt;
 	// check if this is too close
-	if (_distance > (_spread + 80)) then {_dangerClose = false;} else {_dangerClose = true;};
+	if (_distance > (_spread + 120)) then {_dangerClose = false;} else {_dangerClose = true;};
 
 	// Third: Engage target if possible and not too close to friendlies
 	if (!_dangerClose) then
@@ -147,7 +147,10 @@ while {count _targets > 0} do // quit if there are no targets left
 	_targets = _targets - [objNull];
 	["Targets left", count _targets] call aso_fnc_debug;
 	// Reducing Spread 
-	_spread = _spread * _modifier;
-	["Spread is now", _spread] call aso_fnc_debug;
+	if (_splashTime > 0) then
+	{
+		_spread = _spread * _modifier;
+		["Spread is now", _spread] call aso_fnc_debug;
+	};	
 };
 ["Artillery", "Done"] call aso_fnc_debug;
