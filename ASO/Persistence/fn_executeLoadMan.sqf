@@ -15,7 +15,7 @@ Parameters:
 	_ifIsDead		- What to do if the unit is dead.
 					If this is an object, the unit will be transported there
 					If it is a bool: true  means, it will stay dead.
-									 false means, the unit will wke up with half its previous damage.
+									 false means, the unit will wake up with half its previous damage.
 	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
 					If you don not provide a prefix, ASO_PREFIX will be used. 
 

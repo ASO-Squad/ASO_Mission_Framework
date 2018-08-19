@@ -3,7 +3,7 @@ Description:
     Collects this vehicle for further processing
 
 Parameters:
-    _group		- A group.
+    _vehicle	- A vehicle.
 
 Returns:
     nothing
