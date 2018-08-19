@@ -109,7 +109,7 @@ if (_default) then
         else
         {
             // Create a waypoint to move into a vehicle if possible
-            [_group, (getPos leader _group), 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+            [_group, (getPos leader _group), 0, "GETIN", "COMBAT", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
             // re-enable dynamic simulation, most of the time the group will go to sleep mid-way and continue its way if something gets close enough
             [_group, 60] spawn aso_fnc_enableDynamicSim;
         };
