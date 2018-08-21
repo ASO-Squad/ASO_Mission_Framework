@@ -108,9 +108,9 @@ if (_default) then
         else
         {
             // Create a waypoint to move into a vehicle if possible
-            [_group, _trigger, 0, "GETIN", "SAFE", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+            [_group, _trigger, 0, "GETIN", "COMBAT", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
             // Move the vehicle to a random location
-            [_group, _trigger, (_radius/4), "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "group this enableDynamicSimulation true;"] call CBA_fnc_addWaypoint;
+            [_group, _trigger, (_radius/4), "MOVE", "COMBAT", "YELLOW", "LIMITED", "STAG COLUMN", "group this enableDynamicSimulation true;"] call CBA_fnc_addWaypoint;
         };
     };
 

@@ -13,7 +13,7 @@ Returns:
     None
 
 Example:
-    [myGroup, myTrigger] call aso_fnc_patrol
+    [myGroup, myTrigger, _type] call aso_fnc_patrol
 
 Author:
     Papa Mike

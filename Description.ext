@@ -130,6 +130,7 @@ class cfgFunctions
             class collectCrate {};
             class collectObject {};
             class collectVehicle {};
+			class saveState {};
         }
         class PersistencePublic
         {
