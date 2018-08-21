@@ -37,12 +37,11 @@ else
 	_db = [_unit, _loadByName] call aso_fnc_getDbName;
 };
 
-
 // creating new database
 _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 if (!("exists" call _inidbi)) exitWith {};
 
-// reading item slots
+// reading position
 _position = ["read", ["Position", "Location"]] call _inidbi;
 _direction = ["read", ["Position", "Direction"]] call _inidbi;
 _stance = ["read", ["Position", "Stance"]] call _inidbi;
@@ -52,13 +51,15 @@ if (local _unit) then
 {
 	_unit setDir _direction;
 	_unit playAction _stance;
+	_unit setPosATL _position;
 }
 else
 {
 	[_unit, _direction] remoteExec ["setDir", _unit, false]; // setDir needs local parameters
 	[_unit, _stance] remoteExec ["playAction", _unit, false];// playAction needs local parameters
+	[_unit, _position] remoteExec ["setPosATL", _unit, false];// this needs to be called remotly in case a player starts in a vehicle
 };
-_unit setPosATL _position;
+_unit setPosATL _position; // Position seems to be synced, so this call needs to be done on the server too
 _unit setVariable ["ASO_P_Position", true, true];
 // Return the position to use it with other functions
 _position;
