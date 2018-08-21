@@ -166,9 +166,9 @@ randomSeed=8495150;
 class ScenarioData
 {
 	author="Papa Mike";
-	overviewText="ASO Mission Framework 1.5";
-	overviewTextLocked="ASO Mission Framework 1.5";
-	onLoadMission="ASO Mission Framework 1.5";
+	overviewText="ASO Mission Framework 1.5.1";
+	overviewTextLocked="ASO Mission Framework 1.5.1";
+	onLoadMission="ASO Mission Framework 1.5.1";
 	wreckRemovalMaxTime=3600;
 };
 class CustomAttributes
