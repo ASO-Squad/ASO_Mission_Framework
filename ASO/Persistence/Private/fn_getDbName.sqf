@@ -25,32 +25,29 @@ if (_preferName) then
 	{
 		_db = vehicleVarName _object;
 	};
-	if (_db == "") then
-	{
-		_fallback = format["%1", _object];
-		_fallback = [_fallback, " ", "_"] call CBA_fnc_replace;
-		_fallback = [_fallback, ":", "_"] call CBA_fnc_replace;
-		_db = _fallback;
-	}
 }
 else
 {
-	_uid = "";
 	if (typeName _object == "OBJECT") then
 	{
-		_uid = getPlayerUID _object;
+		_db = getPlayerUID _object;
 	};
-	if (_uid == "" || _uid == "_SP_AI_") then
+};
+if (_db == "" || _db == "_SP_AI_") then
+{
+	// no player id fall back to vehicleVarName
+	if (typeName _object == "OBJECT") then
 	{
-		// Fallback if the unit is not a player
+		_db = vehicleVarName _object;
+	};
+	if (_db == "") then
+	{
+		// Fallback if the unit is not a player and there is no name
+		// Note: You fucked up big time if you land here.
 		_fallback = format["%1", _object];
 		_fallback = [_fallback, " ", "_"] call CBA_fnc_replace;
 		_fallback = [_fallback, ":", "_"] call CBA_fnc_replace;
 		_db = _fallback;
-	}
-	else
-	{
-		_db = _uid;
 	};
 };
 _db;

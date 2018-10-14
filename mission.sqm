@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4352.3965,249.36496,3736.0127};
-		dir[]={0.098652087,-0.42909226,0.89785862};
-		up[]={0.046864554,0.90325916,0.42652649};
-		aside[]={0.9940182,1.3860699e-009,-0.10921759};
+		pos[]={2986.5012,210.29474,1899.6761};
+		dir[]={-0.45157725,-0.30549955,-0.83831573};
+		up[]={-0.14488538,0.95218754,-0.26896888};
+		aside[]={-0.88040388,1.8281571e-007,0.47424799};
 	};
 };
 binarizationWanted=0;
@@ -1128,8 +1128,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4352.6704,224.60297,3771.8982};
-						angles[]={0,5.4606314,0};
+						position[]={2970.4187,171.41026,1860.5211};
+						angles[]={0,0.25924742,0};
 					};
 					side="West";
 					flags=7;
@@ -1141,7 +1141,6 @@ class Mission
 					};
 					id=165;
 					type="B_Recon_Sharpshooter_F";
-					atlOffset=1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1209,7 +1208,6 @@ class Mission
 			{
 			};
 			id=164;
-			atlOffset=1.5258789e-005;
 		};
 		class Item23
 		{

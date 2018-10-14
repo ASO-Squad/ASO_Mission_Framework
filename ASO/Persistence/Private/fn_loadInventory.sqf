@@ -66,11 +66,14 @@ if (_earplugs) then
 	[_unit] call ace_hearing_fnc_putInEarplugs;
 };
 
+// Wait for TFR
+if (ASO_USE_TFR) then
+{
+	waitUntil { _unit getVariable ["tf_handlers_set", false]; };
+};
+
 // Apply loadout 
 _unit setUnitLoadout [_fullInventory, false];
-
-//Negotiate radio instance 
-[] remoteExec ["aso_fnc_requestRadios", _unit, false]; // This needs to be called on the client
 
 // Done
 _unit setVariable ["ASO_P_Inventory", true, true];
