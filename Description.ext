@@ -62,6 +62,7 @@ class cfgFunctions
             class delayedBehaviourChange {};
             class init_aso {};
             class requestRadio {};
+            class markerFollowObj {};
         }
         class AOIPrivate
         {
@@ -130,7 +131,8 @@ class cfgFunctions
             class collectCrate {};
             class collectObject {};
             class collectVehicle {};
-			class saveState {};
+            class saveState {};
+            class setVehicleName {};
         }
         class PersistencePublic
         {
