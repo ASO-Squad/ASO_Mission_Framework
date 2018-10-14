@@ -16,4 +16,5 @@ ASO_UNITS = [];
 ASO_VEHICLES = [];
 ASO_CRATES = [];
 ASO_OBJECTS = [];
+ASO_USE_TFR = true;
 ASO_INIT = true;
