@@ -43,7 +43,7 @@ if (count _units == 0) then
 {
 	if (isServer) then
 	{
-		[_x, _loadByName, _prefix] call aso_fnc_loadInventory;
+		[_x, _loadByName, _prefix] spawn aso_fnc_loadInventory;
 		[_x, _loadByName, _prefix] call aso_fnc_loadPosition;
 		[_x, _loadByName, _prefix, _ifIsDead] call aso_fnc_loadHealth;
 		[_x, _loadByName, _prefix] call aso_fnc_loadMount;
@@ -51,7 +51,7 @@ if (count _units == 0) then
 	}
 	else
 	{
-		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadInventory", 2, false]; // Call this on the server
+		[_x, _loadByName, _prefix] remoteExec ["aso_fnc_loadInventory", 2, false]; // Call this on the server
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadPosition", 2, false]; // Call this on the server
 		[_x, _loadByName, _prefix, _ifIsDead] remoteExecCall ["aso_fnc_loadHealth", 2, false]; // Call this on the server
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadMount", 2, false]; // Call this on the server

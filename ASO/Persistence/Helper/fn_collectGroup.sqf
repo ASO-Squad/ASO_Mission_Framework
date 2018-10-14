@@ -28,6 +28,9 @@ if (isNil "_group") exitWith {};
 ASO_GROUPS pushBackUnique _group;
 
 {
+    // use group id as the units name, just in case it dies
+    [_x] call aso_fnc_setVehicleName;
+
     // Use this group
     ASO_UNITS pushBackUnique _x;
 

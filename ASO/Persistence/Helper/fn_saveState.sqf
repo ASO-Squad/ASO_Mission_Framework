@@ -1,3 +1,21 @@
+/* ----------------------------------------------------------------------------
+Description:
+    Used to save the progress of a standard framework mission.
+	Call this if you want it to be fast. Spawn it if you want to run it smoothly.
+
+Parameters:
+    _object	- A object
+
+Returns:
+    nothing
+
+Example:
+    [] call aso_fnc_saveState;
+
+Author:
+    Papa Mike
+---------------------------------------------------------------------------- */
+
 if (!isServer) exitWith {};
 ["Saving Mission ..."] remoteExecCall ["hint", 0, false];
 // Save mission state
@@ -16,10 +34,11 @@ if (!isServer) exitWith {};
 // Keep track of those crates
 [ASO_CRATES] call aso_fnc_executeSaveCargo;
 // Save loot and markers
-["Saving Loot ..."] remoteExecCall ["hint", 0, false];
+["Saving Loot and Markers ..."] remoteExecCall ["hint", 0, false];
 [] call aso_fnc_executeSaveDropped;
 [false] call aso_fnc_executeSaveMarkers;
 // Keep track of mission progress
+["Saving Mission Progress ..."] remoteExecCall ["hint", 0, false];
 [mission_progress, false] call aso_fnc_executeSaveVar;
 // We are done now!
 ["Mission Saved!"] remoteExecCall ["hint", 0, false];
