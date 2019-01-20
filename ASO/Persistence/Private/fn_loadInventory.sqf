@@ -66,10 +66,17 @@ if (_earplugs) then
 	[_unit] call ace_hearing_fnc_putInEarplugs;
 };
 
-// Wait for TFR
+// Wait for TFR if we can and only if the unit is a player (fuck those AI radios!)
 if (ASO_USE_TFR) then
 {
-	waitUntil { _unit getVariable ["tf_handlers_set", false]; };
+	if (canSuspend && isPlayer _unit) then
+	{
+		_tfr = _unit getVariable ["tf_handlers_set", false];
+		while {!_tfr} do 
+		{
+			sleep 1;
+		};
+	};
 };
 
 // Apply loadout 
