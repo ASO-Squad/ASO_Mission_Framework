@@ -39,11 +39,21 @@ if (count _units == 0) then
 {
 	_units = allPlayers;
 };
+
 // If the unit array is empty, load all players
 {
 	if (isServer) then
 	{
-		[_x, _loadByName, _prefix] spawn aso_fnc_loadInventory;
+		// for players, we need to wait until tfr is initialized
+		if (ASO_USE_TFR && isPlayer _x) then
+		{
+			[_x, _loadByName, _prefix] spawn aso_fnc_loadInventory;
+		}
+		else 
+		{
+			// for all AIs we want speed
+			[_x, _loadByName, _prefix] call aso_fnc_loadInventory;
+		};
 		[_x, _loadByName, _prefix] call aso_fnc_loadPosition;
 		[_x, _loadByName, _prefix, _ifIsDead] call aso_fnc_loadHealth;
 		[_x, _loadByName, _prefix] call aso_fnc_loadMount;
@@ -51,7 +61,14 @@ if (count _units == 0) then
 	}
 	else
 	{
-		[_x, _loadByName, _prefix] remoteExec ["aso_fnc_loadInventory", 2, false]; // Call this on the server
+		if (ASO_USE_TFR && isPlayer _x) then
+		{
+			[_x, _loadByName, _prefix] remoteExec ["aso_fnc_loadInventory", 2, false]; // Call this on the server
+		}
+		else
+		{
+			[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadInventory", 2, false]; // Call this on the server
+		};
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadPosition", 2, false]; // Call this on the server
 		[_x, _loadByName, _prefix, _ifIsDead] remoteExecCall ["aso_fnc_loadHealth", 2, false]; // Call this on the server
 		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadMount", 2, false]; // Call this on the server
