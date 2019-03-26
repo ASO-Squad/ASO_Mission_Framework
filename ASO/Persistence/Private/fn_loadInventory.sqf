@@ -75,6 +75,7 @@ if (ASO_USE_TFR) then
 		while {!_tfr} do 
 		{
 			sleep 1;
+			_tfr = _unit getVariable ["tf_handlers_set", false];
 		};
 	};
 };
