@@ -64,6 +64,7 @@ class cfgFunctions
             class init_aso {};
             class requestRadio {};
             class markerFollowObj {};
+            class propagateLocalVar {};
         }
         class AOIPrivate
         {
