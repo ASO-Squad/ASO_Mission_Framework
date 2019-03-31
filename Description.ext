@@ -39,6 +39,7 @@ class cfgFunctions
             class garrison {};
             class garrisonSimple {};
             class guard {};
+            class guardHand {};
             class patrol {};
             class attack {};
             class search {};
@@ -63,6 +64,7 @@ class cfgFunctions
             class init_aso {};
             class requestRadio {};
             class markerFollowObj {};
+            class propagateLocalVar {};
         }
         class AOIPrivate
         {
@@ -82,6 +84,7 @@ class cfgFunctions
             class initAOI {};
             class addGroupToAOIReinforcements {}; 
             class callReinforcements {};
+            class callReinforcementsFrom {};
             class retreatReinforcements {};
             class setAOIStatus {};
             class setAOITaskStatus {};

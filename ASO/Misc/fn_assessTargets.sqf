@@ -72,7 +72,7 @@ while {(_trigger getVariable ["ASO_ASSESSING", false])} do
 	["Targets ASSESSED", _targets] call aso_fnc_debug;
 	// Keep tracking after first loop if desired 
 	_trigger setVariable ["ASO_ASSESSING", _keepTracking, true];
-	// stop tracking if there are no more edit3DENMissionAttributes
+	// stop tracking if there are no more enemies
 	if ((count _targets) == 0) then 
 	{
 		_trigger setVariable ["ASO_ASSESSING", false, true];
