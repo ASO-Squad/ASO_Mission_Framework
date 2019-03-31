@@ -39,6 +39,7 @@ class cfgFunctions
             class garrison {};
             class garrisonSimple {};
             class guard {};
+            class guardHand {};
             class patrol {};
             class attack {};
             class search {};
