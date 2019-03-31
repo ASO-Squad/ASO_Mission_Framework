@@ -82,6 +82,7 @@ class cfgFunctions
             class initAOI {};
             class addGroupToAOIReinforcements {}; 
             class callReinforcements {};
+            class callReinforcementsFrom {};
             class retreatReinforcements {};
             class setAOIStatus {};
             class setAOITaskStatus {};
