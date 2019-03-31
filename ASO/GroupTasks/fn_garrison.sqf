@@ -29,7 +29,6 @@ if (isNil "ASO_INIT") then
 params ["_group", "_trigger", "_type", "_dismissed", ["_fromDB", true]];
 private ["_orders", "_default"];
 
-["garrison for", groupId _group, true] call aso_fnc_debug; 
 // Keep this group in mind for saving
 [_group] call aso_fnc_collectGroup;
 
