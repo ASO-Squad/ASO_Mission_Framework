@@ -5,7 +5,8 @@ Description:
 Parameters:
     _group      - the group attacking the area
     _trigger   	- trigger that is to be attacked, should be a circle
-    _fromDB   - Avoid loading orders, useful if this function is already called by loading an order
+    _completion - Completion radius for waypoints 
+    _fromDB     - Avoid loading orders, useful if this function is already called by loading an order
 
 Returns:
     None
@@ -23,7 +24,7 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group", "_trigger", ["_fromDB", true]];
+params ["_group", "_trigger", ["_completion", 20], ["_fromDB", true]];
 private ["_orders", "_default", "_wpCount"];
 
 // Keep this group in mind for saving
@@ -79,15 +80,12 @@ if (_default) then
         // Attacks may arrive from far away so we have to make sure they can move
         _group enableDynamicSimulation false; 
 
-        // Calling CBA_fnc_Attack
-        [_group, _trigger, (_radius/2.5), true] call CBA_fnc_taskAttack;
-        // somehow there is a waypoint created on the original position. This is the workaround
-        _wpCount = count (waypoints _group);
-        if (_wpCount > 1) then
+        // delete all previous waypoints
+        while {(count (waypoints _group)) > 0} do
         {
-            deleteWaypoint [_group, 0];
+            deleteWaypoint ((waypoints _group) select 0);
         };
-
+        [_group, _trigger, (_radius/2.5), "SAD", "AWARE", "RED", "FULL", "STAG COLUMN", "", [0,0,0], _completion] call CBA_fnc_addWaypoint;
         [_group, "AWARE", "NORMAL", 60] spawn aso_fnc_delayedBehaviourChange;
 
         // Tracking orders

@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=513;
+	toggles=641;
 	class ItemIDProvider
 	{
-		nextID=305;
+		nextID=310;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2986.5012,210.29474,1899.6761};
-		dir[]={-0.45157725,-0.30549955,-0.83831573};
-		up[]={-0.14488538,0.95218754,-0.26896888};
-		aside[]={-0.88040388,1.8281571e-007,0.47424799};
+		pos[]={4338.9282,244.27267,3778.8796};
+		dir[]={0.80281389,-0.58549029,-0.11327197};
+		up[]={0.57977611,0.81065154,-0.081802174};
+		aside[]={-0.13971546,-4.7005597e-007,-0.99025619};
 	};
 };
 binarizationWanted=0;
@@ -41,13 +41,15 @@ addons[]=
 	"rhs_c_troops",
 	"A3_Soft_F_EPC_Truck_03",
 	"ace_cargo",
-	"rhs_c_heavyweapons"
+	"rhs_c_heavyweapons",
+	"A3_Soft_F_MRAP_01",
+	"A3_Characters_F_Exp_Civil"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=15;
+		items=16;
 		class Item0
 		{
 			className="A3_Structures_F";
@@ -153,6 +155,13 @@ class AddonsMetaData
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
+		class Item15
+		{
+			className="A3_Characters_F_Exp";
+			name="Arma 3 Apex - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 class DynamicSimulation
@@ -166,9 +175,9 @@ randomSeed=8495150;
 class ScenarioData
 {
 	author="Papa Mike";
-	overviewText="ASO Mission Framework 1.5.2";
-	overviewTextLocked="ASO Mission Framework 1.5.2";
-	onLoadMission="ASO Mission Framework 1.5.2";
+	overviewText="ASO Mission Framework 1.5.6";
+	overviewTextLocked="ASO Mission Framework 1.5.6";
+	onLoadMission="ASO Mission Framework 1.5.6";
 	wreckRemovalMaxTime=3600;
 };
 class CustomAttributes
@@ -718,7 +727,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=51;
+		items=54;
 		class Item0
 		{
 			dataType="Trigger";
@@ -1128,8 +1137,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2970.4187,171.41026,1860.5211};
-						angles[]={0,0.25924742,0};
+						position[]={4359.397,225.32745,3782.324};
+						angles[]={0,0.25925121,0};
 					};
 					side="West";
 					flags=7;
@@ -1250,12 +1259,11 @@ class Mission
 			{
 				text="Save Player";
 				condition="call{this}";
-				onActivation="call{[[player], false] call aso_fnc_executeSaveMan;}";
+				onActivation="call{[[pbadassmotherfucker], false] call aso_fnc_executeSaveMan;}";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;
 				activationBy="GOLF";
-				isServerOnly=1;
 			};
 			id=168;
 			type="EmptyDetector";
@@ -1320,7 +1328,7 @@ class Mission
 				class Attribute2
 				{
 					property="ace_isRepairVehicle";
-					expression="_this setVariable ['ace_isRepairVehicle',_value, true];";
+					expression="if (_value != (if (isNumber (configFile >> 'CfgVehicles' >> typeOf _this >> ""ace_repair_canRepair"")) then {getNumber (configFile >> 'CfgVehicles' >> typeOf _this >> ""ace_repair_canRepair"")} else {0})) then {_this setVariable ['ace_isRepairVehicle', _value, true]}";
 					class Value
 					{
 						class data
@@ -1364,12 +1372,11 @@ class Mission
 			{
 				text="Save TestVehicles";
 				condition="call{this}";
-				onActivation="call{[[testvehicle1, testvehicle2, testvehicle3]] call aso_fnc_executeSaveVehicle;}";
+				onActivation="call{[[testvehicle1, testvehicle2, testvehicle3, v42]] call aso_fnc_executeSaveVehicle;}";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;
 				activationBy="HOTEL";
-				isServerOnly=1;
 			};
 			id=186;
 			type="EmptyDetector";
@@ -1506,7 +1513,7 @@ class Mission
 				class Attribute3
 				{
 					property="ace_isRepairVehicle";
-					expression="_this setVariable ['ace_isRepairVehicle',_value, true];";
+					expression="if (_value != (if (isNumber (configFile >> 'CfgVehicles' >> typeOf _this >> ""ace_repair_canRepair"")) then {getNumber (configFile >> 'CfgVehicles' >> typeOf _this >> ""ace_repair_canRepair"")} else {0})) then {_this setVariable ['ace_isRepairVehicle', _value, true]}";
 					class Value
 					{
 						class data
@@ -1633,7 +1640,6 @@ class Mission
 				sizeB=0;
 				repeatable=1;
 				activationBy="INDIA";
-				isServerOnly=1;
 			};
 			id=196;
 			type="EmptyDetector";
@@ -4479,6 +4485,211 @@ class Mission
 			};
 			id=304;
 			type="EmptyDetector";
+		};
+		class Item51
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2966.415,173.60594,1867.6055};
+			};
+			side="Civilian";
+			flags=6;
+			class Attributes
+			{
+				init="call{[this] call aso_fnc_collectVehicle;}";
+				name="v42";
+			};
+			id=305;
+			type="B_MRAP_01_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""arifle_MX_F"",""FirstAidKit""],[2,10]],[[""30Rnd_65x39_caseless_mag"",""100Rnd_65x39_caseless_mag"",""HandGrenade"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeGreen_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeBlue_Grenade_shell"",""16Rnd_9x21_Mag"",""SmokeShell"",""SmokeShellGreen"",""SmokeShellOrange"",""SmokeShellBlue""],[16,6,10,10,4,4,4,4,12,4,4,4,4]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item52
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2966.415,171.40143,1867.6571};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						name="civ1";
+					};
+					id=307;
+					type="C_man_1";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male06GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.95999998;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+				init="call{[this] call aso_fnc_collectGroup;}";
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=307;
+						item1=305;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+				};
+			};
+			id=306;
+		};
+		class Item53
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2970.106,171.40143,1866.7731};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						name="civ2";
+					};
+					id=309;
+					type="C_Man_casual_6_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male02GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+				init="call{[this] call aso_fnc_collectGroup;}";
+			};
+			id=308;
 		};
 	};
 	class Connections
