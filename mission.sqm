@@ -708,7 +708,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="ASO Mission Framework 1.5";
+		briefingName="ASO Mission Framework 1.5.6";
 		timeOfChanges=6599.9995;
 		startWeather=0;
 		startWind=0.1;
