@@ -8,7 +8,7 @@ class EditorData
 	toggles=641;
 	class ItemIDProvider
 	{
-		nextID=310;
+		nextID=312;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4338.9282,244.27267,3778.8796};
-		dir[]={0.80281389,-0.58549029,-0.11327197};
-		up[]={0.57977611,0.81065154,-0.081802174};
-		aside[]={-0.13971546,-4.7005597e-007,-0.99025619};
+		pos[]={4345.2383,244.27267,3764.7722};
+		dir[]={0.85206699,-0.51975465,0.063391998};
+		up[]={0.51836628,0.85427701,0.038565047};
+		aside[]={0.074200213,3.4965888e-007,-0.99732637};
 	};
 };
 binarizationWanted=0;
@@ -727,7 +727,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=54;
+		items=55;
 		class Item0
 		{
 			dataType="Trigger";
@@ -995,7 +995,7 @@ class Mission
 				name="reinforce";
 				text="Call Reinforcements";
 				condition="call{this}";
-				onActivation="call{[tempest, [[""MECHANIZED"", 2], [""INFANTRY"", 2]], ""ATTACK"", 2500] call aso_fnc_callReinforcements}";
+				onActivation="call{[tempest, [[""MECHANIZED"", 2], [""INFANTRY"", 2], [""AIR"", 1]], ""ATTACK"", 2500] call aso_fnc_callReinforcements}";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;
@@ -1398,18 +1398,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4371.4087,226.70343,3762.8552};
-				angles[]={6.2782059,4.9769111,0};
+				position[]={4370.7578,226.68605,3759.8069};
+				angles[]={0,4.9769111,0.0024958209};
 			};
-			side="Empty";
-			flags=4;
+			side="East";
+			flags=6;
 			class Attributes
 			{
 				name="testvehicle3";
 			};
 			id=190;
 			type="B_Heli_Light_01_dynamicLoadout_F";
-			atlOffset=-1.5258789e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -1439,8 +1438,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4369.2031,227.26274,3752.877};
-				angles[]={6.2731848,5.3552985,0.010000736};
+				position[]={4377.3838,227.26717,3741.4844};
+				angles[]={6.278182,5.3552985,0.01999305};
 			};
 			side="Empty";
 			flags=4;
@@ -1451,6 +1450,7 @@ class Mission
 			};
 			id=193;
 			type="O_Truck_02_box_F";
+			atlOffset=-0.0001373291;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4690,6 +4690,59 @@ class Mission
 				init="call{[this] call aso_fnc_collectGroup;}";
 			};
 			id=308;
+		};
+		class Item54
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4370.7622,224.90834,3759.856};
+						angles[]={0,4.9769111,0.0024958209};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+					};
+					id=311;
+					type="O_helipilot_F";
+				};
+			};
+			class Attributes
+			{
+				name="chopper1";
+				init="call{[this, as_mike, ""AIR"", false] call aso_fnc_garrisonSimple;}";
+				speedMode="LIMITED";
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=311;
+						item1=190;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+				};
+			};
+			id=310;
 		};
 	};
 	class Connections
