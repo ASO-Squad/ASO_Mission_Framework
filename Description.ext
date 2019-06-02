@@ -65,6 +65,8 @@ class cfgFunctions
             class requestRadio {};
             class markerFollowObj {};
             class propagateLocalVar {};
+            class setLandingPad {};
+            class wpLand {};
         }
         class AOIPrivate
         {
