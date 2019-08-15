@@ -10,7 +10,7 @@ if (_load == 1) then
 	[[_unit], false, false] call aso_fnc_executeLoadMan;
 	if (ASO_USE_TFR) then
 	{
-		[_unit, "tf_handlers_set"] spawn aso_fnc_propagateLocalVar;
+		[_unit, "tfar_handlersset"] spawn aso_fnc_propagateLocalVar;
 	};
 };
 

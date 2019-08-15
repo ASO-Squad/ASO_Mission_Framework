@@ -71,11 +71,11 @@ if (ASO_USE_TFR) then
 {
 	if (canSuspend && isPlayer _unit) then
 	{
-		_tfr = _unit getVariable ["tf_handlers_set", false];
+		_tfr = _unit getVariable ["tfar_handlersset", false];
 		while {!_tfr} do 
 		{
 			sleep 1;
-			_tfr = _unit getVariable ["tf_handlers_set", false];
+			_tfr = _unit getVariable ["tfar_handlersset", false];
 		};
 	};
 };
