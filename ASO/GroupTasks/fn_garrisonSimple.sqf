@@ -107,7 +107,7 @@ if (_default) then
             _height = (getPosATL _leader) select 2;
             if (_height <= 3) then
             {
-                [_group, _trigger, 0, "GETIN", "COMBAT", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
+                [_group, (getPos leader _group), 0, "GETIN", "COMBAT", "YELLOW", "NORMAL", "STAG COLUMN"] call CBA_fnc_addWaypoint;
             };
             // Check for ASO_LANDING
             _landing = _group getVariable ["ASO_LANDING", []];
