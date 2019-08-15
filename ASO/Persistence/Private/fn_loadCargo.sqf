@@ -55,7 +55,7 @@ if (typeName _containers == "ARRAY") then
 		_class = (_x select 0);
 		if (_class isKindOf "Bag_Base") then
 		{
-			_obj addBackpackCargo [(_x select 0), 1];
+			_obj addBackpackCargoGlobal [(_x select 0), 1];
 		}
 		else
 		{
