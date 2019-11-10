@@ -11,7 +11,7 @@ Returns:
     None
 
 Examples:
-    [_AOI, "ATTACK", _source] call aso_fnc_callReinforcementsFrom
+    [_AOI, "SEARCH", _source] call aso_fnc_callReinforcementsFrom
 
 Author:
     Papa Mike
