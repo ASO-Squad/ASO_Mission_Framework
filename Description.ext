@@ -67,16 +67,20 @@ class cfgFunctions
             class propagateLocalVar {};
             class setLandingPad {};
             class wpLand {};
+            class useSkillSettings {};
         }
         class AOIPrivate
         {
             file = "ASO\AOI\Private";
             class addGroupToAOI {};
+            class addTaskToAOI {};
             class getAOIGroups {};
+            class getAOITasks {};
             class getAOIReinforcementGroups {};
             class recallReinforcements {};
             class removeGroupFromAOIReinforcements {};
             class setAOIGroups {};
+            class setAOITasks {};
             class setAOIReinforcementGroups {};
             class setAOITask {};
         }
@@ -92,6 +96,7 @@ class cfgFunctions
             class setAOITaskStatus {};
             class getAOIStatus {};
             class getAOITask {};
+            class alertSubs {};
         }
         class PersistencePrivate
         {
