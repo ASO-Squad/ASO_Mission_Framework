@@ -29,6 +29,9 @@ if (isNil "ASO_INIT") then
 params ["_group", "_trigger", "_type", "_dismissed", ["_fromDB", true]];
 private ["_orders", "_default"];
 
+// setting skills
+[_group] call aso_fnc_useSkillSettings;
+
 // Keep this group in mind for saving
 [_group] call aso_fnc_collectGroup;
 

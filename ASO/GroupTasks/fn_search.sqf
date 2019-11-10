@@ -29,6 +29,9 @@ private ["_orders", "_default"];
 // Keep this group in mind for saving
 [_group] call aso_fnc_collectGroup;
 
+// setting skills
+[_group] call aso_fnc_useSkillSettings;
+
 // do not give orders to empty groups
 if (isNull _group || (count units _group) == 0) exitWith {};
 

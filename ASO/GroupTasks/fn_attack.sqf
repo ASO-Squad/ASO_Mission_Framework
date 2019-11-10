@@ -27,6 +27,9 @@ if (isNil "ASO_INIT") then
 params ["_group", "_trigger", ["_completion", 20], ["_fromDB", true]];
 private ["_orders", "_default", "_wpCount"];
 
+// setting skills
+[_group] call aso_fnc_useSkillSettings;
+
 // Keep this group in mind for saving
 [_group] call aso_fnc_collectGroup;
 
