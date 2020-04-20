@@ -3,13 +3,13 @@ Description:
     Pushes this group and its vehicles to ASO_GROUPS, ASO_UNITS and ASO_VEHICLES
 
 Parameters:
-    _group	- A group.
+    0   - A group.
 
 Returns:
     nothing
 
 Example:
-    [_group] call aso_fnc_collectGroup;
+    [this] call aso_fnc_collectGroup;
 
 Author:
     Papa Mike

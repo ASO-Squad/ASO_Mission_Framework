@@ -1,3 +1,4 @@
+
 class Params
 {
 	class LoadMission
@@ -5,46 +6,22 @@ class Params
 		title = "Load Previous Mission"; // Param name visible in the list
 		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
 		texts[] = {"No","Yes"}; // Description of each selectable item
-		default = 1; // Default value; must be listed in 'values' array, otherwise 0 is used
+		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
-    class CustomForecastEnabled
+    class LoadArmory
 	{
-		title = "Change The Weather Forecast"; // Param name visible in the list
+		title = "Load Armory"; // Param name visible in the list
 		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
 		texts[] = {"No","Yes"}; // Description of each selectable item
-		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
-	};
-    class CustomOvercast
-	{
-		title = "Cloud Cover"; // Param name visible in the list
-		values[] = {0,2,4,7,9,10}; // Values; must be integers; has to have the same number of elements as 'texts'
-		texts[] = {"Clear Sky","Sunny Sky", "Partly Cloudy", "Cloudy Sky", "Overcast Sky", "Bad Weather"}; // Description of each selectable item
-		default = 4; // Default value; must be listed in 'values' array, otherwise 0 is used
-	};
-    class CustomFog
-	{
-		title = "Fog Density"; // Param name visible in the list
-		values[] = {0,2,5,8,10}; // Values; must be integers; has to have the same number of elements as 'texts'
-		texts[] = {"Clear","Foggy", "Dense Fog", "London", "THE FOG"}; // Description of each selectable item
-		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
+		default = 1; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
 };
 class cfgFunctions
 {
+    #include "vcom\cfgFunctions.hpp"
+
     class ASO
     {
-        class GroupTasks
-        {
-            file = "ASO\GroupTasks";
-            class garrison {};
-            class garrisonSimple {};
-            class guard {};
-            class guardHand {};
-            class patrol {};
-            class attack {};
-            class search {};
-            class reinforce {};
-        }
         class Debug
         {
             file = "ASO\Debug";
@@ -68,39 +45,12 @@ class cfgFunctions
             class setLandingPad {};
             class wpLand {};
             class useSkillSettings {};
-        }
-        class AOIPrivate
-        {
-            file = "ASO\AOI\Private";
-            class addGroupToAOI {};
-            class addTaskToAOI {};
-            class getAOIGroups {};
-            class getAOITasks {};
-            class getAOIReinforcementGroups {};
-            class recallReinforcements {};
-            class removeGroupFromAOIReinforcements {};
-            class setAOIGroups {};
-            class setAOITasks {};
-            class setAOIReinforcementGroups {};
-            class setAOITask {};
-        }
-        class AOIPublic
-        {
-            file = "ASO\AOI";
-            class initAOI {};
-            class addGroupToAOIReinforcements {}; 
-            class callReinforcements {};
-            class callReinforcementsFrom {};
-            class retreatReinforcements {};
-            class setAOIStatus {};
-            class setAOITaskStatus {};
-            class getAOIStatus {};
-            class getAOITask {};
-            class alertSubs {};
+            class doNotMove {};
         }
         class PersistencePrivate
         {
             file = "ASO\Persistence\Private"
+            class getInventory {};
             class saveInventory {};
             class loadInventory {};
             class saveCargo {};
@@ -108,12 +58,15 @@ class cfgFunctions
             class putMagazinesInCargo {};
             class putWeaponsInCargo {};
             class putItemsInCargo {};
+            class getPosition {};
             class savePosition {};
             class loadPosition {};
             class saveHealth {};
             class loadHealth {};
+            class getMount {};
             class saveMount {};
             class loadMount {};
+            class getExplosives {};
             class saveExplosives {};
             class loadExplosives {};
             class saveDamage {};
@@ -131,6 +84,8 @@ class cfgFunctions
             class loadDateTime {};
             class saveWeather {};
             class loadWeather {};
+            class writeValue {};
+            class readValue {};
         }
         class PersistenceHelper
         {
@@ -167,6 +122,7 @@ class cfgFunctions
             class executeLoadOrders {};
             class executeSaveEnvironment {};
             class executeLoadEnvironment {};
+            class executeSaveGroup {};
         }
     };
 };
@@ -175,10 +131,25 @@ class CfgRemoteExec
         class Commands
         {
                 mode = 2; // Remote execution is allowed for all commands
+                jip = 1;
         };
         class Functions
         {
                 mode = 2; // Remote execution is allowed for all functions
+                jip = 1;
+                class vcm_serverask { allowedTargets = 0;jip = 1; };
+                class VCM_PublicScript { allowedTargets = 0;jip = 1; };
+                class BIS_fnc_debugConsoleExec { allowedTargets = 0;jip = 1; };
+                class SpawnScript { allowedTargets = 0;jip = 1; };
+                class enableSimulationGlobal { allowedTargets = 0;jip = 1; };
+                class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
         };
 };
 allowFunctionsRecompile = 1;
+
+class Extended_PreInit_EventHandlers {
+	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_Functions\fn_CBASettings.sqf";
+};
+
+respawnOnStart = -1;
+respawnTemplates[] = {"MenuPosition"};
