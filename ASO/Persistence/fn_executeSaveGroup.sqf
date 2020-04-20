@@ -38,29 +38,31 @@ if (typeName _group != "GROUP") exitWith
 {
 	if (isServer) then
 	{
-		_inventory = [_x, _saveByName, _prefix] call aso_fnc_getInventory;
-		_position = [_x, _saveByName, _prefix] call aso_fnc_getPosition;
-		//[_x, _saveByName, _prefix] call aso_fnc_saveHealth;
-		_mount = [_x, _saveByName, _prefix] call aso_fnc_getMount;
-		_explosives = [_x, _saveByName, _prefix] call aso_fnc_getExplosives;
+		_position = [_x] call aso_fnc_getPosition;
+		_inventory = [_x] call aso_fnc_getInventory;
+		_health = [_x] call aso_fnc_getHealth;
+		_mount = [_x] call aso_fnc_getMount;
+		_explosives = [_x] call aso_fnc_getExplosives;
 
 		// save the stuff
-		[_position, "Position", groupId _group, _x] call aso_fnc_writeValue;
-		[_inventory, "Inventory", groupId _group, _x] call aso_fnc_writeValue;
-		[_mount, "Mount", groupId _group, _x] call aso_fnc_writeValue;
-		[_explosives, "Explosives", groupId _group, _x] call aso_fnc_writeValue;
+		[groupId _group, _x, "Position", _position] call aso_fnc_writeValue;
+		[groupId _group, _x, "Inventory", _inventory] call aso_fnc_writeValue;
+		[groupId _group, _x, "Health", _health] call aso_fnc_writeValue;
+		[groupId _group, _x, "Mount", _mount] call aso_fnc_writeValue;
+		[groupId _group, _x, "Explosives", _explosives] call aso_fnc_writeValue;
 	}
 	else
 	{
-		_inventory = [_x, _saveByName, _prefix] remoteExecCall ["aso_fnc_getInventory", 2, false]; // Call this on the server
-		_position = [_x, _saveByName, _prefix] remoteExecCall ["aso_fnc_getPosition", 2, false]; // Call this on the server
-		//[_x, _saveByName, _prefix] remoteExecCall ["aso_fnc_saveHealth", 2, false]; // Call this on the server
-		_mount = [_x, _saveByName, _prefix] remoteExecCall ["aso_fnc_getMount", 2, false]; // Call this on the server
-		_explosives = [_x, _saveByName, _prefix] remoteExecCall ["aso_fnc_getExplosives", 2, false]; // Call this on the server
+		_position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false]; // Call this on the server
+		_inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false]; // Call this on the server
+		_health = [_x] remoteExecCall ["aso_fnc_getHealth", 2, false]; // Call this on the server
+		_mount = [_x] remoteExecCall ["aso_fnc_getMount", 2, false]; // Call this on the server
+		_explosives = [_x] remoteExecCall ["aso_fnc_getExplosives", 2, false]; // Call this on the server
 		// save the stuff
-		[_position, "Position", groupId _group, _x] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server
-		[_inventory, "Inventory", groupId _group, _x] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
-		[_mount, "Mount", groupId _group, _x] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
-		[_explosives, "Explosives", groupId _group, _x] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
+		[groupId _group, _x, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server
+		[groupId _group, _x, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server
+		[groupId _group, _x, "Health", _health] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
+		[groupId _group, _x, "Mount", _mount] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
+		[groupId _group, _x, "Explosives", _explosives] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
 	};
 } forEach units _group;

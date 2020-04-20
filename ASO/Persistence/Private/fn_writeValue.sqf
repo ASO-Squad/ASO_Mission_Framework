@@ -12,14 +12,14 @@ Returns:
     nothing
 
 Example:
-    [_value, _name, _database, _section] call aso_fnc_writeValue;
+    [_database, _section, _name, _value] call aso_fnc_writeValue;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_database", "_section", "_value", "_name"];
+params ["_database", "_section", "_name", "_value"];
 
 _database = format ["%1_%2", ASO_PREFIX, _database]; 
 
