@@ -59,9 +59,8 @@ class cfgFunctions
             class putWeaponsInCargo {};
             class putItemsInCargo {};
             class getPosition {};
-            class savePosition {};
-            class loadPosition {};
-            class saveHealth {};
+            class setPosition {};
+            class getHealth {};
             class loadHealth {};
             class getMount {};
             class saveMount {};

@@ -1,8 +1,6 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Loads the position for the given unit, and does this with INIDBI2.
-	Files are loaded from the server machine.
-	The unit in question should be of the type MEN.
+    Sets the position for the given unit.
 
 Parameters:
     _unit			- The unit that we want to load the position of
@@ -15,7 +13,7 @@ Returns:
     nothing
 
 Example:
-    [_unit, false, _prefix, _db, false] call aso_fnc_loadPosition;
+    [_unit, false, _prefix, _db, false] call aso_fnc_setPosition;
 
 Author:
     Papa Mike
