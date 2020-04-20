@@ -13,7 +13,7 @@ Returns:
     nothing
 
 Example:
-    [_varspace, false, _prefix, _varname, _default] call aso_fnc_SaveVar;
+    [_varspace, false, _prefix, _varname, _default] call aso_fnc_writeVar;
 
 Author:
     Papa Mike
