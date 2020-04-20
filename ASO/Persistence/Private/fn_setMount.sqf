@@ -1,48 +1,37 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Loads the mount, meaning vehicle or static weapon of the given unit, and does this with INIDBI2.
-	Files are read on the server machine.
+    Set the mount, meaning vehicle or static weapon of the given unit.
 
 Parameters:
     _unit			- The unit that we want to track
-	_loadByName		- If true, we are saving this by the units name, otherwise it is loaded by the players name
-	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
+	_mount			- The information about the units mount
 
 Returns:
     nothing
 
 Example:
-    [_unit, false, _prefix] call aso_fnc_loadMount;
+    [_unit, _mount] call aso_fnc_setMount;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_unit", "_loadByName", "_prefix"];
-
-// Check if the health got already loaded
-if (_unit getVariable ["ASO_P_Mount", false]) exitWith {};
+params ["_unit", "_mount"];
 
 // Check if the unit is of the right type
 if (!(_unit isKindOf "Man")) exitWith {};
 
-// Use the appropriate name for the database 
-_db = [_unit, _loadByName] call aso_fnc_getDbName;
-// creating new database
-_inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
-// Check if there is something to load
-if (!("exists" call _inidbi)) exitWith {};
-
 // Read information 
-_vehicle = ["read", ["Mount", "Vehicle"]] call _inidbi;
-_role = ["read", ["Mount", "Role"]] call _inidbi;
-_cargoIndex = ["read", ["Mount", "Cargo"]] call _inidbi;
-_turretPath = ["read", ["Mount", "Turret"]] call _inidbi;
-_personTurret = ["read", ["Mount", "PersonTurret"]] call _inidbi;
+_vehicle = _mount select 0;
+_role = _mount select 1;
+_cargoIndex = _mount select 2;
+_turretPath = _mount select 3;
+_personTurret = _mount select 4;
 
+// check if that vehicle even exists
 _vehicle = missionNamespace getVariable [_vehicle, objNull];
-if (isNull _vehicle) exitWith {};
+if (isNull _vehicle) exitWith {false;};
 
 // Make sure we removed all editor set crew, but only once
 if (!(_vehicle getVariable ["ASO_P_CrewRemoved", false])) then
@@ -63,4 +52,4 @@ switch (_role) do {
 	case "cargo": { [_unit, [_vehicle, _cargoIndex]] remoteExec ["moveInCargo", _unit, false] };
 	default { [_unit, [_vehicle, _cargoIndex]] remoteExec ["moveInCargo", _unit, false] };
 };
-_unit setVariable ["ASO_P_Mount", true, true];
+true;

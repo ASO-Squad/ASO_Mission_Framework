@@ -22,5 +22,14 @@ params ["_unit"];
 _position = getPosATL _unit;
 _direction = getDir _unit;
 _stance = stance _unit;
+_action = "";
+
+switch (_stance) do 
+{
+    case "STAND": { _action = "PlayerStand" };
+    case "CROUCH": { _action = "PlayerCrouch" };
+    case "PRONE": { _action = "PlayerProne" };
+    default { _action = "PlayerCrouch" };
+};
 
 [_position, _direction, _stance];

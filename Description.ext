@@ -50,77 +50,77 @@ class cfgFunctions
         class PersistencePrivate
         {
             file = "ASO\Persistence\Private"
+            // Get/Set Functions
             class getInventory {};
-            class saveInventory {};
-            class loadInventory {};
-            class saveCargo {};
-            class loadCargo {};
-            class putMagazinesInCargo {};
-            class putWeaponsInCargo {};
-            class putItemsInCargo {};
+            class setInventory {};
+            class getCargo {};
+            class setCargo {};
             class getPosition {};
             class setPosition {};
             class getHealth {};
-            class loadHealth {};
+            class setHealth {};
             class getMount {};
-            class saveMount {};
-            class loadMount {};
+            class setMount {};
             class getExplosives {};
-            class saveExplosives {};
-            class loadExplosives {};
-            class saveDamage {};
-            class loadDamage {};
-            class saveWeapons {};
-            class loadWeapons {};
-            class saveACESupplies {};
-            class loadACESupplies {};
-            class saveMarkers {};
-            class loadMarkers {};
-            class saveVar {};
-            class loadVar {};
+            class setExplosives {};
+            class getDamage {};
+            class setDamage {};
+            class getWeapons {};
+            class setWeapons {};
+            class getACESupplies {};
+            class setACESupplies {};
+            class getMarkers {};
+            class setMarkers {};
             class getDbName {};
-            class saveDateTime {};
-            class loadDateTime {};
-            class saveWeather {};
-            class loadWeather {};
+            class getDateTime {};
+            class setDateTime {};
+            class getWeather {};
+            class setWeather {};
+            // Write to Database
             class writeValue {};
             class readValue {};
+            class readVar {};
+            class writeVar {};
+            // Cargo Helper
+            class putMagazinesInCargo {};
+            class putWeaponsInCargo {};
+            class putItemsInCargo {};
         }
         class PersistenceHelper
         {
             file = "ASO\Persistence\Helper"
-            class actionSaveInventory {};
-            class actionSaveCargo {};
-            class collectGroup {};
-            class collectCrate {};
-            class collectObject {};
-            class collectVehicle {};
-            class saveState {};
-            class setVehicleName {};
+            //class actionSaveInventory {};
+            //class actionSaveCargo {};
+            //class collectGroup {};
+            //class collectCrate {};
+            //class collectObject {};
+            //class collectVehicle {};
+            //class saveState {};
+            //class setVehicleName {};
         }
         class PersistencePublic
         {
             file = "ASO\Persistence"
-            class executeSaveInventory {};
-            class executeLoadInventory {};
-            class executeSaveCargo {};
-            class executeLoadCargo {};
-            class executeSaveMan {};
-            class executeLoadMan {};
-            class executeSaveVehicle {};
-            class executeLoadVehicle {};
-            class executeSaveDropped {};
-            class executeLoadDropped {};
-            class executeSaveMarkers {};
-            class executeLoadMarkers {};
-            class executeSaveVar {};
-            class executeLoadVar {};
-            class executeSaveAOI {};
-            class executeLoadAOI {};
-            class executeSaveOrders {};
-            class executeLoadOrders {};
-            class executeSaveEnvironment {};
-            class executeLoadEnvironment {};
+            //class executeSaveInventory {};
+            //class executeLoadInventory {};
+            //class executeSaveCargo {};
+            //class executeLoadCargo {};
+            //class executeSaveMan {};
+            //class executeLoadMan {};
+            //class executeSaveVehicle {};
+            //class executeLoadVehicle {};
+            //class executeSaveDropped {};
+            //class executeLoadDropped {};
+            //class executeSaveMarkers {};
+            //class executeLoadMarkers {};
+            //class executeSaveVar {};
+            //class executeLoadVar {};
+            //class executeSaveAOI {};
+            //class executeLoadAOI {};
+            //class executeSaveOrders {};
+            //class executeLoadOrders {};
+            //class executeSaveEnvironment {};
+            //class executeLoadEnvironment {};
             class executeSaveGroup {};
         }
     };

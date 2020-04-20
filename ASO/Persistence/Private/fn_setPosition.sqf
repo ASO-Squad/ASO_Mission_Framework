@@ -4,60 +4,43 @@ Description:
 
 Parameters:
     _unit			- The unit that we want to load the position of
-	_loadByName		- If true, we are loading this by the units name, otherwise it is loaded by the players name
-	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
-	_db				- DB Name differs from object Name (needed to support groundWeaponHolders)
+	_position		- A position array
 	_vehicle		- target the vehicle, true or false
 
 Returns:
     nothing
 
 Example:
-    [_unit, false, _prefix, _db, false] call aso_fnc_setPosition;
+    [_unit, _position] call aso_fnc_setPosition;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_unit", "_loadByName", "_prefix", ["_db", ""], ["_vehicle", false]];
-
-// Check if the position got already loaded
-if (_unit getVariable ["ASO_P_Position", false]) exitWith {};
-
-// Use the appropriate name for the database
-if (_vehicle) then
-{
-	_db = [vehicle _unit, true] call aso_fnc_getDbName;
-}
-else
-{
-	_db = [_unit, _loadByName] call aso_fnc_getDbName;
-};
-
-// creating new database
-_inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
-if (!("exists" call _inidbi)) exitWith {};
+params ["_unit", "_position", ["_vehicle", false]];
 
 // reading position
-_position = ["read", ["Position", "Location"]] call _inidbi;
-_direction = ["read", ["Position", "Direction"]] call _inidbi;
-_stance = ["read", ["Position", "Stance"]] call _inidbi;
+_pos = _position select 0;
+_dir = _position select 1;
+_stance = _position select 2;
 
 // Apply data
 if (local _unit) then
 {
-	_unit setDir _direction;
+	["Direction" , _dir, true] call aso_fnc_debug;
+	["Stance" , _stance, true] call aso_fnc_debug;
+	["Position" , _pos, true] call aso_fnc_debug;
+	_unit setDir _dir;
 	_unit playAction _stance;
-	_unit setPosATL _position;
+	_unit setPosATL _pos;
 }
 else
 {
-	[_unit, _direction] remoteExec ["setDir", _unit, false]; // setDir needs local parameters
+	[_unit, _dir] remoteExec ["setDir", _unit, false];// setDir needs local parameters
 	[_unit, _stance] remoteExec ["playAction", _unit, false];// playAction needs local parameters
-	[_unit, _position] remoteExec ["setPosATL", _unit, false];// this needs to be called remotly in case a player starts in a vehicle
+	[_unit, _pos] remoteExec ["setPosATL", _unit, false];// this needs to be called remotly in case a player starts in a vehicle
 };
-_unit setPosATL _position; // Position seems to be synced, so this call needs to be done on the server too
-_unit setVariable ["ASO_P_Position", true, true];
+_unit setPosATL _pos; // Position seems to be synced, so this call needs to be done on the server too
 // Return the position to use it with other functions
 _position;

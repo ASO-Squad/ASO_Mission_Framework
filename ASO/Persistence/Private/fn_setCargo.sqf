@@ -1,48 +1,36 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Loads the cargo for the given object, and does this with INIDBI2.
-	Files are loaded from the server machine.
+    Sets the cargo load for the given object.
 
 Parameters:
     _obj			- The object  that we want to load the cargo of
-	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
-	_delete			- Delete previous contents or not
-	_db				- DB Name differs from object Name (needed to support groundWeaponHolders)
+	_cargo 			- Cargo Array
 
 Returns:
     nothing
 
 Example:
-    [_obj, _prefix] call aso_fnc_loadCargo;
+    [_obj] call aso_fnc_setCargo;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_obj", "_prefix", ["_delete", true], ["_db", ""]];
+params ["_obj", "_cargo"];
 
-// Use the appropriate name for the database 
-_db = [_obj, true] call aso_fnc_getDbName;
 
-// creating new database
-_inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
-if (!("exists" call _inidbi)) exitWith {};
-
-if (_delete) then
-{
-	// Empty cargo space 
-	clearItemCargoGlobal _obj;
-	clearMagazineCargoGlobal _obj;
-	clearWeaponCargoGlobal _obj;
-	clearBackpackCargoGlobal _obj;
-};
+// Empty cargo space 
+clearItemCargoGlobal _obj;
+clearMagazineCargoGlobal _obj;
+clearWeaponCargoGlobal _obj;
+clearBackpackCargoGlobal _obj;
 
 // reading categories
-_magazines = ["read", ["Cargo", "Magazines"]] call _inidbi;
-_weapons = ["read", ["Cargo", "Weapons"]] call _inidbi;
-_items = ["read", ["Cargo", "Items"]] call _inidbi;
-_containers = ["read", ["Cargo", "Containers"]] call _inidbi;
+_magazines = _cargo select 0;
+_weapons = _cargo select 1;
+_items = _cargo select 2;
+_containers = _cargo select 3;
 
 // Apply Cargo 
 [_obj, _magazines] call aso_fnc_putMagazinesInCargo;

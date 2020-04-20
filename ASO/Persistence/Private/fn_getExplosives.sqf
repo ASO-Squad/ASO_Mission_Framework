@@ -7,7 +7,7 @@ Parameters:
     _unit			- The unit that we want to track
 
 Returns:
-    nothing
+    Explosives array
 
 Example:
     [_unit] call aso_fnc_getExplosives;
