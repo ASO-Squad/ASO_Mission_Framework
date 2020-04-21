@@ -38,6 +38,16 @@ if (typeName _ifIsDead == "OBJECT" && !_isAlive) then
 {
 	_unit setVehiclePosition [(getPosATL _ifIsDead), [], 5, "NONE"];
 };
+
+// Only deal dammage if neccessary to avoid blood stains on the floor
+_head = _hitpointDamage select 2;
+_body = _hitpointDamage select 7;
+_leftArm = _hitpointDamage select 12;
+_rightArm = _hitpointDamage select 13;
+_leftLeg = _hitpointDamage select 14;
+_rightLeg = _hitpointDamage select 15;
+_damageArray = [[_head, "Head"], [_body, "Body"], [_leftArm, "LeftArm"], [_rightArm, "RightArm"], [_leftLeg, "LeftLeg"], [_rightLeg, "RightLeg"]];
+
 if (typeName _ifIsDead == "BOOL" && !_isAlive) then
 {
 	if (_ifIsDead) then
@@ -46,15 +56,13 @@ if (typeName _ifIsDead == "BOOL" && !_isAlive) then
 	}
 	else
 	{
-		// Apply variables
-		[_unit, true] call ace_medical_fnc_setUnconscious;
-		// Ease the pain
-		[_unit, ((_hitpointDamage select 2)/2), "Head"] call ace_medical_fnc_addDamageToUnit;
-		[_unit, ((_hitpointDamage select 7)/2), "Body"] call ace_medical_fnc_addDamageToUnit;
-		[_unit, ((_hitpointDamage select 12)/2), "LeftArm"] call ace_medical_fnc_addDamageToUnit;
-		[_unit, ((_hitpointDamage select 13)/2), "RightArm"] call ace_medical_fnc_addDamageToUnit;
-		[_unit, ((_hitpointDamage select 14)/2), "LeftLeg"] call ace_medical_fnc_addDamageToUnit;
-		[_unit, ((_hitpointDamage select 15)/2), "RightLeg"] call ace_medical_fnc_addDamageToUnit;
+		{
+			_damage = (_x select 0);
+			if (_damage >= 0.1) then 
+			{
+				[_unit, ((_x select 0)/2), (_x select 1)] call ace_medical_fnc_addDamageToUnit;				
+			};
+		} forEach _damageArray;
 
 		_unit setVariable ["ace_medical_morphine", _morphine, true];
 		_unit setVariable ["ace_medical_tourniquets", _tourniquets, true];
@@ -65,12 +73,13 @@ if (_isAlive) then
 	// Apply variables
 	[_unit, _isUnconscious] call ace_medical_fnc_setUnconscious;
 	// Handling damage
-	[_unit, _hitpointDamage select 2, "Head"] call ace_medical_fnc_addDamageToUnit;
-	[_unit, _hitpointDamage select 7, "Body"] call ace_medical_fnc_addDamageToUnit;
-	[_unit, _hitpointDamage select 12, "LeftArm"] call ace_medical_fnc_addDamageToUnit;
-	[_unit, _hitpointDamage select 13, "RightArm"] call ace_medical_fnc_addDamageToUnit;
-	[_unit, _hitpointDamage select 14, "LeftLeg"] call ace_medical_fnc_addDamageToUnit;
-	[_unit, _hitpointDamage select 15, "RightLeg"] call ace_medical_fnc_addDamageToUnit;
+	{
+			_damage = (_x select 0);
+			if (_damage >= 0.1) then 
+			{
+				[_unit, ((_x select 0)), (_x select 1)] call ace_medical_fnc_addDamageToUnit;				
+			};
+		} forEach _damageArray;
 
 	_unit setVariable ["ace_medical_morphine", _morphine, true];
 	_unit setVariable ["ace_medical_tourniquets", _tourniquets, true];
