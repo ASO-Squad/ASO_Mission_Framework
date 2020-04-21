@@ -105,8 +105,8 @@ class cfgFunctions
             //class executeLoadInventory {};
             //class executeSaveCargo {};
             //class executeLoadCargo {};
-            //class executeSaveMan {};
-            //class executeLoadMan {};
+            class executeSaveMan {};
+            class executeLoadMan {};
             //class executeSaveVehicle {};
             //class executeLoadVehicle {};
             //class executeSaveDropped {};
