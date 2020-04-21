@@ -53,7 +53,7 @@ if (count _units == 0) then
 		// for players, we need to wait until tfr is initialized
 		if (ASO_USE_TFR && isPlayer _x) then
 		{
-			[_x, _inventory] call aso_fnc_setInventory;
+			[_x, _inventory] spawn aso_fnc_setInventory;
 		}
 		else 
 		{
