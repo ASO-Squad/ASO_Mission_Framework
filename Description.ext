@@ -101,8 +101,8 @@ class cfgFunctions
         class PersistencePublic
         {
             file = "ASO\Persistence"
-            //class executeSaveInventory {};
-            //class executeLoadInventory {};
+            class executeSaveInventory {};
+            class executeLoadInventory {};
             //class executeSaveCargo {};
             //class executeLoadCargo {};
             class executeSaveMan {};
