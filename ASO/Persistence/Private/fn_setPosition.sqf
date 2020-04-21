@@ -28,9 +28,6 @@ _stance = _position select 2;
 // Apply data
 if (local _unit) then
 {
-	["Direction" , _dir, true] call aso_fnc_debug;
-	["Stance" , _stance, true] call aso_fnc_debug;
-	["Position" , _pos, true] call aso_fnc_debug;
 	_unit setDir _dir;
 	_unit playAction _stance;
 	_unit setPosATL _pos;
