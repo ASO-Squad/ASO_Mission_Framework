@@ -18,13 +18,11 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
-params ["_database", "_section", "_name", "_value"];
+params ["_database", "_section", "_name"];
 
 _database = format ["%1_%2", ASO_PREFIX, _database]; 
 
 // creating new database
 _inidbi = ["new", _database] call OO_INIDBI;
-//["deleteSection", "Position"] call _inidbi; // cleanup
-
-// Write information down
-["write", [_section, _name, _value]] call _inidbi;
+// reading
+["read", [_section, _name, "empty"]] call _inidbi;
