@@ -30,11 +30,12 @@ if (isNil "ASO_INIT") then
 
 params ["_units", "_saveByName", ["_prefix", ASO_PREFIX]];
 
+// If the unit array is empty, save all players
 if (count _units == 0) then
 {
 	_units = allPlayers;
 };
-// If the unit array is empty, save all players
+
 {
 	_dbName = [_x, _saveByName] call aso_fnc_getDbName;
 	if (isServer) then
@@ -45,7 +46,6 @@ if (count _units == 0) then
 		_mount = [_x] call aso_fnc_getMount;
 		_explosives = [_x] call aso_fnc_getExplosives;
 
-		// save the stuff
 		["Men", _dbName, "Position", _position] call aso_fnc_writeValue;
 		["Men", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;
 		["Men", _dbName, "Health", _health] call aso_fnc_writeValue;
@@ -54,17 +54,17 @@ if (count _units == 0) then
 	}
 	else
 	{
-		_position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false]; // Call this on the server
-		_inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false]; // Call this on the server
-		_health = [_x] remoteExecCall ["aso_fnc_getHealth", 2, false]; // Call this on the server
-		_mount = [_x] remoteExecCall ["aso_fnc_getMount", 2, false]; // Call this on the server
-		_explosives = [_x] remoteExecCall ["aso_fnc_getExplosives", 2, false]; // Call this on the server
-		// save the stuff
-		["Men", _dbName, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server
-		["Men", _dbName, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server
-		["Men", _dbName, "Health", _health] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
-		["Men", _dbName, "Mount", _mount] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
-		["Men", _dbName, "Explosives", _explosives] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
+		_position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false];
+		_inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false];
+		_health = [_x] remoteExecCall ["aso_fnc_getHealth", 2, false];
+		_mount = [_x] remoteExecCall ["aso_fnc_getMount", 2, false];
+		_explosives = [_x] remoteExecCall ["aso_fnc_getExplosives", 2, false];
+		
+		["Men", _dbName, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		["Men", _dbName, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		["Men", _dbName, "Health", _health] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		["Men", _dbName, "Mount", _mount] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		["Men", _dbName, "Explosives", _explosives] remoteExecCall ["aso_fnc_writeValue", 2, false];
 	};		
 } forEach _units;
 true;

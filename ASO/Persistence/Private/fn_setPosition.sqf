@@ -21,9 +21,9 @@ if (!isServer) exitWith {};
 params ["_unit", "_position", ["_vehicle", false]];
 
 // reading position
-_pos = _position select 0;
-_dir = _position select 1;
-_stance = _position select 2;
+private _pos = _position select 0;
+private _dir = _position select 1;
+private _stance = _position select 2;
 
 // Apply data
 if (local _unit) then

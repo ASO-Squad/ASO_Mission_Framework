@@ -20,9 +20,9 @@ if (!isServer) exitWith {};
 params ["_vehicle", "_damageArray"];
 
 // Load information
-_hitpoints = _damageArray select 0;
-_damages = _damageArray select 1;
-_damage = _damageArray select 2;
+private _hitpoints = _damageArray select 0;
+private _damages = _damageArray select 1;
+private _damage = _damageArray select 2;
 // Apply dammage
 if (typeName _hitpoints != "ARRAY") exitWith {};
 // This vehicle is most probably already burnt down

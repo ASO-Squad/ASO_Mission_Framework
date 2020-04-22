@@ -20,7 +20,7 @@ if (!isServer) exitWith {};
 params ["_vehicle", "_weapons"];
 
 // Load information
-_magazines = _weapons;
+private _magazines = _weapons;
 // Apply data
 if (local _vehicle) then
 {
