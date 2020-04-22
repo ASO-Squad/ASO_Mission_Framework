@@ -46,6 +46,7 @@ class cfgFunctions
             class wpLand {};
             class useSkillSettings {};
             class doNotMove {};
+            class deleteEmptyWH {};
         }
         class PersistencePrivate
         {
@@ -109,8 +110,8 @@ class cfgFunctions
             class executeLoadMan {};
             class executeSaveVehicle {};
             class executeLoadVehicle {};
-            //class executeSaveDropped {};
-            //class executeLoadDropped {};
+            class executeSaveDropped {};
+            class executeLoadDropped {};
             //class executeSaveMarkers {};
             //class executeLoadMarkers {};
             class executeSaveVar {};

@@ -6,7 +6,8 @@ if (_load == 1) then
 	{
 		[] call aso_fnc_init_aso;
 	};
-	[] call aso_fnc_executeLoadEnvironment;
+	//[] call aso_fnc_executeLoadEnvironment;
 	//[ASO_VEHICLES] call aso_fnc_executeLoadVehicle;
+	[] spawn aso_fnc_deleteEmptyWH;
 };
 
