@@ -113,8 +113,8 @@ class cfgFunctions
             //class executeLoadDropped {};
             //class executeSaveMarkers {};
             //class executeLoadMarkers {};
-            //class executeSaveVar {};
-            //class executeLoadVar {};
+            class executeSaveVar {};
+            class executeLoadVar {};
             //class executeSaveAOI {};
             //class executeLoadAOI {};
             //class executeSaveOrders {};

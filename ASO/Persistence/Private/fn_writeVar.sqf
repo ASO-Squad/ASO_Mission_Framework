@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------
 Description:
-   Saves one or all varaibles of a given namespace
+   Saves one or all variables of a given namespace
 	
 Parameters:
     _varspace		- Can be any object
