@@ -91,10 +91,10 @@ class cfgFunctions
             file = "ASO\Persistence\Helper"
             //class actionSaveInventory {};
             //class actionSaveCargo {};
-            //class collectGroup {};
+            class collectGroup {};
             //class collectCrate {};
             //class collectObject {};
-            //class collectVehicle {};
+            class collectVehicle {};
             //class saveState {};
             //class setVehicleName {};
         }
@@ -107,8 +107,8 @@ class cfgFunctions
             //class executeLoadCargo {};
             class executeSaveMan {};
             class executeLoadMan {};
-            //class executeSaveVehicle {};
-            //class executeLoadVehicle {};
+            class executeSaveVehicle {};
+            class executeLoadVehicle {};
             //class executeSaveDropped {};
             //class executeLoadDropped {};
             //class executeSaveMarkers {};

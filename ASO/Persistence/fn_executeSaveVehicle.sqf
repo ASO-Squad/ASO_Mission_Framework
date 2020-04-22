@@ -13,14 +13,12 @@ Parameters:
     _vehicles		- The vehicles that we want to save.
 					If you leave this array empty, all vehicles get saved. 
 					Make sure that all vehicles have names to use this feature properly
-	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
-					If you don not provide a prefix, ASO_PREFIX will be used. 
 
 Returns:
     nothing
 
 Example:
-    [_vehicles, _prefix] call aso_fnc_executeSaveVehicle;
+    [_vehicles] call aso_fnc_executeSaveVehicle;
 
 Author:
     Papa Mike
@@ -30,28 +28,43 @@ if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
 };
-params ["_vehicles", ["_prefix", ASO_PREFIX]];
+params ["_vehicles"];
 
+// If the array is empty, save all vehicles
 if (count _vehicles == 0) then
 {
 	_vehicles = vehicles;
 };
-// If the array is empty, save all vehicles
+
 {
+	_dbName = [_x, _saveByName] call aso_fnc_getDbName;
 	if (isServer) then
 	{
-		[_x, true, _prefix] call aso_fnc_savePosition;
-		[_x, _prefix] call aso_fnc_saveCargo;
-		[_x, _prefix] call aso_fnc_saveDamage;
-		[_x, _prefix] call aso_fnc_saveWeapons;
-		[_x, _prefix] call aso_fnc_saveACESupplies;
+		_position = [_x] call aso_fnc_getPosition;
+		_items = [_x] call aso_fnc_getCargo;
+		_damage = [_x] call aso_fnc_getDamage;
+		_weapons = [_x] call aso_fnc_getWeapons;
+		_supplies = [_x] call aso_fnc_getACESupplies;
+		// save the stuff
+		["Vehicles", _dbName, "Position", _position] call aso_fnc_writeValue;
+		["Vehicles", _dbName, "Items", _items] call aso_fnc_writeValue;
+		["Vehicles", _dbName, "Damage", _damage] call aso_fnc_writeValue;
+		["Vehicles", _dbName, "Weapons", _weapons] call aso_fnc_writeValue;
+		["Vehicles", _dbName, "Supplies", _supplies] call aso_fnc_writeValue;
 	}
 	else
 	{	// Call those on the server 
-		[_x, true, _prefix] remoteExecCall ["aso_fnc_savePosition", 2, false]; 
-		[_x, _prefix] remoteExecCall ["aso_fnc_saveCargo", 2, false];
-		[_x, _prefix] remoteExecCall ["aso_fnc_saveDamage", 2, false];
-		[_x, _prefix] remoteExecCall ["aso_fnc_saveWeapons", 2, false];
-		[_x, _prefix] remoteExecCall ["aso_fnc_saveACESupplies", 2, false];
-	};		
+		_position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false]; 
+		_items = [_x] remoteExecCall ["aso_fnc_getCargo", 2, false];
+		_damage = [_x] remoteExecCall ["aso_fnc_getDamage", 2, false];
+		_weapons = [_x] remoteExecCall ["aso_fnc_getWeapons", 2, false];
+		_supplies = [_x] remoteExecCall ["aso_fnc_getACESupplies", 2, false];
+
+		// save the stuff
+		["Vehicles", _dbName, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false]; 
+		["Vehicles", _dbName, "Items", _items] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		["Vehicles", _dbName, "Damage", _damage] remoteExecCall ["aso_fnc_writeValue", 2, false];	
+		["Vehicles", _dbName, "Weapons", _weapons] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		["Vehicles", _dbName, "Supplies", _supplies] remoteExecCall ["aso_fnc_writeValue", 2, false];
+	};	
 } forEach _vehicles;
