@@ -19,14 +19,14 @@ if (!isServer) exitWith {};
 params ["_vehicle"];
 
 // Variables
-_allDamages = getAllHitPointsDamage _vehicle;
-_hitpoints = [];
-_damages = [];
+private _allDamages = getAllHitPointsDamage _vehicle;
+private _hitpoints = [];
+private _damages = [];
 if ((count _allDamages) > 0) then
 {
     _hitpoints = (_allDamages select 0);
     _damages = (_allDamages select 2); 
 };
-_damage = damage _vehicle;
+private _damage = damage _vehicle;
 
 [_hitpoints, _damages, _damage]

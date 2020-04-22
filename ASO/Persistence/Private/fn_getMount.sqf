@@ -22,19 +22,19 @@ params ["_unit"];
 if (!(_unit isKindOf "Man")) exitWith {};
 
 // Variables
-_vehicle = objectParent _unit;
-_crewPositions = fullCrew _vehicle;
-_role = "";
-_cargoIndex = -1;
-_turretPath = [];
-_personTurret = false;
+private _vehicle = objectParent _unit;
+private _crewPositions = fullCrew _vehicle;
+private _role = "";
+private _cargoIndex = -1;
+private _turretPath = [];
+private _personTurret = false;
 if (isNull objectParent _unit) then
 {
 	_vehicle = ""; // This unit is not inside a vehicle
 }
 else
 {
-	_varName = vehicleVarName _vehicle;
+	private _varName = vehicleVarName _vehicle;
 	if (_varName == "") then
 	{
 		_vehicle = format ["%1", _vehicle];
@@ -56,4 +56,5 @@ else
 		};		
 	} forEach _crewPositions;
 };
+
 [_vehicle, _role, _cargoIndex, _turretPath, _personTurret];

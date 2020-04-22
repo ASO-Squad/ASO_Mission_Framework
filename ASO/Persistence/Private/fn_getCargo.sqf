@@ -19,25 +19,25 @@ if (!isServer) exitWith {};
 params ["_obj"];
 
 // Collecting cargo
-_magazines = magazinesAmmoCargo _obj;
-_weapons = weaponsItemsCargo _obj;
-_items = itemCargo _obj;
+private _magazines = magazinesAmmoCargo _obj;
+private _weapons = weaponsItemsCargo _obj;
+private _items = itemCargo _obj;
 // itemCargo needs some extra care 
 if (isNil "_items") then 
 {
 	_items = [];
 };
 // Look for stuff in containers (we do not need for stuff in contianers that are in containers because arma does not allow that)
-_containerList = [];
-_containers = [];
+private _containerList = [];
+private _containers = [];
 { 
-	_class = (_x select 0);
-	_container = (_x select 1);
+	private _class = (_x select 0);
+	private _container = (_x select 1);
 	_containerList pushBack (_class);
 	// Looking for cargo 
-	_mags = magazinesAmmoCargo _container;
-	_guns = weaponsItemsCargo _container;
-	_stuff = itemCargo _container; 
+	private _mags = magazinesAmmoCargo _container;
+	private _guns = weaponsItemsCargo _container;
+	private _stuff = itemCargo _container; 
 	_containers pushBack [_class, _mags, _guns, _stuff];
   
 } forEach (everyContainer _obj);

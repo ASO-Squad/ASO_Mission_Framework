@@ -19,32 +19,32 @@ if (!isServer) exitWith {};
 params ["_weather"];
 
 // fog
-_newFog = _weather select 0;
-_fogValue = _newFog select 0;
-_fogDecay = _newFog select 1;
-_fogBase = _newFog select 2;
-_fogForecast = _newFog select 3;
+private _newFog = _weather select 0;
+private _fogValue = _newFog select 0;
+private _fogDecay = _newFog select 1;
+private _fogBase = _newFog select 2;
+private _fogForecast = _newFog select 3;
 
 // overcast
-_newOvercast = _weather select 1;
-_overcast = _newOvercast select 0;
-_overcastForecast = _newOvercast select 1;
-_lightning = _newOvercast select 2;
-_rain = _newOvercast select 3;
+private _newOvercast = _weather select 1;
+private _overcast = _newOvercast select 0;
+private _overcastForecast = _newOvercast select 1;
+private _lightning = _newOvercast select 2;
+private _rain = _newOvercast select 3;
 
 // wind
-_newWind = _weather select 2;
-_gusts = _newWind select 0;
-_wind = _newWind select 1;
-_windDir = _newWind select 2;
-_windStrength = _newWind select 3;
+private _newWind = _weather select 2;
+private _gusts = _newWind select 0;
+private _wind = _newWind select 1;
+private _windDir = _newWind select 2;
+private _windStrength = _newWind select 3;
 
 //waves
-_newWaves = _weather select 2;
-_waves = _newWaves select 0; 
+private _newWaves = _weather select 2;
+private _waves = _newWaves select 0; 
 // Next weather change
-_newChange = weather select 3;
-_change = _newChange select 0;
+private _newChange = weather select 3;
+private _change = _newChange select 0;
 
 // Set current weather
 0 setFog [_fogValue, _fogDecay, _fogBase];
@@ -59,7 +59,7 @@ setWind [_wind select 0, _wind select 1];
 forceWeatherChange;
 
 // Maybe we want to use our custom forecast
-_edit = ["CustomForecastEnabled", 0] call BIS_fnc_getParamValue;
+private _edit = ["CustomForecastEnabled", 0] call BIS_fnc_getParamValue;
 if (_edit == 1) then
 {
 	_fogForecast = ["CustomFog", 4] call BIS_fnc_getParamValue;

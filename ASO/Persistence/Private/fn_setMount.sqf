@@ -23,11 +23,11 @@ params ["_unit", "_mount"];
 if (!(_unit isKindOf "Man")) exitWith {};
 
 // Read information 
-_vehicle = _mount select 0;
-_role = _mount select 1;
-_cargoIndex = _mount select 2;
-_turretPath = _mount select 3;
-_personTurret = _mount select 4;
+private _vehicle = _mount select 0;
+private _role = _mount select 1;
+private _cargoIndex = _mount select 2;
+private _turretPath = _mount select 3;
+private _personTurret = _mount select 4;
 
 // check if that vehicle even exists
 _vehicle = missionNamespace getVariable [_vehicle, objNull];

@@ -37,14 +37,14 @@ if (count _units == 0) then
 };
 
 {
-	_dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
 	if (isServer) then
 	{
-		_position = [_x] call aso_fnc_getPosition;
-		_inventory = [_x] call aso_fnc_getInventory;
-		_health = [_x] call aso_fnc_getHealth;
-		_mount = [_x] call aso_fnc_getMount;
-		_explosives = [_x] call aso_fnc_getExplosives;
+		private _position = [_x] call aso_fnc_getPosition;
+		private _inventory = [_x] call aso_fnc_getInventory;
+		private _health = [_x] call aso_fnc_getHealth;
+		private _mount = [_x] call aso_fnc_getMount;
+		private _explosives = [_x] call aso_fnc_getExplosives;
 
 		["Men", _dbName, "Position", _position] call aso_fnc_writeValue;
 		["Men", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;
@@ -54,11 +54,11 @@ if (count _units == 0) then
 	}
 	else
 	{
-		_position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false];
-		_inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false];
-		_health = [_x] remoteExecCall ["aso_fnc_getHealth", 2, false];
-		_mount = [_x] remoteExecCall ["aso_fnc_getMount", 2, false];
-		_explosives = [_x] remoteExecCall ["aso_fnc_getExplosives", 2, false];
+		private _position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false];
+		private _inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false];
+		private _health = [_x] remoteExecCall ["aso_fnc_getHealth", 2, false];
+		private _mount = [_x] remoteExecCall ["aso_fnc_getMount", 2, false];
+		private _explosives = [_x] remoteExecCall ["aso_fnc_getExplosives", 2, false];
 		
 		["Men", _dbName, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false];
 		["Men", _dbName, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2, false];

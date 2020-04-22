@@ -31,15 +31,15 @@ if (count _units == 0) then
 };
 // If the unit array is empty, save all players
 {
-	_dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
 	if (isServer) then
 	{
-		_inventory = [_x] call aso_fnc_getInventory;
+		private _inventory = [_x] call aso_fnc_getInventory;
 		["Inventory", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;
 	}
 	else
 	{
-		_inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false];
+		private _inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false];
 		["Inventory", _dbName, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2, false];
 	};		
 } forEach _units;

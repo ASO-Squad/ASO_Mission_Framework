@@ -29,10 +29,10 @@ if (count _units == 0) then
 };
 // If the unit array is empty, load all players
 {
-	_dbName = [_x, _loadByName] call aso_fnc_getDbName;
+	private _dbName = [_x, _loadByName] call aso_fnc_getDbName;
 	if (isServer) then
 	{
-		_inventory = ["Inventory", _dbName, "Inventory"] call aso_fnc_readValue;
+		private _inventory = ["Inventory", _dbName, "Inventory"] call aso_fnc_readValue;
 
 		// for players, we need to wait until tfr is initialized
 		if (ASO_USE_TFR && isPlayer _x) then
@@ -47,7 +47,7 @@ if (count _units == 0) then
 	}
 	else
 	{
-		_inventory = ["Inventory", _dbName, "Inventory"] remoteExecCall ["aso_fnc_readValue", 2, false];
+		private _inventory = ["Inventory", _dbName, "Inventory"] remoteExecCall ["aso_fnc_readValue", 2, false];
 		
 		if (ASO_USE_TFR && isPlayer _x) then
 		{

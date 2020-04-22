@@ -40,13 +40,13 @@ if (count _units == 0) then
 
 // If the unit array is empty, load all players
 {
-	_dbName = [_x, _loadByName] call aso_fnc_getDbName;
+	private _dbName = [_x, _loadByName] call aso_fnc_getDbName;
 	// Reading from DB
-	_position = ["Men", _dbName, "Position"] call aso_fnc_readValue;
-	_inventory = ["Men", _dbName, "Inventory"] call aso_fnc_readValue;
-	_health = ["Men", _dbName, "Health"] call aso_fnc_readValue;
-	_mount = ["Men", _dbName, "Mount"] call aso_fnc_readValue;
-	_explosives = ["Men", _dbName, "Explosives"] call aso_fnc_readValue;
+	private _position = ["Men", _dbName, "Position"] call aso_fnc_readValue;
+	private _inventory = ["Men", _dbName, "Inventory"] call aso_fnc_readValue;
+	private _health = ["Men", _dbName, "Health"] call aso_fnc_readValue;
+	private _mount = ["Men", _dbName, "Mount"] call aso_fnc_readValue;
+	private _explosives = ["Men", _dbName, "Explosives"] call aso_fnc_readValue;
 	
 	if (isServer) then
 	{
@@ -68,11 +68,11 @@ if (count _units == 0) then
 	else
 	{
 		// Reading from DB
-		_position = ["Men", _dbName, "Position"] remoteExecCall ["aso_fnc_readValue", 2, false];
-		_inventory = ["Men", _dbName, "Inventory"] remoteExecCall ["aso_fnc_readValue", 2, false];
-		_health = ["Men", _dbName, "Health"] remoteExecCall ["aso_fnc_readValue", 2, false];	
-		_mount = ["Men", _dbName, "Mount"] remoteExecCall ["aso_fnc_readValue", 2, false];	
-		_explosives = ["Men", _dbName, "Explosives"] remoteExecCall ["aso_fnc_readValue", 2, false];
+		private _position = ["Men", _dbName, "Position"] remoteExecCall ["aso_fnc_readValue", 2, false];
+		private _inventory = ["Men", _dbName, "Inventory"] remoteExecCall ["aso_fnc_readValue", 2, false];
+		private _health = ["Men", _dbName, "Health"] remoteExecCall ["aso_fnc_readValue", 2, false];	
+		private _mount = ["Men", _dbName, "Mount"] remoteExecCall ["aso_fnc_readValue", 2, false];	
+		private _explosives = ["Men", _dbName, "Explosives"] remoteExecCall ["aso_fnc_readValue", 2, false];
 
 		if (ASO_USE_TFR && isPlayer _x) then
 		{

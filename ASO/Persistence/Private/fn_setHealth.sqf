@@ -28,11 +28,11 @@ params ["_unit", "_health", ["_ifIsDead", false]];
 if (!(_unit isKindOf "Man")) exitWith {};
 
 // Read information
-_morphine = _health select 0;
-_tourniquets = _health select 1;
-_hitpointDamage = _health select 2;
-_isUnconscious = _health select 3;
-_isAlive = _health select 4;
+private _morphine = _health select 0;
+private _tourniquets = _health select 1;
+private _hitpointDamage = _health select 2;
+private _isUnconscious = _health select 3;
+private _isAlive = _health select 4;
 
 if (typeName _ifIsDead == "OBJECT" && !_isAlive) then
 {
@@ -40,13 +40,13 @@ if (typeName _ifIsDead == "OBJECT" && !_isAlive) then
 };
 
 // Only deal dammage if neccessary to avoid blood stains on the floor
-_head = _hitpointDamage select 2;
-_body = _hitpointDamage select 7;
-_leftArm = _hitpointDamage select 12;
-_rightArm = _hitpointDamage select 13;
-_leftLeg = _hitpointDamage select 14;
-_rightLeg = _hitpointDamage select 15;
-_damageArray = [[_head, "Head"], [_body, "Body"], [_leftArm, "LeftArm"], [_rightArm, "RightArm"], [_leftLeg, "LeftLeg"], [_rightLeg, "RightLeg"]];
+private _head = _hitpointDamage select 2;
+private _body = _hitpointDamage select 7;
+private _leftArm = _hitpointDamage select 12;
+private _rightArm = _hitpointDamage select 13;
+private _leftLeg = _hitpointDamage select 14;
+private _rightLeg = _hitpointDamage select 15;
+private _damageArray = [[_head, "Head"], [_body, "Body"], [_leftArm, "LeftArm"], [_rightArm, "RightArm"], [_leftLeg, "LeftLeg"], [_rightLeg, "RightLeg"]];
 
 if (typeName _ifIsDead == "BOOL" && !_isAlive) then
 {

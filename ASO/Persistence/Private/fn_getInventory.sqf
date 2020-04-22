@@ -23,9 +23,9 @@ params ["_unit"];
 if (!(_unit isKindOf "Man")) exitWith {};
 
 // Using getUnitLoadout for inventory of infantry units
-_fullInventory = getUnitLoadout _unit;
+private _fullInventory = getUnitLoadout _unit;
 
 // Check for Earplugs
-_earplugs = [_unit] call ace_hearing_fnc_hasEarPlugsIn;
+private _earplugs = [_unit] call ace_hearing_fnc_hasEarPlugsIn;
 
 [_fullInventory, _earplugs];

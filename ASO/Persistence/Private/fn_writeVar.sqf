@@ -23,13 +23,13 @@ if (!isServer) exitWith {};
 params ["_varspace", "_saveByName", "_prefix", "_varname", "_default"];
 
 // Use the appropriate name for the database 
-_db = [_varspace, _saveByName] call aso_fnc_getDbName;
+private _db = [_varspace, _saveByName] call aso_fnc_getDbName;
 // creating new database
-_inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
+private _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 ["deleteSection", "Variables"] call _inidbi; // cleanup
 
-_value = "";
-_all = [];
+private _value = "";
+private _all = [];
 if (typeName _varname == "ARRAY") then
 {
 	["write", ["Variables", "AllVariables", _varname]] call _inidbi;
@@ -46,7 +46,7 @@ if (typeName _varname == "ARRAY") then
 		{
 			_newValue = [];
 			{
-				_var = "";
+				private _var = "";
 				if (typeName _x == "OBJECT") then
 				{
 					_var = vehicleVarName _x;
@@ -83,7 +83,7 @@ else
 			{
 				_newValue = [];
 				{
-					_var = "";
+					private _var = "";
 					if (typeName _x == "OBJECT") then
 					{
 						_var = vehicleVarName _x;
@@ -129,6 +129,6 @@ else
 			} forEach _value;
 			_value = _newValue;
 		};
-		_foo = ["write", ["Variables", _varname, _value]] call _inidbi;
+		["write", ["Variables", _varname, _value]] call _inidbi;
 	};
 };

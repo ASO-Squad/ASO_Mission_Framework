@@ -20,14 +20,14 @@ if (!isServer) exitWith {};
 params ["_unit"];
 
 // Variables
-_exp = [_unit] call ACE_Explosives_fnc_getPlacedExplosives;
-_explosives = [];
+private _exp = [_unit] call ACE_Explosives_fnc_getPlacedExplosives;
+private _explosives = [];
 {
-	_position = getPosATL (_x select 0);
-	_direction = getDir (_x select 0);
-	_class = typeOf (_x select 0);
-	_detonator = (_x select 4);
-	_clackerClass = (_x select 3);
+	private _position = getPosATL (_x select 0);
+	private _direction = getDir (_x select 0);
+	private _class = typeOf (_x select 0);
+	private _detonator = (_x select 4);
+	private _clackerClass = (_x select 3);
 	_explosives pushBack [_position, _direction, _class, _detonator, _clackerClass];
 } forEach _exp;
 _explosives;

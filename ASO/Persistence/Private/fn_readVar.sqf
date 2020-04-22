@@ -23,14 +23,14 @@ if (!isServer) exitWith {};
 params ["_varspace", "_loadByName", "_prefix", "_varname", "_default"];
 
 // Use the appropriate name for the database 
-_db = [_varspace, _loadByName] call aso_fnc_getDbName;
+private _db = [_varspace, _loadByName] call aso_fnc_getDbName;
 // creating new database
-_inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
+private _inidbi = ["new", format["%1_%2", _prefix, _db]] call OO_INIDBI;
 // Check if there is something to load
 if (!("exists" call _inidbi)) exitWith {};
 
-_value = "";
-_all = [];
+private _value = "";
+private _all = [];
 if (_varname == "") then
 {
 	_all = ["read", ["Variables", "AllVariables"]] call _inidbi;
@@ -39,7 +39,7 @@ if (_varname == "") then
 		_value = ["read", ["Variables", _x, _default]] call _inidbi;
 		if (typeName _value == "STRING") then
 		{
-			_isObject = _value find "OBJECT:";
+			private _isObject = _value find "OBJECT:";
 			if (_isObject == 0) then
 			{
 				_value = [_value, "OBJECT:"] call CBA_fnc_leftTrim;
@@ -50,8 +50,8 @@ if (_varname == "") then
 		{
 			_newValue = [];
 			{
-				_var = "";
-				_isObject = _x find "OBJECT:";
+				private _var = "";
+				private _isObject = _x find "OBJECT:";
 				if (_isObject == 0) then
 				{
 					_var = [_x, "OBJECT:"] call CBA_fnc_leftTrim;
@@ -73,7 +73,7 @@ else
 	_value = ["read", ["Variables", _varname, _default]] call _inidbi;
 	if (typeName _value == "STRING") then
 	{
-		_isObject = _value find "OBJECT:";
+		private _isObject = _value find "OBJECT:";
 		if (_isObject == 0) then
 		{
 			_value = [_value, "OBJECT:"] call CBA_fnc_leftTrim;
@@ -84,8 +84,8 @@ else
 	{
 		_newValue = [];
 		{
-			_var = "";
-			_isObject = _x find "OBJECT:";
+			private _var = "";
+			private _isObject = _x find "OBJECT:";
 			if (_isObject == 0) then
 			{
 				_var = [_x, "OBJECT:"] call CBA_fnc_leftTrim;

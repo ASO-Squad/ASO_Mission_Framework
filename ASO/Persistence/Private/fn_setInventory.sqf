@@ -24,8 +24,8 @@ params ["_unit", "_inventory"];
 if (!(_unit isKindOf "Man")) exitWith {};
 
 // Restoring inventory
-_fullInventory = _inventory select 0;
-_earplugs = _inventory select 1;
+private _fullInventory = _inventory select 0;
+private _earplugs = _inventory select 1;
 
 // Use earplugs if needed
 if (_earplugs) then

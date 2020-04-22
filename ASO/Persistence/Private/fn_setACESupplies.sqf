@@ -20,10 +20,10 @@ if (!isServer) exitWith {};
 params ["_obj", "_supplies"];
 
 // reading categories
-_ammo = _supplies select 0;
-_fuel = _supplies select 1;
-_fuelLevel = _supplies select 2;
-_cargo = _supplies select 3;
+private _ammo = _supplies select 0;
+private _fuel = _supplies select 1;
+private _fuelLevel = _supplies select 2;
+private _cargo = _supplies select 3;
 
 // Remove cargo already present
 _obj setVariable ["ace_cargo_loaded", [], true];

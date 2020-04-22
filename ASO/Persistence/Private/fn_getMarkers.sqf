@@ -23,20 +23,20 @@ if (!isServer) exitWith {};
 params ["_all", "_prefix"];
 
 // get markers
-_markers = allMapMarkers;
-_index = -1;
-_return = [];
+private _markers = allMapMarkers;
+private _index = -1;
+private _return = [];
 {
-	_name = _x;
-	_pos = getMarkerPos _x;
-	_size = getMarkerSize _x;
-	_color = getMarkerColor _x;
-	_type = getMarkerType _x;
-	_alpha = markerAlpha _x;
-	_text = markerText _x;
-	_dir = markerDir _x;
-	_shape = markerShape _x;
-	_ud = _x splitString " ";
+	private _name = _x;
+	private _pos = getMarkerPos _x;
+	private _size = getMarkerSize _x;
+	private _color = getMarkerColor _x;
+	private _type = getMarkerType _x;
+	private _alpha = markerAlpha _x;
+	private _text = markerText _x;
+	private _dir = markerDir _x;
+	private _shape = markerShape _x;
+	private _ud = _x splitString " ";
 	if ((_ud select 0) == "_USER_DEFINED") then
 	{
 		_index = _index + 1;

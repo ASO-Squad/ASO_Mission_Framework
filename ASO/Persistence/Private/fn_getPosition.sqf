@@ -19,10 +19,10 @@ if (!isServer) exitWith {};
 params ["_unit"];
 
 // Variables
-_position = getPosATL _unit;
-_direction = getDir _unit;
-_stance = stance _unit;
-_action = "";
+private _position = getPosATL _unit;
+private _direction = getDir _unit;
+private _stance = stance _unit;
+private _action = "";
 
 switch (_stance) do 
 {

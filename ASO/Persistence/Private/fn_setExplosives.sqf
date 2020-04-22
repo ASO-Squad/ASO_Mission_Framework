@@ -22,12 +22,12 @@ params ["_unit", "_explosives"];
 
 // Place explosives
 {
-	_position = (_x select 0);
-	_direction = (_x select 1);
-	_class = (_x select 2);
-	_detonator = (_x select 3);
-	_clacker = (_x select 3);
-	_clackerClass = (_x select 4);
+	private _position = (_x select 0);
+	private _direction = (_x select 1);
+	private _class = (_x select 2);
+	private _detonator = (_x select 3);
+	private _clacker = (_x select 3);
+	private _clackerClass = (_x select 4);
 	//Those are the three options we have with ACE right now
 	switch (_detonator) do 
 	{
@@ -36,8 +36,8 @@ params ["_unit", "_explosives"];
 		case "DeadManSwitch": { _detonator = "ACE_DeadManSwitch"};
 		default { _detonator = "ACE_Clacker" };
 	};
-	_explosive = createVehicle [_class, _position, [], 0, "NONE"];
-	_explosive setDir _direction;
+	private _explosive = createVehicle [_class, _position, [], 0, "NONE"];
+	private _explosive setDir _direction;
 	[_unit, _explosive, _clackerClass, [ConfigFile >> "ACE_Triggers" >> _clacker]] call ACE_Explosives_fnc_addClacker;
 } forEach _explosives;
 true;

@@ -22,10 +22,10 @@ params ["_unit", "_saveByName", "_prefix"];
 if (!(_unit isKindOf "Man")) exitWith {};
 
 // Variables
-_morphine = _unit getVariable ["ace_medical_morphine", 0];
-_tourniquets = _unit getVariable ["ace_medical_tourniquets", [0,0,0,0,0,0]];
-_hitpointDamage = ((getAllHitPointsDamage _unit) select 2); 
-_isUnconscious = _unit getVariable ["ACE_isUnconscious", false];
-_isAlive = alive _unit;
+private _morphine = _unit getVariable ["ace_medical_morphine", 0];
+private _tourniquets = _unit getVariable ["ace_medical_tourniquets", [0,0,0,0,0,0]];
+private _hitpointDamage = ((getAllHitPointsDamage _unit) select 2); 
+private _isUnconscious = _unit getVariable ["ACE_isUnconscious", false];
+private _isAlive = alive _unit;
 
 [_morphine, _tourniquets, _hitpointDamage, _isUnconscious, _isAlive];

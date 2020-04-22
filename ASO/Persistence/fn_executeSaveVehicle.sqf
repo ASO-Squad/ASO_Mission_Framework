@@ -37,14 +37,14 @@ if (count _vehicles == 0) then
 };
 
 {
-	_dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
 	if (isServer) then
 	{
-		_position = [_x] call aso_fnc_getPosition;
-		_items = [_x] call aso_fnc_getCargo;
-		_damage = [_x] call aso_fnc_getDamage;
-		_weapons = [_x] call aso_fnc_getWeapons;
-		_supplies = [_x] call aso_fnc_getACESupplies;
+		private _position = [_x] call aso_fnc_getPosition;
+		private _items = [_x] call aso_fnc_getCargo;
+		private _damage = [_x] call aso_fnc_getDamage;
+		private _weapons = [_x] call aso_fnc_getWeapons;
+		private _supplies = [_x] call aso_fnc_getACESupplies;
 		// save the stuff
 		["Vehicles", _dbName, "Position", _position] call aso_fnc_writeValue;
 		["Vehicles", _dbName, "Items", _items] call aso_fnc_writeValue;
@@ -54,11 +54,11 @@ if (count _vehicles == 0) then
 	}
 	else
 	{	// Call those on the server 
-		_position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false]; 
-		_items = [_x] remoteExecCall ["aso_fnc_getCargo", 2, false];
-		_damage = [_x] remoteExecCall ["aso_fnc_getDamage", 2, false];
-		_weapons = [_x] remoteExecCall ["aso_fnc_getWeapons", 2, false];
-		_supplies = [_x] remoteExecCall ["aso_fnc_getACESupplies", 2, false];
+		private _position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false]; 
+		private _items = [_x] remoteExecCall ["aso_fnc_getCargo", 2, false];
+		private _damage = [_x] remoteExecCall ["aso_fnc_getDamage", 2, false];
+		private _weapons = [_x] remoteExecCall ["aso_fnc_getWeapons", 2, false];
+		private _supplies = [_x] remoteExecCall ["aso_fnc_getACESupplies", 2, false];
 
 		// save the stuff
 		["Vehicles", _dbName, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false]; 

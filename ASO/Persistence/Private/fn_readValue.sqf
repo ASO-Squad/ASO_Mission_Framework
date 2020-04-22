@@ -23,6 +23,6 @@ params ["_database", "_section", "_name"];
 _database = format ["%1_%2", ASO_PREFIX, _database]; 
 
 // creating new database
-_inidbi = ["new", _database] call OO_INIDBI;
+private _inidbi = ["new", _database] call OO_INIDBI;
 // reading
 ["read", [_section, _name, "empty"]] call _inidbi;

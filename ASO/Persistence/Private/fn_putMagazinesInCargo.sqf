@@ -19,9 +19,9 @@ params ["_obj", "_magazines"];
 if (typeName _magazines == "ARRAY") then
 {
     {
-        _class = (_x select 0);
-        _ammo = (_x select 1);
-        _obj addMagazineAmmoCargo [_class, 1, _ammo];
+        private _class = (_x select 0);
+        private _ammo = (_x select 1);
+        private _obj addMagazineAmmoCargo [_class, 1, _ammo];
 
     } forEach _magazines;
 };

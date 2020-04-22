@@ -21,10 +21,10 @@ if (!isServer) exitWith {};
 
 params ["_database", "_section", "_name", "_value"];
 
-_database = format ["%1_%2", ASO_PREFIX, _database]; 
+private _database = format ["%1_%2", ASO_PREFIX, _database]; 
 
 // creating new database
-_inidbi = ["new", _database] call OO_INIDBI;
+private _inidbi = ["new", _database] call OO_INIDBI;
 
 // Write information down
 ["write", [_section, _name, _value]] call _inidbi;

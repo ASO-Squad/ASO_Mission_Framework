@@ -17,24 +17,24 @@ Author:
 if (!isServer) exitWith {};
 
 // fog
-_fog = fogParams;
-_fogValue = _fog select 0;
-_fogDecay = _fog select 1;
-_fogBase = _fog select 2;
-_fogForecast = fogForecast;
+private _fog = fogParams;
+private _fogValue = _fog select 0;
+private _fogDecay = _fog select 1;
+private _fogBase = _fog select 2;
+private _fogForecast = fogForecast;
 // overcast
-_overcast = overcast;
-_overcastForecast = overcastForecast;
-_lightning = lightnings;
-_rain = rain;
+private _overcast = overcast;
+private _overcastForecast = overcastForecast;
+private _lightning = lightnings;
+private _rain = rain;
 // wind
-_gusts = gusts;
-_wind = wind;
-_windDir = windDir;
-_windStrength = windStr;
+private _gusts = gusts;
+private _wind = wind;
+private _windDir = windDir;
+private _windStrength = windStr;
 //waves
-_waves = waves;
+private _waves = waves;
 // Next weather change
-_change = nextWeatherChange;
+private _change = nextWeatherChange;
 
 [[_fogValue, _fogDecay, _fogBase, _fogForecast], [_overcast, _overcastForecast, _lightning, _rain], [_gusts, _wind, _windDir, _windStrength], [_waves], [_change]];
