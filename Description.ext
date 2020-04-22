@@ -115,10 +115,6 @@ class cfgFunctions
             //class executeLoadMarkers {};
             class executeSaveVar {};
             class executeLoadVar {};
-            //class executeSaveAOI {};
-            //class executeLoadAOI {};
-            //class executeSaveOrders {};
-            //class executeLoadOrders {};
             //class executeSaveEnvironment {};
             //class executeLoadEnvironment {};
             class executeSaveGroup {};
