@@ -103,8 +103,8 @@ class cfgFunctions
             file = "ASO\Persistence"
             class executeSaveInventory {};
             class executeLoadInventory {};
-            //class executeSaveCargo {};
-            //class executeLoadCargo {};
+            class executeSaveCargo {};
+            class executeLoadCargo {};
             class executeSaveMan {};
             class executeLoadMan {};
             class executeSaveVehicle {};

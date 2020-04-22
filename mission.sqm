@@ -8,14 +8,14 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=43;
+		nextID=46;
 	};
 	class Camera
 	{
-		pos[]={1909.1499,63.438873,3553.0271};
-		dir[]={0.45472044,-0.77159774,0.44504797};
-		up[]={0.55144858,0.63608038,0.53971457};
-		aside[]={0.69951904,1.2949313e-006,-0.71473205};
+		pos[]={1938.5917,15.682056,3534.813};
+		dir[]={0.87413698,-0.26284334,-0.40866706};
+		up[]={0.23821956,0.96479279,-0.11137352};
+		aside[]={-0.42355779,-2.521876e-006,-0.90597326};
 	};
 };
 binarizationWanted=0;
@@ -43,13 +43,14 @@ addons[]=
 	"ace_flashlights",
 	"ace_microdagr",
 	"A3_Characters_F_Enoch_Vests",
-	"A3_Soft_F_MRAP_02"
+	"A3_Soft_F_MRAP_02",
+	"A3_Supplies_F_Exp_Ammoboxes"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=20;
+		items=21;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -188,6 +189,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item20
+		{
+			className="A3_Supplies_F_Exp";
+			name="Arma 3 Apex - Ammoboxes and Supplies";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 randomSeed=8061282;
@@ -219,7 +227,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=13;
+		items=15;
 		class Item0
 		{
 			dataType="Logic";
@@ -1493,6 +1501,86 @@ class Mission
 								};
 							};
 							value="[[[[""arifle_Katiba_F"",""FirstAidKit""],[2,10]],[[""30Rnd_65x39_caseless_green"",""150Rnd_762x54_Box"",""HandGrenade"",""SmokeShell"",""SmokeShellRed"",""SmokeShellYellow"",""SmokeShellOrange"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""16Rnd_9x21_Mag"",""RPG32_F""],[16,4,10,4,4,4,4,10,4,4,4,4,12,2]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item13
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1952.5492,3.1714456,3520.0796};
+				angles[]={6.2481914,4.9312706,0.012496558};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="c1";
+			};
+			id=44;
+			type="Box_GEN_Equip_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[""ACE_M14""],[10]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item14
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1950.1578,3.1787457,3520.677};
+				angles[]={6.2781935,4.9312706,6.2756805};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="c2";
+			};
+			id=45;
+			type="Box_GEN_Equip_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
