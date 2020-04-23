@@ -42,6 +42,7 @@ class cfgFunctions
             class propagateLocalVar {};
             class requestRadio {};
             class revealToGroup {};
+            class unGarrison {};
         }
         class PersistencePrivate
         {
@@ -115,6 +116,16 @@ class cfgFunctions
             class executeLoadEnvironment {};
             class executeSaveGroup {};
         }
+        class Tasks
+        {
+            file = "ASO\Tasks"
+            class guard {};
+            class patrol {};
+            class patrolCity {};
+            class garrison {};
+            class stationary {};
+            class custom {};
+        };
     };
 };
 class CfgRemoteExec
