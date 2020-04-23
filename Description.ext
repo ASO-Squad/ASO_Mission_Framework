@@ -85,14 +85,14 @@ class cfgFunctions
         class PersistenceHelper
         {
             file = "ASO\Persistence\Helper"
-            //class actionSaveInventory {};
-            //class actionSaveCargo {};
+            class actionSaveInventory {};
+            class actionSaveCargo {};
             class collectGroup {};
-            //class collectCrate {};
-            //class collectObject {};
+            class collectCrate {};
+            class collectObject {};
             class collectVehicle {};
-            //class saveState {};
-            //class setVehicleName {};
+            class saveState {};
+            class setVehicleName {};
         }
         class PersistencePublic
         {
