@@ -112,8 +112,8 @@ class cfgFunctions
             class executeLoadVehicle {};
             class executeSaveDropped {};
             class executeLoadDropped {};
-            //class executeSaveMarkers {};
-            //class executeLoadMarkers {};
+            class executeSaveMarkers {};
+            class executeLoadMarkers {};
             class executeSaveVar {};
             class executeLoadVar {};
             //class executeSaveEnvironment {};

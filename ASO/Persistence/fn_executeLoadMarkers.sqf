@@ -5,31 +5,38 @@ Description:
 	Right now all markers are saved and loaded from global.
 
 Parameters:
-   _prefix	- Prefix to be used for the database. This is usually used to identify different missions
-			If you don not provide a prefix, ASO_PREFIX will be used. 
+	none
 
 Returns:
     nothing
 
 Example:
-    [_prefix] call aso_fnc_executeLoadMarkers;
+    [] call aso_fnc_executeLoadMarkers;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
 };
 
-params [["_prefix", ASO_PREFIX]];
+_database = format ["%1_%2", ASO_PREFIX, "Markers"];
+_inidbi = ["new", _database] call OO_INIDBI;
+if (!("exists" call _inidbi)) exitWith {false};
 
-if (isServer) then
+private _sections = "getSections" call _inidbi;
+private _markers = [];
+
 {
-	[_prefix] call aso_fnc_loadMarkers;
-}
-else
-{
-	[_prefix] remoteExecCall ["aso_fnc_loadMarkers", 2, false]; // Call this on the server
-};
+	// preloading information
+	private _marker = ["Markers", _x, "Marker"] call aso_fnc_readValue;
+	_markers pushBack _marker;
+
+} forEach _sections;
+
+// Now create those markers
+[_markers] call aso_fnc_setMarkers;
+true;
