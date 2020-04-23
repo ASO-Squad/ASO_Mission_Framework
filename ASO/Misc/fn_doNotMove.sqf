@@ -10,7 +10,7 @@ Returns:
     None
 
 Examples:
-    [_group, false] call aso_fnc_doNotMove
+    [_group, false] spawn aso_fnc_doNotMove;
 
 Author:
     Papa Mike
