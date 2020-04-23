@@ -31,22 +31,17 @@ class cfgFunctions
         class Misc
         {
             file = "ASO\Misc";
-            class revealToGroup {};
-            class assessTargets {};
-            class getGroupType {};
-            class getGroupOrders {};
-            class enableDynamicSim {};
             class assessArtilleryTargets {};
+            class assessTargets {};
             class delayedBehaviourChange {};
+            class deleteEmptyWH {};
+            class doNotMove {};
+            class enableDynamicSim {};
             class init_aso {};
-            class requestRadio {};
             class markerFollowObj {};
             class propagateLocalVar {};
-            class setLandingPad {};
-            class wpLand {};
-            class useSkillSettings {};
-            class doNotMove {};
-            class deleteEmptyWH {};
+            class requestRadio {};
+            class revealToGroup {};
         }
         class PersistencePrivate
         {
