@@ -67,6 +67,6 @@ if (!_answer) then
 }
 else 
 {
-	[_group, _position, _radius, false, true] spawn aso_fnc_unGarrison;
+	[_group, _position, _radius, false, true, true] spawn aso_fnc_unGarrison;
 };
 true;
