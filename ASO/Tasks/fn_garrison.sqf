@@ -18,12 +18,12 @@ Returns:
     None
 
 Example:
-    [_group] call aso_fnc_garrison;
+    [_group] spawn aso_fnc_garrison;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
@@ -52,7 +52,7 @@ private _position = getPos _trigger;
 private _radius = (triggerArea _trigger) select 0;
 
 // Give them their new order
-[_group, _position, _radius, 1, false, 0.5] call CBA_fnc_taskDefend;
+_task = [_group, _position, _radius, 1, false, 0.5] spawn CBA_fnc_taskDefend;
 
 // Add group to group list
 [_group] call aso_fnc_collectGroup;
@@ -67,6 +67,7 @@ if (!_answer) then
 }
 else 
 {
-	[_group, _position, _radius, false, true, true] spawn aso_fnc_unGarrison;
+	// we need to wait until taskDefend is done
+	[_group, _position, _radius, false, true, true, _task] spawn aso_fnc_unGarrison;
 };
 true;

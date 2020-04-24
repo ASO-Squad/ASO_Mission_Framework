@@ -9,6 +9,7 @@ Parameters:
 	_onContact		- UnGarrison on contact
 	_onAid			- Allow movement if VCOM AI has called for aid
 	_onDistance		- If the group is too far away, allow them to move on
+	_waitFor		- Wait for another script to finish eg. taskDefend
 
 Returns:
     None
@@ -20,7 +21,13 @@ Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {false;};
-params ["_group", "_position", "_radius", ["_onContact", true], ["_onAid", true], ["_onDistance", true]];
+params ["_group", "_position", "_radius", ["_onContact", true], ["_onAid", true], ["_onDistance", true], ["_waitFor", false]];
+
+if (typeName _waitfor != "BOOL") then 
+{
+	["Wait", "DONE", true] call aso_fnc_debug;
+	waitUntil { scriptDone _waitFor }; // we need to wait here
+};
 
 private _allowMovement = false;
 while {!_allowMovement} do 
@@ -54,7 +61,7 @@ while {!_allowMovement} do
 			_allowMovement = true;
 		};
 	};
-	sleep 2;	
+	sleep 20;	
 };
 // move at least the leader out of its static weapon
 _leader = leader _group;
@@ -69,4 +76,7 @@ if (_vehicle isKindOf "StaticWeapon") then
 // Refreshing waypoints so that the units start moving
 private _wp = [_group] call aso_fnc_getWaypoints;
 [_group, _wp, true] spawn aso_fnc_setWaypoints;
+// just to make sure (yes i am desperate at this point)
+sleep 20;
+[units _group] call ace_ai_fnc_unGarrison;
 true;
