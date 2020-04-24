@@ -12,10 +12,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1940.4912,25.992941,3506.4492};
-		dir[]={0.66152006,-0.57376784,0.48298794};
-		up[]={0.46341527,0.81900197,0.33834857};
-		aside[]={0.58970201,-2.9357034e-007,-0.80767787};
+		pos[]={1927.9655,38.845264,3496.0928};
+		dir[]={0.86494774,-0.34578499,0.36386847};
+		up[]={0.31876543,0.93829918,0.13409978};
+		aside[]={0.38778728,4.6352943e-007,-0.92180496};
 	};
 };
 binarizationWanted=0;
@@ -1390,14 +1390,14 @@ class Mission
 		class Item8
 		{
 			dataType="Trigger";
-			position[]={1980.9659,2.3477099,3517.5356};
-			angle=4.7819114;
+			position[]={1980.9659,2.3477161,3517.5359};
+			angle=4.7819057;
 			class Attributes
 			{
 				name="t1";
 				text="saveGroup";
 				condition="call{this}";
-				onActivation="call{[testGroup] call aso_fnc_executeSaveGroup;}";
+				onActivation="call{[tg1] call aso_fnc_executeSaveGroup;}";
 				sizeA=30;
 				sizeB=30;
 				repeatable=1;

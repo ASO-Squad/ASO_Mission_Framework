@@ -11,7 +11,6 @@ Description:
 
 Parameters:
     _group			- The group that we want to save.
-					If you leave this array empty, all players get saved.
 
 Returns:
     nothing
@@ -38,11 +37,11 @@ if (typeName _group != "GROUP") exitWith
 {
 	if (isServer) then
 	{
-		_position = [_x] call aso_fnc_getPosition;
-		_inventory = [_x] call aso_fnc_getInventory;
-		_health = [_x] call aso_fnc_getHealth;
-		_mount = [_x] call aso_fnc_getMount;
-		_explosives = [_x] call aso_fnc_getExplosives;
+		private _position = [_x] call aso_fnc_getPosition;
+		private _inventory = [_x] call aso_fnc_getInventory;
+		private _health = [_x] call aso_fnc_getHealth;
+		private _mount = [_x] call aso_fnc_getMount;
+		private _explosives = [_x] call aso_fnc_getExplosives;
 
 		// save the stuff
 		[groupId _group, _x, "Position", _position] call aso_fnc_writeValue;
@@ -53,16 +52,27 @@ if (typeName _group != "GROUP") exitWith
 	}
 	else
 	{
-		_position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false]; // Call this on the server
-		_inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false]; // Call this on the server
-		_health = [_x] remoteExecCall ["aso_fnc_getHealth", 2, false]; // Call this on the server
-		_mount = [_x] remoteExecCall ["aso_fnc_getMount", 2, false]; // Call this on the server
-		_explosives = [_x] remoteExecCall ["aso_fnc_getExplosives", 2, false]; // Call this on the server
+		private _position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false];
+		private _inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false];
+		private _health = [_x] remoteExecCall ["aso_fnc_getHealth", 2, false];
+		private _mount = [_x] remoteExecCall ["aso_fnc_getMount", 2, false];
+		private _explosives = [_x] remoteExecCall ["aso_fnc_getExplosives", 2, false];
 		// save the stuff
-		[groupId _group, _x, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server
-		[groupId _group, _x, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server
-		[groupId _group, _x, "Health", _health] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
-		[groupId _group, _x, "Mount", _mount] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
-		[groupId _group, _x, "Explosives", _explosives] remoteExecCall ["aso_fnc_writeValue", 2, false]; // Call this on the server	
+		[groupId _group, _x, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		[groupId _group, _x, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		[groupId _group, _x, "Health", _health] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		[groupId _group, _x, "Mount", _mount] remoteExecCall ["aso_fnc_writeValue", 2, false];
+		[groupId _group, _x, "Explosives", _explosives] remoteExecCall ["aso_fnc_writeValue", 2, false];
 	};
 } forEach units _group;
+if (isServer) then
+{
+	private _waypoints = [_group] call aso_fnc_getWaypoints;
+	[groupId _group, "Group", "Waypoints", _waypoints] call aso_fnc_writeValue;
+}
+else 
+{
+	private _waypoints = [_group] remoteExecCall ["aso_fnc_getWaypoints", 2, false];
+	[groupId _group, "Group", "Waypoints", _waypoints] remoteExecCall ["aso_fnc_writeValue", 2, false];
+};
+true;

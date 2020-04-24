@@ -117,6 +117,7 @@ class cfgFunctions
             class executeSaveEnvironment {};
             class executeLoadEnvironment {};
             class executeSaveGroup {};
+            class executeLoadGroup {};
         }
         class Tasks
         {
