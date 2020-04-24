@@ -31,7 +31,7 @@ if (_overwrite) then
 	{
 		deleteWaypoint ((waypoints _group) select 0);
 	};
-	sleep 2; // This is somehow needed to actually work
+	if (canSuspend) then {sleep 2;}; // This is somehow needed to actually work
 };
 
 {
