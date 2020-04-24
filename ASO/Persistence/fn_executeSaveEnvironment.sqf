@@ -5,14 +5,13 @@ Description:
 	NOTE: This works best if you leave stuff like rain, lightning and waves on automatic.
 	
 Parameters:
-	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
-					If you don not provide a prefix, ASO_PREFIX will be used. 
+	none
 
 Returns:
     nothing
 
 Example:
-    [_prefix] call aso_fnc_executeSaveEnvironment;
+    [] call aso_fnc_executeSaveEnvironment;
 
 Author:
     Papa Mike
@@ -23,15 +22,20 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params [["_prefix", ASO_PREFIX]];
-
 if (isServer) then
 {
-	[_prefix] call aso_fnc_saveDateTime;
-	[_prefix] call aso_fnc_saveWeather;
+	private _dateTime = [] call aso_fnc_getDateTime;
+	private _weather = [] call aso_fnc_getWeather;
+
+	["Environment", "DateTime", "Value", _dateTime] call aso_fnc_writeValue;
+	["Environment", "Weather", "Value", _weather] call aso_fnc_writeValue;
 }
 else
 {
-	[_prefix] remoteExecCall ["aso_fnc_saveDateTime", 2, false]; // Call this on the server
-	[_prefix] remoteExecCall ["aso_fnc_saveWeather", 2, false];
-};		
+	private _dateTime = [] remoteExecCall ["aso_fnc_getDateTime", 2, false];
+	private _weather = [] remoteExecCall ["aso_fnc_getWeather", 2, false];
+		
+	["Environment", "DateTime", "Value", _dateTime] remoteExecCall ["aso_fnc_writeValue", 2, false];
+	["Environment", "Weather", "Value", _weather] remoteExecCall ["aso_fnc_writeValue", 2, false];
+};
+true;

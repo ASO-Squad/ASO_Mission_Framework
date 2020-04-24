@@ -20,11 +20,11 @@ params ["_obj", "_weapons"];
 if (typeName _weapons == "ARRAY") then
 {
 	{
-		_weapon = (_x select 0);
-		_supressor = (_x select 1);
-		_laser = (_x select 2);
-		_optic = (_x select 3);
-		_bipod = (_x select ((count _x)-1)); // We may have more than one magazine so the last spot may not be 5
+		private _weapon = (_x select 0);
+		private _supressor = (_x select 1);
+		private _laser = (_x select 2);
+		private _optic = (_x select 3);
+		private _bipod = (_x select ((count _x)-1)); // We may have more than one magazine so the last spot may not be 5
 
 		_obj addWeaponCargoGlobal [_weapon, 1];
 		_obj addItemCargoGlobal [_supressor, 1];

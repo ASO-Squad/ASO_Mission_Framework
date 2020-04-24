@@ -4,8 +4,6 @@ Description:
 
 Parameters:
     _objects		- The objects that we want to keep the cargos of
-	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
-					If you don not provide a prefix, ASO_PREFIX will be used. 
 
 Returns:
     nothing

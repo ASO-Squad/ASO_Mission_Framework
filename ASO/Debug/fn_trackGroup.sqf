@@ -9,7 +9,7 @@ Returns:
     None
 
 Examples:
-    [_group] call aso_fnc_trackGroup
+    [_group] call aso_fnc_trackGroup;
 
 Author:
     Papa Mike

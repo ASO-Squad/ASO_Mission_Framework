@@ -30,9 +30,9 @@ params ["_varspace", "_saveByName", ["_varname", ""], ["_default", ""], ["_prefi
 
 if (isServer) then
 {
-	[_varspace, _saveByName, _prefix, _varname, _default] call aso_fnc_saveVar;
+	[_varspace, _saveByName, _prefix, _varname, _default] call aso_fnc_writeVar;
 }
 else
 {
-	[_varspace, _saveByName, _prefix, _varname, _default] remoteExecCall ["aso_fnc_saveVar", 2, false]; // Call this on the server
+	[_varspace, _saveByName, _prefix, _varname, _default] remoteExecCall ["aso_fnc_writeVar", 2, false]; // Call this on the server
 };		

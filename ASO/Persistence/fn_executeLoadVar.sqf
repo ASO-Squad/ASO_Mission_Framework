@@ -28,9 +28,9 @@ params ["_varspace", "_loadByName", ["_varname", ""], ["_default", ""], ["_prefi
 
 if (isServer) then
 {
-	[_varspace, _loadByName, _prefix, _varname, _default] call aso_fnc_loadVar;
+	[_varspace, _loadByName, _prefix, _varname, _default] call aso_fnc_readVar;
 }
 else
 {
-	[_varspace, _loadByName, _prefix, _varname, _default] remoteExecCall ["aso_fnc_loadVar", 2, false]; // Call this on the server
+	[_varspace, _loadByName, _prefix, _varname, _default] remoteExecCall ["aso_fnc_readVar", 2, false]; // Call this on the server
 };		

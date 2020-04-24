@@ -11,7 +11,7 @@ Returns:
     None
 
 Examples:
-    [_description, _value, true] call aso_fnc_debug
+    [_description, _value, true] call aso_fnc_debug;
 
 Author:
     Papa Mike
