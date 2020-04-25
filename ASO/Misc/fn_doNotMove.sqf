@@ -15,8 +15,15 @@ Examples:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
-params ["_group", "_moveOnContact"];
+if (!isServer) exitWith {false;};
+
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
+params ["_group", ["_moveOnContact", true]];
+
 {
 	_x enableAIFeature ["PATH", false];
 	
@@ -28,9 +35,10 @@ if (_moveOnContact) then
 	while {!(isNULL _group)} do
 	{
 		scopeName "loop";
-		_contacts = leader _group targetsQuery [objNull, ASO_BLUFOR, "", [], 0];
+		_contacts = leader _group targetsQuery [objNull, sideUnknown, "", [], 0];
 		{
-			if ((_x select 0) >= 0.95) then 
+
+			if ((_x select 0) >= 0.95 && [side _group, _x select 2] call BIS_fnc_sideIsEnemy) then 
 			{
 				breakOut "loop";
 			};
@@ -43,3 +51,4 @@ if (_moveOnContact) then
 		
 	} forEach units _group;
 };
+true;
