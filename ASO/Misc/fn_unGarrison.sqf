@@ -25,20 +25,19 @@ params ["_group", "_position", "_radius", ["_onContact", true], ["_onAid", true]
 
 if (typeName _waitfor != "BOOL") then 
 {
-	["Wait", "DONE", true] call aso_fnc_debug;
 	waitUntil { scriptDone _waitFor }; // we need to wait here
 };
 
-private _allowMovement = false;
-while {!_allowMovement} do 
+while {true} do 
 {
+	scopeName "Main";
 	if (_onContact) then 
 	{
 		_contacts = leader _group targetsQuery [objNull, ASO_BLUFOR, "", [], 0];
 		{
 			if ((_x select 0) >= 0.90) then 
 			{
-				_allowMovement = true;
+				breakOut "Main";
 			};
 			
 		} forEach _contacts;
@@ -48,7 +47,7 @@ while {!_allowMovement} do
 		private _request = _group getVariable ["VCM_MOVE2SUP", false];
 		if (_request) then 
 		{
-			_allowMovement = true;
+			breakOut "Main";
 		};
 	};
 	if (_onDistance) then 
@@ -58,7 +57,7 @@ while {!_allowMovement} do
 		// When the units are too far away, let them run further
 		if (_distance > _radius) then 
 		{
-			_allowMovement = true;
+			breakOut "Main";
 		};
 	};
 	sleep 20;	
@@ -71,7 +70,6 @@ if (_vehicle isKindOf "StaticWeapon") then
 	unassignVehicle _leader;
 };
 //using ACE unGarrison Script
-["UnGarrison", "YES", true] call aso_fnc_debug;
 [units _group] call ace_ai_fnc_unGarrison;
 // Refreshing waypoints so that the units start moving
 private _wp = [_group] call aso_fnc_getWaypoints;
