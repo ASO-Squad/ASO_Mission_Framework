@@ -36,7 +36,7 @@ if (count _vehicles == 0) then
 	_vehicles = vehicles;
 };
 {
-	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, true] call aso_fnc_getDbName;
 	if (isServer) then
 	{
 		private _position = ["Vehicles", _dbName, "Position"] call aso_fnc_readValue;

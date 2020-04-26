@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=513;
+	toggles=641;
 	class ItemIDProvider
 	{
-		nextID=161;
+		nextID=162;
 	};
 	class Camera
 	{
@@ -1308,7 +1308,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1982.4382,4.6089764,3511.8796};
+				position[]={1982.4382,4.6094646,3511.8799};
 				angles[]={6.2407041,6.0498347,0.012496558};
 			};
 			side="Empty";
@@ -1316,10 +1316,11 @@ class Mission
 			class Attributes
 			{
 				init="call{[this] call aso_fnc_collectVehicle;}";
+				name="v1";
 			};
 			id=121;
 			type="O_Truck_02_transport_F";
-			atlOffset=-0.00047850609;
+			atlOffset=-4.7683716e-007;
 			class CustomAttributes
 			{
 				class Attribute0

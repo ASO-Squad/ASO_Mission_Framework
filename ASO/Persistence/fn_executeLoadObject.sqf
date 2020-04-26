@@ -31,7 +31,7 @@ if (isNil "ASO_INIT") then
 params ["_objects"];
 
 {
-	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, true] call aso_fnc_getDbName;
 	if (isServer) then
 	{
 		private _position = ["Objects", _dbName, "Position"] call aso_fnc_readValue;
