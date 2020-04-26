@@ -15,7 +15,7 @@ Parameters:
 	_ifIsDead		- What to do if the unit is dead.
 					If this is an object, the unit will be transported there
 					If it is a bool: true  means, it will stay dead.
-									 false means, the unit will wake up with half its previous damage. 
+									 false means, the unit will wake up with half its previous damage.
 
 Returns:
     nothing

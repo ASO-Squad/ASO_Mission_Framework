@@ -78,11 +78,11 @@ class cfgFunctions
             class setDateTime {};
             class getWeather {};
             class setWeather {};
+            class getVariables {};
+            class setVariables {};
             // Write to Database
             class writeValue {};
             class readValue {};
-            class readVar {};
-            class writeVar {};
             // Cargo Helper
             class putMagazinesInCargo {};
             class putWeaponsInCargo {};
@@ -122,6 +122,8 @@ class cfgFunctions
             class executeLoadEnvironment {};
             class executeSaveGroup {};
             class executeLoadGroup {};
+            class executeSaveObject {};
+            class executeLoadObject {};
         }
         class Tasks
         {
