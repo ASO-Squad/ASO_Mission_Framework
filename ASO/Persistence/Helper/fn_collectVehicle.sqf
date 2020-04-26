@@ -22,10 +22,23 @@ if (isNil "ASO_INIT") then
 params ["_vehicle"];
 
 // Get out, there is nothing to do
-if (isNil "_vehicle") exitWith {};
+if (isNil "_vehicle") exitWith {false;};
 
 // Save vehicle name
-[_vehicle] call aso_fnc_setVehicleName;
+_name = [_vehicle] call aso_fnc_setVehicleName;
 
-// Keep this group in mind for saving
-ASO_VEHICLES pushBackUnique _vehicle;
+// Check for unnamed object
+private _return = false;
+if (_name == "*NoNameV*") then 
+{
+    hint parseText "<t size='1.2' color='#ff0000'>Unnamed Vehicle Found</t><br/>
+                    <t align='left'>You tried to collect a unnamed vehicle. You must name all vehicles you want to collect!</t>";
+    _return = true;
+}
+else 
+{
+    // Keep this vehicle in mind for saving
+    ASO_VEHICLES pushBackUnique _vehicle;
+    _return = false;
+};
+_return;
