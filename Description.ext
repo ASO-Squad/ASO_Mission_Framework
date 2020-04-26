@@ -6,14 +6,14 @@ class Params
 		title = "Load Previous Mission"; // Param name visible in the list
 		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
 		texts[] = {"No","Yes"}; // Description of each selectable item
-		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
+		default = 1; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
     class LoadArmory
 	{
 		title = "Load Armory"; // Param name visible in the list
 		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
 		texts[] = {"No","Yes"}; // Description of each selectable item
-		default = 1; // Default value; must be listed in 'values' array, otherwise 0 is used
+		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
 };
 

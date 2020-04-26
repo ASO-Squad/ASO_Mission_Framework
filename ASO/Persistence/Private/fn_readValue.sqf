@@ -26,7 +26,6 @@ if (isNil "ASO_INIT") then
 
 params ["_database", "_section", "_name", ["_prefix", ASO_PREFIX]];
 
-
 private _database = format ["%1_%2", _prefix, _database]; 
 
 // creating new database

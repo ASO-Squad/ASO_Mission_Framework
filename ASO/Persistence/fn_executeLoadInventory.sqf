@@ -34,7 +34,6 @@ if (count _units == 0) then
 	if (isServer) then
 	{
 		private _inventory = ["Inventory", _dbName, "Inventory", _prefix] call aso_fnc_readValue;
-
 		// for players, we need to wait until tfr is initialized
 		if (ASO_USE_TFR && isPlayer _x) then
 		{
