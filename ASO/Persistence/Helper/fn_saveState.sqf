@@ -41,6 +41,10 @@ if (!isServer) exitWith {false;};
 ["Saving Cargo ..."] remoteExecCall ["hint", 0, false];
 [ASO_CRATES] call aso_fnc_executeSaveCargo;
 
+// Save all mission critical object
+["Saving Objects ..."] remoteExecCall ["hint", 0, false];
+[ASO_OBJECTS] call aso_fnc_executeSaveObject;
+
 // Save loot and markers
 ["Saving Loot and Markers ..."] remoteExecCall ["hint", 0, false];
 [] call aso_fnc_executeSaveDropped;
