@@ -40,7 +40,7 @@ _fail =
 { 
     params ["_vars"]; 
     private _object = _vars select 0;
-    private _variable = _varsselect 1;
+    private _variable = _vars select 1;
     _object setVariable [_variable, false, true];
 };
 

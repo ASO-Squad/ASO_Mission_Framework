@@ -43,7 +43,7 @@ private _windStrength = _newWind select 3;
 private _newWaves = _weather select 2;
 private _waves = _newWaves select 0; 
 // Next weather change
-private _newChange = weather select 3;
+private _newChange = _weather select 3;
 private _change = _newChange select 0;
 
 // Set current weather
