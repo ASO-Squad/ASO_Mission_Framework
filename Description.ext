@@ -48,6 +48,7 @@ class cfgFunctions
             class setWaypoints {};
             class evidence {};
             class showProgress {};
+            class isReadError {};
         }
         class PersistencePrivate
         {
@@ -148,12 +149,12 @@ class CfgRemoteExec
         {
                 mode = 2; // Remote execution is allowed for all functions
                 jip = 1;
-                class vcm_serverask { allowedTargets = 0;jip = 1; };
-                class VCM_PublicScript { allowedTargets = 0;jip = 1; };
-                class BIS_fnc_debugConsoleExec { allowedTargets = 0;jip = 1; };
-                class SpawnScript { allowedTargets = 0;jip = 1; };
-                class enableSimulationGlobal { allowedTargets = 0;jip = 1; };
-                class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
+                //class vcm_serverask { allowedTargets = 0;jip = 1; };
+                //class VCM_PublicScript { allowedTargets = 0;jip = 1; };
+                //class BIS_fnc_debugConsoleExec { allowedTargets = 0;jip = 1; };
+                //class SpawnScript { allowedTargets = 0;jip = 1; };
+                //class enableSimulationGlobal { allowedTargets = 0;jip = 1; };
+                //class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
         };
 };
 allowFunctionsRecompile = 1;
@@ -193,9 +194,9 @@ class Header
 briefingName    = "ASO Framework Example";
 author			= "Papa Mike";
 OnLoadName		= "ASO Framework Example";
-OnLoadMission	= "Raid a small compound, take your time and explore what the framework can do afterwards in the mission editor.";
+OnLoadMission	= "Raid a small compound, afterwards take your time and explore what the framework can do in the mission editor.";
 onLoadIntro     = "ASO Framework Example";
-overviewText    = "Raid a small compound, take your time and explore what the framework can do afterwards in the mission editor."
+overviewText    = "Raid a small compound, afterwards take your time and explore what the framework can do in the mission editor."
 
 respawnOnStart = -1;
 respawnTemplates[] = {"MenuPosition"};

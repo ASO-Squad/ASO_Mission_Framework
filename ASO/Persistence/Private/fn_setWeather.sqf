@@ -14,9 +14,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 params ["_weather"];
+
+if (([_weather] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // fog
 private _newFog = _weather select 0;

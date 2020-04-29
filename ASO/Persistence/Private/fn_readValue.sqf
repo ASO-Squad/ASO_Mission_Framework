@@ -31,4 +31,4 @@ private _database = format ["%1_%2", _prefix, _database];
 // creating new database
 private _inidbi = ["new", _database] call OO_INIDBI;
 // reading
-["read", [_section, _name, "empty"]] call _inidbi;
+["read", [_section, _name, objNull]] call _inidbi;

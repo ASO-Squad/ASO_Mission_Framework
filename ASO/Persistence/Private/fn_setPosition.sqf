@@ -5,7 +5,6 @@ Description:
 Parameters:
     _unit			- The unit that we want to load the position of
 	_position		- A position array
-	_vehicle		- target the vehicle, true or false
 
 Returns:
     nothing
@@ -16,9 +15,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
-params ["_unit", "_position", ["_vehicle", false]];
+params ["_unit", "_position"];
+
+if (([_position] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // reading position
 private _pos = _position select 0;

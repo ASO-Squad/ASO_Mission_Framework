@@ -16,9 +16,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 params ["_unit", "_explosives"];
+
+if (([_explosives] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // Place explosives
 {

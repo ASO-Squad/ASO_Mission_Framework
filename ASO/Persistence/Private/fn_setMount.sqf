@@ -15,9 +15,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 params ["_unit", "_mount"];
+
+if (([_mount] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // Check if the unit is of the right type
 if (!(_unit isKindOf "Man")) exitWith {};

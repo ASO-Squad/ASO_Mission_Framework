@@ -19,6 +19,8 @@ if (!isServer) exitWith {false;};
 
 params ["_varspace", "_variables"];
 
+if (([_variables] call aso_fnc_isReadError)) exitWith {false;}; 
+
 if (typeName _variables == "ARRAY") then 
 {
 	{

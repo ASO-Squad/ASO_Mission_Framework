@@ -20,9 +20,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 params ["_unit", "_health", ["_ifIsDead", false]];
+
+if (([_health] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // Check if the unit is of the right type
 if (!(_unit isKindOf "Man")) exitWith {};
