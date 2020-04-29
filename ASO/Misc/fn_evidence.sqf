@@ -20,8 +20,6 @@ Examples:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {false;};
-
 params ["_obj", "_name", "_menuEntry", "_title", ["_time", 5], ["_hide", false]];
 
 // Make sure the variable is there
