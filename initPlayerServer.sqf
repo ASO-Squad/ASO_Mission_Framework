@@ -12,7 +12,8 @@ if (_load == 1) then
 	[[_unit], false, false] call aso_fnc_executeLoadMan;
 	if (ASO_USE_TFR) then
 	{
-		[_unit, "tfar_handlersset"] spawn aso_fnc_propagateLocalVar;
+		
+		[_unit, "tfar_handlersset"] remoteExec ["aso_fnc_propagateLocalVar", _unit];
 	};
 };
 if (_armory == 1) then
@@ -24,6 +25,6 @@ if (_armory == 1) then
 	[[_unit], false, "aso_arm"] call aso_fnc_executeLoadInventory;
 	if (ASO_USE_TFR) then
 	{
-		[_unit, "tfar_handlersset"] spawn aso_fnc_propagateLocalVar;
+		[_unit, "tfar_handlersset"] remoteExec ["aso_fnc_propagateLocalVar", _unit];
 	};
 };
