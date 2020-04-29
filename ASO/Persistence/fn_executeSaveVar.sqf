@@ -20,6 +20,7 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
@@ -28,11 +29,4 @@ if (isNil "ASO_INIT") then
 
 params ["_varspace", "_saveByName", ["_varname", ""], ["_default", ""], ["_prefix", ASO_PREFIX]];
 
-if (isServer) then
-{
-	[_varspace, _saveByName, _prefix, _varname, _default] call aso_fnc_writeVar;
-}
-else
-{
-	[_varspace, _saveByName, _prefix, _varname, _default] remoteExecCall ["aso_fnc_writeVar", 2, false]; // Call this on the server
-};		
+[_varspace, _saveByName, _prefix, _varname, _default] call aso_fnc_writeVar;		

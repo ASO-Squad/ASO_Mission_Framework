@@ -22,7 +22,7 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-_params = [];
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
@@ -37,32 +37,16 @@ if (count _vehicles == 0) then
 };
 {
 	private _dbName = [_x, true] call aso_fnc_getDbName;
-	if (isServer) then
-	{
-		private _position = ["Vehicles", _dbName, "Position"] call aso_fnc_readValue;
-		private _items = ["Vehicles", _dbName, "Items"] call aso_fnc_readValue;
-		private _damage = ["Vehicles", _dbName, "Damage"] call aso_fnc_readValue;
-		private _weapons = ["Vehicles", _dbName, "Weapons"] call aso_fnc_readValue;
-		private _supplies = ["Vehicles", _dbName, "Supplies"] call aso_fnc_readValue;
+	private _position = ["Vehicles", _dbName, "Position"] call aso_fnc_readValue;
+	private _items = ["Vehicles", _dbName, "Items"] call aso_fnc_readValue;
+	private _damage = ["Vehicles", _dbName, "Damage"] call aso_fnc_readValue;
+	private _weapons = ["Vehicles", _dbName, "Weapons"] call aso_fnc_readValue;
+	private _supplies = ["Vehicles", _dbName, "Supplies"] call aso_fnc_readValue;
 
-		[_x, _position] call aso_fnc_setPosition;
-		[_x, _items] call aso_fnc_setCargo;
-		[_x, _damage] call aso_fnc_setDamage;
-		[_x, _weapons] call aso_fnc_setWeapons;
-		[_x, _supplies] call aso_fnc_setACESupplies;
-	}
-	else
-	{	// Call those on the server 
-		private _position = ["Vehicles", _dbName, "Position"] remoteExecCall ["aso_fnc_readValue", 2, false]; 
-		private _items = ["Vehicles", _dbName, "Items"] remoteExecCall ["aso_fnc_readValue", 2, false];
-		private _damage = ["Vehicles", _dbName, "Damage"] remoteExecCall ["aso_fnc_readValue", 2, false];	
-		private _weapons = ["Vehicles", _dbName, "Weapons"] remoteExecCall ["aso_fnc_readValue", 2, false];
-		private _supplies = ["Vehicles", _dbName, "Supplies"] remoteExecCall ["aso_fnc_readValue", 2, false];
-
-		[_x, _position] remoteExecCall ["aso_fnc_setPosition", 2, false]; 
-		[_x, _items] remoteExecCall ["aso_fnc_setCargo", 2, false];
-		[_x, _damage] remoteExecCall ["aso_fnc_setDamage", 2, false];
-		[_x, _weapons] remoteExecCall ["aso_fnc_setWeapons", 2, false];
-		[_x, _supplies] remoteExecCall ["aso_fnc_setACESupplies", 2, false];
-	};		
+	[_x, _position] call aso_fnc_setPosition;
+	[_x, _items] call aso_fnc_setCargo;
+	[_x, _damage] call aso_fnc_setDamage;
+	[_x, _weapons] call aso_fnc_setWeapons;
+	[_x, _supplies] call aso_fnc_setACESupplies;
+	
 } forEach _vehicles;

@@ -19,6 +19,7 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
@@ -28,30 +29,15 @@ params ["_objects"];
 
 {
 	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
-	if (isServer) then
-	{
-		private _position = [_x] call aso_fnc_getPosition;
-		private _items = [_x] call aso_fnc_getCargo;
-		private _damage = [_x] call aso_fnc_getDamage;
-		private _var = [_x] call aso_fnc_getVariables;
+	private _position = [_x] call aso_fnc_getPosition;
+	private _items = [_x] call aso_fnc_getCargo;
+	private _damage = [_x] call aso_fnc_getDamage;
+	private _var = [_x] call aso_fnc_getVariables;
 		
-		// save the stuff
-		["Objects", _dbName, "Position", _position] call aso_fnc_writeValue;
-		["Objects", _dbName, "Items", _items] call aso_fnc_writeValue;
-		["Objects", _dbName, "Damage", _damage] call aso_fnc_writeValue;
-		["Objects", _dbName, "Variables", _var] call aso_fnc_writeValue;
-	}
-	else
-	{	// Call those on the server 
-		private _position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false]; 
-		private _items = [_x] remoteExecCall ["aso_fnc_getCargo", 2, false];
-		private _damage = [_x] remoteExecCall ["aso_fnc_getDamage", 2, false];
-		private _var = [_x] remoteExecCall ["aso_fnc_getVariables", 2, false];
-
-		// save the stuff
-		["Objects", _dbName, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false]; 
-		["Objects", _dbName, "Items", _items] remoteExecCall ["aso_fnc_writeValue", 2, false];
-		["Objects", _dbName, "Damage", _damage] remoteExecCall ["aso_fnc_writeValue", 2, false];
-		["Objects", _dbName, "Variables", _var] remoteExecCall ["aso_fnc_writeValue", 2, false];	
-	};	
+	// save the stuff
+	["Objects", _dbName, "Position", _position] call aso_fnc_writeValue;
+	["Objects", _dbName, "Items", _items] call aso_fnc_writeValue;
+	["Objects", _dbName, "Damage", _damage] call aso_fnc_writeValue;
+	["Objects", _dbName, "Variables", _var] call aso_fnc_writeValue;
+	
 } forEach _objects;

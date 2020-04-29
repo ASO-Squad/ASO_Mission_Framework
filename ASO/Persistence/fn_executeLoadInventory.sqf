@@ -17,6 +17,8 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
+
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
@@ -31,32 +33,16 @@ if (count _units == 0) then
 // If the unit array is empty, load all players
 {
 	private _dbName = [_x, _loadByName] call aso_fnc_getDbName;
-	if (isServer) then
+	private _inventory = ["Inventory", _dbName, "Inventory", _prefix] call aso_fnc_readValue;
+	// for players, we need to wait until tfr is initialized
+	if (ASO_USE_TFR && isPlayer _x) then
 	{
-		private _inventory = ["Inventory", _dbName, "Inventory", _prefix] call aso_fnc_readValue;
-		// for players, we need to wait until tfr is initialized
-		if (ASO_USE_TFR && isPlayer _x) then
-		{
-			_return = [_x, _inventory] spawn aso_fnc_setInventory;
-		}
-		else 
-		{
-			// for all AIs we want speed
-			[_x, _inventory] call aso_fnc_setInventory;
-		};
+		_return = [_x, _inventory] spawn aso_fnc_setInventory;
 	}
-	else
+	else 
 	{
-		private _inventory = ["Inventory", _dbName, "Inventory", _prefix] remoteExecCall ["aso_fnc_readValue", 2, false];
-		
-		if (ASO_USE_TFR && isPlayer _x) then
-		{
-			_return = [_x, _inventory] remoteExec ["aso_fnc_setInventory", 2, false]; 
-		}
-		else
-		{
-			[_x, _inventory] remoteExecCall ["aso_fnc_setInventory", 2, false];
-		};
+		// for all AIs we want speed
+		[_x, _inventory] call aso_fnc_setInventory;
 	};		
 } forEach _units;
 true;

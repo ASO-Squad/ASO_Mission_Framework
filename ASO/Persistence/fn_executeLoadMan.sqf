@@ -41,15 +41,15 @@ if (count _units == 0) then
 // If the unit array is empty, load all players
 {
 	private _dbName = [_x, _loadByName] call aso_fnc_getDbName;
-	// Reading from DB
-	private _position = ["Men", _dbName, "Position"] call aso_fnc_readValue;
-	private _inventory = ["Men", _dbName, "Inventory"] call aso_fnc_readValue;
-	private _health = ["Men", _dbName, "Health"] call aso_fnc_readValue;
-	private _mount = ["Men", _dbName, "Mount"] call aso_fnc_readValue;
-	private _explosives = ["Men", _dbName, "Explosives"] call aso_fnc_readValue;
-	
 	if (isServer) then
 	{
+		// Reading from DB
+		private _position = ["Men", _dbName, "Position"] call aso_fnc_readValue;
+		private _inventory = ["Men", _dbName, "Inventory"] call aso_fnc_readValue;
+		private _health = ["Men", _dbName, "Health"] call aso_fnc_readValue;
+		private _mount = ["Men", _dbName, "Mount"] call aso_fnc_readValue;
+		private _explosives = ["Men", _dbName, "Explosives"] call aso_fnc_readValue;
+
 		// for players, we need to wait until tfr is initialized
 		if (ASO_USE_TFR && isPlayer _x) then
 		{
@@ -88,3 +88,4 @@ if (count _units == 0) then
 		[_x, _explosives] remoteExecCall ["aso_fnc_setExplosives", 2, false];
 	};		
 } forEach _units;
+true;
