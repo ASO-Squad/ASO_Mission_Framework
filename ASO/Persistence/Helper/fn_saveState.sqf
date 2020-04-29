@@ -4,7 +4,7 @@ Description:
 	Call this if you want it to be fast. Spawn it if you want to run it smoothly.
 
 Parameters:
-    endMission  - If true, the the mission ends ...
+    _endMission  - If true, the the mission ends ...
 
 Returns:
     nothing
@@ -17,6 +17,8 @@ Author:
 ---------------------------------------------------------------------------- */
 
 if (!isServer) exitWith {false;};
+
+params ["_endMission"];
 
 // Save mission state
 ["Saving Mission ..."] remoteExecCall ["hint", 0, false];
@@ -53,6 +55,8 @@ if (!isServer) exitWith {false;};
 // We are done now!
 ["Mission State Saved!"] remoteExecCall ["hint", 0, false];
 
-"ASO_Save" call BIS_fnc_endMissionServer;
-
+if (_endMission) then 
+{
+    "ASO_Save" call BIS_fnc_endMissionServer;
+};
 true;
