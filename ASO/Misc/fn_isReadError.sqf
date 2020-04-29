@@ -15,7 +15,6 @@ Examples:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-
 params ["_value"];
 private _return = false;
 

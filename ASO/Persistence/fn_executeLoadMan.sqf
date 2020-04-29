@@ -26,6 +26,8 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
+
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
@@ -41,51 +43,26 @@ if (count _units == 0) then
 // If the unit array is empty, load all players
 {
 	private _dbName = [_x, _loadByName] call aso_fnc_getDbName;
-	if (isServer) then
-	{
-		// Reading from DB
-		private _position = ["Men", _dbName, "Position"] call aso_fnc_readValue;
-		private _inventory = ["Men", _dbName, "Inventory"] call aso_fnc_readValue;
-		private _health = ["Men", _dbName, "Health"] call aso_fnc_readValue;
-		private _mount = ["Men", _dbName, "Mount"] call aso_fnc_readValue;
-		private _explosives = ["Men", _dbName, "Explosives"] call aso_fnc_readValue;
+	// Reading from DB
+	private _position = ["Men", _dbName, "Position"] call aso_fnc_readValue;
+	private _inventory = ["Men", _dbName, "Inventory"] call aso_fnc_readValue;
+	private _health = ["Men", _dbName, "Health"] call aso_fnc_readValue;
+	private _mount = ["Men", _dbName, "Mount"] call aso_fnc_readValue;
+	private _explosives = ["Men", _dbName, "Explosives"] call aso_fnc_readValue;
 
-		// for players, we need to wait until tfr is initialized
-		if (ASO_USE_TFR && isPlayer _x) then
-		{
-			[_x, _inventory] spawn aso_fnc_setInventory;
-		}
-		else 
-		{
-			// for all AIs we want speed
-			[_x, _inventory] call aso_fnc_setInventory;
-		};
-		[_x, _position] call aso_fnc_setPosition;
-		[_x, _health, _ifIsDead] call aso_fnc_setHealth;
-		[_x, _mount] call aso_fnc_setMount;
-		[_x, _explosives] call aso_fnc_setExplosives;
+	// for players, we need to wait until tfr is initialized
+	if (ASO_USE_TFR && isPlayer _x) then
+	{
+		[_x, _inventory] spawn aso_fnc_setInventory;
 	}
-	else
+	else 
 	{
-		// Reading from DB
-		private _position = ["Men", _dbName, "Position"] remoteExecCall ["aso_fnc_readValue", 2, false];
-		private _inventory = ["Men", _dbName, "Inventory"] remoteExecCall ["aso_fnc_readValue", 2, false];
-		private _health = ["Men", _dbName, "Health"] remoteExecCall ["aso_fnc_readValue", 2, false];	
-		private _mount = ["Men", _dbName, "Mount"] remoteExecCall ["aso_fnc_readValue", 2, false];	
-		private _explosives = ["Men", _dbName, "Explosives"] remoteExecCall ["aso_fnc_readValue", 2, false];
-
-		if (ASO_USE_TFR && isPlayer _x) then
-		{
-			[_x, _inventory] remoteExec ["aso_fnc_setInventory", 2, false]; 
-		}
-		else
-		{
-			[_x, _inventory] remoteExecCall ["aso_fnc_setInventory", 2, false];
-		};
-		[_x, _position] remoteExecCall ["aso_fnc_setPosition", 2, false];
-		[_x, _health, _ifIsDead] remoteExecCall ["aso_fnc_setHealth", 2, false];
-		[_x, _mount] remoteExecCall ["aso_fnc_setMount", 2, false];
-		[_x, _explosives] remoteExecCall ["aso_fnc_setExplosives", 2, false];
-	};		
+		// for all AIs we want speed
+		[_x, _inventory] call aso_fnc_setInventory;
+	};
+	[_x, _position] call aso_fnc_setPosition;
+	[_x, _health, _ifIsDead] call aso_fnc_setHealth;
+	[_x, _mount] call aso_fnc_setMount;
+	[_x, _explosives] call aso_fnc_setExplosives;
 } forEach _units;
 true;
