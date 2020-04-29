@@ -21,6 +21,8 @@ if (!isServer) exitWith {false;};
 
 params ["_group", "_waypoints", ["_overwrite", true]];
 
+if (([_waypoints] call aso_fnc_isReadError)) exitWith {false;}; 
+
 private _currentWp = 1;
 private _wp = [];
 
