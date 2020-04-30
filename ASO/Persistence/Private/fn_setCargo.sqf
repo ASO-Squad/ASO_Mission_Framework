@@ -15,10 +15,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 params ["_obj", "_cargo"];
 
+if (([_cargo] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // Empty cargo space 
 clearItemCargoGlobal _obj;

@@ -16,9 +16,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 params ["_markers"];
+
+if (([_markers] call aso_fnc_isReadError)) exitWith {false;}; 
 
 private _index = count _markers;
 // Draw markers

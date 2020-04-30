@@ -15,9 +15,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 params ["_obj", "_supplies"];
+
+if (([_supplies] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // reading categories
 private _ammo = _supplies select 0;

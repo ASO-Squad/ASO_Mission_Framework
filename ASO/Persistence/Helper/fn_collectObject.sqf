@@ -27,5 +27,18 @@ if (isNil "_object") exitWith {};
 // save objects name
 [_object] call aso_fnc_setVehicleName;
 
-// Keep this group in mind for saving
-ASO_OBJECTS pushBackUnique _object;
+// Check for unnamed object
+private _return = false;
+if (_name == "*NoNameV*") then 
+{
+    hint parseText "<t size='1.2' color='#ff0000'>Unnamed Object Found</t><br/>
+                    <t align='left'>You tried to collect a unnamed object. You must name all objects you want to collect!</t>";
+    _return = true;
+}
+else 
+{
+    // Keep this object in mind for saving
+    ASO_OBJECTS pushBackUnique _object;
+    _return = false;
+};
+_return;

@@ -22,6 +22,7 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
@@ -38,33 +39,17 @@ if (count _units == 0) then
 
 {
 	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
-	if (isServer) then
-	{
-		private _position = [_x] call aso_fnc_getPosition;
-		private _inventory = [_x] call aso_fnc_getInventory;
-		private _health = [_x] call aso_fnc_getHealth;
-		private _mount = [_x] call aso_fnc_getMount;
-		private _explosives = [_x] call aso_fnc_getExplosives;
+	private _position = [_x] call aso_fnc_getPosition;
+	private _inventory = [_x] call aso_fnc_getInventory;
+	private _health = [_x] call aso_fnc_getHealth;
+	private _mount = [_x] call aso_fnc_getMount;
+	private _explosives = [_x] call aso_fnc_getExplosives;
 
-		["Men", _dbName, "Position", _position] call aso_fnc_writeValue;
-		["Men", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;
-		["Men", _dbName, "Health", _health] call aso_fnc_writeValue;
-		["Men", _dbName, "Mount", _mount] call aso_fnc_writeValue;
-		["Men", _dbName, "Explosives", _explosives] call aso_fnc_writeValue;
-	}
-	else
-	{
-		private _position = [_x] remoteExecCall ["aso_fnc_getPosition", 2, false];
-		private _inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false];
-		private _health = [_x] remoteExecCall ["aso_fnc_getHealth", 2, false];
-		private _mount = [_x] remoteExecCall ["aso_fnc_getMount", 2, false];
-		private _explosives = [_x] remoteExecCall ["aso_fnc_getExplosives", 2, false];
+	["Men", _dbName, "Position", _position] call aso_fnc_writeValue;
+	["Men", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;
+	["Men", _dbName, "Health", _health] call aso_fnc_writeValue;
+	["Men", _dbName, "Mount", _mount] call aso_fnc_writeValue;
+	["Men", _dbName, "Explosives", _explosives] call aso_fnc_writeValue;
 		
-		["Men", _dbName, "Position", _position] remoteExecCall ["aso_fnc_writeValue", 2, false];
-		["Men", _dbName, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2, false];
-		["Men", _dbName, "Health", _health] remoteExecCall ["aso_fnc_writeValue", 2, false];
-		["Men", _dbName, "Mount", _mount] remoteExecCall ["aso_fnc_writeValue", 2, false];
-		["Men", _dbName, "Explosives", _explosives] remoteExecCall ["aso_fnc_writeValue", 2, false];
-	};		
 } forEach _units;
 true;

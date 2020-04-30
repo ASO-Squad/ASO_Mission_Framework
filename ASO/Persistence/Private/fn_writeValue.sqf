@@ -19,6 +19,11 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {};
 
+if (isNil "ASO_INIT") then
+{
+	[] call aso_fnc_init_aso;
+};
+
 params ["_database", "_section", "_name", "_value"];
 
 private _database = format ["%1_%2", ASO_PREFIX, _database]; 

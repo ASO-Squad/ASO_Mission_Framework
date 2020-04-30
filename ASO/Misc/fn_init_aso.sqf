@@ -1,9 +1,9 @@
 
-ASO_DEBUG = true;
+ASO_DEBUG = false;
 ASO_DEBUG_TRACKER = [];
 ASO_DEBUG_ARTILLERY = [];
 ASO_DYNAMICSIM = true;
-ASO_PREFIX = "zeus_test";
+ASO_PREFIX = "aso_test";
 ASO_GROUPS = [];
 ASO_UNITS = [];
 ASO_VEHICLES = [];

@@ -15,9 +15,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 params ["_vehicle", "_damageArray"];
+
+if (([_damageArray] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // Load information
 private _hitpoints = _damageArray select 0;

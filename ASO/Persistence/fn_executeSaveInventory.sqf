@@ -16,7 +16,7 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-_params = [];
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
@@ -32,14 +32,6 @@ if (count _units == 0) then
 // If the unit array is empty, save all players
 {
 	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
-	if (isServer) then
-	{
-		private _inventory = [_x] call aso_fnc_getInventory;
-		["Inventory", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;
-	}
-	else
-	{
-		private _inventory = [_x] remoteExecCall ["aso_fnc_getInventory", 2, false];
-		["Inventory", _dbName, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2, false];
-	};		
+	private _inventory = [_x] call aso_fnc_getInventory;
+	["Inventory", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;		
 } forEach _units;

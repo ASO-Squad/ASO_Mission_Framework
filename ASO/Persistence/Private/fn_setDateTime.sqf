@@ -14,9 +14,11 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 params ["_dateTime"];
+
+if (([_dateTime] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // Set Date and Time
 setDate _dateTime;

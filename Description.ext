@@ -6,16 +6,17 @@ class Params
 		title = "Load Previous Mission"; // Param name visible in the list
 		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
 		texts[] = {"No","Yes"}; // Description of each selectable item
-		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
+		default = 1; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
     class LoadArmory
 	{
 		title = "Load Armory"; // Param name visible in the list
 		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
 		texts[] = {"No","Yes"}; // Description of each selectable item
-		default = 1; // Default value; must be listed in 'values' array, otherwise 0 is used
+		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
 };
+
 class cfgFunctions
 {
     #include "vcom\cfgFunctions.hpp"
@@ -45,6 +46,9 @@ class cfgFunctions
             class unGarrison {};
             class getWaypoints {};
             class setWaypoints {};
+            class evidence {};
+            class showProgress {};
+            class isReadError {};
         }
         class PersistencePrivate
         {
@@ -75,11 +79,11 @@ class cfgFunctions
             class setDateTime {};
             class getWeather {};
             class setWeather {};
+            class getVariables {};
+            class setVariables {};
             // Write to Database
             class writeValue {};
             class readValue {};
-            class readVar {};
-            class writeVar {};
             // Cargo Helper
             class putMagazinesInCargo {};
             class putWeaponsInCargo {};
@@ -94,6 +98,7 @@ class cfgFunctions
             class collectCrate {};
             class collectObject {};
             class collectVehicle {};
+            class loadState {};
             class saveState {};
             class setVehicleName {};
         }
@@ -118,6 +123,8 @@ class cfgFunctions
             class executeLoadEnvironment {};
             class executeSaveGroup {};
             class executeLoadGroup {};
+            class executeSaveObject {};
+            class executeLoadObject {};
         }
         class Tasks
         {
@@ -156,5 +163,43 @@ class Extended_PreInit_EventHandlers {
 	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_Functions\fn_CBASettings.sqf";
 };
 
+class CfgDebriefing
+{  
+	class ASO_Save
+	{
+		title = "The Mission Continues";
+		subtitle = "You live to fight another day.";
+		description = "The battle might be over, but you did not yet won the war.";
+	};
+    class ASO_Fail
+	{
+		title = "Mission Failed";
+		description = "You did the best you could with what you had ...";
+	};
+    class ASO_Win
+	{
+		title = "Mission Complete";
+		subtitle = "What a day! What a lovely day!";
+		description = "You made the enemy pay dearly. Because of your perseverance, victory is yours!";
+	};
+};
+
+class Header
+{
+	gameType =  Coop;	// Game type
+	minPlayers =  1;	// minimum number of players the mission supports
+	maxPlayers = 8;	// maximum number of players the mission supports
+};
+
+briefingName    = "ASO Framework Example";
+author			= "Papa Mike";
+OnLoadName		= "ASO Framework Example";
+OnLoadMission	= "Raid a small compound, afterwards take your time and explore what the framework can do in the mission editor.";
+onLoadIntro     = "ASO Framework Example";
+overviewText    = "Raid a small compound, afterwards take your time and explore what the framework can do in the mission editor."
+
 respawnOnStart = -1;
 respawnTemplates[] = {"MenuPosition"};
+
+enableDebugConsole = 1; // SP and loggend in Admins only
+forceRotorLibSimulation = 1;

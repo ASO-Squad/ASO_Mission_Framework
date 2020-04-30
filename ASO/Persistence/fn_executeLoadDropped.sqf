@@ -14,7 +14,6 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-
 if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then

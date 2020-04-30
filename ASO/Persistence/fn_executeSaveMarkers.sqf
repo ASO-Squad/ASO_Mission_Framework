@@ -17,6 +17,7 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
@@ -25,19 +26,8 @@ if (isNil "ASO_INIT") then
 
 params [["_all", false]];
 
-if (isServer) then
+private _markers = [_all] call aso_fnc_getMarkers;
 {
-	private _markers = [_all] call aso_fnc_getMarkers;
-	{
-		["Markers", _x select 0, "Marker", _x] call aso_fnc_writeValue;
-	} forEach _markers;
-}
-else
-{
-	private _markers = [_all] remoteExecCall ["aso_fnc_getMarkers", 2, false];
-	{
-		["Markers", _x select 0, "Marker", _x] remoteExecCall ["aso_fnc_writeValue", 2, false];
-	} forEach _markers;
-	
-};
+	["Markers", _x select 0, "Marker", _x] call aso_fnc_writeValue;
+} forEach _markers;
 true;
