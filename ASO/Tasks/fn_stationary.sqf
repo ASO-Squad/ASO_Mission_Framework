@@ -29,7 +29,7 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group",["_answer", true]];
+params ["_group",["_move", true]];
 
 // Give them their new order
 [_group, _move] spawn aso_fnc_doNotMove;
