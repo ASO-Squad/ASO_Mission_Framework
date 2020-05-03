@@ -4,41 +4,59 @@ Description:
 	Call this if you want it to be fast. Spawn it if you want to run it smoothly.
 
 Parameters:
-    _object	- A object
+    _endMission  - If true, the the mission ends ...
 
 Returns:
     nothing
 
 Example:
-    [] call aso_fnc_saveState;
+    [true] call aso_fnc_saveState;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
 
-if (!isServer) exitWith {};
-["Saving Mission ..."] remoteExecCall ["hint", 0, false];
+if (!isServer) exitWith {false;};
+
+params ["_endMission"];
+
 // Save mission state
+["Saving Mission ..."] remoteExecCall ["hint", 0, false];
 [] call aso_fnc_executeSaveEnvironment;
-// Save anything that might do some stuff
+
+// Save vehicles
 ["Saving Vehicles ..."] remoteExecCall ["hint", 0, false];
 [ASO_VEHICLES] call aso_fnc_executeSaveVehicle;
+
+// Save all active players
 ["Saving Players ..."] remoteExecCall ["hint", 0, false];
 [[], false] call aso_fnc_executeSaveMan;
-["Saving Units ..."] remoteExecCall ["hint", 0, false];
-[ASO_UNITS, true] call aso_fnc_executeSaveMan;
-["Saving Objectives ..."] remoteExecCall ["hint", 0, false];
-[(ASO_AOIs select 1)] call aso_fnc_executeSaveAOI;
-["Saving AI Orders ..."] remoteExecCall ["hint", 0, false];
-[ASO_GROUPS] call aso_fnc_executeSaveOrders;
+
+// Save all persitent AI Groups
+["Saving Groups ..."] remoteExecCall ["hint", 0, false];
+{
+    [_x] call aso_fnc_executeSaveGroup;
+    
+} forEach ASO_GROUPS;
+
 // Keep track of those crates
+["Saving Cargo ..."] remoteExecCall ["hint", 0, false];
 [ASO_CRATES] call aso_fnc_executeSaveCargo;
+
+// Save all mission critical object
+["Saving Objects ..."] remoteExecCall ["hint", 0, false];
+[ASO_OBJECTS] call aso_fnc_executeSaveObject;
+
 // Save loot and markers
 ["Saving Loot and Markers ..."] remoteExecCall ["hint", 0, false];
 [] call aso_fnc_executeSaveDropped;
 [false] call aso_fnc_executeSaveMarkers;
-// Keep track of mission progress
-["Saving Mission Progress ..."] remoteExecCall ["hint", 0, false];
-[mission_progress, false] call aso_fnc_executeSaveVar;
+
 // We are done now!
-["Mission Saved!"] remoteExecCall ["hint", 0, false];
+["Mission State Saved!"] remoteExecCall ["hint", 0, false];
+
+if (_endMission) then 
+{
+    "ASO_Save" call BIS_fnc_endMissionServer;
+};
+true;

@@ -6,7 +6,7 @@ Parameters:
     _group      - The group that we want change the behaviour of
     _behaviour  - The behaviour the group changes to
     _speed      - speedMode change
-    _time       - Wat this amount of time befor executing 
+    _time       - Wait this amount of time befor executing 
 
 Returns:
     None

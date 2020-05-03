@@ -24,6 +24,13 @@ if (_name != "") exitWith {_name};
 
 // Get the DB-Name. Im most cases this will be the objects group id
 _name = [_object, true] call aso_fnc_getDbName;
+// Keep the name
 _object setVehicleVarName _name;
-// Return the name
+// Determine if its an unknown vehicle with no name
+_length = count _name;
+_ending = [_name, _length-4, 4] call CBA_fnc_substr;
+if (_ending == ".p3d") then 
+{
+    _name = "*NoNameV*"; // Return the magic name
+};
 _name;

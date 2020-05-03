@@ -1,36 +1,31 @@
 /* ----------------------------------------------------------------------------
 Description:
-    Saves the cargos of the given object, and does this with INIDBI2.
-	Files are written on the server machine.
+    Saves the cargos of the given object.
 
 Parameters:
-    _objects		- The objects that we want to keep the cargos of
-	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
-					If you don not provide a prefix, ASO_PREFIX will be used. 
+    _objects	- The objects that we want to keep the cargos of
+	
 Returns:
     nothing
 
 Example:
-    [_objects, _prefix] call aso_fnc_executeSaveCargo;
+    [_objects] call aso_fnc_executeSaveCargo;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
 };
 
-params ["_objects", ["_prefix", ASO_PREFIX]];
+params ["_objects"];
 
 {
-	if (isServer) then
-	{
-		[_x, _prefix] call aso_fnc_saveCargo;
-	}
-	else
-	{
-		[_x, _prefix] remoteExecCall ["aso_fnc_saveCargo", 2, false]; // Call this on the server
-	};	
+	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _items = [_x] call aso_fnc_getCargo;
+	["Cargo", _dbName, "Items", _items] call aso_fnc_writeValue;
+		
 } forEach _objects;

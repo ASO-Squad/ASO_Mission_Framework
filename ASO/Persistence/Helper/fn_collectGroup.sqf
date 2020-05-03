@@ -3,13 +3,13 @@ Description:
     Pushes this group and its vehicles to ASO_GROUPS, ASO_UNITS and ASO_VEHICLES
 
 Parameters:
-    _group	- A group.
+    0   - A group.
 
 Returns:
     nothing
 
 Example:
-    [_group] call aso_fnc_collectGroup;
+    [this] call aso_fnc_collectGroup;
 
 Author:
     Papa Mike
@@ -22,7 +22,7 @@ if (isNil "ASO_INIT") then
 params ["_group"];
 
 // Get out, there is nothing to do
-if (isNil "_group") exitWith {};
+if (isNil "_group") exitWith {false;};
 
 // Keep this group in mind for saving
 ASO_GROUPS pushBackUnique _group;
@@ -41,3 +41,7 @@ ASO_GROUPS pushBackUnique _group;
     };
 
 } forEach units _group;
+
+[_group, 60] spawn aso_fnc_enableDynamicSim;
+
+true;

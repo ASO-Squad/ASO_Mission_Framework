@@ -18,7 +18,7 @@ Author:
 params ["_object", "_preferName"];
 
 // Use the appropriate name for the database 
-_db = "";
+private _db = "";
 if (_preferName) then 
 {
 	if (typeName _object == "OBJECT") then
@@ -44,7 +44,7 @@ if (_db == "" || _db == "_SP_AI_") then
 	{
 		// Fallback if the unit is not a player and there is no name
 		// Note: You fucked up big time if you land here.
-		_fallback = format["%1", _object];
+		private _fallback = format["%1", _object];
 		_fallback = [_fallback, " ", "_"] call CBA_fnc_replace;
 		_fallback = [_fallback, ":", "_"] call CBA_fnc_replace;
 		_db = _fallback;

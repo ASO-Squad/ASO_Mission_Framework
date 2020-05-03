@@ -6,18 +6,19 @@ Parameters:
     _units			- The units that we want to load the inventory of.
 					If you leave this array empty, all players get load.
 	_loadByName		- If true, we are saving this by the units name, otherwise it is saved by the players name
-	_prefix			- Prefix to be used for the database. This is usually used to identify different missions
-					If you don not provide a prefix, ASO_PREFIX will be used. 
+	_prefix         - Prefix that is used, leave empty for ASO_PREFIX
 
 Returns:
     nothing
 
 Example:
-    [_units, false, _prefix] call aso_fnc_executeLoadInventory;
+    [_units, false] call aso_fnc_executeLoadInventory;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
+
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
@@ -31,12 +32,17 @@ if (count _units == 0) then
 };
 // If the unit array is empty, load all players
 {
-	if (isServer) then
+	private _dbName = [_x, _loadByName] call aso_fnc_getDbName;
+	private _inventory = ["Inventory", _dbName, "Inventory", _prefix] call aso_fnc_readValue;
+	// for players, we need to wait until tfr is initialized
+	if (ASO_USE_TFR && isPlayer _x) then
 	{
-		[_x, _loadByName, _prefix] call aso_fnc_loadInventory;
+		_return = [_x, _inventory] spawn aso_fnc_setInventory;
 	}
-	else
+	else 
 	{
-		[_x, _loadByName, _prefix] remoteExecCall ["aso_fnc_loadInventory", 2, false]; // Call this on the server
+		// for all AIs we want speed
+		[_x, _inventory] call aso_fnc_setInventory;
 	};		
 } forEach _units;
+true;

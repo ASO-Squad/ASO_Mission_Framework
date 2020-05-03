@@ -1,3 +1,4 @@
+
 class Params
 {
 	class LoadMission
@@ -7,44 +8,21 @@ class Params
 		texts[] = {"No","Yes"}; // Description of each selectable item
 		default = 1; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
-    class CustomForecastEnabled
+    class LoadArmory
 	{
-		title = "Change The Weather Forecast"; // Param name visible in the list
+		title = "Load Armory"; // Param name visible in the list
 		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
 		texts[] = {"No","Yes"}; // Description of each selectable item
 		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
-    class CustomOvercast
-	{
-		title = "Cloud Cover"; // Param name visible in the list
-		values[] = {0,2,4,7,9,10}; // Values; must be integers; has to have the same number of elements as 'texts'
-		texts[] = {"Clear Sky","Sunny Sky", "Partly Cloudy", "Cloudy Sky", "Overcast Sky", "Bad Weather"}; // Description of each selectable item
-		default = 4; // Default value; must be listed in 'values' array, otherwise 0 is used
-	};
-    class CustomFog
-	{
-		title = "Fog Density"; // Param name visible in the list
-		values[] = {0,2,5,8,10}; // Values; must be integers; has to have the same number of elements as 'texts'
-		texts[] = {"Clear","Foggy", "Dense Fog", "London", "THE FOG"}; // Description of each selectable item
-		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
-	};
 };
+
 class cfgFunctions
 {
+    #include "vcom\cfgFunctions.hpp"
+
     class ASO
     {
-        class GroupTasks
-        {
-            file = "ASO\GroupTasks";
-            class garrison {};
-            class garrisonSimple {};
-            class guard {};
-            class guardHand {};
-            class patrol {};
-            class attack {};
-            class search {};
-            class reinforce {};
-        }
         class Debug
         {
             file = "ASO\Debug";
@@ -54,78 +32,62 @@ class cfgFunctions
         class Misc
         {
             file = "ASO\Misc";
-            class revealToGroup {};
-            class assessTargets {};
-            class getGroupType {};
-            class getGroupOrders {};
-            class enableDynamicSim {};
             class assessArtilleryTargets {};
+            class assessTargets {};
             class delayedBehaviourChange {};
+            class deleteEmptyWH {};
+            class doNotMove {};
+            class enableDynamicSim {};
             class init_aso {};
-            class requestRadio {};
             class markerFollowObj {};
             class propagateLocalVar {};
-            class setLandingPad {};
-            class wpLand {};
-        }
-        class AOIPrivate
-        {
-            file = "ASO\AOI\Private";
-            class addGroupToAOI {};
-            class getAOIGroups {};
-            class getAOIReinforcementGroups {};
-            class recallReinforcements {};
-            class removeGroupFromAOIReinforcements {};
-            class setAOIGroups {};
-            class setAOIReinforcementGroups {};
-            class setAOITask {};
-        }
-        class AOIPublic
-        {
-            file = "ASO\AOI";
-            class initAOI {};
-            class addGroupToAOIReinforcements {}; 
-            class callReinforcements {};
-            class callReinforcementsFrom {};
-            class retreatReinforcements {};
-            class setAOIStatus {};
-            class setAOITaskStatus {};
-            class getAOIStatus {};
-            class getAOITask {};
+            class requestRadio {};
+            class revealToGroup {};
+            class unGarrison {};
+            class getWaypoints {};
+            class setWaypoints {};
+            class evidence {};
+            class showProgress {};
+            class isReadError {};
         }
         class PersistencePrivate
         {
             file = "ASO\Persistence\Private"
-            class saveInventory {};
-            class loadInventory {};
-            class saveCargo {};
-            class loadCargo {};
+            // Get/Set Functions
+            class getInventory {};
+            class setInventory {};
+            class getCargo {};
+            class setCargo {};
+            class getPosition {};
+            class setPosition {};
+            class getHealth {};
+            class setHealth {};
+            class getMount {};
+            class setMount {};
+            class getExplosives {};
+            class setExplosives {};
+            class getDamage {};
+            class setDamage {};
+            class getWeapons {};
+            class setWeapons {};
+            class getACESupplies {};
+            class setACESupplies {};
+            class getMarkers {};
+            class setMarkers {};
+            class getDbName {};
+            class getDateTime {};
+            class setDateTime {};
+            class getWeather {};
+            class setWeather {};
+            class getVariables {};
+            class setVariables {};
+            // Write to Database
+            class writeValue {};
+            class readValue {};
+            // Cargo Helper
             class putMagazinesInCargo {};
             class putWeaponsInCargo {};
             class putItemsInCargo {};
-            class savePosition {};
-            class loadPosition {};
-            class saveHealth {};
-            class loadHealth {};
-            class saveMount {};
-            class loadMount {};
-            class saveExplosives {};
-            class loadExplosives {};
-            class saveDamage {};
-            class loadDamage {};
-            class saveWeapons {};
-            class loadWeapons {};
-            class saveACESupplies {};
-            class loadACESupplies {};
-            class saveMarkers {};
-            class loadMarkers {};
-            class saveVar {};
-            class loadVar {};
-            class getDbName {};
-            class saveDateTime {};
-            class loadDateTime {};
-            class saveWeather {};
-            class loadWeather {};
         }
         class PersistenceHelper
         {
@@ -136,6 +98,7 @@ class cfgFunctions
             class collectCrate {};
             class collectObject {};
             class collectVehicle {};
+            class loadState {};
             class saveState {};
             class setVehicleName {};
         }
@@ -156,13 +119,23 @@ class cfgFunctions
             class executeLoadMarkers {};
             class executeSaveVar {};
             class executeLoadVar {};
-            class executeSaveAOI {};
-            class executeLoadAOI {};
-            class executeSaveOrders {};
-            class executeLoadOrders {};
             class executeSaveEnvironment {};
             class executeLoadEnvironment {};
+            class executeSaveGroup {};
+            class executeLoadGroup {};
+            class executeSaveObject {};
+            class executeLoadObject {};
         }
+        class Tasks
+        {
+            file = "ASO\Tasks"
+            class guard {};
+            class patrol {};
+            class patrolCity {};
+            class garrison {};
+            class stationary {};
+            class custom {};
+        };
     };
 };
 class CfgRemoteExec
@@ -170,10 +143,63 @@ class CfgRemoteExec
         class Commands
         {
                 mode = 2; // Remote execution is allowed for all commands
+                jip = 1;
         };
         class Functions
         {
                 mode = 2; // Remote execution is allowed for all functions
+                jip = 1;
+                class vcm_serverask { allowedTargets = 0;jip = 1; };
+                class VCM_PublicScript { allowedTargets = 0;jip = 1; };
+                class BIS_fnc_debugConsoleExec { allowedTargets = 0;jip = 1; };
+                class SpawnScript { allowedTargets = 0;jip = 1; };
+                class enableSimulationGlobal { allowedTargets = 0;jip = 1; };
+                class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
         };
 };
 allowFunctionsRecompile = 1;
+
+class Extended_PreInit_EventHandlers {
+	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_Functions\fn_CBASettings.sqf";
+};
+
+class CfgDebriefing
+{  
+	class ASO_Save
+	{
+		title = "The Mission Continues";
+		subtitle = "You live to fight another day.";
+		description = "The battle might be over, but you did not yet won the war.";
+	};
+    class ASO_Fail
+	{
+		title = "Mission Failed";
+		description = "You did the best you could with what you had ...";
+	};
+    class ASO_Win
+	{
+		title = "Mission Complete";
+		subtitle = "What a day! What a lovely day!";
+		description = "You made the enemy pay dearly. Because of your perseverance, victory is yours!";
+	};
+};
+
+class Header
+{
+	gameType =  Coop;	// Game type
+	minPlayers =  1;	// minimum number of players the mission supports
+	maxPlayers = 8;	// maximum number of players the mission supports
+};
+
+briefingName    = "ASO Framework Example";
+author			= "Papa Mike";
+OnLoadName		= "ASO Framework Example";
+OnLoadMission	= "Raid a small compound, afterwards take your time and explore what the framework can do in the mission editor.";
+onLoadIntro     = "ASO Framework Example";
+overviewText    = "Raid a small compound, afterwards take your time and explore what the framework can do in the mission editor."
+
+respawnOnStart = -1;
+respawnTemplates[] = {"MenuPosition"};
+
+enableDebugConsole = 1; // SP and loggend in Admins only
+forceRotorLibSimulation = 1;

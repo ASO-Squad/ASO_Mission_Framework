@@ -1,16 +1,10 @@
-
-ASO_DEBUG = true;
-ASO_BLUFOR = resistance;
-ASO_OPFOR = east;
-ASO_GREENFOR = blufor;
-ASO_AOIs = [[], []] call CBA_fnc_hashCreate;
+ASO_PREFIX = "aso_test"; // This has to be unique for every mission you build
+ASO_DYNAMICSIM = true; // true, if you are planning on using dynamic simulation
+ASO_USE_TFR = true; // true, if you want to use Task Force Radio
+// Do not edit below this line
+ASO_DEBUG = false;
 ASO_DEBUG_TRACKER = [];
 ASO_DEBUG_ARTILLERY = [];
-ASO_DYNAMICSIM = true;
-ASO_ARTILLERY_HE = ["rhs_mag_3vo18_10"];
-ASO_ARTILLERY_SMOKE = ["rhs_mag_d832du_10"];
-ASO_ARTILLERY_ILLUM = ["rhs_mag_3vs25m_10"];
-ASO_PREFIX = "framework";
 ASO_GROUPS = [];
 ASO_UNITS = [];
 ASO_VEHICLES = [];

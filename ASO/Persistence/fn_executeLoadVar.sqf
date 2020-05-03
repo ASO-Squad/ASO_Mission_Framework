@@ -19,6 +19,8 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
+if (!isServer) exitWith {false;};
+
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
@@ -26,11 +28,4 @@ if (isNil "ASO_INIT") then
 
 params ["_varspace", "_loadByName", ["_varname", ""], ["_default", ""], ["_prefix", ASO_PREFIX]];
 
-if (isServer) then
-{
-	[_varspace, _loadByName, _prefix, _varname, _default] call aso_fnc_loadVar;
-}
-else
-{
-	[_varspace, _loadByName, _prefix, _varname, _default] remoteExecCall ["aso_fnc_loadVar", 2, false]; // Call this on the server
-};		
+[_varspace, _loadByName, _prefix, _varname, _default] call aso_fnc_readVar;
