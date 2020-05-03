@@ -41,4 +41,7 @@ ASO_GROUPS pushBackUnique _group;
     };
 
 } forEach units _group;
+
+[_group, 60] spawn aso_fnc_enableDynamicSim;
+
 true;
