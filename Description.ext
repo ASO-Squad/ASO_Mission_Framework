@@ -134,7 +134,6 @@ class cfgFunctions
             class patrolCity {};
             class garrison {};
             class stationary {};
-            class custom {};
         };
     };
 };
