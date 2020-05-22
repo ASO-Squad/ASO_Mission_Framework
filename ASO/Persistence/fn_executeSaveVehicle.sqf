@@ -38,7 +38,7 @@ if (count _vehicles == 0) then
 };
 
 {
-	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, true] call aso_fnc_getDbName;
 	private _position = [_x] call aso_fnc_getPosition;
 	private _items = [_x] call aso_fnc_getCargo;
 	private _damage = [_x] call aso_fnc_getDamage;

@@ -22,7 +22,7 @@ if (isNil "ASO_INIT") then
 };
 params ["_objects", ["_prefix", ASO_PREFIX]];
 {
-	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, true] call aso_fnc_getDbName;
 	private _items = ["Cargo", _dbName, "Items"] call aso_fnc_readValue;
 	[_x, _items] call aso_fnc_setCargo;
 } forEach _objects;

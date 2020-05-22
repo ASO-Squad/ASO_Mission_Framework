@@ -28,7 +28,7 @@ if (isNil "ASO_INIT") then
 params ["_objects"];
 
 {
-	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, true] call aso_fnc_getDbName;
 	private _position = [_x] call aso_fnc_getPosition;
 	private _items = [_x] call aso_fnc_getCargo;
 	private _damage = [_x] call aso_fnc_getDamage;
