@@ -12,13 +12,14 @@ Description:
 Parameters:
     _group      - the group guarding the area
 	_answer		- if false, this group does not answer calls for help
+	_time 		- Time until dynamicSim is enabled. -1 for never.
     _trigger   	- trigger that is to be defended, should be a circle
 
 Returns:
     None
 
 Example:
-    [_group] call aso_fnc_guard;
+    [this] call aso_fnc_guard;
 
 Author:
     Papa Mike
@@ -30,7 +31,7 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group",["_answer", true], ["_trigger", objNull]];
+params ["_group", ["_answer", false], ["_time", 60], ["_trigger", objNull]];
 
 //find a syncronized trigger
 private _sync = synchronizedObjects leader _group;
@@ -55,10 +56,7 @@ private _radius = (triggerArea _trigger) select 0;
 [_group, _position, _radius, 2, 0.5, 0] call CBA_fnc_taskDefend;
 
 // Add group to group list
-[_group] call aso_fnc_collectGroup;
-
-// Use dynamic simulation
-[_group, 60] spawn aso_fnc_enableDynamicSim;
+[_group, _time] call aso_fnc_collectGroup;
 
 // make them ignore calls for help 
 if (!_answer) then 
@@ -67,6 +65,9 @@ if (!_answer) then
 }
 else 
 {
-	[_group, false, true, true] spawn aso_fnc_unGarrison;
+	[_group, _position, _radius, false, true, true] spawn aso_fnc_unGarrison;
 };
+
+//Track group for debug purposes
+[_group] spawn aso_fnc_trackGroup;
 true;
