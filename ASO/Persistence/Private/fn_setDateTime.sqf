@@ -21,5 +21,5 @@ params ["_dateTime"];
 if (([_dateTime] call aso_fnc_isReadError)) exitWith {false;}; 
 
 // Set Date and Time
-setDate _dateTime;
+[_dateTime] remoteExec ["setDate"];
 true;
