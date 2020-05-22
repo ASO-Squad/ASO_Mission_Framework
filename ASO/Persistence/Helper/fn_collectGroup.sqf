@@ -4,6 +4,7 @@ Description:
 
 Parameters:
     0   - A group.
+    1   - Time after which dynamic simulation is enabled
 
 Returns:
     nothing
@@ -19,7 +20,7 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group"];
+params ["_group", ["_time", 0]];
 
 // Get out, there is nothing to do
 if (isNil "_group") exitWith {false;};
@@ -41,7 +42,8 @@ ASO_GROUPS pushBackUnique _group;
     };
 
 } forEach units _group;
-
-[_group, 60] spawn aso_fnc_enableDynamicSim;
-
+if (_time != -1) then 
+{
+    [_group, _time] spawn aso_fnc_enableDynamicSim;  
+};
 true;

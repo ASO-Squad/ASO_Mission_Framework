@@ -9,7 +9,7 @@ Returns:
     nothing
 
 Example:
-    [_vehicle] call aso_fnc_collectVehicle;
+    [this] call aso_fnc_collectVehicle;
 
 Author:
     Papa Mike
@@ -25,7 +25,7 @@ params ["_vehicle"];
 if (isNil "_vehicle") exitWith {false;};
 
 // Save vehicle name
-_name = [_vehicle] call aso_fnc_setVehicleName;
+private _name = [_vehicle] call aso_fnc_setVehicleName;
 
 // Check for unnamed object
 private _return = false;
@@ -33,12 +33,12 @@ if (_name == "*NoNameV*") then
 {
     hint parseText "<t size='1.2' color='#ff0000'>Unnamed Vehicle Found</t><br/>
                     <t align='left'>You tried to collect a unnamed vehicle. You must name all vehicles you want to collect!</t>";
-    _return = true;
+    _return = false;
 }
 else 
 {
     // Keep this vehicle in mind for saving
     ASO_VEHICLES pushBackUnique _vehicle;
-    _return = false;
+    _return = true;
 };
 _return;

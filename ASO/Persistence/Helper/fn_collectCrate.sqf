@@ -9,7 +9,7 @@ Returns:
     nothing
 
 Example:
-    [_crate] call aso_fnc_collectCrate;
+    [this] call aso_fnc_collectCrate;
 
 Author:
     Papa Mike
@@ -23,6 +23,9 @@ params ["_crate"];
 
 // Get out, there is nothing to do
 if (isNil "_crate") exitWith {};
+
+// save objects name
+private _name = [_object] call aso_fnc_setVehicleName;
 
 // Check for unnamed object
 private _return = false;

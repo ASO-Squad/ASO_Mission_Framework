@@ -5,6 +5,7 @@ Description:
 Parameters:
     _group			- Group to track
 	_moveOnContact	- Allow the Group to move on contact
+	_excemption		- Units in this array are allowed to move
 
 Returns:
     None
@@ -22,12 +23,17 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group", ["_moveOnContact", true]];
+params ["_group", ["_moveOnContact", true], ["_exemption", []]];
 
 {
 	_x enableAIFeature ["PATH", false];
+	[_x] spawn aso_fnc_restoreDir;
 	
 } forEach units _group;
+
+{
+	_x enableAIFeature ["PATH", true];	
+} forEach _exemption;
 
 if (_moveOnContact) then
 {

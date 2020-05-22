@@ -42,20 +42,20 @@ private _windDir = _newWind select 2;
 private _windStrength = _newWind select 3;
 
 //waves
-private _newWaves = _weather select 2;
+private _newWaves = _weather select 3;
 private _waves = _newWaves select 0; 
 // Next weather change
-private _newChange = _weather select 3;
+private _newChange = _weather select 4;
 private _change = _newChange select 0;
 
 // Set current weather
 0 setFog [_fogValue, _fogDecay, _fogBase];
-0 setOvercast _overcast;
+[0,_overcast] remoteExec ["setOvercast"]; 
 0 setLightnings _lightning;
 0 setRain _rain;
-0 setGusts _gusts;
-setWind [_wind select 0, _wind select 1];
-0 setWindDir _windDir;
+[0, _gusts] remoteExec ["setGusts"];
+setWind [_wind select 0, _wind select 1, false];
+//0 setWindDir _windDir; // not needed?
 0 setwindstr _windStrength;
 0 setWaves _waves;
 forceWeatherChange;
@@ -68,8 +68,8 @@ if (_edit == 1) then
     _fogForecast = _fogForecast / 10.0;
     _overcastForecast = ["CustomOvercast", 0] call BIS_fnc_getParamValue;
     _overcastForecast = _overcastForecast / 10.0;
+    _change = 3600;
 };
-
 // Let the weather change according to the forecast
 _change setFog _fogForecast;
 _change setOvercast _overcastForecast;

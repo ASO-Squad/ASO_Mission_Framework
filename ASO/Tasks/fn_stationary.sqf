@@ -11,13 +11,13 @@ Description:
 
 Parameters:
     _group      - the group guarding the area
-	_move		- if true, the units will start moving on enemy contact
+	_move		- if true, the units will start moving on enemy contact;
 
 Returns:
     None
 
 Example:
-    [_group] call aso_fnc_stationary;
+    [this] call aso_fnc_stationary;
 
 Author:
     Papa Mike
@@ -36,8 +36,8 @@ params ["_group",["_move", true]];
 (_group) setVariable ["VCM_NORESCUE",true];
 
 // Add group to group list
-[_group] call aso_fnc_collectGroup;
+[_group, 0] call aso_fnc_collectGroup;
 
-// Use dynamic simulation
-[_group, 60] spawn aso_fnc_enableDynamicSim;
+//Track group for debug purposes
+[_group] spawn aso_fnc_trackGroup;
 true;

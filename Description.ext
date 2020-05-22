@@ -15,6 +15,27 @@ class Params
 		texts[] = {"No","Yes"}; // Description of each selectable item
 		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
+    class CustomForecastEnabled
+    {
+        title = "New Weather"; // Param name visible in the list
+		values[] = {0,1}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"No","Yes"}; // Description of each selectable item
+		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
+    };
+    class CustomFog
+    {
+        title = "Forecast Fog Density"; // Param name visible in the list
+		values[] = {0,2,4,6,8,10}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"None","Negligible", "Haze", "Fog", "Dense Fog", "Maximum"}; // Description of each selectable item
+		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
+    };
+    class CustomOvercast
+    {
+        title = "Forecast Overcast"; // Param name visible in the list
+		values[] = {0,2,4,6,8,10}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"Clear Skies","Almost Clear", "Partly Cloudy", "Cloudy", "Overcast Sky", "Bad Weather"}; // Description of each selectable item
+		default = 4; // Default value; must be listed in 'values' array, otherwise 0 is used
+    };
 };
 
 class cfgFunctions
@@ -37,6 +58,7 @@ class cfgFunctions
             class delayedBehaviourChange {};
             class deleteEmptyWH {};
             class doNotMove {};
+            class doMove {};
             class enableDynamicSim {};
             class init_aso {};
             class markerFollowObj {};
@@ -49,6 +71,13 @@ class cfgFunctions
             class evidence {};
             class showProgress {};
             class isReadError {};
+            class animateRadar {};
+            class checkForItem {};
+            class registerItemAction {};
+            class countMurders {};
+            class storeDir {};
+            class restoreDir {};
+            class conditionalRefuel {};
         }
         class PersistencePrivate
         {
@@ -81,6 +110,8 @@ class cfgFunctions
             class setWeather {};
             class getVariables {};
             class setVariables {};
+            class getVehicleLock {};
+            class setVehicleLock {};
             // Write to Database
             class writeValue {};
             class readValue {};
@@ -101,6 +132,7 @@ class cfgFunctions
             class loadState {};
             class saveState {};
             class setVehicleName {};
+            class localInventory {};
         }
         class PersistencePublic
         {
@@ -134,6 +166,8 @@ class cfgFunctions
             class patrolCity {};
             class garrison {};
             class stationary {};
+            class patrolDisembark {};
+            class patrolEmbark {};
         };
     };
 };
@@ -175,6 +209,16 @@ class CfgDebriefing
 		title = "Mission Failed";
 		description = "You did the best you could with what you had ...";
 	};
+    class ASO_Fail_Murder
+	{
+		title = "Mission Failed";
+		description = "Too many civilian casualties. You were supposed to defeat the turks, not join them!";
+	};
+    class ASO_Fail_Destruction
+	{
+		title = "Mission Failed";
+		description = "You have destroyed too much important infrastructure. The world now thinks you are a terrorist group and has given NATO member Turkey the mandate to snuff you out. This is a fight we cannot win ...";
+	};
     class ASO_Win
 	{
 		title = "Mission Complete";
@@ -197,6 +241,7 @@ OnLoadMission	= "Raid a small compound, afterwards take your time and explore wh
 onLoadIntro     = "ASO Framework Example";
 overviewText    = "Raid a small compound, afterwards take your time and explore what the framework can do in the mission editor."
 
+respawn = 3;
 respawnOnStart = -1;
 respawnTemplates[] = {"MenuPosition"};
 
