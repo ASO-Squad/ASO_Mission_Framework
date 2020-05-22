@@ -9,7 +9,7 @@ Returns:
     nothing
 
 Example:
-    [_object] call aso_fnc_collectObject;
+    [this] call aso_fnc_collectObject;
 
 Author:
     Papa Mike
@@ -22,10 +22,10 @@ if (isNil "ASO_INIT") then
 params ["_object"];
 
 // Get out, there is nothing to do
-if (isNil "_object") exitWith {};
+if (isNil "_object") exitWith {false;};
 
 // save objects name
-[_object] call aso_fnc_setVehicleName;
+private _name = [_object] call aso_fnc_setVehicleName;
 
 // Check for unnamed object
 private _return = false;
@@ -33,12 +33,12 @@ if (_name == "*NoNameV*") then
 {
     hint parseText "<t size='1.2' color='#ff0000'>Unnamed Object Found</t><br/>
                     <t align='left'>You tried to collect a unnamed object. You must name all objects you want to collect!</t>";
-    _return = true;
+    _return = false;
 }
 else 
 {
     // Keep this object in mind for saving
     ASO_OBJECTS pushBackUnique _object;
-    _return = false;
+    _return = true;
 };
 _return;
