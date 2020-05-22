@@ -40,8 +40,9 @@ params ["_endMission"];
 } forEach ASO_GROUPS;
 
 // Keep track of those crates
-["Saving Cargo ..."] remoteExecCall ["hint", 0, false];
-[ASO_CRATES] call aso_fnc_executeSaveCargo;
+["Saving Crates ..."] remoteExecCall ["hint", 0, false];
+//[ASO_CRATES] call aso_fnc_executeSaveCargo;
+[ASO_CRATES] call aso_fnc_executeSaveObject;
 
 // Save all mission critical object
 ["Saving Objects ..."] remoteExecCall ["hint", 0, false];

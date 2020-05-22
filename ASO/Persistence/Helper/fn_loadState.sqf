@@ -27,13 +27,14 @@ if (!isServer) exitWith {false;};
 
 [ASO_VEHICLES] call aso_fnc_executeLoadVehicle;
 
+//[ASO_CRATES] call aso_fnc_executeLoadCargo;
+[ASO_CRATES] call aso_fnc_executeLoadObject;
+
+[ASO_OBJECTS] call aso_fnc_executeLoadObject;
+
 {
     [_x] call aso_fnc_executeLoadGroup;
     
 } forEach ASO_GROUPS;
-
-[ASO_CRATES] call aso_fnc_executeLoadCargo;
-
-[ASO_OBJECTS] call aso_fnc_executeLoadObject;
-
+["Loading Complete!"] remoteExecCall ["hint", 0, false];
 true;
