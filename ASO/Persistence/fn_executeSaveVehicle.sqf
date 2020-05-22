@@ -38,17 +38,20 @@ if (count _vehicles == 0) then
 };
 
 {
-	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, true] call aso_fnc_getDbName;
 	private _position = [_x] call aso_fnc_getPosition;
 	private _items = [_x] call aso_fnc_getCargo;
 	private _damage = [_x] call aso_fnc_getDamage;
 	private _weapons = [_x] call aso_fnc_getWeapons;
 	private _supplies = [_x] call aso_fnc_getACESupplies;
+	private _lock = [_x] call aso_fnc_getVehicleLock;
+	
 	// save the stuff
 	["Vehicles", _dbName, "Position", _position] call aso_fnc_writeValue;
 	["Vehicles", _dbName, "Items", _items] call aso_fnc_writeValue;
 	["Vehicles", _dbName, "Damage", _damage] call aso_fnc_writeValue;
 	["Vehicles", _dbName, "Weapons", _weapons] call aso_fnc_writeValue;
 	["Vehicles", _dbName, "Supplies", _supplies] call aso_fnc_writeValue;
+	["Vehicles", _dbName, "Lock", _lock] call aso_fnc_writeValue;
 	
 } forEach _vehicles;

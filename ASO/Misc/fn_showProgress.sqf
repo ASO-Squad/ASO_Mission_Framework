@@ -34,7 +34,7 @@ _complete =
     { 
         _pos = getPosATL _object;
         _object setPosATL [_pos select 0, _pos select 1, -100];
-    }; 
+    };
 };
 _fail =
 { 

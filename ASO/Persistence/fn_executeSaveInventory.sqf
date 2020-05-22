@@ -33,5 +33,5 @@ if (count _units == 0) then
 {
 	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
 	private _inventory = [_x] call aso_fnc_getInventory;
-	["Inventory", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;		
+	//["Inventory", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;		
 } forEach _units;

@@ -26,9 +26,9 @@ params ["_obj", "_name", "_menuEntry", "_title", ["_time", 5], ["_hide", false]]
 _var = "ASO_Found";
 _obj setVariable [_var, false, true];
 
-private _progress = { params ["_target", "_caller", "_param", "_hide"]; [_param select 0, _param select 1, _param select 2, _param select 3, _param select 4] call aso_fnc_showProgress; };
+private _progress = { params ["_target", "_caller", "_param"]; [_param select 0, _param select 1, _param select 2, _param select 3, _param select 4] call aso_fnc_showProgress; };
 
-_action = [_name, _menuEntry,"", _progress, {true}, {}, [_title, _time, _obj, _var]] call ace_interact_menu_fnc_createAction; 
+_action = [_name, _menuEntry,"", _progress, {true}, {}, [_title, _time, _obj, _var, _hide]] call ace_interact_menu_fnc_createAction; 
 [_obj, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 [_obj] call aso_fnc_collectObject;
 true;

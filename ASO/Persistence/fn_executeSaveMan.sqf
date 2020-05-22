@@ -46,7 +46,7 @@ if (count _units == 0) then
 	private _explosives = [_x] call aso_fnc_getExplosives;
 
 	["Men", _dbName, "Position", _position] call aso_fnc_writeValue;
-	["Men", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;
+	//["Men", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;
 	["Men", _dbName, "Health", _health] call aso_fnc_writeValue;
 	["Men", _dbName, "Mount", _mount] call aso_fnc_writeValue;
 	["Men", _dbName, "Explosives", _explosives] call aso_fnc_writeValue;

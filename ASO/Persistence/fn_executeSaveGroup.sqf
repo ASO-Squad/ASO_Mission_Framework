@@ -44,7 +44,7 @@ if (typeName _group != "GROUP") exitWith
 
 	// save the stuff
 	[groupId _group, _x, "Position", _position] call aso_fnc_writeValue;
-	[groupId _group, _x, "Inventory", _inventory] call aso_fnc_writeValue;
+	//[groupId _group, _x, "Inventory", _inventory] call aso_fnc_writeValue;
 	[groupId _group, _x, "Health", _health] call aso_fnc_writeValue;
 	[groupId _group, _x, "Mount", _mount] call aso_fnc_writeValue;
 	[groupId _group, _x, "Explosives", _explosives] call aso_fnc_writeValue;

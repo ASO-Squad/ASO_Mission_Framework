@@ -42,11 +42,13 @@ if (count _vehicles == 0) then
 	private _damage = ["Vehicles", _dbName, "Damage"] call aso_fnc_readValue;
 	private _weapons = ["Vehicles", _dbName, "Weapons"] call aso_fnc_readValue;
 	private _supplies = ["Vehicles", _dbName, "Supplies"] call aso_fnc_readValue;
+	private _lock = ["Vehicles", _dbName, "Lock"] call aso_fnc_readValue;
 
 	[_x, _position] call aso_fnc_setPosition;
 	[_x, _items] call aso_fnc_setCargo;
 	[_x, _damage] call aso_fnc_setDamage;
 	[_x, _weapons] call aso_fnc_setWeapons;
 	[_x, _supplies] call aso_fnc_setACESupplies;
+	[_x, _lock] call aso_fnc_setVehicleLock;
 	
 } forEach _vehicles;

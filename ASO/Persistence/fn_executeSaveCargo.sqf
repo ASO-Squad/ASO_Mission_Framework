@@ -24,7 +24,7 @@ if (isNil "ASO_INIT") then
 params ["_objects"];
 
 {
-	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _dbName = [_x, true] call aso_fnc_getDbName;
 	private _items = [_x] call aso_fnc_getCargo;
 	["Cargo", _dbName, "Items", _items] call aso_fnc_writeValue;
 		

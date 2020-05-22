@@ -10,7 +10,7 @@ Returns:
     nothing
 
 Example:
-    [_object] call aso_fnc_setVehicleName;
+    [this] call aso_fnc_setVehicleName;
 
 Author:
     Papa Mike
