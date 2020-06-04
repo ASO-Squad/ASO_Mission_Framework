@@ -13,12 +13,14 @@ Parameters:
     _group      - the group guarding the area
 	_time 		- Time until dynamicSim is enabled. -1 for never.
     _trigger   	- trigger that is to be defended, should be a circle
+	_radius		- if you can't provide a trigger, the starting position and 
+				this radius is used
 
 Returns:
     None
 
 Example:
-    [this] call aso_fnc_patrol;
+    [this, -1, 500, foo] call aso_fnc_patrol;
 
 Author:
     Papa Mike
@@ -30,7 +32,7 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group", ["_time", 120], ["_trigger", objNull]];
+params ["_group", ["_time", 120], ["_radius", 100], ["_trigger", objNull]];
 
 //find a syncronized trigger
 private _sync = synchronizedObjects leader _group;
@@ -46,13 +48,17 @@ private _sync = synchronizedObjects leader _group;
 } forEach _sync;
 
 // no trigger found or given
-if (isNull _trigger) exitWith {false;};
-
-private _position = getPos _trigger;
-private _radius = (triggerArea _trigger) select 0;
+private _position = getPos leader _group;
+private _radius = _radius;
+// trigger found or given
+if (!isNull _trigger) then 
+{
+	_position = getPos _trigger;
+	_radius = (triggerArea _trigger) select 0;
+};
 
 // Give them their new order
-[_group, _position, _radius, 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,10]] call CBA_fnc_taskPatrol;
+[_group, _position, _radius, 10, "MOVE", "SAFE", "YELLOW", "LIMITED", "FILE", "", [0,3,6]] call CBA_fnc_taskPatrol;
 
 // Add group to group list
 [_group, _time] call aso_fnc_collectGroup;

@@ -14,6 +14,8 @@ Parameters:
 	_answer		- if false, this group does not answer calls for help
 	_time 		- Time until dynamicSim is enabled. -1 for never.
     _trigger   	- trigger that is to be defended, should be a circle
+	_radius		- if you can't provide a trigger, the starting position and 
+				this radius is used
 
 Returns:
     None
@@ -31,7 +33,7 @@ if (isNil "ASO_INIT") then
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group",["_answer", true], ["_time", 90], ["_trigger", objNull]];
+params ["_group", ["_answer", true], ["_time", 90], ["_radius", 50], ["_trigger", objNull]];
 
 //find a syncronized trigger
 private _sync = synchronizedObjects leader _group;
@@ -47,13 +49,16 @@ private _sync = synchronizedObjects leader _group;
 } forEach _sync;
 
 // no trigger found or given
-if (isNull _trigger) exitWith {false;};
-
-private _position = getPos _trigger;
-private _radius = (triggerArea _trigger) select 0;
-
+private _position = getPos leader _group;
+private _radius = _radius;
+// trigger found or given
+if (!isNull _trigger) then 
+{
+	_position = getPos _trigger;
+	_radius = (triggerArea _trigger) select 0;
+};
 // Give them their new order
-_task = [_group, _position, _radius, 3, false, 0.5] spawn CBA_fnc_taskDefend;
+_task = [_group, _position, _radius, 2, false, 0.5] spawn CBA_fnc_taskDefend;
 
 // Add group to group list
 [_group, _time] call aso_fnc_collectGroup;

@@ -50,7 +50,8 @@ private _change = _newChange select 0;
 
 // Set current weather
 0 setFog [_fogValue, _fogDecay, _fogBase];
-[0,_overcast] remoteExec ["setOvercast"]; 
+0 setOvercast _overcast;
+[0,_overcast] remoteExec ["setOvercast"];
 0 setLightnings _lightning;
 0 setRain _rain;
 [0, _gusts] remoteExec ["setGusts"];
@@ -72,5 +73,5 @@ if (_edit == 1) then
 };
 // Let the weather change according to the forecast
 _change setFog _fogForecast;
-_change setOvercast _overcastForecast;
+[_change,_overcastForecast] remoteExec ["setOvercast"];
 true;

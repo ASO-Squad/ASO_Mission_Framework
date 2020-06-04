@@ -1,7 +1,7 @@
 waitUntil { !(isNil "paramsArray") };
+_unit = _this select 0; // player who called this script
 _load = ["LoadMission", 1] call BIS_fnc_getParamValue;
 _armory = ["LoadArmory", 1] call BIS_fnc_getParamValue;
-_unit = _this select 0; // player who called this script
 
 if (_load == 1) then
 {
@@ -12,7 +12,6 @@ if (_load == 1) then
 	[[_unit], false, false] call aso_fnc_executeLoadMan;
 	if (ASO_USE_TFR) then
 	{
-		
 		[_unit, "tfar_handlersset"] remoteExec ["aso_fnc_propagateLocalVar", _unit];
 	};
 };
