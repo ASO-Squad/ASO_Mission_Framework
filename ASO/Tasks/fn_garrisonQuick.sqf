@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------
 Description:
-    This function is used to let a group guard a certain trigger. 
+    This function is used to let a occupy guard a certain trigger. 
 	The trigger has to be either provided by a parameter or sychronized
 	to the groups leader. 
 	If you call this function from the init-field of a group, the orders
@@ -21,19 +21,19 @@ Returns:
     None
 
 Example:
-    [this] call aso_fnc_guard;
+    [this] spawn aso_fnc_garrison;
 
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-if (!isServer) exitWith {};
+if (!isServer) exitWith {false;};
 
 if (isNil "ASO_INIT") then
 {
 	[] call aso_fnc_init_aso;
 };
 
-params ["_group", ["_answer", false], ["_time", 60], ["_radius", 50], ["_trigger", objNull]];
+params ["_group", ["_answer", true], ["_time", 90], ["_radius", 50], ["_trigger", objNull]];
 
 //find a syncronized trigger
 private _sync = synchronizedObjects leader _group;
@@ -57,9 +57,15 @@ if (!isNull _trigger) then
 	_position = getPos _trigger;
 	_radius = (triggerArea _trigger) select 0;
 };
-
 // Give them their new order
-[_group, _position, _radius, 2, 0.5, 0] call CBA_fnc_taskDefend;
+_task = [_position, nil, units _group, _radius, 1, false, true] spawn ace_ai_fnc_garrison;
+
+// Make the unit watch a random direction
+{
+	private _watchPos = (getPos _x) getPos [random [10, 50, 200], random 360];  
+    _x commandWatch _watchPos;
+	
+} forEach units _group;
 
 // Add group to group list
 [_group, _time] call aso_fnc_collectGroup;
@@ -71,7 +77,8 @@ if (!_answer) then
 }
 else 
 {
-	[_group, _position, _radius, false, true, true] spawn aso_fnc_unGarrison;
+	// we need to wait until taskDefend is done
+	[_group, _position, _radius, false, true, true, _task] spawn aso_fnc_unGarrison;
 };
 
 //Track group for debug purposes
