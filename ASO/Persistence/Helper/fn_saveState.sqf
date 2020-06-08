@@ -38,6 +38,9 @@ params ["_endMission"];
     [_x] call aso_fnc_executeSaveGroup;
     
 } forEach ASO_GROUPS;
+// Save all dead units
+["Saving dead people ..."] remoteExecCall ["hint", 0, false];
+[] call aso_fnc_executeSaveDead;
 
 // Keep track of those crates
 ["Saving Crates ..."] remoteExecCall ["hint", 0, false];

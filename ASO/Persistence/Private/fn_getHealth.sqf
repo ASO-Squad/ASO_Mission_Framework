@@ -24,8 +24,18 @@ if (!(_unit isKindOf "Man")) exitWith {};
 // Variables
 private _morphine = _unit getVariable ["ace_medical_morphine", 0];
 private _tourniquets = _unit getVariable ["ace_medical_tourniquets", [0,0,0,0,0,0]];
-private _hitpointDamage = ((getAllHitPointsDamage _unit) select 2); 
+private _bodypartdamage = _unit getVariable ["ace_medical_bodypartdamage", [0,0,0,0,0,0]];
+private _openWounds = _unit getVariable ["ace_medical_openwounds", []];
 private _isUnconscious = _unit getVariable ["ACE_isUnconscious", false];
 private _isAlive = alive _unit;
 
-[_morphine, _tourniquets, _hitpointDamage, _isUnconscious, _isAlive];
+// only unpatched wounds are saved
+{
+    if ((_x select 2) == 0) then
+    {
+       _bodypartdamage set [(_x select 1), 0];
+    };
+    
+} forEach _openWounds;
+
+[_morphine, _tourniquets, _bodypartdamage, _isUnconscious, _isAlive];

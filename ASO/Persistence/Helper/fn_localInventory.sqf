@@ -15,7 +15,7 @@ Example:
 Author:
     Papa Mike
 ---------------------------------------------------------------------------- */
-params ["_unit", "_name"];
+params ["_unit", ["_file", "Men"], ["_section", nil]];
 
 // Check if the unit is of the right type
 if (!(_unit isKindOf "Man")) exitWith {};
@@ -24,4 +24,11 @@ private _fullInventory = getUnitLoadout _unit;
 private _earplugs = [_unit] call ace_hearing_fnc_hasEarPlugsIn;
 private _inventory = [_fullInventory, _earplugs];
 
-["Men", _name, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2];
+if (isNil "_section") then 
+{
+    [_file, _unit, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2];
+}
+else
+{
+    [_file, _section, "Inventory", _inventory] remoteExecCall ["aso_fnc_writeValue", 2];
+};

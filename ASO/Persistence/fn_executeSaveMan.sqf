@@ -38,18 +38,18 @@ if (count _units == 0) then
 };
 
 {
-	private _dbName = [_x, _saveByName] call aso_fnc_getDbName;
+	private _unitName = [_x, _saveByName] call aso_fnc_getDbName;
 	private _position = [_x] call aso_fnc_getPosition;
-	private _inventory = [_x] call aso_fnc_getInventory;
+	private _inventory = [_x, "Men", _unitName] call aso_fnc_getInventory;
 	private _health = [_x] call aso_fnc_getHealth;
 	private _mount = [_x] call aso_fnc_getMount;
 	private _explosives = [_x] call aso_fnc_getExplosives;
 
-	["Men", _dbName, "Position", _position] call aso_fnc_writeValue;
-	//["Men", _dbName, "Inventory", _inventory] call aso_fnc_writeValue;
-	["Men", _dbName, "Health", _health] call aso_fnc_writeValue;
-	["Men", _dbName, "Mount", _mount] call aso_fnc_writeValue;
-	["Men", _dbName, "Explosives", _explosives] call aso_fnc_writeValue;
+	["Men", _unitName, "Position", _position] call aso_fnc_writeValue;
+	//["Men", _unitName, "Inventory", _inventory] call aso_fnc_writeValue;
+	["Men", _unitName, "Health", _health] call aso_fnc_writeValue;
+	["Men", _unitName, "Mount", _mount] call aso_fnc_writeValue;
+	["Men", _unitName, "Explosives", _explosives] call aso_fnc_writeValue;
 		
 } forEach _units;
 true;

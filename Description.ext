@@ -126,6 +126,7 @@ class cfgFunctions
             // Write to Database
             class writeValue {};
             class readValue {};
+            class deleteDB {};
             // Cargo Helper
             class putMagazinesInCargo {};
             class putWeaponsInCargo {};
@@ -168,6 +169,8 @@ class cfgFunctions
             class executeLoadGroup {};
             class executeSaveObject {};
             class executeLoadObject {};
+            class executeSaveDead {};
+            class executeLoadDead {};
         }
         class Tasks
         {

@@ -22,7 +22,7 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {false;};
 
-params ["_unit", "_health", ["_ifIsDead", false]];
+params ["_unit", "_health", ["_ifIsDead", true]];
 
 if (([_health] call aso_fnc_isReadError)) exitWith {false;}; 
 
@@ -32,7 +32,7 @@ if (!(_unit isKindOf "Man")) exitWith {};
 // Read information
 private _morphine = _health select 0;
 private _tourniquets = _health select 1;
-private _hitpointDamage = _health select 2;
+private _bodypartdamage = _health select 2;
 private _isUnconscious = _health select 3;
 private _isAlive = _health select 4;
 
@@ -40,15 +40,14 @@ if (typeName _ifIsDead == "OBJECT" && !_isAlive) then
 {
 	_unit setVehiclePosition [(getPosATL _ifIsDead), [], 5, "NONE"];
 };
-
-// Only deal dammage if neccessary to avoid blood stains on the floor
-private _head = _hitpointDamage select 2;
-private _body = _hitpointDamage select 7;
-private _leftArm = _hitpointDamage select 12;
-private _rightArm = _hitpointDamage select 13;
-private _leftLeg = _hitpointDamage select 14;
-private _rightLeg = _hitpointDamage select 15;
-private _damageArray = [[_head, "Head"], [_body, "Body"], [_leftArm, "LeftArm"], [_rightArm, "RightArm"], [_leftLeg, "LeftLeg"], [_rightLeg, "RightLeg"]];
+// Assign values to body parts
+private _head = _bodypartdamage select 0;
+private _body = _bodypartdamage select 1;
+private _leftArm = _bodypartdamage select 2;
+private _rightArm = _bodypartdamage select 3;
+private _leftLeg = _bodypartdamage select 4;
+private _rightLeg = _bodypartdamage select 5;
+private _damageArray = [[_head, "head"], [_body, "lody"], [_leftArm, "hand_l"], [_rightArm, "hand_r"], [_leftLeg, "leg_l"], [_rightLeg, "leg_r"]];
 
 if (typeName _ifIsDead == "BOOL" && !_isAlive) then
 {
@@ -77,9 +76,9 @@ if (_isAlive) then
 	// Handling damage
 	{
 			_damage = (_x select 0);
-			if (_damage >= 0.1) then 
+			if (_damage >= 0.2) then 
 			{
-				[_unit, ((_x select 0)), (_x select 1)] call ace_medical_fnc_addDamageToUnit;				
+				[_unit, ((_x select 0)), (_x select 1), "unknown"] call ace_medical_fnc_addDamageToUnit;				
 			};
 		} forEach _damageArray;
 
