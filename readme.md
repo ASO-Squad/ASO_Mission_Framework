@@ -1,4 +1,4 @@
-# ASO Mission Framework
+# ASO Mission Framework 2.2.1
 
 Make persistent ArmA 3 missions easy and fast. This Framework helps you to setup a mission that is not only easy to create, but will also persist the mission state, so that it can be finished in more than one sitting. Please keep in mind that this Framework ist intended to be used in conjunction with [ACE](https://github.com/acemod/ACE3), [iniDBI2](https://github.com/code34/inidbi2) and the [VCOM AI](https://github.com/genesis92x/VcomAI-3.0). So if you have any question on how to use those mods, take a look at their repositories.
 
