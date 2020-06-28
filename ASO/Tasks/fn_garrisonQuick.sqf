@@ -78,7 +78,7 @@ if (!_answer) then
 else 
 {
 	// we need to wait until taskDefend is done
-	[_group, _position, _radius, false, true, true, _task] spawn aso_fnc_unGarrison;
+	[_group, _position, _radius, true, true, true, _task] spawn aso_fnc_unGarrison;
 };
 
 //Track group for debug purposes

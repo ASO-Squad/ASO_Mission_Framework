@@ -44,7 +44,7 @@ if (_moveOnContact) then
 		_contacts = leader _group targetsQuery [objNull, sideUnknown, "", [], 0];
 		{
 
-			if ((_x select 0) >= 0.95 && [side _group, _x select 2] call BIS_fnc_sideIsEnemy) then 
+			if ((_x select 0) >= 0.95 && [side _group, _x select 2] call BIS_fnc_sideIsEnemy && (leader _group) distance2D (_x select 1) < 600) then 
 			{
 				breakOut "loop";
 			};

@@ -43,6 +43,9 @@ private _sync = synchronizedObjects _taskObj;
             private _group = createVehicleCrew _x;
             _group addVehicle _x;
             _task = _x getVariable ["aso_vehicletask", []];
+            // Add key to driver
+            _driver = assignedDriver _x;
+            [_driver, _x, true] call ace_vehiclelock_fnc_addKeyForVehicle;
             if (count _task == 2) then 
             {
                 // restore task and do stuff
@@ -122,7 +125,7 @@ private _sync = synchronizedObjects _taskObj;
                             // assign them to the right vehicle if unique position (driver, gunner, commander, turret) is not already set
                             switch (_roleType) do 
                             {
-                                case "driver": { if (isNull assignedDriver _x) then { _new assignAsDriver _x; _new moveInDriver _x; }  };
+                                case "driver": { if (isNull assignedDriver _x) then { _new assignAsDriver _x; _new moveInDriver _x; [_new, _x, true] call ace_vehiclelock_fnc_addKeyForVehicle; }  };
                                 case "gunner": { if (isNull assignedGunner _x) then { _new assignAsGunner _x; _new moveInGunner _x; } };
                                 case "commander": { if (isNull assignedCommander _x) then { _new assignAsCommander _x; _new moveInCommander _x; } };
                                 case "cargo": { if (_x emptyPositions "cargo" > 0) then { _new assignAsCargo _x; _new moveInCargo _x; } }; // This is not ideal, because the first vehicle gets all the cargo units ...
