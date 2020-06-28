@@ -37,7 +37,7 @@ if (typeName _group != "GROUP") exitWith
 // If the unit array is empty, save all players
 {
 	private _position = [_x] call aso_fnc_getPosition;
-	private _inventory = [_x] call aso_fnc_getInventory;
+	private _inventory = [_x, groupId _group] call aso_fnc_getInventory;
 	private _health = [_x] call aso_fnc_getHealth;
 	private _mount = [_x] call aso_fnc_getMount;
 	private _explosives = [_x] call aso_fnc_getExplosives;
@@ -51,6 +51,13 @@ if (typeName _group != "GROUP") exitWith
 	
 } forEach units _group;
 
-private _waypoints = [_group] call aso_fnc_getWaypoints;
-[groupId _group, "Group", "Waypoints", _waypoints] call aso_fnc_writeValue;
+if (count (units _group) > 0) then
+{
+	private _waypoints = [_group] call aso_fnc_getWaypoints;
+	[groupId _group, "Group", "Waypoints", _waypoints] call aso_fnc_writeValue;	
+}
+else
+{
+	[_database] call aso_fnc_deleteDB;
+};
 true;

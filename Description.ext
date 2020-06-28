@@ -126,6 +126,7 @@ class cfgFunctions
             // Write to Database
             class writeValue {};
             class readValue {};
+            class deleteDB {};
             // Cargo Helper
             class putMagazinesInCargo {};
             class putWeaponsInCargo {};
@@ -168,6 +169,8 @@ class cfgFunctions
             class executeLoadGroup {};
             class executeSaveObject {};
             class executeLoadObject {};
+            class executeSaveDead {};
+            class executeLoadDead {};
         }
         class Tasks
         {
@@ -266,9 +269,9 @@ class Header
 
 briefingName    = "ASO Framework Example";
 author			= "Papa Mike";
-OnLoadName		= "ASO Framework Example";
+OnLoadName		= "ASO Framework 2.2.1";
 OnLoadMission	= "Raid a small compound, afterwards take your time and explore what the framework can do in the mission editor.";
-onLoadIntro     = "ASO Framework Example";
+onLoadIntro     = "ASO Framework 2.2.1";
 overviewText    = "Raid a small compound, afterwards take your time and explore what the framework can do in the mission editor."
 
 respawn = 3;

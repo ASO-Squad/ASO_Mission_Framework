@@ -17,7 +17,7 @@ Author:
 ---------------------------------------------------------------------------- */
 if (!isServer) exitWith {false;};
 
-params ["_unit"];
+params ["_unit", ["_name", nil], ["_unitName", nil]];
 
 // Check if the unit is of the right type
 if (!(_unit isKindOf "Man")) exitWith {false};
@@ -31,5 +31,6 @@ if (!(_unit isKindOf "Man")) exitWith {false};
 //[_fullInventory, _earplugs];
 
 // Workaround for the issue above
-[_unit, _dbName] remoteExecCall ["aso_fnc_localInventory", _unit];
+//[_unit, _name, _unitName] remoteExecCall ["aso_fnc_localInventory", _unit];
+[_unit, _name, _unitName] remoteExecCall ["aso_fnc_localInventory", _unit];
 true;

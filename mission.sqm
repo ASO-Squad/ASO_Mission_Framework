@@ -8,18 +8,18 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=300;
+		nextID=306;
 	};
 	class LayerIndexProvider
 	{
-		nextID=24;
+		nextID=34;
 	};
 	class Camera
 	{
-		pos[]={3421.0872,356.15329,2898.7517};
-		dir[]={-0.86820024,-0.42702273,0.25287199};
-		up[]={-0.41000563,0.90422869,0.11941872};
-		aside[]={0.27964935,2.1024607e-007,0.96012908};
+		pos[]={3285.0417,231.64934,2930.0281};
+		dir[]={-0.57549614,-0.23120108,-0.78447896};
+		up[]={-0.13677064,0.97290343,-0.18643655};
+		aside[]={-0.80632186,-4.7232606e-007,0.59152228};
 	};
 };
 binarizationWanted=0;
@@ -1115,8 +1115,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1974.2316,5.2699776,3502.7026};
-						angles[]={0,2.4514775,0};
+						position[]={1974.2321,5.2703834,3502.7031};
+						angles[]={0,2.451472,0};
 					};
 					side="East";
 					flags=5;
@@ -1126,6 +1126,49 @@ class Mission
 					};
 					id=101;
 					type="O_SoldierU_GL_F";
+					atlOffset=0.00040578842;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 				class Item3
 				{
@@ -4546,7 +4589,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={3276.748,229.15379,2921.5461};
+						position[]={3276.8401,229.1463,2921.1111};
 						angles[]={0,0.40173987,0};
 					};
 					side="West";
@@ -4554,7 +4597,6 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						isPlayer=1;
 						isPlayable=1;
 					};
 					id=267;
@@ -4607,8 +4649,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={3278.6455,229.19144,2927.4285};
-						angles[]={0,4.7151203,0};
+						position[]={3278.646,229.19144,2927.428};
+						angles[]={0,4.7151117,0};
 					};
 					side="West";
 					flags=5;
@@ -4616,10 +4658,53 @@ class Mission
 					{
 						skill=0.44999999;
 						rank="CORPORAL";
+						isPlayer=1;
 						isPlayable=1;
 					};
 					id=268;
 					type="B_Recon_Sharpshooter_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.98000002;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes

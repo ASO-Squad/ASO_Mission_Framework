@@ -36,5 +36,8 @@ if (!isServer) exitWith {false;};
     [_x] call aso_fnc_executeLoadGroup;
     
 } forEach ASO_GROUPS;
+
+[] call aso_fnc_executeLoadDead;
+
 ["Loading Complete!"] remoteExecCall ["hint", 0, false];
 true;
